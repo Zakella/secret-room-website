@@ -20,7 +20,7 @@ public class Product {
     private String sku;
 
     @ManyToOne
-    @JoinColumn(name = "category_id" , nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private ProductCategory productCategory;
 
     private String name;
@@ -43,11 +43,6 @@ public class Product {
     @Column(name = "last_updated")
     @CreationTimestamp
     private LocalDate lastUpdated;
-
-    //    @OneToMany()
-    @Column(name = "category_id")
-    @UpdateTimestamp
-    private Long categoryID;
 
 
 }

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com</groupId>
     <artifactId>secretroom-website</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.01</version>
     <name>secretroom-website</name>
     <description>secretroom-website</description>
     <properties>
