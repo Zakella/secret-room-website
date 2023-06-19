@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="admin">
+        <sql>
+    CREATE TABLE IF NOT EXISTS product (
+                                           id BIGSERIAL PRIMARY KEY,
+                                           sku VARCHAR(255),
+        name VARCHAR(255),
+        description VARCHAR(255),
+        unit_price NUMERIC(13,2),
+        image_url VARCHAR(255),
+        active BOOLEAN DEFAULT TRUE,
+        units_in_stock INT,
+        date_created TIMESTAMP(6),
+        last_updated TIMESTAMP(6),
+        category_id BIGINT NOT NULL,
+        CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES product_category (id)
+        );
+     </sql>
+    </changeSet>
+</databaseChangeLog>
