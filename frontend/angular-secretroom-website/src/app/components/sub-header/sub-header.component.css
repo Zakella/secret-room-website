@@ -1,0 +1,9 @@
+.sub-header{
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin: 0px auto;
+  max-width: 944px;
+  width: 100%;
+}
