@@ -2,25 +2,17 @@ package com.secretroomwebsite.journey;
 
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product_category.ProductCategory;
-import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
-
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureWebTestClient
@@ -98,7 +90,7 @@ class DataRestConfigIT {
                 .active(true)
                 .unitPrice(100.00)
                 .imageURL("/url")
-                .unitsInStock(1)q
+                .unitsInStock(1)
                 .build();
 
         webTestClient.post()
