@@ -1,27 +1,30 @@
-    package com.secretroomwebsite.product_category;
+package com.secretroomwebsite.product_category;
 
-    import com.secretroomwebsite.product.Product;
-    import jakarta.persistence.*;
-    import lombok.Getter;
-    import lombok.Setter;
+import com.secretroomwebsite.product.Product;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    import java.util.Set;
+import java.util.Set;
 
-    @Entity
-    @Getter
-    @Setter
-    @Table(name = "product_category")
-    public class ProductCategory {
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "product_category")
+public class ProductCategory {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @Column(name = "category_name")
-        private String categoryName;
+    @Column(name = "category_name")
+    private String categoryName;
 
+    @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
+    private Set<Product> products;
 
-        @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
-        private Set<Product> products;
-
-    }
+}
