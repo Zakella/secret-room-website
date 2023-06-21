@@ -1,9 +1,162 @@
-.sub-header{
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  margin: 0px auto;
-  max-width: 944px;
+.navbar{
+  /*background: rgb(0, 45, 231);*/
   width: 100%;
+  height: 50px;
+  right: 0;
+  justify-content: space-between;
+  padding: 0;
+
 }
+
+.flex{
+  /*background: #05143f;*/
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0;
+  /*border: 1px solid purple;*/
+
+}
+
+.navbar-brand {
+  display: inline-block; /* Set display property to inline-block */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+.flex.flex-row {
+  display: flex; /* Use flexbox */
+  flex-direction: row; /* Set the direction to horizontal */
+  align-items: center; /* Center the items vertically */
+}
+
+.navbar-brand bb {
+  /* Optional: Add styling to the items */
+  margin-right: 50px; /* Add spacing between items */
+}
+
+.flex.flex-row.brands {
+  display: flex;
+}
+
+.flex.flex-row.brands .flex {
+  margin-right: 10px; /* Add space between div elements */
+}
+
+.separator::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 1px; /* Width of the separator */
+  background-color: gray; /* Color of the separator */
+  margin: 0 10px; /* Adjust margin to add space around the separator */
+}
+
+/*.flex.flex-row.brands {*/
+/*  display: flex;*/
+/*}*/
+
+/*.flex.flex-row.brands .flex {*/
+/*  margin-right: 10px; !* Add space between div elements *!*/
+/*}*/
+
+/*.brands-div {*/
+/*  display: flex; !* Применяем flex-контейнер для горизонтального размещения элементов *!*/
+/*  list-style: none; !* Убираем маркеры списка *!*/
+/*  padding: 0; !* Убираем отступы вокруг списка *!*/
+/*}*/
+
+/*.brands-div li {*/
+/*  margin-right: 10px; !* Опционально: добавляем отступы между элементами списка *!*/
+/*}*/
+
+/*.brands-div ol {*/
+/*  display: inline-block; !* Применяем инлайн-блочный тип для элементов списка *!*/
+/*}*/
+
+/*img{*/
+/*  object-fit: cover;*/
+/*}*/
+
+/*.flex-row {*/
+/*  display: in;*/
+/*  flex-direction: row;*/
+/*  align-items: center;*/
+/*}*/
+
+/*.flex-row > ol {*/
+/*  margin-right: 10px;*/
+/*}*/
+
+/*.img{*/
+/*  width: 25px;*/
+/*  height: 25px;*/
+/*}*/
+
+
+/*.vs-ol1 {*/
+/*  -webkit-box-align: center;*/
+/*  align-items: center;*/
+/*  display: flex;*/
+/*  height: 40px;*/
+/*  -webkit-box-pack: center;*/
+/*  justify-content: center;*/
+/*  margin: 0px auto;*/
+/*  padding: 0px 2rem;*/
+/*}*/
+
+/*.vs-ol1 img {*/
+/*  max-width: 100%;*/
+/*  max-height: 75px;*/
+/*  width: auto;*/
+/*  height: auto;*/
+/*}*/
+
+/*ul {*/
+/*  display: block;*/
+/*  list-style-type: disc;*/
+/*  margin-block-start: 1em;*/
+/*  margin-block-end: 1em;*/
+/*  margin-inline-start: 0px;*/
+/*  margin-inline-end: 0px;*/
+/*  padding-inline-start: 40px;*/
+/*}*/
+
+/*.a{*/
+/*  width: auto;*/
+/*  max-width: 100%;*/
+/*}*/
+
+/*.sub-header{*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  -webkit-box-pack: justify;*/
+/*  justify-content: space-between;*/
+/*  margin: 0px auto;*/
+/*  max-width: 944px;*/
+/*  width: 100%;*/
+
+/*}*/
+
+/*.brand-list{*/
+/*  display: block;*/
+/*  list-style-type: disc;*/
+/*  margin-block-start: 1em;*/
+/*  margin-block-end: 1em;*/
+/*  margin-inline-start: 0px;*/
+/*  margin-inline-end: 0px;*/
+/*  padding-inline-start: 40px;*/
+/*}*/
+
+
+/**, ::after, ::before {*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/*li {*/
+/*  display: list-item;*/
+/*  text-align: -webkit-match-parent;*/
+/*}*/
+
+/*ul {*/
+/*  list-style-type: disc;*/
+/*}*/
