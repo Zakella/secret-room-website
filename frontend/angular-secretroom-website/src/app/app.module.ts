@@ -8,13 +8,19 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ProductService} from "./services/product.service";
 import { HeaderComponent } from './components/header/header.component';
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
+import { PanelComponent } from './components/panel/panel.component';
+import { VsLogoComponent } from './components/vs-logo/vs-logo.component';
+import { BbLogoComponent } from './components/bb-logo/bb-logo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     HeaderComponent,
-    SubHeaderComponent
+    SubHeaderComponent,
+    PanelComponent,
+    VsLogoComponent,
+    BbLogoComponent
   ],
   imports: [
     BrowserModule,
