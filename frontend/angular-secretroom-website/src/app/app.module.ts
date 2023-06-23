@@ -16,6 +16,10 @@ import {FormsModule} from "@angular/forms";
 import {PanelComponent} from "./components/panel/panel.component";
 import {BbLogoComponent} from "./components/bb-logo/bb-logo.component";
 import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
+import {ImageModule} from "primeng/image";
+import {DividerModule} from "primeng/divider";
+import {StyleClassModule} from "primeng/styleclass";
+import {RippleModule} from "primeng/ripple";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
     HttpClientModule,
     DropdownModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    ImageModule,
+    DividerModule,
+    StyleClassModule,
+    RippleModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
