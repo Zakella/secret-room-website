@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-sub-header',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./sub-header.component.css']
 })
 export class SubHeaderComponent {
+
 
 }

@@ -12,7 +12,8 @@
 
     <div class="d-flex p-2 justify-content-center col-3 mt-0">
 
-      <ng-container *ngIf="isVsLogoVisible; else elseBlock">
+
+      <ng-container *ngIf="currentLogo === '/vs' else elseBlock">
         <app-vs-logo></app-vs-logo>
       </ng-container>
 
@@ -33,6 +34,7 @@
     </div>
 
   </div>
+
 </div>
 
 

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 interface Languages {
   name: string;
@@ -25,6 +26,8 @@ export class LanguagePanelComponent implements OnInit {
       {name: 'Russian', code: 'Ru', icon: 'assets/flags/russia.png'},
     ];
   }
+
+  constructor(private router: Router) { }
 
 
   putSelectedInStorage() {
