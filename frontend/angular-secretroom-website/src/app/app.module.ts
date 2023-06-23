@@ -8,6 +8,14 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ProductService} from "./services/product.service";
 import { HeaderComponent } from './components/header/header.component';
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
+import {LanguagePanelComponent} from "./components/language-pannel/language-panel.component";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {DropdownModule} from "primeng/dropdown";
+import {ButtonModule} from "primeng/button";
+import {FormsModule} from "@angular/forms";
+import {PanelComponent} from "./components/panel/panel.component";
+import {BbLogoComponent} from "./components/bb-logo/bb-logo.component";
+import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
 
 @NgModule({
   declarations: [
@@ -15,7 +23,10 @@ import { SubHeaderComponent } from './components/sub-header/sub-header.component
     ProductListComponent,
     HeaderComponent,
     SubHeaderComponent,
-    LanguagePanelComponent
+    LanguagePanelComponent,
+    PanelComponent,
+    BbLogoComponent,
+    VsLogoComponent
   ],
   imports: [
     BrowserModule,
