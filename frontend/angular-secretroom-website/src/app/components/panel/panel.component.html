@@ -11,7 +11,15 @@
     </div>
 
     <div class="d-flex p-2 justify-content-center col-3 mt-0">
-      <app-vs-logo> </app-vs-logo>
+
+      <ng-container *ngIf="isVsLogoVisible; else elseBlock">
+        <app-vs-logo></app-vs-logo>
+      </ng-container>
+
+      <ng-template #elseBlock>
+        <app-bb-logo></app-bb-logo>
+      </ng-template>
+
     </div>
 
     <div class="d-flex p-2 justify-content-center col-3 border-0">
