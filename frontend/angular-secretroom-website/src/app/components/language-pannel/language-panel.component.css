@@ -1,0 +1,10 @@
+.lang {
+  text-transform: uppercase;
+  font-family: BentonSans, Helvetica, Arial, sans-serif;
+  font-size: 0.79rem;
+  line-height: 12px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  vertical-align: bottom;
+}
+

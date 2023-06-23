@@ -1,0 +1,24 @@
+<div class="card flex justify-content-center">
+  <p-dropdown [options]="languages"
+              [(ngModel)]="selectedLanguage"
+              optionLabel="code"
+              placeholder="Select a language"
+              [styleClass]="'custom-dropdown'"
+  (onChange)="putSelectedInStorage()">
+
+    <ng-template let-lang pTemplate="item">
+      <div class="flex align-items-center gap-2">
+        <img src="{{ lang?.icon }}" [class]="'flag flag-'" style="width: 10px"/>
+        <div class="lang">{{ lang.code }}</div>
+      </div>
+    </ng-template>
+
+    <ng-template let-lang pTemplate="selectedItem">
+      <div class="flex align-items-center gap-2">
+        <img src="{{ lang?.icon }}" [class]="'flag flag-'" style="width: 18px"/>
+        <div class="lang">{{ lang.code }}</div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+</div>
+
