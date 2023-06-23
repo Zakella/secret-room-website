@@ -8,9 +8,6 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ProductService} from "./services/product.service";
 import { HeaderComponent } from './components/header/header.component';
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
-import { PanelComponent } from './components/panel/panel.component';
-import { VsLogoComponent } from './components/vs-logo/vs-logo.component';
-import { BbLogoComponent } from './components/bb-logo/bb-logo.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +15,17 @@ import { BbLogoComponent } from './components/bb-logo/bb-logo.component';
     ProductListComponent,
     HeaderComponent,
     SubHeaderComponent,
-    PanelComponent,
-    VsLogoComponent,
-    BbLogoComponent
+    LanguagePanelComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule,
+    ButtonModule,
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
