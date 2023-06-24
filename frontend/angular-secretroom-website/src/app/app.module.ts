@@ -12,7 +12,7 @@ import {LanguagePanelComponent} from "./components/language-pannel/language-pane
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {DropdownModule} from "primeng/dropdown";
 import {ButtonModule} from "primeng/button";
-import {FormsModule} from "@angular/forms";
+import {FormGroup, FormsModule} from "@angular/forms";
 import {PanelComponent} from "./components/panel/panel.component";
 import {BbLogoComponent} from "./components/bb-logo/bb-logo.component";
 import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
@@ -45,6 +45,8 @@ import {RippleModule} from "primeng/ripple";
     DividerModule,
     StyleClassModule,
     RippleModule
+
+
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
