@@ -20,6 +20,9 @@ import {ImageModule} from "primeng/image";
 import {DividerModule} from "primeng/divider";
 import {StyleClassModule} from "primeng/styleclass";
 import {RippleModule} from "primeng/ripple";
+import { FooterComponent } from './components/footer/footer.component';
+import { ProductGroupComponent } from './components/product-group/product-group.component';
+import { MainContainerComponent } from './components/main-container/main-container.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import {RippleModule} from "primeng/ripple";
     LanguagePanelComponent,
     PanelComponent,
     BbLogoComponent,
-    VsLogoComponent
+    VsLogoComponent,
+    FooterComponent,
+    ProductGroupComponent,
+    MainContainerComponent
   ],
   imports: [
     BrowserModule,
