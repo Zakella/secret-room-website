@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AppComponent} from "./app.component";
+import {GroupListComponent} from "./components/group-list/group-list.component";
+import {GroupListBbComponent} from "./components/group-list-bb/group-list-bb.component";
 
 
 const routes: Routes = [
@@ -12,15 +13,17 @@ const routes: Routes = [
 
   {
     path: "bb",
-    component: AppComponent,
+    component: GroupListBbComponent
+
 
   },
 
   {
     path: "vs",
-    component: AppComponent,
+    component: GroupListComponent
 
   },
+
 
   { path: '**',
     redirectTo: 'vs' },

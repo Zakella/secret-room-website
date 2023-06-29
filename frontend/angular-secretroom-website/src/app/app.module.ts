@@ -16,6 +16,9 @@ import {FormsModule} from "@angular/forms";
 import {PanelComponent} from "./components/panel/panel.component";
 import {BbLogoComponent} from "./components/bb-logo/bb-logo.component";
 import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
+import { GroupListComponent } from './components/group-list/group-list.component';
+import { GroupListBbComponent } from './components/group-list-bb/group-list-bb.component';
+import {AnimateModule} from "primeng/animate";
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
     LanguagePanelComponent,
     PanelComponent,
     BbLogoComponent,
-    VsLogoComponent
+    VsLogoComponent,
+    GroupListComponent,
+    GroupListBbComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
     HttpClientModule,
     DropdownModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    AnimateModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
