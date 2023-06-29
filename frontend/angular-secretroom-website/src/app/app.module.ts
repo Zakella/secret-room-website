@@ -21,8 +21,8 @@ import {DividerModule} from "primeng/divider";
 import {StyleClassModule} from "primeng/styleclass";
 import {RippleModule} from "primeng/ripple";
 import { FooterComponent } from './components/footer/footer.component';
-import { ProductGroupComponent } from './components/product-group/product-group.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
+import { GroupProductVsComponent } from './components/group-product-vs/group-product-vs.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,9 @@ import { MainContainerComponent } from './components/main-container/main-contain
     BbLogoComponent,
     VsLogoComponent,
     FooterComponent,
-    ProductGroupComponent,
-    MainContainerComponent
+    MainContainerComponent,
+    GroupProductVsComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
