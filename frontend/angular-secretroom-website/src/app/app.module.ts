@@ -12,13 +12,17 @@ import {LanguagePanelComponent} from "./components/language-pannel/language-pane
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {DropdownModule} from "primeng/dropdown";
 import {ButtonModule} from "primeng/button";
-import {FormsModule} from "@angular/forms";
+import {FormGroup, FormsModule} from "@angular/forms";
 import {PanelComponent} from "./components/panel/panel.component";
 import {BbLogoComponent} from "./components/bb-logo/bb-logo.component";
 import {VsLogoComponent} from "./components/vs-logo/vs-logo.component";
-import { GroupListComponent } from './components/group-list/group-list.component';
-import { GroupListBbComponent } from './components/group-list-bb/group-list-bb.component';
-import {AnimateModule} from "primeng/animate";
+import {ImageModule} from "primeng/image";
+import {DividerModule} from "primeng/divider";
+import {StyleClassModule} from "primeng/styleclass";
+import {RippleModule} from "primeng/ripple";
+import { FooterComponent } from './components/footer/footer.component';
+import { MainContainerComponent } from './components/main-container/main-container.component';
+import { GroupProductVsComponent } from './components/group-product-vs/group-product-vs.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +34,10 @@ import {AnimateModule} from "primeng/animate";
     PanelComponent,
     BbLogoComponent,
     VsLogoComponent,
-    GroupListComponent,
-    GroupListBbComponent
+    FooterComponent,
+    MainContainerComponent,
+    GroupProductVsComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,12 @@ import {AnimateModule} from "primeng/animate";
     DropdownModule,
     ButtonModule,
     FormsModule,
-    AnimateModule
+    ImageModule,
+    DividerModule,
+    StyleClassModule,
+    RippleModule
+
+
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
