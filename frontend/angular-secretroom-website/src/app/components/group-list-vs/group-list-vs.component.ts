@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-group-list-vs',
   templateUrl: './group-list-vs.component.html',
   styleUrls: ['./group-list-vs.component.css']
 })
-export class GroupListVsComponent {
+export class GroupListVsComponent implements OnInit{
+  ngOnInit(): void {
+  }
 
 }

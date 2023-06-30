@@ -13,5 +13,6 @@
 
     <include file="/db/changelog/v1.01/create-product-category.xml"></include>
     <include file="/db/changelog/v1.01/create-products-table.xml"></include>
+    <include file="/db/changelog/v1.01/add-short-description-products.xml"></include>
 
 </databaseChangeLog>

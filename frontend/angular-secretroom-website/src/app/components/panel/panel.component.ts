@@ -7,17 +7,23 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.css']
 })
-export class PanelComponent implements OnInit, AfterViewInit{
-  public currentLogo : string = "";
+export class PanelComponent implements OnInit, AfterViewInit {
+  public currentLogo: string = "";
 
-  constructor( private router:Router) {}
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.currentLogo = this.router.url;
-        console.log(this.router.url);
+
+        if (this.router.url.includes('/vs')) {
+          this.currentLogo = "vs";
+        } else {
+
+          this.currentLogo = "bb";
+        }
 
       }
     });

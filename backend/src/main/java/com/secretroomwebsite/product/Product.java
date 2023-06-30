@@ -32,6 +32,9 @@ public class Product {
 
     private String description;
 
+
+    private String shortDescription;
+
     @Column(name = "unit_price")
     private Double unitPrice;
 
