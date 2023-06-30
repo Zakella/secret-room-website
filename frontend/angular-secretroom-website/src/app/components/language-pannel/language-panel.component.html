@@ -4,7 +4,7 @@
               optionLabel="code"
               placeholder="Select a language"
               [styleClass]="'custom-dropdown'"
-  (onChange)="putSelectedInStorage()">
+              (onChange)="putSelectedInStorage()">
 
     <ng-template let-lang pTemplate="item">
       <div class="flex align-items-center gap-2">
@@ -21,4 +21,3 @@
     </ng-template>
   </p-dropdown>
 </div>
-

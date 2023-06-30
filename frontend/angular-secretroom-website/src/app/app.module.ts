@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
@@ -22,7 +20,10 @@ import {StyleClassModule} from "primeng/styleclass";
 import {RippleModule} from "primeng/ripple";
 import { FooterComponent } from './components/footer/footer.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
-import { GroupProductVsComponent } from './components/group-product-vs/group-product-vs.component';
+import { GroupListVsComponent } from './components/group-list-vs/group-list-vs.component';
+import {GroupListBbComponent} from "./components/group-list-bb/group-list-bb.component";
+import {AppRoutingModule} from "./app-routing.module";
+
 
 @NgModule({
   declarations: [
@@ -36,14 +37,15 @@ import { GroupProductVsComponent } from './components/group-product-vs/group-pro
     VsLogoComponent,
     FooterComponent,
     MainContainerComponent,
-    GroupProductVsComponent,
-    ProductListComponent
+    ProductListComponent,
+    GroupListVsComponent,
+    GroupListBbComponent
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
     DropdownModule,
     ButtonModule,
@@ -51,7 +53,8 @@ import { GroupProductVsComponent } from './components/group-product-vs/group-pro
     ImageModule,
     DividerModule,
     StyleClassModule,
-    RippleModule
+    RippleModule,
+    AppRoutingModule
 
 
   ],

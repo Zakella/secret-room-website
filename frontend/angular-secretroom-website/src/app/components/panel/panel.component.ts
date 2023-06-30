@@ -28,10 +28,9 @@ export class PanelComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit(): void {
-     console.log(this.router.url);
+    console.log(this.router.url);
     console.log(this.router);
   }
 }
-
 
 

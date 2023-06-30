@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {GroupListComponent} from "./components/group-list/group-list.component";
 import {GroupListBbComponent} from "./components/group-list-bb/group-list-bb.component";
-
+import {GroupListVsComponent} from "./components/group-list-vs/group-list-vs.component";
 
 const routes: Routes = [
 
@@ -12,15 +11,13 @@ const routes: Routes = [
     pathMatch: 'full' },
 
   {
-    path: "bb",
-    component: GroupListBbComponent
-
-
+    path: 'vs',
+    component: GroupListVsComponent
   },
 
   {
-    path: "vs",
-    component: GroupListComponent
+    path: "bb",
+    component: GroupListBbComponent
 
   },
 
