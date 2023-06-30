@@ -27,4 +27,8 @@ public class ProductCategory {
     @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
     private Set<Product> products;
 
+    private String description;
+
+    private String imageUrl;
+
 }

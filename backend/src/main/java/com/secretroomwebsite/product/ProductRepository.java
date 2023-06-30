@@ -13,6 +13,4 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200/")
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("SELECT p FROM Product p JOIN FETCH p.productCategory")
-    List<Product> findAll();
 }

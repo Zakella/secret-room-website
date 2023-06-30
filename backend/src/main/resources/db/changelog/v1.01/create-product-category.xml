@@ -12,4 +12,12 @@
         );
 </sql>
     </changeSet>
+
+    <changeSet id="1" author="Zakella">
+        <sql>
+            ALTER TABLE product_category
+                ADD COLUMN description VARCHAR(50) NOT NULL DEFAULT 'Default group description';
+
+        </sql>
+    </changeSet>
 </databaseChangeLog>
