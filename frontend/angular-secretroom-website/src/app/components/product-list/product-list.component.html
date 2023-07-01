@@ -1,11 +1,12 @@
 
+<script src="product-list.component.ts"></script>
 <div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
   <div class="grid -mt-3 -ml-3 -mr-3">
-    <div class="col-12 md:col-6 lg:col-3" *ngFor="let product of products">
+    <div class="col-12 md:col-6 lg:col-2" *ngFor="let product of products | async">
       <div class="p-2">
         <div class="shadow-2 p-4 surface-card border-round">
           <div class="relative mb-3">
-            <span class="surface-card text-900 shadow-2 px-3 py-2 absolute" style="border-radius: 1.5rem; left: 1rem; top: 1rem">BODY CARE</span>
+            <span class="surface-card text-900 shadow-2 px-3 py-2 absolute" style="border-radius: 1.5rem; left: 1rem; top: 1rem"></span>
             <a href="#">
               <img src="{{product.imageURL}}" class="w-full" />
             </a>

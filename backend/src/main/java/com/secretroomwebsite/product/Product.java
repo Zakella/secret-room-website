@@ -1,5 +1,6 @@
 package com.secretroomwebsite.product;
 
+import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product_category.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,6 +32,9 @@ public class Product {
     private String name;
 
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private Brands brand;
 
 
     private String shortDescription;

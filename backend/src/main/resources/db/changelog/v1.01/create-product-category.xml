@@ -8,16 +8,15 @@
 <sql>
     CREATE TABLE IF NOT EXISTS product_category (
                                                     id BIGSERIAL PRIMARY KEY,
-                                                    category_name VARCHAR(255) NULL
+                                                    category_name VARCHAR(255) NULL,
+                                                    description VARCHAR(100),
+                                                    image_url VARCHAR(250),
+                                                    brand VARCHAR(20) NOT NULL
         );
 </sql>
     </changeSet>
 
-    <changeSet id="1" author="Zakella">
-        <sql>
-            ALTER TABLE product_category
-                ADD COLUMN description VARCHAR(50) NOT NULL DEFAULT 'Default group description';
 
-        </sql>
-    </changeSet>
+
+
 </databaseChangeLog>

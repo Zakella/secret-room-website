@@ -13,4 +13,8 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200/")
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+//    List<Product> findAllByProductCategory(Long id);
+
+    List<Product> findAllByProductCategory_Id(Long categoryId);
+
 }

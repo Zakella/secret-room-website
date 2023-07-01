@@ -18,6 +18,8 @@
         date_created TIMESTAMP(6),
         last_updated TIMESTAMP(6),
         category_id BIGINT NOT NULL,
+        brand VARCHAR(20) NOT NULL,
+        short_description VARCHAR(50) NOT NULL,
         CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES product_category (id)
         );
      </sql>

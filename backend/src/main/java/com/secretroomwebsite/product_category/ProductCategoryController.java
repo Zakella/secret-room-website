@@ -1,16 +1,15 @@
 package com.secretroomwebsite.product_category;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "api/v1/product-categories")
+@RequestMapping(path = "api/v1/product-category")
+@CrossOrigin("http://localhost:4200/")
 public class ProductCategoryController {
 
     public ProductGroupService productGroupService;
@@ -20,8 +19,9 @@ public class ProductCategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllProductCategories() {
-        return ResponseEntity.ok(productGroupService.getAllCategories());
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductCategory> getAllProductCategories() {
+        return productGroupService.getAllCategories();
     }
 
     @GetMapping("/{id}")
