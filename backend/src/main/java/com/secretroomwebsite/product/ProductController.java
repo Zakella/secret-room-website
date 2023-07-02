@@ -1,6 +1,8 @@
 package com.secretroomwebsite.product;
 
 import com.secretroomwebsite.productDTO.ProductDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,21 +21,21 @@ public class ProductController {
     }
 
     @GetMapping("/{categoryId}")
-    public ResponseEntity<List<ProductDTO>> getAllProductsByCategory(@PathVariable("categoryId") Long categoryId) {
-        return buildResponse(productService.getAllProductsByCategory(categoryId));
+    public ResponseEntity<Page<ProductDTO>> getAllProductsByCategory(@PathVariable("categoryId") Long categoryId, Pageable pageable) {
+        return buildResponse(productService.getAllProductsByCategory(categoryId, pageable));
     }
 
     @GetMapping("/vs")
-    public ResponseEntity<List<ProductDTO>> getAllProductsVS() {
-        return buildResponse(productService.getAllProductsVS());
+    public ResponseEntity<Page<ProductDTO>> getAllProductsVS(Pageable pageable) {
+        return buildResponse(productService.getAllProductsVS(pageable));
+//        return buildResponse(products);
     }
-
     @GetMapping("/bb")
-    public ResponseEntity<List<ProductDTO>> getAllProductsBB() {
-        return buildResponse(productService.getAllProductsBB());
+    public ResponseEntity<Page<ProductDTO>> getAllProductsBB(Pageable pageable) {
+        return buildResponse(productService.getAllProductsBB(pageable));
     }
 
-    private ResponseEntity<List<ProductDTO>> buildResponse(List<ProductDTO> products) {
+    private ResponseEntity<Page<ProductDTO>> buildResponse(Page<ProductDTO> products) {
         if (products.isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {

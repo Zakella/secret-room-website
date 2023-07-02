@@ -3,6 +3,8 @@ package com.secretroomwebsite.product;
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.productDTO.ProductDTO;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,31 +22,34 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<ProductDTO> getAllProductsByCategory(Long categoryId) {
-        List<Product> products = productRepository.findAllByProductCategory_Id(categoryId);
+    public Page<ProductDTO> getAllProductsByCategory(Long categoryId, Pageable pageable) {
+        Page<Product> products = productRepository.findAllByProductCategory_Id(categoryId, pageable);
 
-        return products.stream()
-                .map(ProductDTO::fromProduct)
-                .collect(Collectors.toList());
-    }
-
-    public List<ProductDTO> getAllProductsVS(){
-        List<Product> products = productRepository.findByBrand(VictoriasSecret);
-
-        return products.stream()
-                .map(ProductDTO::fromProduct)
-                .collect(Collectors.toList());
-    }
-
-    public List<ProductDTO> getAllProductsBB(){
-
-        List<Product> products = productRepository.findByBrand(BathAndBody);
-
-        return products.stream()
-                .map(ProductDTO::fromProduct)
-                .collect(Collectors.toList());
+        return products.map(ProductDTO::fromProduct);
 
     }
+
+    public Page<ProductDTO> getAllProductsVS(Pageable pageable) {
+        Page<Product> products = productRepository.findByBrand(VictoriasSecret, pageable);
+        return products.map(ProductDTO::fromProduct);
+    }
+
+
+    public Page<ProductDTO> getAllProductsBB(Pageable pageable) {
+        Page<Product> products = productRepository.findByBrand(BathAndBody, pageable);
+        return products.map(ProductDTO::fromProduct);
+    }
+
+
+//    public List<ProductDTO> getAllProductsBB(){
+//
+//        List<Product> products = productRepository.findByBrand(VictoriasSecret);
+//
+//        return products.stream()
+//                .map(ProductDTO::fromProduct)
+//                .collect(Collectors.toList());
+//
+//    }
 
 
 }

@@ -1,21 +1,20 @@
 package com.secretroomwebsite.product;
 
 import com.secretroomwebsite.enums.Brands;
-import com.secretroomwebsite.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 
 @CrossOrigin("http://localhost:4200/")
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> findAllByProductCategory_Id(Long categoryId);
+    Page<Product> findAllByProductCategory_Id(Long categoryId, Pageable pageable);
 
-    List<Product> findByBrand(Brands brand);
+    Page<Product> findByBrand(Brands brand, Pageable pageable);
 
 }
