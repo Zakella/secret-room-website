@@ -18,10 +18,13 @@ export class ProductService {
     )
   }
 
-  getProductByGroupId(categoryId: number): Observable<Product[]> {
+  getProductByGroupId(categoryId: string | null): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.baseUrL}/${categoryId}`);
   }
 
+  getProductAllProducts(brand: string) {
+    return this.httpClient.get<Product[]>(`${this.baseUrL}/${brand}`);
+  }
 }
 
 interface GetResponse {

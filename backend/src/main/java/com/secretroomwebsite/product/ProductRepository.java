@@ -1,5 +1,6 @@
 package com.secretroomwebsite.product;
 
+import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,7 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByProductCategory_Id(Long categoryId);
+
+    List<Product> findByBrand(Brands brand);
 
 }

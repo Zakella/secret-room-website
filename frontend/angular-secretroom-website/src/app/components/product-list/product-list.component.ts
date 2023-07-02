@@ -20,8 +20,16 @@ export class ProductListComponent implements OnInit{
   ngOnInit(): void {
     this.products = this.route.paramMap.pipe(
       switchMap(params => {
-          const categoryId = parseInt(params.get('id')!, 10);
-        return this.productService.getProductByGroupId(categoryId);
+        const categoryIdParam = params.get('id');
+        if (categoryIdParam==="all-vs-products"){
+          return this.productService.getProductAllProducts('vs');
+        }
+
+        if (categoryIdParam==="all-bb-products"){
+          return this.productService.getProductAllProducts('bb');
+        }
+
+        return this.productService.getProductByGroupId(categoryIdParam);
       })
     );
   }

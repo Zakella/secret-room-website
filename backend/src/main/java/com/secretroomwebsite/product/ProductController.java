@@ -20,13 +20,24 @@ public class ProductController {
 
     @GetMapping("/{categoryId}")
     public ResponseEntity<List<ProductDTO>> getAllProductsByCategory(@PathVariable("categoryId") Long categoryId) {
+        return buildResponse(productService.getAllProductsByCategory(categoryId));
+    }
 
-        List<ProductDTO> products = productService.getAllProductsByCategory(categoryId);
+    @GetMapping("/vs")
+    public ResponseEntity<List<ProductDTO>> getAllProductsVS() {
+        return buildResponse(productService.getAllProductsVS());
+    }
+
+    @GetMapping("/bb")
+    public ResponseEntity<List<ProductDTO>> getAllProductsBB() {
+        return buildResponse(productService.getAllProductsBB());
+    }
+
+    private ResponseEntity<List<ProductDTO>> buildResponse(List<ProductDTO> products) {
         if (products.isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.ok(products);
         }
     }
-
 }
