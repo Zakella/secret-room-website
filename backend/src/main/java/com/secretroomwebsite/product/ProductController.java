@@ -1,5 +1,6 @@
 package com.secretroomwebsite.product;
 
+import com.secretroomwebsite.productDTO.ProductDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,9 @@ public class ProductController {
     }
 
     @GetMapping("/{categoryId}")
-    public ResponseEntity<List<Product>> getAllProductsByCategory(@PathVariable("categoryId") Long categoryId) {
-        List<Product> products = productService.getAllProductsByCategory(categoryId);
+    public ResponseEntity<List<ProductDTO>> getAllProductsByCategory(@PathVariable("categoryId") Long categoryId) {
+
+        List<ProductDTO> products = productService.getAllProductsByCategory(categoryId);
         if (products.isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {

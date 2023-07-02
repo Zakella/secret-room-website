@@ -4,6 +4,8 @@ export class Product {
     public sku:string,
     public name:string,
 
+    public categoryName:string,
+
     public description:string,
 
     public shortDescription:string,

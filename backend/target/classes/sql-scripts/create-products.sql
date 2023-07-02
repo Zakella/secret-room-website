@@ -102,7 +102,59 @@ VALUES
      100,
      550,
      3,
+     CURRENT_TIMESTAMP),
+
+('BathAndBody',
+    '87879789798',
+    'At The Beach',
+    'Ultimate Hydration Body Cream',
+    'Travel to see all the beauty in life ',
+    'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw3a5afdff/hires/026681681.jpg?sh=471&yocs=o_s_',
+    true,
+    100,
+    340,
+    4,
+    CURRENT_TIMESTAMP),
+
+    ('BathAndBody',
+     '87879789798',
+     'At The Beach',
+     'Ultimate Hydration Body Cream',
+     'Travel to see all the beauty in life ',
+     'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw408ab577/hires/026661539.jpg?sh=471&yocs=o_s_',
+     true,
+     100,
+     340,
+     4,
+     CURRENT_TIMESTAMP),
+
+('BathAndBody',
+    '87879789798',
+    'At The Beach',
+    'Ultimate Hydration Body Cream',
+    'Travel to see all the beauty in life ',
+    'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dwc0796147/crop/026661310_crop.jpg?sw=500&sh=600&sm=fit&q=75&yocs=o_s_',
+    true,
+    100,
+    340,
+    5,
+    CURRENT_TIMESTAMP),
+
+    ('BathAndBody',
+     '87879789798',
+     'Wild Sand',
+     'Ultimate Hydration Body Cream',
+     'Travel to see all the beauty in life ',
+     'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw456a79ec/hires/026674491.jpg?sh=471&yocs=o_s_',
+     true,
+     100,
+     340,
+     5,
      CURRENT_TIMESTAMP)
+
+
+
+
 
 
 

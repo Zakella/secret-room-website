@@ -1,9 +1,11 @@
 package com.secretroomwebsite.product;
 
+import com.secretroomwebsite.productDTO.ProductDTO;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -14,7 +16,13 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAllProductsByCategory(Long categoryId) {
-        return productRepository.findAllByProductCategory_Id(categoryId);
+    public List<ProductDTO> getAllProductsByCategory(Long categoryId) {
+        List<Product> products = productRepository.findAllByProductCategory_Id(categoryId);
+
+        return products.stream()
+                .map(ProductDTO::fromProduct)
+                .collect(Collectors.toList());
     }
+
+
 }
