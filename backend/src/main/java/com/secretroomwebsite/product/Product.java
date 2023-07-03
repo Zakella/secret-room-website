@@ -1,5 +1,6 @@
 package com.secretroomwebsite.product;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product_category.ProductCategory;
 import jakarta.persistence.*;
@@ -27,6 +28,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
+    @JsonBackReference
     private ProductCategory productCategory;
 
     private String name;

@@ -1,6 +1,7 @@
 package com.secretroomwebsite.product_category;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product.Product;
 import jakarta.persistence.*;
@@ -29,7 +30,7 @@ public class ProductCategory {
     private String categoryName;
 
     @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     private Set<Product> products;
 
     private String description;
