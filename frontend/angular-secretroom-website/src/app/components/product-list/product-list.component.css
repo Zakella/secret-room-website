@@ -1,3 +1,7 @@
-.test-card {
-  height: 100%; /* Задаем высоту 100% для контейнера .surface-card */
+.surface-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.surface-card:hover {
+  transform: scale(1.05);
 }
