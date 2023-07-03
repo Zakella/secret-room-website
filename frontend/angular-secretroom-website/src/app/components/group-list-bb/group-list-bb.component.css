@@ -1,19 +1,31 @@
-.container {
+.surface-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.surface-card:hover {
+  transform: scale(1.05);
+}
+
+.image-container {
+  height: 400px;
+  overflow: hidden;
   position: relative;
-  width: 300px;
-  height: 200px;
-  background-color: #ccc;
-  transition: transform 0.3s ease;
 }
 
-.container:hover {
-  transform: translateZ(10px);
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* Дополнительные стили для вашего содержимого */
+.text-900 {
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-600 {
+  height: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
