@@ -1,4 +1,4 @@
-GET http://localhost:8081/api/v1/products/vs/searchByNameContaining?name=Pant
+GET http://localhost:8081/api/v1/products/vs/searchByNameContaining?name=lot
 
 
 
