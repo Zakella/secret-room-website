@@ -41,15 +41,11 @@ public class ProductService {
     }
 
 
-//    public List<ProductDTO> getAllProductsBB(){
-//
-//        List<Product> products = productRepository.findByBrand(VictoriasSecret);
-//
-//        return products.stream()
-//                .map(ProductDTO::fromProduct)
-//                .collect(Collectors.toList());
-//
-//    }
+    public Page<ProductDTO> findByNameContaining( String name, Brands brand, Pageable pageable) {
+        Page<Product> products = productRepository.findByNameContainingIgnoreCaseAndBrand(name,  brand,  pageable);
+        return products.map(ProductDTO::fromProduct);
+    }
+
 
 
 }

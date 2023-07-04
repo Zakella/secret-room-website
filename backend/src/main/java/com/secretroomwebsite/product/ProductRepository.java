@@ -20,4 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findByBrand(Brands brand, Pageable pageable);
 
+    Page<Product> findByNameContainingIgnoreCaseAndBrand (String name, Brands brands , Pageable pageable);
+
 }
+

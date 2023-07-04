@@ -11,11 +11,16 @@ const routes: Routes = [
     redirectTo: 'vs',
     pathMatch: 'full' },
 
-  {path: 'vs', component: GroupListVsComponent},
+  {path:'vs/search/:keyword', component: ProductListComponent},
   { path: 'vs/:id', component: ProductListComponent},
+  {path: 'vs', component: GroupListVsComponent},
 
-  {path: "bb", component: GroupListBbComponent},
+
+  { path: 'bb/search/:keyword', component: ProductListComponent},
   {path: 'bb/:id', component: ProductListComponent},
+  {path: "bb", component: GroupListBbComponent},
+
+
 
   { path: '**',
     redirectTo: 'vs' },

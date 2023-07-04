@@ -1,7 +1,6 @@
 package com.secretroomwebsite.product;
 
 import com.secretroomwebsite.AbstractTestcontainers;
-import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product_category.ProductCategory;
 import com.secretroomwebsite.product_category.ProductCategoryRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,14 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 
+import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -40,7 +39,7 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
 
         ProductCategory category = new ProductCategory();
         category.setDescription("Category A");
-        category.setBrand(Brands.VictoriasSecret);
+        category.setBrand(VictoriasSecret);
         category.setCategoryName("Category A");
         category.setImageUrl("assets/tests");
         productCategoryRepository.save(category);
@@ -50,7 +49,7 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
                 .productCategory(category)
                 .name("Product 1")
                 .description("Description 1")
-                .brand(Brands.VictoriasSecret)
+                .brand(VictoriasSecret)
                 .shortDescription("Short Description 1")
                 .unitPrice(10.0)
                 .imageURL("image1.jpg")
@@ -65,7 +64,7 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
                 .productCategory(category)
                 .name("Product 2")
                 .description("Description 2")
-                .brand(Brands.VictoriasSecret)
+                .brand(VictoriasSecret)
                 .shortDescription("Short Description 2")
                 .unitPrice(15.0)
                 .imageURL("image2.jpg")
@@ -88,7 +87,7 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
 
         ProductCategory category = new ProductCategory();
         category.setDescription("Category A");
-        category.setBrand(Brands.VictoriasSecret);
+        category.setBrand(VictoriasSecret);
         category.setCategoryName("Category A");
         category.setImageUrl("assets/tests");
         productCategoryRepository.save(category);
@@ -98,7 +97,7 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
                 .productCategory(category)
                 .name("Product 1")
                 .description("Description 1")
-                .brand(Brands.VictoriasSecret)
+                .brand(VictoriasSecret)
                 .shortDescription("Short Description 1")
                 .unitPrice(10.0)
                 .imageURL("image1.jpg")
@@ -110,7 +109,7 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
         underTest.save(product);
 
         Pageable pageable = PageRequest.of(0, 10); // Example: First page with 10 items per page
-        Page<Product> productsByBrand = underTest.findByBrand(Brands.VictoriasSecret, pageable);
+        Page<Product> productsByBrand = underTest.findByBrand(VictoriasSecret, pageable);
 
         assertNotNull(productsByBrand);
         assertFalse(productsByBrand.isEmpty());
@@ -119,5 +118,41 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
 
     }
 
+    @Test
+    void itShouldFindByNameContainingAndBrand() {
 
+        ProductCategory category = new ProductCategory();
+        category.setDescription("Category A");
+        category.setBrand(VictoriasSecret);
+        category.setCategoryName("Category A");
+        category.setImageUrl("assets/tests");
+        productCategoryRepository.save(category);
+
+        Product product = Product.builder()
+                .sku("SKU001")
+                .productCategory(category)
+                .name("Product 1")
+                .description("Description 1")
+                .brand(VictoriasSecret)
+                .shortDescription("Short Description 1")
+                .unitPrice(10.0)
+                .imageURL("image1.jpg")
+                .active(true)
+                .unitsInStock(100)
+                .dateCreated(LocalDate.now())
+                .build();
+
+        underTest.save(product);
+
+        // Создание Pageable объекта
+        Pageable pageable = PageRequest.of(0, 10);
+
+        // Выполнение тестируемого метода
+        Page<Product> result = underTest.findByNameContainingAndBrand("Product", VictoriasSecret, pageable);
+
+        // Проверка результата
+        assertNotNull(result);
+        assertFalse(result.isEmpty());
+        assertThat(result.getContent().get(0).getName()).isEqualTo("Product 1");
+    }
 }

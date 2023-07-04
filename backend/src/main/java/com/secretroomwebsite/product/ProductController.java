@@ -1,5 +1,6 @@
 package com.secretroomwebsite.product;
 
+import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.productDTO.ProductDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static com.secretroomwebsite.enums.Brands.BathAndBody;
+import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -41,5 +45,15 @@ public class ProductController {
         } else {
             return ResponseEntity.ok(products);
         }
+    }
+
+    @GetMapping("vs/searchByNameContaining")
+    public ResponseEntity<Page<ProductDTO>> findByNameVS(@RequestParam("name") String name, Pageable pageable) {
+        return buildResponse(productService.findByNameContaining(name, VictoriasSecret, pageable));
+    }
+
+    @GetMapping("bb/searchByNameContaining")
+    public ResponseEntity<Page<ProductDTO>> findByNameBB(@RequestParam("name") String name, Pageable pageable) {
+        return buildResponse(productService.findByNameContaining(name, BathAndBody, pageable));
     }
 }

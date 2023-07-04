@@ -7,7 +7,7 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.css']
 })
-export class PanelComponent implements OnInit, AfterViewInit {
+export class PanelComponent implements OnInit {
   public currentLogo: string = "";
 
   constructor(private router: Router) {
@@ -29,14 +29,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
     });
   }
 
-  doSomethingOnRouteChange() {
-    this.currentLogo = this.router.url;
-  }
 
-  ngAfterViewInit(): void {
-    console.log(this.router.url);
-    console.log(this.router);
-  }
 }
 
 

@@ -13,17 +13,26 @@ export class ProductService {
   constructor(private httpClient:HttpClient) {}
 
 
-  getProductByGroupId(categoryId: string | null): Observable<Product[]> {
+  getProductsByGroupId(categoryId: string | null): Observable<Product[]> {
     return this.httpClient.get<GetResponse> (`${this.baseUrL}/${categoryId}`).pipe(
       map(response => response.content)
     )
   }
 
-  getProductAllProducts(brand: string) {
+  getAllProductsByBrand(brand: string) {
    return this.httpClient.get<GetResponse> (`${this.baseUrL}/${brand}`).pipe(
       map(response => response.content)
     )
   }
+
+
+  search(query: string, brand:string) {
+    return this.httpClient.get<GetResponse> (`${this.baseUrL}/${brand}/searchByNameContaining?name=${query}`).pipe(
+      map(response => response.content)
+    )
+  }
+
+
 }
 
 interface GetResponse {

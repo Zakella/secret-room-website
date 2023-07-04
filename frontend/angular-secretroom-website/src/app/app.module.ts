@@ -23,6 +23,7 @@ import { MainContainerComponent } from './components/main-container/main-contain
 import { GroupListVsComponent } from './components/group-list-vs/group-list-vs.component';
 import {GroupListBbComponent} from "./components/group-list-bb/group-list-bb.component";
 import {AppRoutingModule} from "./app-routing.module";
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {AppRoutingModule} from "./app-routing.module";
     MainContainerComponent,
     ProductListComponent,
     GroupListVsComponent,
-    GroupListBbComponent
+    GroupListBbComponent,
+    SearchComponent
 
   ],
   imports: [
