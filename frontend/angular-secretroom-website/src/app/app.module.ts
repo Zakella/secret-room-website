@@ -24,6 +24,7 @@ import { GroupListVsComponent } from './components/group-list-vs/group-list-vs.c
 import {GroupListBbComponent} from "./components/group-list-bb/group-list-bb.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {SearchComponent} from "./components/search/search.component";
+import { ProductNotFoundComponent } from './components/product-not-found/product-not-found.component';
 
 
 
@@ -42,7 +43,8 @@ import {SearchComponent} from "./components/search/search.component";
     ProductListComponent,
     GroupListVsComponent,
     GroupListBbComponent,
-    SearchComponent
+    SearchComponent,
+    ProductNotFoundComponent
 
   ],
   imports: [

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {GroupListBbComponent} from "./components/group-list-bb/group-list-bb.component";
 import {GroupListVsComponent} from "./components/group-list-vs/group-list-vs.component";
 import {ProductListComponent} from "./components/product-list/product-list.component";
+import {ProductNotFoundComponent} from "./components/product-not-found/product-not-found.component";
 
 const routes: Routes = [
 
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'bb/:id', component: ProductListComponent},
   {path: "bb", component: GroupListBbComponent},
 
-
+  {path: "product-not-found", component: ProductNotFoundComponent},
 
   { path: '**',
     redirectTo: 'vs' },
