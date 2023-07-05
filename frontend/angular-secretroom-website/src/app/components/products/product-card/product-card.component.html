@@ -1,0 +1,50 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+
+  <div class="grid">
+    <div class="col-12 lg:col-6">
+      <img attr.src="assets/test-images/productoverview/{{images1[selectedImageIndex1]}}" class="mb-3 w-full" />
+      <div class="grid">
+        <div *ngFor="let image of images1; let i = index" class="col-3">
+          <img src="assets/test-images/productoverview/{{image}}" class="w-full cursor-pointer border-2 border-round border-transparent transition-colors transition-duration-150" [ngClass]="{'border-primary': selectedImageIndex1 === i}" (click)="selectedImageIndex1 = i"/>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 lg:col-6 py-3 lg:pl-6">
+      <div class="flex align-items-center text-xl font-medium text-900 mb-4">
+        <span>Product Title Placeholder</span> <i class="pi ml-3 cursor-pointer" [ngClass]="{'pi-heart text-600': !liked1, 'pi-heart-fill text-orange-500': liked1}" (click)="liked1 = !liked1"></i>
+      </div>
+      <span class="text-900 font-medium text-3xl block mb-5">$120</span>
+
+      <div class="font-bold text-900 mb-3">Color</div>
+      <div class="flex align-items-center mb-5">
+        <div class="w-2rem h-2rem flex-shrink-0 border-circle bg-pink-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
+             [style.box-shadow]="color2 === 'pink' ? '0 0 0 0.2rem var(--pink-500)' : null" (click)="color2 = 'pink'"></div>
+        <div class="w-2rem h-2rem flex-shrink-0 border-circle bg-orange-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
+             [style.box-shadow]="color2 === 'orange' ? '0 0 0 0.2rem var(--orange-500)' : null" (click)="color2 = 'orange'"></div>
+        <div class="w-2rem h-2rem flex-shrink-0 border-circle bg-indigo-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
+             [style.box-shadow]="color2 === 'indigo' ? '0 0 0 0.2rem var(--indigo-500)' : null" (click)="color2 = 'indigo'"></div>
+      </div>
+
+      <div class="font-bold text-900 mb-3">Size</div>
+      <div class="w-full sm:w-10rem p-fluid mb-3">
+        <p-dropdown [(ngModel)]="size2" [options]="sizes" optionLabel="label" optionValue="value" placeholder="Select Size"></p-dropdown>
+      </div>
+      <div class="flex align-items-center mb-5">
+        <i class="pi pi-question-circle text-600 mr-3"></i>
+        <span class="mr-3">Need help about size?</span>
+        <a tabindex="0" class="text-900 font-medium inline-flex align-items-center hover:text-primary cursor-pointer transition-colors transition-duration-150">Size Guide <i class="ml-1 pi pi-angle-right"></i></a>
+      </div>
+      <button pButton pRipple icon="pi pi-shopping-cart" class="w-full mb-5" label="Add to Cart"></button>
+      <div class="flex align-items-center justify-content-center text-900 mb-5">
+        <i class="pi pi-users mr-3"></i>
+        <span><b>12 people</b> are looking at this right now.</span>
+      </div>
+      <ol class="list-none p-0 m-0 surface-100 text-center text-900">
+        <li class="line-height-3 p-3 font-bold border-bottom-1 border-300">Product Highlights</li>
+        <li class="line-height-3 p-3 border-bottom-1 border-300">Sed tempus urna et pharetra. Metus vulputate eu scelerisque felis imperdiet proin fermentum.</li>
+        <li class="line-height-3 p-3 border-bottom-1 border-300">Purus gravida quis blandit turpis cursus in hac habitasse platea.</li>
+        <li class="line-height-3 p-3">Nisi quis eleifend quam adipiscing vitae proin sagittis.</li>
+      </ol>
+    </div>
+  </div>
+</div>

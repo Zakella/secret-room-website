@@ -6,7 +6,7 @@
         <div class="shadow-2 p-4 surface-card border-round">
           <div class="relative mb-3">
             <span class="surface-card text-900 shadow-2 px-3 py-2 absolute" style="border-radius: 1.5rem; left: 1rem; top: 1rem">{{product.categoryName}}</span>
-            <a [routerLink]="product.id">
+            <a [routerLink]="'/product-view/' + product.id">
               <img src="{{product.imageURL}}" class="w-full product-image" />
             </a>
           </div>

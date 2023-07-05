@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../model/product/product';
+import { ProductService } from '../../../services/product.service';
+import { Product } from '../../../model/product/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import {isEmpty, Observable, of, Subscription, tap} from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { SearchService } from '../search/search.service';
+import { SearchService } from '../../headers/search/search.service';
 
 @Component({
   selector: 'app-product-list',
