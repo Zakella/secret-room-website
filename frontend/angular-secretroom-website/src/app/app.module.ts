@@ -29,6 +29,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     SearchComponent,
     ProductNotFoundComponent,
     ProductCardComponent,
-    PageNotFoundComponent  
+    PageNotFoundComponent
 
   ],
   imports: [

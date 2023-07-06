@@ -8,33 +8,35 @@ import {ProductCardComponent} from "./components/products/product-card/product-c
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
-
-
   {
     path: '',
     redirectTo: 'vs',
     pathMatch: 'full'
   },
-
-  {path: 'vs/search/:keyword', component: ProductListComponent},
-  {path: 'vs/:id', component: ProductListComponent},
-  {path: 'vs', component: GroupListVsComponent},
-
-
-  {path: 'bb/search/:keyword', component: ProductListComponent},
-  {path: 'bb/:id', component: ProductListComponent},
-  {path: "bb", component: GroupListBbComponent},
-
-  {path: 'product-view/:id', component: ProductCardComponent},
-
-  {path: "product-not-found", component: ProductNotFoundComponent},
-
   {
-    path: '**',
-    component: PageNotFoundComponent
+    path: 'vs',
+    children: [
+      { path: '', component: GroupListVsComponent },
+      { path: 'product-not-found', component: ProductNotFoundComponent },
+      { path: 'search/:keyword', component: ProductListComponent },
+      { path: ':id', component: ProductListComponent },
+      { path: 'product-view/:id', component: ProductCardComponent },
+    ]
+  },
+  {
+    path: 'bb',
+    children: [
+      { path: '', component: GroupListBbComponent },
+      { path: 'product-not-found', component: ProductNotFoundComponent },
+      { path: 'search/:keyword', component: ProductListComponent },
+      { path: ':id', component: ProductListComponent },
+      { path: 'product-view/:id', component: ProductCardComponent },
+    ]
   },
 
+  { path: '**', component: PageNotFoundComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -2,8 +2,8 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../model/product/product';
 import { ActivatedRoute, Router } from '@angular/router';
-import {isEmpty, Observable, of, Subscription, tap} from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, of, Subscription } from 'rxjs';
+import { tap, filter, switchMap } from 'rxjs/operators';
 import { SearchService } from '../../headers/search/search.service';
 
 @Component({
@@ -16,8 +16,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private searchSubscription: Subscription | undefined;
   searchResults: string = '';
-
-  searchMode!: boolean;
+  searchMode: boolean = false;
+  brand: string = '';
 
   constructor(
     private productService: ProductService,
@@ -38,6 +38,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     } else {
       this.loadAllProducts();
     }
+    this.brand = this.router.url.includes('vs') ? 'vs' : 'bb';
   }
 
   ngOnDestroy(): void {
@@ -47,17 +48,20 @@ export class ProductListComponent implements OnInit, OnDestroy {
   searchForProductsByKeyword(): void {
     const brand = this.router.url.includes('vs') ? 'vs' : 'bb';
     const keyword = this.activatedRoute.snapshot.paramMap.get('keyword');
+
     if (keyword) {
       this.products = this.productService.search(keyword, brand).pipe(
         tap((result) => {
           if (result.length === 0) {
-            this.router.navigate(['product-not-found']);
+            this.router.navigate([brand + '/product-not-found']);
           }
         })
       );
     } else {
       this.products = of([]);
     }
+
+    this.logProducts();
   }
 
   loadAllProducts(): void {
@@ -65,7 +69,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       switchMap(params => {
         const categoryIdParam = params.get('id');
 
-        if (categoryIdParam === null) {
+        if (!categoryIdParam) {
           return of([]);
         }
 
@@ -80,5 +84,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
         return this.productService.getProductsByGroupId(categoryIdParam);
       })
     );
+  }
+
+  logProducts(): void {
+    this.products.pipe(
+      filter(products => products.length > 0)
+    ).subscribe((data) => {
+      console.log(data); // Вывод содержимого в консоль
+    });
   }
 }
