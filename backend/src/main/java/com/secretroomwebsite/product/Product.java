@@ -2,6 +2,8 @@ package com.secretroomwebsite.product;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.secretroomwebsite.enums.Brands;
+import com.secretroomwebsite.productImages.ProductImage;
+import com.secretroomwebsite.productSizes.Size;
 import com.secretroomwebsite.product_category.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,6 +11,9 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -58,6 +63,13 @@ public class Product {
     @CreationTimestamp
     private LocalDate lastUpdated;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductImage> images ;
+
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Size> sizes;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,4 +82,6 @@ public class Product {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+
 }

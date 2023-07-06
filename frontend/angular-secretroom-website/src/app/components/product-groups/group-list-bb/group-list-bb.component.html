@@ -1,7 +1,7 @@
 <div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
   <div class="grid -mt-3 -ml-3 -mr-3 align-items-center justify-content-center lg:justify-content-start">
 
-    <div class="xs:col-12 sm:col-6 lg:col-4 p-0">
+    <div class="xs:col-12 sm:col-6 lg:col-4 p-0"  *ngIf="categories">
       <div class="surface-card m-3 border-round shadow-2">
         <a [routerLink]="'all-bb-products'">
           <div class="image-container">

@@ -12,7 +12,8 @@ import { SearchService } from '../../headers/search/search.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  @Input() products!: Observable<Product[]>;
+
+  products!: Observable<Product[]>;
 
   private searchSubscription: Subscription | undefined;
   searchResults: string = '';

@@ -32,8 +32,8 @@ public class ProductController {
     @GetMapping("/vs")
     public ResponseEntity<Page<ProductDTO>> getAllProductsVS(Pageable pageable) {
         return buildResponse(productService.getAllProductsVS(pageable));
-//        return buildResponse(products);
     }
+
     @GetMapping("/bb")
     public ResponseEntity<Page<ProductDTO>> getAllProductsBB(Pageable pageable) {
         return buildResponse(productService.getAllProductsBB(pageable));
@@ -55,5 +55,11 @@ public class ProductController {
     @GetMapping("bb/searchByNameContaining")
     public ResponseEntity<Page<ProductDTO>> findByNameBB(@RequestParam("name") String name, Pageable pageable) {
         return buildResponse(productService.findByNameContaining(name, BathAndBody, pageable));
+    }
+
+    @GetMapping("findProduct/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ProductDTO findProductById(@PathVariable("id") Long id) {
+        return productService.findProductById(id);
     }
 }

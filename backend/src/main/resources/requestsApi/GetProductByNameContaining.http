@@ -1,0 +1,7 @@
+GET http://localhost:8081/api/v1/products/vs/searchByNameContaining?name=lot
+
+
+
+###
+GET http://localhost:8081/api/v1/products/bb/searchByNameContaining?name=Beach
+
