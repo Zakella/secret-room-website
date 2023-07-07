@@ -36,7 +36,8 @@ public class ProductDTO {
     private Integer unitsInStock;
     private LocalDate dateCreated;
     private LocalDate lastUpdated;
-    private List<String> productImages; // Изменено на список строк с URL-адресами изображений
+    private List<ProductImage> productImages;
+    private List<Size> productSizes;
 
     public static ProductDTO fromProduct(Product product) {
         ;
@@ -60,7 +61,8 @@ public class ProductDTO {
                 .unitsInStock(product.getUnitsInStock())
                 .dateCreated(product.getDateCreated())
                 .lastUpdated(product.getLastUpdated())
-                .productImages(imageUrls)
+                .productImages(product.getImages())
+                .productSizes(product.getSizes())
                 .build();
     }
 }

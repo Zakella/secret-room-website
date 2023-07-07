@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
-import { Product } from '../../../model/product/product';
+import { Product } from '../../../model/product/Product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { tap, filter, switchMap } from 'rxjs/operators';

@@ -1,5 +1,6 @@
 TRUNCATE product_category RESTART IDENTITY CASCADE ;
 
+
 INSERT INTO product_category(brand, category_name, description, image_url)
 VALUES ('VictoriasSecret',
         'PANTIES',

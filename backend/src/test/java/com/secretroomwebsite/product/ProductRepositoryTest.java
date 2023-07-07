@@ -148,7 +148,7 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
         Pageable pageable = PageRequest.of(0, 10);
 
         // Выполнение тестируемого метода
-        Page<Product> result = underTest.findByNameContainingAndBrand("Product", VictoriasSecret, pageable);
+        Page<Product> result = underTest.findByNameContainingIgnoreCaseAndBrand("Product", VictoriasSecret, pageable);
 
         // Проверка результата
         assertNotNull(result);

@@ -14,7 +14,7 @@ import lombok.*;
 @Table(name = "product_image")
 public class ProductImage {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

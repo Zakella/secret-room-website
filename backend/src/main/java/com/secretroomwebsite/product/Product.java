@@ -1,6 +1,6 @@
 package com.secretroomwebsite.product;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.productImages.ProductImage;
 import com.secretroomwebsite.productSizes.Size;
@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     @JsonBackReference
+    @JsonIgnoreProperties("products")
     private ProductCategory productCategory;
 
     private String name;
@@ -57,17 +59,22 @@ public class Product {
     private Integer unitsInStock;
 
     @Column(name = "date_created")
+    @CreationTimestamp
     private LocalDate dateCreated;
 
     @Column(name = "last_updated")
-    @CreationTimestamp
+    @UpdateTimestamp
+    @JsonIgnore
     private LocalDate lastUpdated;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @JsonProperty("productImages")
     private List<ProductImage> images ;
 
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Size> sizes;
 
     @Override
