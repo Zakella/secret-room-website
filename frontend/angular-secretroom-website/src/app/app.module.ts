@@ -26,6 +26,7 @@ import {SearchComponent} from "./components/headers/search/search.component";
 import { ProductNotFoundComponent } from './components/products/product-not-found/product-not-found.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {InputNumberModule} from "primeng/inputnumber";
 
 
 
@@ -50,22 +51,23 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     PageNotFoundComponent
 
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    HttpClientModule,
-    DropdownModule,
-    ButtonModule,
-    FormsModule,
-    ImageModule,
-    DividerModule,
-    StyleClassModule,
-    RippleModule,
-    AppRoutingModule
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        HttpClientModule,
+        DropdownModule,
+        ButtonModule,
+        FormsModule,
+        ImageModule,
+        DividerModule,
+        StyleClassModule,
+        RippleModule,
+        AppRoutingModule,
+        InputNumberModule
 
 
-  ],
+    ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
