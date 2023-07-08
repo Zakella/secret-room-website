@@ -1,97 +1,121 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { ProductService } from '../../../services/product.service';
-import { Product } from '../../../model/product/Product';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
-import { tap, filter, switchMap } from 'rxjs/operators';
-import { SearchService } from '../../headers/search/search.service';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {ProductService} from '../../../services/product.service';
+import {Product} from '../../../model/product/Product';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {PaginatorState} from 'primeng/paginator';
+
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit, OnDestroy {
 
-  products!: Observable<Product[]>;
+export class ProductListComponent implements OnInit {
 
-  private searchSubscription: Subscription | undefined;
-  searchResults: string = '';
-  searchMode: boolean = false;
+  products!: Product[];
+
   brand: string = '';
+
+  currentPage: number = 0;
+  rows: number = 10;
+  totalRecords: number = 0;
 
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private searchService: SearchService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
-    this.searchSubscription = this.searchService.getSearchResults().subscribe(results => {
-      this.searchResults = results;
-      this.searchForProductsByKeyword();
-    });
 
-    this.searchMode = this.activatedRoute.snapshot.paramMap.has('keyword');
-    if (this.searchMode) {
-      this.searchForProductsByKeyword();
-    } else {
-      this.loadAllProducts();
-    }
-    this.brand = this.router.url.includes('vs') ? 'vs' : 'bb';
-  }
+    this.brand = this.   router.url.includes('vs') ? 'vs' : 'bb';
 
-  ngOnDestroy(): void {
-    this.searchSubscription?.unsubscribe();
-  }
+    const groupId = this.activatedRoute.snapshot.paramMap.get('groupId')
+    groupId ? this.loadProductsByGroupId(groupId) : this.loadAllProductsByBrandRoute();
 
-  searchForProductsByKeyword(): void {
-    const brand = this.router.url.includes('vs') ? 'vs' : 'bb';
-    const keyword = this.activatedRoute.snapshot.paramMap.get('keyword');
 
+    const keyword = this.activatedRoute.snapshot.paramMap.get('keyword')
     if (keyword) {
-      this.products = this.productService.search(keyword, brand).pipe(
-        tap((result) => {
-          if (result.length === 0) {
+      this.searchForProductsByKeyword(keyword);
+      return;
+    }
+
+  }
+
+
+
+  searchForProductsByKeyword(keyword:string): void {
+    const brand = this.router.url.includes('vs') ? 'vs' : 'bb';
+    if (keyword) {
+      this.productService.search(keyword, brand, this.currentPage, this.rows).subscribe(
+        (data) => {
+          if (data){
+            this.products = data.content;
+            this.totalRecords = data.totalElements;
+          }
+          else {
             this.router.navigate([brand + '/product-not-found']);
           }
+
         })
-      );
-    } else {
-      this.products = of([]);
+    }
+    else {
+      this.products = [];
     }
 
-    this.logProducts();
+
   }
 
-  loadAllProducts(): void {
-    this.products = this.activatedRoute.paramMap.pipe(
-      switchMap(params => {
-        const categoryIdParam = params.get('id');
+  loadAllProductsByBrandRoute(): void {
 
-        if (!categoryIdParam) {
-          return of([]);
+    this.activatedRoute.snapshot.url.map(currentUrl => {
+        const currentPath = currentUrl.path;
+
+        if (currentPath) {
+          if (currentPath === 'all-vs-products') {
+            this.getAllProducts("vs")
+          }
         }
 
-        if (categoryIdParam === 'all-vs-products') {
-          return this.productService.getAllProductsByBrand('vs');
+        if (currentPath) {
+          if (currentPath === 'all-bb-products') {
+            this.getAllProducts("bb")
+          }
         }
 
-        if (categoryIdParam === 'all-bb-products') {
-          return this.productService.getAllProductsByBrand('bb');
-        }
-
-        return this.productService.getProductsByGroupId(categoryIdParam);
-      })
-    );
+      }
+    )
   }
 
-  logProducts(): void {
-    this.products.pipe(
-      filter(products => products.length > 0)
-    ).subscribe((data) => {
-      console.log(data); // Вывод содержимого в консоль
-    });
+  getAllProducts(brand: string) {
+    this.productService.getAllProductsByBrand(brand, this.currentPage, this.rows)
+      .subscribe((data) => {
+        this.products = data.content;
+        this.totalRecords = data.totalElements;
+
+      });
+  }
+
+
+  onPageChange(event: PaginatorState) {
+    this.currentPage = event.page || 0;
+    this.rows = event.rows || 10;
+    this.loadAllProductsByBrandRoute();
+  }
+
+  private loadProductsByGroupId(groupId:string) {
+
+    const brand = this.router.url.includes('vs') ? 'vs' : 'bb';
+
+    this.productService.getProductsByGroupId(groupId, this.currentPage, this.rows )
+      .subscribe(
+        (data)=>{
+          this.products = data.content;
+          this.totalRecords = data.totalElements;
+        }
+      );
   }
 }

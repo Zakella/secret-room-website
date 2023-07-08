@@ -19,7 +19,8 @@ const routes: Routes = [
       { path: '', component: GroupListVsComponent },
       { path: 'product-not-found', component: ProductNotFoundComponent },
       { path: 'search/:keyword', component: ProductListComponent },
-      { path: ':id', component: ProductListComponent },
+      { path: 'category/:groupId', component: ProductListComponent },
+      { path: 'all-vs-products', component: ProductListComponent },
       { path: 'product-view/:id', component: ProductCardComponent },
     ]
   },
@@ -29,7 +30,8 @@ const routes: Routes = [
       { path: '', component: GroupListBbComponent },
       { path: 'product-not-found', component: ProductNotFoundComponent },
       { path: 'search/:keyword', component: ProductListComponent },
-      { path: ':id', component: ProductListComponent },
+      { path: 'category/:groupId', component: ProductListComponent },
+      { path: 'all-vs-products', component: ProductListComponent },
       { path: 'product-view/:id', component: ProductCardComponent },
     ]
   },

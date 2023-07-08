@@ -11,7 +11,4 @@ export class SearchService {
     this.searchResults.next(results);
   }
 
-  getSearchResults(): Observable<string> {
-    return this.searchResults.asObservable();
-  }
 }

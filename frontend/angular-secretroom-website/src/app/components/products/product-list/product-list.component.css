@@ -39,10 +39,15 @@
 }
 
 .product-image {
-  max-height: 200px; /* Adjust the height as needed */
+  max-height: 270px; /* Adjust the height as needed */
   object-fit: contain; /* Preserve aspect ratio while fitting within the container */
 }
 
 .product-price {
   font-weight: bold;
 }
+
+.link-no-underline {
+  text-decoration: none;
+}
+

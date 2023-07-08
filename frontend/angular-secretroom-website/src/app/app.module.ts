@@ -27,6 +27,7 @@ import { ProductNotFoundComponent } from './components/products/product-not-foun
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import {InputNumberModule} from "primeng/inputnumber";
+import {PaginatorModule} from "primeng/paginator";
 
 
 
@@ -64,7 +65,8 @@ import {InputNumberModule} from "primeng/inputnumber";
         StyleClassModule,
         RippleModule,
         AppRoutingModule,
-        InputNumberModule
+        InputNumberModule,
+        PaginatorModule
 
 
     ],
