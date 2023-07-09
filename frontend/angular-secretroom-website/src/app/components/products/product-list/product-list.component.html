@@ -3,13 +3,14 @@
     <div class="col-12 md:col-6 lg:col-2" *ngFor="let product of products">
       <div class="p-2">
         <div class="shadow-2 p-4 surface-card border-round">
+
+          <a [routerLink]="'/'+ brand+'/product-view/' + product.id" class="link-no-underline">
           <div class="relative mb-3">
+
             <span class="surface-card text-900 shadow-2 px-3 py-2 absolute"
                   style="border-radius: 1.5rem; left: 1rem; top: 1rem">{{product.categoryName}}</span>
-
-            <a [routerLink]="'/'+ brand+'/product-view/' + product.id" class="link-no-underline">
               <img src="{{product.imageURL}}" class="w-full product-image"/>
-            </a>
+
           </div>
           <div class="flex justify-content-between align-items-center mb-3">
             <a [routerLink]="'/'+ brand+'/product-view/' + product.id" class="text-900 font-medium text-xl product-name link-no-underline">
@@ -19,14 +20,15 @@
           <p class="mt-0 mb-3 text-600 line-height-3 product-description">
             {{product.shortDescription}}
           </p>
-          <span class="text-pink-300 text-xl font-medium">{{ product.unitPrice }} MDL</span>
+          <span class="text-pink-800 text-m font-medium">{{ product.unitPrice }} MDL</span>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="card flex justify-content-center">
+<div class="card flex justify-content-center border-0">
   <p-paginator
     (onPageChange)="onPageChange($event)"
     [first]="currentPage"

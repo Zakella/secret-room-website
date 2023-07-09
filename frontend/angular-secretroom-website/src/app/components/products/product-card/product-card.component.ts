@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from "../../../services/product.service";
-import { Observable } from "rxjs";
 import { Product } from "../../../model/product/Product";
-import {ActivatedRoute, Router} from "@angular/router";
-import {getLocaleExtraDayPeriodRules} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
+
 
 interface size {
   label: string;
@@ -35,10 +34,8 @@ export class ProductCardComponent implements OnInit {
           if (this.product.productSizes && this.product.productSizes.length > 0) {
             this.currentSize = this.product.productSizes[0].sizeType;
           } else {
-            this.currentSize = ''; // Assign an empty string if productSizes is empty
+            this.currentSize = '';
           }
-
-          // console.log(this.product.productImages)
 
 
         },
@@ -46,8 +43,6 @@ export class ProductCardComponent implements OnInit {
       }
     )
 
-
   }
 
-  protected readonly Product = Product;
 }

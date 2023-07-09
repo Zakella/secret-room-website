@@ -17,7 +17,7 @@
 
     <div class="xs:col-12 sm:col-6 lg:col-4 p-0" *ngFor="let category of categories">
       <div class="surface-card m-3 border-round shadow-2">
-        <a [routerLink]="''+ category.id">
+        <a [routerLink]="'category/'+ category.id">
           <div class="image-container">
             <img src="{{category.imageUrl}}" alt="product" class="image">
           </div>

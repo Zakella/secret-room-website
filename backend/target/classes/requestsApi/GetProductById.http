@@ -1,4 +1,6 @@
-GET http://localhost:8081/api/v1/products/findProduct/5
+GET http://localhost:8081/api/v1/products/findProduct/1
+
+
 
 
 

@@ -6,7 +6,8 @@
         <div *ngFor="let image of product.productImages; let i = index" class="col-3">
           <img src="{{image.imageUrl}}"
                class="w-full cursor-pointer border-2 border-round border-transparent transition-colors transition-duration-150"
-               [ngClass]="{'border-primary': mainImage === image.imageUrl}" (click)="mainImage = image.imageUrl"/>
+               [ngClass]="{'border-pink-100': mainImage === image.imageUrl}"
+               (click)="mainImage = image.imageUrl"/>
         </div>
       </div>
     </div>
@@ -31,25 +32,19 @@
 
 
       <div class="flex align-items-center mb-5">
-
-
         <div class="border-round-2xl p-2 border-1 surface-border inline-flex mb-5">
           <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal"
-                         inputStyleClass="w-3rem text-center border-transparent" [(ngModel)]="quantity"
+                         inputStyleClass="w-3rem text-center border-transparent"
+                         [(ngModel)]= quantity
                          decrementButtonClass="p-button-text" incrementButtonClass="p-button-text"
-                         incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
+                         incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
+                         [min]="1"
+                         [max]="10"
+          >
+          </p-inputNumber>
         </div>
 
       </div>
-
-
-
-<!--      <div class="surface-section px-4 py-8 md:px-6 lg:px-8 justify-content-start">-->
-<!--        <div class="border-round p-2 border-1 surface-border inline-flex mb-5 justify-start">-->
-<!--          <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputStyleClass="w-3rem text-center border-transparent" [(ngModel)]="quantity"-->
-<!--                         decrementButtonClass="p-button-text" incrementButtonClass="p-button-text" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>-->
-<!--        </div>-->
-<!--      </div>-->
 
       <button pButton pRipple class="w-full mb-5 vs-button">
         <i class="pi pi-shopping-cart"></i>
@@ -60,9 +55,6 @@
         <li class="line-height-3 p-3 font-bold border-bottom-1 border-300">Product description</li>
         <li class="line-height-3 p-3 border-bottom-1 border-300">{{product.description}}</li>
       </ol>
-
-
-
 
     </div>
   </div>

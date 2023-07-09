@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'product-not-found', component: ProductNotFoundComponent },
       { path: 'search/:keyword', component: ProductListComponent },
       { path: 'category/:groupId', component: ProductListComponent },
-      { path: 'all-vs-products', component: ProductListComponent },
+      { path: 'all-bb-products', component: ProductListComponent },
       { path: 'product-view/:id', component: ProductCardComponent },
     ]
   },

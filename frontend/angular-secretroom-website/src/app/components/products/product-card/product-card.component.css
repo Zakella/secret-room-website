@@ -23,10 +23,8 @@
 }
 
 .label {
-  text-transform: uppercase;
   font-family: BentonSans, Helvetica, Arial, sans-serif;
-  font-size: 0
-  950 MDL.9rem;
+  font-size: 0.9rem;
   line-height: 5px;
   letter-spacing: 0.05em;
   /* Additional styles for the label */
@@ -39,4 +37,5 @@
 .size-choise {
   border: 2px solid rgb(236, 204, 211);
 }
+
 
