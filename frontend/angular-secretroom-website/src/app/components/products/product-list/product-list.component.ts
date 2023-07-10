@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
-import {ProductService} from '../../../services/product.service';
+import {ProductService} from '../../../services/products-services/product.service';
 import {Product} from '../../../model/product/Product';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -22,6 +22,8 @@ export class ProductListComponent implements OnInit {
   rows: number = 10;
   totalRecords: number = 0;
 
+  groupId: string | null = "";
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -33,8 +35,8 @@ export class ProductListComponent implements OnInit {
 
     this.brand = this.   router.url.includes('vs') ? 'vs' : 'bb';
 
-    const groupId = this.activatedRoute.snapshot.paramMap.get('groupId')
-    groupId ? this.loadProductsByGroupId(groupId) : this.loadAllProductsByBrandRoute();
+    this.groupId = this.activatedRoute.snapshot.paramMap.get('groupId')
+    this.groupId ? this.loadProductsByGroupId(this.groupId) : this.loadAllProductsByBrandRoute();
 
 
     const keyword = this.activatedRoute.snapshot.paramMap.get('keyword')
@@ -103,12 +105,11 @@ export class ProductListComponent implements OnInit {
   onPageChange(event: PaginatorState) {
     this.currentPage = event.page || 0;
     this.rows = event.rows || 10;
-    this.loadAllProductsByBrandRoute();
+
+    this.groupId ? this.loadProductsByGroupId(this.groupId) : this.loadAllProductsByBrandRoute();
   }
 
   private loadProductsByGroupId(groupId:string) {
-
-    const brand = this.router.url.includes('vs') ? 'vs' : 'bb';
 
     this.productService.getProductsByGroupId(groupId, this.currentPage, this.rows )
       .subscribe(

@@ -1,58 +1,120 @@
 
 <div class="card border-0">
-  <div class="card-container blue-container overflow-hidden ">
-    <div class="flex col-12 h-2rem">
-      <div class="flex col-6 mt-1 m-lg-2 justify-content-center align-items-center">
 
-        <div class="flex col-6 justify-content-center">
-          <a pRipple class=" text-900 font-medium inline-flex align-items-center cursor-pointer px-1 lg:px-3 border-bottom-2 border-transparent hover:border-pink-700 select-none" [routerLink]="'/vs'">
+  <div class="flex-wrap ">
 
-            <p-image src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png"  alt="Image" width="250">
+    <div class="flex col-12 mt-0 align-items-center">
 
-            </p-image>
-          </a>
 
-        </div>
+      <div class="flex col-4 justify-content-center">
+        <a pRipple
+           class=" text-900 font-medium inline-flex align-items-center cursor-pointer px-1 lg:px-3 border-bottom-2 border-transparent hover:border-pink-700 select-none"
+           [routerLink]="'/vs'">
+
+          <p-image src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" alt="Image" width="250">
+
+          </p-image>
+        </a>
 
         <p-divider layout="vertical"></p-divider>
-
         <div class="flex col-6 justify-content-start ">
 
           <a pRipple class="text-900 font-medium inline-flex align-items-center cursor-pointer px-1 lg:px-3 border-bottom-2 border-transparent hover:border-primary select-none" [routerLink]="'/bb'" >
             <p-image src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png"  alt="Image" width="250">
-
             </p-image>
           </a>
-
-
-        </div>
-
-
-      </div>
-      <div class="flex col-6 mt-0 p-0 justify-content-center">
-
-
-        <div class="flex ml-auto">
-          <ul class="list-none p-0 m-0 flex">
-
-            <li class="flex">
-              <a pRipple class="text-900 font-medium inline-flex align-items-center cursor-pointer px-2 sm:px-3 hover:text-primary">
-                <i class="pi pi-user text-xl mr-2 lg:mr-3 text-xl sm:text-base"></i>
-                <span class="hidden lg:inline">Sing in</span>
-              </a>
-            </li>
-            <li class="flex">
-              <a pRipple class="text-900 font-medium inline-flex align-items-center cursor-pointer px-2 sm:px-3 hover:text-primary">
-                <i class="pi pi-shopping-cart lg:mr-3 text-xl sm:text-base" pBadge></i>
-                <span class="hidden lg:inline">Cart</span>
-              </a>
-            </li>
-          </ul>
         </div>
 
       </div>
+
+
+      <div class="flex col-4 justify-content-center ">
+
+      </div>
+
+      <div class="flex col-4 mt-0 p-0 justify-content-start align-items-center">
+
+        <app-login></app-login>
+        <app-cart-status></app-cart-status>
+
+
     </div>
   </div>
 </div>
+
+
+
+<!--<div class="card border-0">-->
+<!--  <div class="card-container blue-container overflow-hidden ">-->
+<!--    <div class="flex col-12 h-2rem">-->
+<!--      <div class="flex col-6 mt-1 m-lg-2 justify-content-center align-items-center">-->
+
+<!--        <div class="flex col-3 justify-content-center">-->
+<!--          <a pRipple class=" text-900 font-medium inline-flex align-items-center cursor-pointer px-1 lg:px-3 border-bottom-2 border-transparent hover:border-pink-700 select-none" [routerLink]="'/vs'">-->
+
+<!--            <p-image src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png"  alt="Image" width="250">-->
+
+<!--            </p-image>-->
+<!--          </a>-->
+
+<!--        </div>-->
+
+<!--        <p-divider layout="vertical"></p-divider>-->
+<!--        <div class="flex col-6 justify-content-start ">-->
+
+<!--          <a pRipple class="text-900 font-medium inline-flex align-items-center cursor-pointer px-1 lg:px-3 border-bottom-2 border-transparent hover:border-primary select-none" [routerLink]="'/bb'" >-->
+<!--            <p-image src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png"  alt="Image" width="250">-->
+<!--            </p-image>-->
+<!--          </a>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+
+<!--      <div class="flex col-6 mt-1 m-lg-2 justify-content-center align-items-center">-->
+
+<!--        <div class="flex col-3 justify-content-center">-->
+
+<!--          <app-login></app-login>-->
+<!--        </div>-->
+
+<!--        <div class="flex col-3 justify-content-end">-->
+
+
+<!--          <app-cart-status></app-cart-status>-->
+
+<!--        </div>-->
+
+<!--&lt;!&ndash;        <app-cart-status></app-cart-status>&ndash;&gt;-->
+<!--&lt;!&ndash;        <app-login></app-login>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        <div class="flex ml-auto align-items-center justify-content-start">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <app-login></app-login>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <app-cart-status></app-cart-status>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;          Контент&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--      </div>-->
+
+<!--&lt;!&ndash;      <div class="flex col-3 mt-0 p-0r justify-content-center align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <app-cart-status></app-cart-status>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <app-login></app-login>&ndash;&gt;&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        &lt;!&ndash;        <div class="flex ml-auto align-items-center justify-content-start">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;&lt;!&ndash;            <app-login></app-login>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;&lt;!&ndash;            <app-cart-status></app-cart-status>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        &lt;!&ndash;          Контент&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        &lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->
 
 

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {ProductService} from "./services/product.service";
+import {ProductService} from "./services/products-services/product.service";
 import { HeaderComponent } from './components/headers/header/header.component';
 import { SubHeaderComponent } from './components/headers/sub-header/sub-header.component';
 import {LanguagePanelComponent} from "./components/headers/language-pannel/language-panel.component";
@@ -28,6 +28,8 @@ import { ProductCardComponent } from './components/products/product-card/product
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import {InputNumberModule} from "primeng/inputnumber";
 import {PaginatorModule} from "primeng/paginator";
+import { CartStatusComponent } from './components/cart/cart-status/cart-status.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -49,7 +51,9 @@ import {PaginatorModule} from "primeng/paginator";
     SearchComponent,
     ProductNotFoundComponent,
     ProductCardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CartStatusComponent,
+    LoginComponent
 
   ],
     imports: [
