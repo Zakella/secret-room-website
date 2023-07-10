@@ -1,6 +1,6 @@
 export class Size {
   constructor(
-    public sizeType: string,
-    public available: boolean
+    public sizeType : string | undefined,
+    public available?: boolean
   ) {}
 }

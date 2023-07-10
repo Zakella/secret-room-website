@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from "../../../services/products-services/product.service";
 import { Product } from "../../../model/product/Product";
 import {ActivatedRoute} from "@angular/router";
+import {CartService} from "../../../services/cart.service";
+import {CartItem} from "../../../model/cart-item";
+import {Size} from "../../../model/product/Sizes";
 
 
 interface size {
@@ -15,12 +18,14 @@ interface size {
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  product: Product = new Product();
+  product: Product = {};
   mainImage:string | undefined = '';
   currentSize:string | undefined = '';
   quantity: number = 1; // Updated to string type
+  visible: boolean = true;
   constructor(private productService: ProductService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private cartService: CartService ) {}
 
   ngOnInit(): void {
 
@@ -47,5 +52,27 @@ export class ProductCardComponent implements OnInit {
 
   addProductInCart() {
 
+    let cartItem: CartItem;
+
+    if (this.product.productSizes !== undefined && this.product.productSizes.length > 0) {
+
+      if (!this.currentSize || this.currentSize === '') {
+        return;
+      }
+
+      const size: Size = {
+        sizeType: this.currentSize,
+        available: true
+      };
+
+      cartItem = new CartItem(this.product, this.quantity, size);
+    } else {
+      cartItem = new CartItem(this.product, this.quantity);
+    }
+
+    this.cartService.addToCart(cartItem);
   }
+
+
 }
+

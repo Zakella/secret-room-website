@@ -30,6 +30,8 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {PaginatorModule} from "primeng/paginator";
 import { CartStatusComponent } from './components/cart/cart-status/cart-status.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProductPreviewComponent } from './components/products/product-preview/product-preview.component';
+import {SidebarModule} from "primeng/sidebar";
 
 
 
@@ -53,7 +55,8 @@ import { LoginComponent } from './components/login/login.component';
     ProductCardComponent,
     PageNotFoundComponent,
     CartStatusComponent,
-    LoginComponent
+    LoginComponent,
+    ProductPreviewComponent
 
   ],
     imports: [
@@ -70,7 +73,8 @@ import { LoginComponent } from './components/login/login.component';
         RippleModule,
         AppRoutingModule,
         InputNumberModule,
-        PaginatorModule
+        PaginatorModule,
+        SidebarModule
 
 
     ],

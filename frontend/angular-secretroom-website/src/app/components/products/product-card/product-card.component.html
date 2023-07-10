@@ -46,10 +46,11 @@
 
       </div>
 
-      <button pButton pRipple class="w-full mb-5 vs-button">
+      <button pButton pRipple class="w-full mb-5 vs-button" (click)="addProductInCart()">
         <i class="pi pi-shopping-cart"></i>
-        <span class="label" (click)="addProductInCart()">Add to Cart</span>
+        <span class="label" >Add to Cart</span>
       </button>
+
 
       <ol class="list-none p-0 m-0 surface-100 text-center text-900">
         <li class="line-height-3 p-3 font-bold border-bottom-1 border-300">Product description</li>
@@ -60,7 +61,6 @@
   </div>
 
 </div>
-
 
 
 
