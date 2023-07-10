@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="admin">
+        <sql>
+            CREATE TABLE product_image (
+                                           id SERIAL PRIMARY KEY,
+                                           product_id INTEGER NOT NULL,
+                                           image_url VARCHAR(255) NOT NULL,
+                                           description VARCHAR(255),
+                                           FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE
+            );
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>

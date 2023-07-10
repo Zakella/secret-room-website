@@ -22,8 +22,12 @@
             <span class="">{{cartItem.product.unitPrice}}</span>
           </div>
 
+            <div *ngIf="cartItem.size"
+              class="text-600 text-sm mb-3">Size: {{cartItem.size?.sizeType}}
+            </div>
+
           <div class="flex flex-auto justify-content-between align-items-center">
-            <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputStyleClass="w-3rem text-center py-2 px-1 border-transparent"
+            <p-inputNumber [showButtons]="true" buttonLayout="horizontal" [min]="1" spinnerMode="horizontal" inputStyleClass="w-3rem text-center py-2 px-1 border-transparent" [(ngModel)]="cartItem.quantity"
                            class="border-1 surface-border border-round" decrementButtonClass="p-button-text py-1 px-1" incrementButtonClass="p-button-text py-1 px-1" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>
             <button pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-text p-button-rounded"></button>
           </div>
