@@ -10,6 +10,7 @@ export class CartItem {
 
   size?: Size;
 
+
   constructor(product: Product, quantity:number, size?:Size) {
     this.product = product;
     this.size = size;

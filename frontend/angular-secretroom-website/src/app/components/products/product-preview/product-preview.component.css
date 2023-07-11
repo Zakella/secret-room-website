@@ -1,0 +1,26 @@
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+.vs-button {
+  background-color: rgb(249, 226, 231);
+  color: black;
+}
+
+.vs-button:hover {
+  background-color: rgb(244, 209, 218);
+}
+
+.vs-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border:rgb(244, 209, 218) ;
+  /* Additional styles for the button */
+}

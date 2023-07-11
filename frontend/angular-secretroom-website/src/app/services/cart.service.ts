@@ -11,7 +11,9 @@ export class CartService {
 
   totalAmount: Subject<number> = new Subject<number>();
   totalQuantity: Subject<number> = new Subject<number>();
-  showPreview: Subject<boolean> = new Subject<boolean>();
+
+  cartModified : Subject<boolean> = new Subject<boolean>();
+
   private readonly storageKey = 'cartItems';
 
   constructor() {
@@ -24,7 +26,6 @@ export class CartService {
     this.cartItems.push(theCartItem);
     this.saveCartItemsToStorage();
     this.computeCartTotals(this.cartItems);
-    this.showPreviewSideBar();
 
   }
 
@@ -50,6 +51,7 @@ export class CartService {
   private saveCartItemsToStorage() {
     const cartItemsJson = JSON.stringify(this.cartItems);
     localStorage.setItem(this.storageKey, cartItemsJson);
+    this.cartModified.next(true);
   }
 
   loadCartItemsFromStorage(): CartItem[] {
@@ -60,8 +62,24 @@ export class CartService {
     return [];
   }
 
+  deleteItemFromCart(cartItem: CartItem ){
+    this.cartItems = this.cartItems.filter(item => item !== cartItem);
+    this.saveCartItemsToStorage();
+    this.computeCartTotals(this.cartItems);
 
-  private showPreviewSideBar() {
-    this.showPreview.next(true);
+    this.cartModified.next(true);
+
   }
+
+  recalculateCartItem(cartItem: CartItem ){
+
+    cartItem.amount = cartItem.quantity * (cartItem.product.unitPrice || 0);
+    this.saveCartItemsToStorage();
+    this.computeCartTotals(this.cartItems);
+
+    this.cartModified.next(true);
+
+  }
+
+
 }

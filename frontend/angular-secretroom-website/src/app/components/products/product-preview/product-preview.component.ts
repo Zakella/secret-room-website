@@ -12,6 +12,9 @@ import {CartItem} from "../../../model/cart-item";
 export class ProductPreviewComponent implements OnInit{
   visible: boolean = true;
   cartItems: CartItem[] ;
+  totalAmount: number = 0;
+
+  // cartItem: CartItem = {}
 
 
   constructor(private cartService:CartService) {
@@ -20,19 +23,43 @@ export class ProductPreviewComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.showProductPreviewSideBar()
+    this.cardModified();
+    this.getTotalAmount();
+
   }
 
 
-  showProductPreviewSideBar() {
-    this.cartService.showPreview.subscribe(
-      (data) => {
-        console.log(data)
-        this.visible = data
+  cardModified(){
+    this.cartService.cartModified.subscribe(
+      (data) =>{
+        if(data) {
+          this.cartItems = this.cartService.cartItems;
+        }
+        }
+    )
+  }
+
+
+
+  getTotalAmount(){
+    this.cartService.totalAmount.subscribe(
+      (data) =>{
+
+          this.totalAmount = data;
+
+
       }
     )
-
   }
 
 
+  deleteItemFromCart(cartItem:CartItem) {
+    this.cartService.deleteItemFromCart(cartItem);
+
+  }
+
+  recalculateCartItem(cartItem:CartItem) {
+    this.cartService.recalculateCartItem(cartItem);
+
+  }
 }
