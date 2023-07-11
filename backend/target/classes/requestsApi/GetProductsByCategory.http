@@ -1,2 +1,2 @@
-GET http://localhost:8081/api/v1/products/1
+GET http://localhost:8081/api/v1/products/bb/4?page=0&size=10
 

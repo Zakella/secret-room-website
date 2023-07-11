@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { CartService } from "../../../services/cart.service";
-import { CartItem } from "../../../model/cart-item";
 
 @Component({
   selector: 'app-cart-status',
@@ -12,19 +11,13 @@ import { CartItem } from "../../../model/cart-item";
 })
 export class CartStatusComponent implements OnInit, OnDestroy {
   totalQuantity: number = 0;
-  cartItems: CartItem[] = [];
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.updateCartStatus();
-    this.cartItems = this.cartService.cartItems;
-    this.cartService.computeCartTotals(this.cartItems);
-
-    this.cartService.totalQuantity
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(data => this.totalQuantity = data);
+    this.cartService.computeCartTotals();
   }
 
   ngOnDestroy(): void {
@@ -33,7 +26,6 @@ export class CartStatusComponent implements OnInit, OnDestroy {
   }
 
   updateCartStatus() {
-
     this.cartService.totalQuantity
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => this.totalQuantity = data);
