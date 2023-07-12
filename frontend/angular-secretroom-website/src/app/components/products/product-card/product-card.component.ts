@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {CartService} from "../../../services/cart.service";
 import {CartItem} from "../../../model/cart-item";
 import {Size} from "../../../model/product/Sizes";
+import {LocationStrategy} from "@angular/common";
 
 
 interface size {
@@ -25,7 +26,8 @@ export class ProductCardComponent implements OnInit {
   visible: boolean = true;
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
-              private cartService: CartService ) {}
+              private cartService: CartService,
+              private location: LocationStrategy) {}
 
   ngOnInit(): void {
 
@@ -74,5 +76,8 @@ export class ProductCardComponent implements OnInit {
   }
 
 
+  goBack() {
+    this.location.back();
+  }
 }
 

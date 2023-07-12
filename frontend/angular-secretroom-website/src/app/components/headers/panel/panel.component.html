@@ -5,13 +5,17 @@
     <div class="flex col-12 mt-0 align-items-center">
 
 
-      <div class="flex col-4 justify-content-center">
-        <app-language-pannel></app-language-pannel>
+      <div class="flex col-4 justify-content-start">
+
+<!--        <div class="flex" style="width: 100%; height: 100%; overflow: auto;">-->
+<!--          <app-language-pannel></app-language-pannel>-->
+<!--        </div>-->
 
       </div>
 
 
       <div class="flex col-4 justify-content-center ">
+
 
         <ng-container *ngIf="currentLogo === 'vs' else elseBlock">
           <app-vs-logo></app-vs-logo>
@@ -27,8 +31,9 @@
       <div class="flex col-4 mt-0 p-0 justify-content-center">
 
         <div class="form-group has-search flex-fill w-full">
-            <app-search></app-search>
+          <app-search></app-search>
         </div>
+
 
       </div>
 

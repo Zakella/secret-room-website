@@ -1,2 +1,4 @@
-GET localhost:8081/api/v1/products/vs?page=0&size=1
+GET http://localhost:8081/api/v1/products/vs
+
+
 //ttp://    localhost:8081/api/v1/products/vs?page=0&size=10

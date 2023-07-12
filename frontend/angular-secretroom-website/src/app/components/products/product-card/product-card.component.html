@@ -46,7 +46,7 @@
 
       </div>
 
-      <button pButton pRipple class="w-full mb-5 vs-button" (click)="addProductInCart()"  pStyleClass="#slideover-cart" enterClass="hidden" >
+      <button pRipple class="w-full mb-5 vs-button" (click)="addProductInCart()"  pStyleClass="#slideover-cart" enterClass="hidden" >
         <i class="pi pi-shopping-cart"></i>
         <span class="label" >Add to Cart</span>
       </button>
@@ -56,6 +56,12 @@
         <li class="line-height-3 p-3 font-bold border-bottom-1 border-300">Product description</li>
         <li class="line-height-3 p-3 border-bottom-1 border-300">{{product.description}}</li>
       </ol>
+
+      <button pButton pRipple class="p-button-outlined p-button-secondary w-full h-2rem border-1" style="margin-top: 2em;" (click)="goBack()">
+        <span class="icon"><i class="fas fa-arrow-left"></i></span>
+        <span class="label">Back to list</span>
+      </button>
+
 
     </div>
   </div>
