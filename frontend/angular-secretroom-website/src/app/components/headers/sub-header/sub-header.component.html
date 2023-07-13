@@ -1,140 +1,49 @@
+<!--<div class="min-h-screen flex flex-column surface-ground">-->
+  <div class="surface-overlay py-3 px-6 flex align-items-center justify-content-between relative lg:static" style="min-height: 80px">
+
+<!--    <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150" href="/vs">-->
+<!--      <img src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" alt="Image" height="40" class="mr-0 lg:mr-6 responsive-img" >-->
+<!--    </a>-->
+
+    <a pRipple class="cursor-pointer block lg:hidden text-700 ml-0" pStyleClass="@next" enterClass="hidden" leaveToClass="hidden" [hideOnOutsideClick]="true">
+      <i class="pi pi-bars text-4xl"></i>
+    </a>
+    <div class="align-items-center flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 z-1 shadow-2 lg:shadow-none">
+      <ul class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row">
 
 
-<div class="flex flex-wrap" style="max-width: 500px">
-  <div class="flex align-items-center justify-content-center  font-bold  border-round" style="min-width: 150px; min-height: 60px">
-      <img src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" class="responsive-img">
+        <li>
+          <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150" href="/bb">
+            <img src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" alt="Image" height="40" class="mr-0 lg:mr-6 responsive-img" >
+          </a>
+        </li>
 
+        <li>
+          <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150" href="/bb">
+            <img src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png" alt="Image" height="40" class="mr-0 lg:mr-6 responsive-img" >
+          </a>
+        </li>
+
+      </ul>
+      <ul class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 surface-border lg:border-top-none">
+        <li>
+          <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150">
+            <app-cart-status></app-cart-status>
+          </a>
+        </li>
+        <li class="border-top-1 surface-border lg:border-top-none">
+          <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150">
+            <app-login></app-login>
+            <div class="block lg:hidden">
+
+              <span class="text-600 font-medium text-sm">Sing in</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <div class="flex align-items-center justify-content-center  font-bold  border-round" style="min-width: 150px; min-height: 60px">
-    <img src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png" class="responsive-img">
-
-  </div>
-
-<!--  <div class="flex align-items-center justify-content-center  font-bold  border-round" style="min-width: 150px; min-height: 60px">-->
-
-<!--    <app-login></app-login>-->
-<!--    <app-cart-status></app-cart-status>-->
-
-<!--  </div>-->
-
-</div>
-<!--<div class="card border-0">-->
-
-<!--  <div class="flex-wrap ">-->
-
-<!--    <div class="flex col-12 mt-0 align-items-center">-->
-
-
-<!--      <div class="flex col-4 justify-content-center align-items-center">-->
-
-
-<!--        <li class="flex" >-->
-<!--          <a pRipple class="text-900 font-medium inline-flex justify-center items-center cursor-pointer px-2 sm:px-3 hover:text-primary">-->
-<!--            <img src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" class="responsive-img">-->
-
-<!--          </a>-->
-<!--        </li>-->
-
-<!--        <li class="flex" >-->
-<!--          <a pRipple class="text-900 font-medium inline-flex justify-center items-center cursor-pointer px-2 sm:px-3 hover:text-primary">-->
-<!--            <img src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png" class="responsive-img">-->
-
-<!--          </a>-->
-<!--        </li>-->
-
-
-<!--      </div>-->
-
-
-
-<!--      <div class="flex col-4 justify-content-center ">-->
-
-<!--      </div>-->
-
-<!--      <div class="flex col-4 mt-0 p-0 justify-content-start align-items-center">-->
-
-<!--        <app-login></app-login>-->
-<!--        <app-cart-status></app-cart-status>-->
-
-
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-
-<!--<div class="card border-0">-->
-<!--  <div class="card-container blue-container overflow-hidden ">-->
-<!--    <div class="flex col-12 h-2rem">-->
-<!--      <div class="flex col-6 mt-1 m-lg-2 justify-content-center align-items-center">-->
-
-<!--        <div class="flex col-3 justify-content-center">-->
-<!--          <a pRipple class=" text-900 font-medium inline-flex align-items-center cursor-pointer px-1 lg:px-3 border-bottom-2 border-transparent hover:border-pink-700 select-none" [routerLink]="'/vs'">-->
-
-<!--            <p-image src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png"  alt="Image" width="250">-->
-
-<!--            </p-image>-->
-<!--          </a>-->
-
-<!--        </div>-->
-
-<!--        <p-divider layout="vertical"></p-divider>-->
-<!--        <div class="flex col-6 justify-content-start ">-->
-
-<!--          <a pRipple class="text-900 font-medium inline-flex align-items-center cursor-pointer px-1 lg:px-3 border-bottom-2 border-transparent hover:border-primary select-none" [routerLink]="'/bb'" >-->
-<!--            <p-image src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png"  alt="Image" width="250">-->
-<!--            </p-image>-->
-<!--          </a>-->
-<!--        </div>-->
-
-<!--      </div>-->
-
-
-<!--      <div class="flex col-6 mt-1 m-lg-2 justify-content-center align-items-center">-->
-
-<!--        <div class="flex col-3 justify-content-center">-->
-
-<!--          <app-login></app-login>-->
-<!--        </div>-->
-
-<!--        <div class="flex col-3 justify-content-end">-->
-
-
-<!--          <app-cart-status></app-cart-status>-->
-
-<!--        </div>-->
-
-<!--&lt;!&ndash;        <app-cart-status></app-cart-status>&ndash;&gt;-->
-<!--&lt;!&ndash;        <app-login></app-login>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;        <div class="flex ml-auto align-items-center justify-content-start">&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;            <app-login></app-login>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;            <app-cart-status></app-cart-status>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;          Контент&ndash;&gt;-->
-
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--      </div>-->
-
-<!--&lt;!&ndash;      <div class="flex col-3 mt-0 p-0r justify-content-center align-items-center">&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;        <app-cart-status></app-cart-status>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;        <app-login></app-login>&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;        &lt;!&ndash;        <div class="flex ml-auto align-items-center justify-content-start">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash;&lt;!&ndash;            <app-login></app-login>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        &lt;!&ndash;&lt;!&ndash;            <app-cart-status></app-cart-status>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;        &lt;!&ndash;          Контент&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;        &lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;      </div>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
 <!--</div>-->
 
 

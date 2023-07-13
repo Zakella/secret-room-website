@@ -32,6 +32,7 @@ import { CartStatusComponent } from './components/cart/cart-status/cart-status.c
 import { LoginComponent } from './components/login/login.component';
 import { ProductPreviewComponent } from './components/products/product-preview/product-preview.component';
 import {SidebarModule} from "primeng/sidebar";
+import {BadgeModule} from "primeng/badge";
 
 
 
@@ -74,7 +75,8 @@ import {SidebarModule} from "primeng/sidebar";
         AppRoutingModule,
         InputNumberModule,
         PaginatorModule,
-        SidebarModule
+        SidebarModule,
+        BadgeModule
 
 
     ],

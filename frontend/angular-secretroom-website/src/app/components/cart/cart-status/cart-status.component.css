@@ -1,0 +1,21 @@
+.no-underline, .no-underline:hover, .no-underline:visited, .no-underline:active {
+  text-decoration: none;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  background-color: rgb(244, 190, 206);
+  color: white;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 20px; /*adjust as per need to ensure it's circular in shape*/
+  height: 20px; /*adjust as per need to ensure it's circular in shape*/
+}
+
+
