@@ -19,10 +19,10 @@ export class PanelComponent implements OnInit {
       if (event instanceof NavigationEnd) {
 
         if (this.router.url.includes('/vs')) {
-          this.currentLogo = "vs";
+          this.currentLogo = "assets/images/logo/Victorias-Secret-Logo-Cut-3.jpg";
         } else {
 
-          this.currentLogo = "bb";
+          this.currentLogo = "assets/images/logo/Bath-Body-Works-Logo-Cut.png";
         }
 
       }

@@ -30,4 +30,6 @@ export class CartStatusComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(data => this.totalQuantity = data);
   }
+
+
 }

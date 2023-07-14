@@ -33,6 +33,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductPreviewComponent } from './components/products/product-preview/product-preview.component';
 import {SidebarModule} from "primeng/sidebar";
 import {BadgeModule} from "primeng/badge";
+import {CardModule} from "primeng/card";
 
 
 
@@ -76,7 +77,8 @@ import {BadgeModule} from "primeng/badge";
         InputNumberModule,
         PaginatorModule,
         SidebarModule,
-        BadgeModule
+        BadgeModule,
+        CardModule
 
 
     ],

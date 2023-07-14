@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CartItem} from "../model/cart-item";
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,8 @@ export class CartService {
 
   private readonly storageKey = 'cartItems';
 
+
+
   constructor() {
     this.cartItems = this.loadCartItemsFromStorage();
   }
@@ -24,7 +26,9 @@ export class CartService {
     this.cartItems.push(theCartItem);
     this.saveCartItemsToStorage();
     this.computeCartTotals();
+
   }
+
 
   computeCartTotals() {
     let totalAmountValue: number = 0;
@@ -78,4 +82,6 @@ export class CartService {
     this.computeCartTotals();
     this.cartModified.next(true);
   }
+
+
 }

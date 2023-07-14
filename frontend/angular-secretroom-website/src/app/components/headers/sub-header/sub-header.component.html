@@ -1,28 +1,26 @@
-<!--<div class="min-h-screen flex flex-column surface-ground">-->
-  <div class="surface-overlay py-3 px-6 flex align-items-center justify-content-between relative lg:static" style="min-height: 80px">
 
-<!--    <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150" href="/vs">-->
-<!--      <img src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" alt="Image" height="40" class="mr-0 lg:mr-6 responsive-img" >-->
-<!--    </a>-->
+  <div class="surface-overlay py-3 px-10 ml-0 mr-0 flex align-items-center justify-content-between relative lg:static" style="min-height: 80px">
 
-    <a pRipple class="cursor-pointer block lg:hidden text-700 ml-0" pStyleClass="@next" enterClass="hidden" leaveToClass="hidden" [hideOnOutsideClick]="true">
+    <div class="grid">
+      <div class="col ml-2">
+        <a href="/vs">
+        <img src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" alt="Image" height="45"
+             class="mr-0 lg:mr-6 responsive-img">
+        </a>
+      </div>
+
+      <div class="col justify-content-start mr-2 px-0">
+        <a href="/bb">
+        <img src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png" alt="Image" height="45" class="mr-0 lg:mr-6 responsive-img" >
+        </a>
+      </div>
+    </div>
+
+    <a pRipple class="cursor-pointer block lg:hidden text-700 ml-1" pStyleClass="@next" enterClass="hidden" leaveToClass="hidden" [hideOnOutsideClick]="true">
       <i class="pi pi-bars text-4xl"></i>
     </a>
     <div class="align-items-center flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 z-1 shadow-2 lg:shadow-none">
       <ul class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row">
-
-
-        <li>
-          <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150" href="/bb">
-            <img src="./../../assets/images/logo/Victorias-Secret-Logo-Cut.png" alt="Image" height="40" class="mr-0 lg:mr-6 responsive-img" >
-          </a>
-        </li>
-
-        <li>
-          <a pRipple class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150" href="/bb">
-            <img src="./../../assets/images/logo/Bath-Body-Works-Logo-Cut.png" alt="Image" height="40" class="mr-0 lg:mr-6 responsive-img" >
-          </a>
-        </li>
 
       </ul>
       <ul class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 surface-border lg:border-top-none">
@@ -42,8 +40,6 @@
         </li>
       </ul>
     </div>
-  </div>
-
-<!--</div>-->
+</div>
 
 

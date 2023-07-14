@@ -10,11 +10,10 @@ import {CartItem} from "../../../model/cart-item";
   styleUrls: ['./product-preview.component.css']
 })
 export class ProductPreviewComponent implements OnInit{
-  visible: boolean = true;
+  sidebarVisible: boolean = false;
   cartItems: CartItem[] ;
   totalAmount: number = 0;
 
-  // cartItem: CartItem = {}
 
 
   constructor(private cartService:CartService) {
@@ -25,6 +24,7 @@ export class ProductPreviewComponent implements OnInit{
 
     this.cardModified();
     this.getTotalAmount();
+    this.setSidebarVisible()
 
   }
 
@@ -34,12 +34,16 @@ export class ProductPreviewComponent implements OnInit{
       (data) =>{
         if(data) {
           this.cartItems = this.cartService.cartItems;
+          this.setSidebarVisible();
         }
         }
     )
   }
 
 
+  setSidebarVisible() {
+    this.sidebarVisible = !this.sidebarVisible;
+  }
 
   getTotalAmount(){
     this.cartService.totalAmount.subscribe(
