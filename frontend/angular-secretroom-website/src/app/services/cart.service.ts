@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
 import {CartItem} from "../model/cart-item";
-import {BehaviorSubject, Subject} from "rxjs";
+import {Subject} from "rxjs";
+import {Injectable} from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
@@ -15,32 +15,42 @@ export class CartService {
   public cartModified: Subject<boolean> = new Subject<boolean>();
 
   private readonly storageKey = 'cartItems';
-
-
+  public sidebarVisible: Subject<boolean> = new Subject<boolean>();
 
   constructor() {
     this.cartItems = this.loadCartItemsFromStorage();
+  }
+
+  getCartItems(): CartItem[] {
+    return [...this.cartItems];
   }
 
   addToCart(theCartItem: CartItem) {
     this.cartItems.push(theCartItem);
     this.saveCartItemsToStorage();
     this.computeCartTotals();
-
+    this.setSidebarVisible(true);
   }
 
+  setSidebarVisible(visible: boolean) {
+    this.sidebarVisible.next(visible);
+  }
 
   computeCartTotals() {
     let totalAmountValue: number = 0;
     let totalQuantityValue: number = 0;
 
     for (let currentCartItem of this.cartItems) {
-      totalAmountValue += currentCartItem.quantity * (currentCartItem.product.unitPrice !== undefined ? currentCartItem.product.unitPrice : 0);
+      totalAmountValue += this.calculateCartItemAmount(currentCartItem);
       totalQuantityValue += currentCartItem.quantity;
     }
 
     this.totalAmount.next(totalAmountValue);
     this.totalQuantity.next(totalQuantityValue);
+  }
+
+  private calculateCartItemAmount(cartItem: CartItem): number {
+    return cartItem.quantity * (cartItem.product.unitPrice !== undefined ? cartItem.product.unitPrice : 0);
   }
 
   private saveCartItemsToStorage() {
@@ -75,13 +85,11 @@ export class CartService {
   recalculateCartItem(cartItem: CartItem) {
     const updatedItem = {
       ...cartItem,
-      amount: cartItem.quantity * (cartItem.product.unitPrice !== undefined ? cartItem.product.unitPrice : 0)
+      amount: this.calculateCartItemAmount(cartItem)
     };
     this.cartItems = this.cartItems.map(item => item === cartItem ? updatedItem : item);
     this.saveCartItemsToStorage();
     this.computeCartTotals();
     this.cartModified.next(true);
   }
-
-
 }

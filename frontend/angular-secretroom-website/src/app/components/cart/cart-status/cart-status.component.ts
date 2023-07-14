@@ -32,4 +32,8 @@ export class CartStatusComponent implements OnInit, OnDestroy {
   }
 
 
+  openCart() {
+    this.cartService.setSidebarVisible(true);
+
+  }
 }

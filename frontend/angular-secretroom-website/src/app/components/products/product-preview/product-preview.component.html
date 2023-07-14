@@ -1,17 +1,6 @@
 <p-sidebar [(visible)]="sidebarVisible" styleClass="w-40rem pl-0" position="right">
 
   <!-- header -->
-  <ng-template pTemplate="header">
-    <div class="surface-section px-4 py-5 md:px-6 lg:px-8">
-      <div
-        class="flex md:align-items-center md:justify-content-between flex-column md:flex-row pb-4 border-bottom-1 surface-border">
-        <div class="flex align-items-center">
-          <i class="pi pi-shopping-bag text-2xl mr-3 text-500"></i>
-          <span class="text-3xl font-medium text-900">Cart</span>
-        </div>
-      </div>
-    </div>
-  </ng-template>
 
   <!-- body -->
   <ng-template pTemplate="content">
@@ -69,10 +58,11 @@
         <span class="label">Check out</span>
       </button>
 
-      <button pButton pRipple class="p-button-outlined p-button-secondary w-full" (click)="setSidebarVisible()">
+      <button pButton pRipple class="p-button-outlined p-button-secondary w-full" (click)="sidebarVisible=false">
         <span class="label">Continue Shopping</span>
       </button>
 
     </div>
   </ng-template>
+
 </p-sidebar>

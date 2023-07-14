@@ -34,6 +34,7 @@ import { ProductPreviewComponent } from './components/products/product-preview/p
 import {SidebarModule} from "primeng/sidebar";
 import {BadgeModule} from "primeng/badge";
 import {CardModule} from "primeng/card";
+import {PanelModule} from "primeng/panel";
 
 
 
@@ -78,7 +79,8 @@ import {CardModule} from "primeng/card";
         PaginatorModule,
         SidebarModule,
         BadgeModule,
-        CardModule
+        CardModule,
+        PanelModule
 
 
     ],

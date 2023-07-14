@@ -24,7 +24,7 @@ export class ProductPreviewComponent implements OnInit{
 
     this.cardModified();
     this.getTotalAmount();
-    this.setSidebarVisible()
+    this.observeSidebarVisible()
 
   }
 
@@ -34,24 +34,17 @@ export class ProductPreviewComponent implements OnInit{
       (data) =>{
         if(data) {
           this.cartItems = this.cartService.cartItems;
-          this.setSidebarVisible();
         }
         }
     )
   }
 
 
-  setSidebarVisible() {
-    this.sidebarVisible = !this.sidebarVisible;
-  }
 
   getTotalAmount(){
     this.cartService.totalAmount.subscribe(
       (data) =>{
-
           this.totalAmount = data;
-
-
       }
     )
   }
@@ -65,5 +58,13 @@ export class ProductPreviewComponent implements OnInit{
   recalculateCartItem(cartItem:CartItem) {
     this.cartService.recalculateCartItem(cartItem);
 
+  }
+
+  private observeSidebarVisible() {
+    this.cartService.sidebarVisible.subscribe(
+      (data) =>{
+        this.sidebarVisible = data;
+      }
+    )
   }
 }
