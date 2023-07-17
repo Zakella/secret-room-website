@@ -43,6 +43,7 @@ export class CartService {
     for (let currentCartItem of this.cartItems) {
       totalAmountValue += this.calculateCartItemAmount(currentCartItem);
       totalQuantityValue += currentCartItem.quantity;
+      currentCartItem.amount = this.calculateCartItemAmount(currentCartItem);
     }
 
     this.totalAmount.next(totalAmountValue);
@@ -75,19 +76,15 @@ export class CartService {
     return [];
   }
 
-  deleteItemFromCart(cartItem: CartItem) {
-    this.cartItems = this.cartItems.filter(item => item !== cartItem);
+  deleteItemFromCart(cartItem: CartItem,  index:number) {
+    this.cartItems.splice(index, 1);
     this.saveCartItemsToStorage();
     this.computeCartTotals();
     this.cartModified.next(true);
   }
 
-  recalculateCartItem(cartItem: CartItem) {
-    const updatedItem = {
-      ...cartItem,
-      amount: this.calculateCartItemAmount(cartItem)
-    };
-    this.cartItems = this.cartItems.map(item => item === cartItem ? updatedItem : item);
+  recalculateCartItem(cartItem: CartItem, index: number) {
+    this.cartItems[index] = cartItem;
     this.saveCartItemsToStorage();
     this.computeCartTotals();
     this.cartModified.next(true);

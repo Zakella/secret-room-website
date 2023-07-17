@@ -7,6 +7,7 @@ import {CartItem} from "../../../model/cart-item";
 import {Size} from "../../../model/product/Sizes";
 import {LocationStrategy} from "@angular/common";
 
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
@@ -55,7 +56,7 @@ export class ProductCardComponent implements OnInit {
     } else {
       cartItem = new CartItem(this.product, this.quantity);
     }
-
+    // cartItem.id = uuid();
     this.cartService.addToCart(cartItem);
     this.cartService.setSidebarVisible(true);
   }

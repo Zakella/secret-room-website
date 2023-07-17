@@ -2,6 +2,8 @@ import {Product} from "./product/Product";
 import {Size} from "./product/Sizes";
 
 export class CartItem {
+  id?: string;
+
   quantity: number;
 
   amount: number;
@@ -9,6 +11,8 @@ export class CartItem {
   product:Product;
 
   size?: Size;
+
+
 
 
   constructor(product: Product, quantity:number, size?:Size) {

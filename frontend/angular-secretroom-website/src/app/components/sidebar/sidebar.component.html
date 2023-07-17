@@ -1,0 +1,26 @@
+<p-sidebar [(visible)]="sidebarVisible" styleClass="w-40rem pl-0" position="right"
+[transitionOptions]="'250ms'" [showCloseIcon] = false [blockScroll]="true">
+
+<!-- header -->
+
+  <!-- body -->
+  <ng-template pTemplate="content">
+
+   <app-my-cart></app-my-cart>
+  </ng-template>
+  <!-- footer -->
+  <ng-template pTemplate="footer">
+
+    <div class="border-top-1 surface-border p-3 w-full">
+      <button pRipple class="mb-3 w-full vs-button" (click)="checkout()">
+        <span class="label">Check out</span>
+      </button>
+
+      <button pButton pRipple class="p-button-outlined p-button-secondary w-full" (click)="sidebarVisible=false">
+        <span class="label">Continue Shopping</span>
+      </button>
+
+    </div>
+  </ng-template>
+
+</p-sidebar>

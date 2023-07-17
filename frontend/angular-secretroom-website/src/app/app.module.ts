@@ -30,7 +30,6 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {PaginatorModule} from "primeng/paginator";
 import { CartStatusComponent } from './components/cart/cart-status/cart-status.component';
 import { LoginComponent } from './components/login/login.component';
-import { ProductPreviewComponent } from './components/products/product-preview/product-preview.component';
 import {SidebarModule} from "primeng/sidebar";
 import {BadgeModule} from "primeng/badge";
 import {CardModule} from "primeng/card";
@@ -39,6 +38,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import {RadioButtonModule} from "primeng/radiobutton";
 import {CheckboxModule} from "primeng/checkbox";
 import {PasswordModule} from "primeng/password";
+import { MyCartComponent } from './components/cart/my-cart/my-cart.component';
+import {SidebarComponent} from "./components/sidebar/sidebar.component";
 
 
 
@@ -63,8 +64,9 @@ import {PasswordModule} from "primeng/password";
     PageNotFoundComponent,
     CartStatusComponent,
     LoginComponent,
-    ProductPreviewComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MyCartComponent,
+    SidebarComponent
 
   ],
   imports: [
