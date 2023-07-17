@@ -3,6 +3,7 @@ import {CartService} from "../../../services/cart.service";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
 import {CartItem} from "../../../model/cart-item";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-preview',
@@ -16,7 +17,7 @@ export class ProductPreviewComponent implements OnInit{
 
 
 
-  constructor(private cartService:CartService) {
+  constructor(private cartService:CartService, private router:Router) {
     this.cartItems = cartService.loadCartItemsFromStorage();
   }
 
@@ -66,5 +67,11 @@ export class ProductPreviewComponent implements OnInit{
         this.sidebarVisible = data;
       }
     )
+  }
+
+  checkout() {
+    this.router.navigate(['/checkout']);
+    this.sidebarVisible = false;
+
   }
 }

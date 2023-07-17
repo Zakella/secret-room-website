@@ -6,6 +6,7 @@ import {ProductListComponent} from "./components/products/product-list/product-l
 import {ProductNotFoundComponent} from "./components/products/product-not-found/product-not-found.component";
 import {ProductCardComponent} from "./components/products/product-card/product-card.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
+import {CheckoutComponent} from "./components/checkout/checkout.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,11 @@ const routes: Routes = [
       { path: 'all-bb-products', component: ProductListComponent },
       { path: 'product-view/:id', component: ProductCardComponent },
     ]
+  },
+
+  {
+    path: 'checkout',
+    component: CheckoutComponent
   },
 
   { path: '**', component: PageNotFoundComponent },

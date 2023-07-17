@@ -35,6 +35,10 @@ import {SidebarModule} from "primeng/sidebar";
 import {BadgeModule} from "primeng/badge";
 import {CardModule} from "primeng/card";
 import {PanelModule} from "primeng/panel";
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import {RadioButtonModule} from "primeng/radiobutton";
+import {CheckboxModule} from "primeng/checkbox";
+import {PasswordModule} from "primeng/password";
 
 
 
@@ -59,31 +63,34 @@ import {PanelModule} from "primeng/panel";
     PageNotFoundComponent,
     CartStatusComponent,
     LoginComponent,
-    ProductPreviewComponent
+    ProductPreviewComponent,
+    CheckoutComponent
 
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        NoopAnimationsModule,
-        HttpClientModule,
-        DropdownModule,
-        ButtonModule,
-        FormsModule,
-        ImageModule,
-        DividerModule,
-        StyleClassModule,
-        RippleModule,
-        AppRoutingModule,
-        InputNumberModule,
-        PaginatorModule,
-        SidebarModule,
-        BadgeModule,
-        CardModule,
-        PanelModule
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    DropdownModule,
+    ButtonModule,
+    FormsModule,
+    ImageModule,
+    DividerModule,
+    StyleClassModule,
+    RippleModule,
+    AppRoutingModule,
+    InputNumberModule,
+    PaginatorModule,
+    SidebarModule,
+    BadgeModule,
+    CardModule,
+    PanelModule,
+    RadioButtonModule,
+    CheckboxModule,
+    PasswordModule
 
 
-    ],
+  ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
