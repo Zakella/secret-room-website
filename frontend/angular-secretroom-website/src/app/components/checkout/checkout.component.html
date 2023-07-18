@@ -1,8 +1,8 @@
 
-<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8" [formGroup]="form" (ngSubmit)="placeOrder()">
   <div class="grid -mr-3 -ml-3">
-    <div class="col-12 lg:col-6 p-4">
-      <div class="surface-card grid formgrid p-fluid border-round shadow-2 p-4">
+    <div class="col-12 lg:col-6 p-4" >
+      <div class="surface-card grid formgrid p-fluid border-round shadow-2 p-4"  >
         <div class="col-12 mb-4 flex flex-column lg:flex-row align-items-center justify-content-between">
           <div class="text-900 font-medium text-xl">Contact Information</div>
           <div class="mt-3 lg:mt-0">
@@ -11,9 +11,13 @@
           </div>
         </div>
         <div class="col-12 field">
+
           <label for="email2" class="text-900 font-medium mb-3">Email</label>
-          <input id="email2" type="text" class="p-inputtext w-full mb-3">
-          <p-checkbox name="checkbox-1" [(ngModel)]="checked" [binary]="true" label="Email me with news and offers" class="text-900" inputId="id"></p-checkbox>
+          <input id="email2" type="text" class="p-inputtext w-full mb-3" formControlName="email">
+
+          <p-message severity="error" text="Email is not valid"
+                     *ngIf="form.controls.email.dirty && form.controls.email.hasError('pattern')"></p-message>
+
         </div>
         <p-divider class="w-full px-2 mb-3"></p-divider>
         <div class="col-12 mt-4 lg:mt-0 mb-4">
@@ -21,55 +25,84 @@
         </div>
         <div class="col-12 field mb-0">
           <label for="country2" class="text-900 font-medium mb-3">Country</label>
-          <input id="country2" type="text" class="p-inputtext w-full mb-3">
+          <input id="country2" type="text" formControlName="country" class="p-inputtext w-full mb-3">
         </div>
         <div class="col-12 lg:col-6 field mb-0">
           <label for="name2" class="text-900 font-medium mb-3">Name</label>
-          <input id="name2" type="text" class="p-inputtext w-full mb-3">
+          <input id="name2" type="text" formControlName="name" class="p-inputtext w-full mb-3">
+
+          <p-message severity="error" text="Name is required"
+                     *ngIf="form.controls.name.dirty && form.controls.name.hasError('required')">
+          </p-message>
+
+
+          <p-message severity="error" text="Name should be at least 3 characters"
+                     *ngIf="form.controls.name.dirty && form.controls.name.hasError('minLength')">
+          </p-message>
+
+          <p-message severity="error" text="Name should contain only letters"
+                     *ngIf="form.controls.name.dirty && form.controls.name.hasError('pattern')">
+          </p-message>
+
         </div>
         <div class="col-12 lg:col-6 field mb-0">
-          <label for="surname2" class="text-900 font-medium mb-3">Surname</label>
-          <input id="surname2" type="text" class="p-inputtext w-full mb-3">
+          <label for="surname2" class="text-900 font-medium mb-3">Lastname</label>
+          <input id="surname2" type="text" class="p-inputtext w-full mb-3" formControlName="lastname">
+
+          <p-message severity="error" text="Name is required"
+                     *ngIf="form.controls.lastname.dirty && form.controls.lastname.hasError('required')">
+          </p-message>
+
+
+          <p-message severity="error" text="Name should be at least 3 characters"
+                     *ngIf="form.controls.lastname.dirty && form.controls.lastname.hasError('minLength')">
+          </p-message>
+
+          <p-message severity="error" text="Name should contain only letters"
+                     *ngIf="form.controls.lastname.dirty && form.controls.lastname.hasError('pattern')">
+          </p-message>
+
         </div>
-        <div class="col-12 field mb-0">
+        <div class="col-12 field mb-0 mt-2">
           <label for="address3" class="text-900 font-medium mb-3">Apartment, Suite, etc.</label>
-          <input id="address3" type="text" class="p-inputtext w-full mb-3">
+          <input id="address3" type="text" class="p-inputtext w-full mb-3" formControlName="address">
         </div>
         <div class="col-12 lg:col-6 field mb-0">
           <label for="pc2" class="text-900 font-medium mb-3">Postal Code</label>
-          <input id="pc2" type="text" class="p-inputtext w-full mb-3">
+          <input id="pc2" type="number" class="p-inputtext w-full mb-3" formControlName="zip" maxlength="4">
         </div>
         <div class="col-12 lg:col-6 field mb-0">
           <label for="city2" class="text-900 font-medium mb-3">City</label>
-          <input id="city2" type="text" class="p-inputtext w-full mb-3">
+          <input id="city2" type="text" class="p-inputtext w-full mb-3" formControlName="city">
         </div>
         <div class="col-12 field mb-0">
           <label for="phone" class="text-900 font-medium mb-3">Phone</label>
-          <input id="phone" type="text" class="p-inputtext w-full mb-3">
+          <p-inputMask id="phone" mask="0********" formControlName="phone" placeholder="0********"></p-inputMask>
+<!--          <input id="phone" type="text" class="p-inputtext w-full mb-3" formControlName="phone" placeholder="6******* or 7*******">-->
         </div>
         <p-divider class="w-full px-2 mb-3"></p-divider>
         <div class="text-900 font-medium text-xl mt-4 lg:mt-0 mb-4 px-2">Shipping Method</div>
         <div class="col-12 flex flex-column lg:flex-row field">
-          <div class="flex justify-content-between p-3 border-round border-1 surface-border w-full mr-3 hover:border-primary cursor-pointer" (click)="selectedValue = 'UPS'" [ngClass]="{'border-primary surface-50': selectedValue === 'UPS'}">
-            <div class="mr-3 lg:mr-0">
-              <div class="text-900 font-bold mb-2">UPS</div>
-              <span class="text-600">Delivery: Tomorrow</span>
-            </div>
-            <div class="flex justify-content-between align-items-center">
-              <span class="text-primary mr-2 font-medium">$9.00</span>
-              <p-radioButton name="ups" value="UPS" [(ngModel)]="selectedValue"></p-radioButton>
-            </div>
-          </div>
-          <div class="flex justify-content-between p-3 mt-3 lg:mt-0 border-round border-1 surface-border w-full hover:border-primary cursor-pointer" (click)="selectedValue = 'FedEx'" [ngClass]="{'border-primary surface-50': selectedValue === 'FedEx'}">
-            <div class="mr-3 lg:mr-0">
-              <div class="text-900 font-bold mb-2">FedEx</div>
-              <span class="text-600">Delivery: Next Week</span>
-            </div>
-            <div class="flex justify-content-between align-items-center">
-              <span class="text-primary mr-2 font-medium">$1.00</span>
-              <p-radioButton name="fedex" value="FedEx" [(ngModel)]="selectedValue"></p-radioButton>
-            </div>
-          </div>
+<!--          <div class="flex justify-content-between p-3 border-round border-1 surface-border w-full mr-3 hover:border-primary cursor-pointer" (click)="selectedValue = 'UPS'" [ngClass]="{'border-primary surface-50': selectedValue === 'UPS'}">-->
+<!--            <div class="mr-3 lg:mr-0">-->
+<!--              <div class="text-900 font-bold mb-2">UPS</div>-->
+<!--              <span class="text-600">Delivery: Tomorrow</span>-->
+<!--            </div>-->
+<!--            <div class="flex justify-content-between align-items-center">-->
+<!--              <span class="text-primary mr-2 font-medium">$9.00</span>-->
+<!--              <p-radioButton name="ups" value="UPS" formControlName="selectedValue"></p-radioButton>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex justify-content-between p-3 mt-3 lg:mt-0 border-round border-1 surface-border w-full hover:border-primary cursor-pointer" (click)="selectedValue = 'FedEx'" [ngClass]="{'border-primary surface-50': selectedValue === 'FedEx'}">-->
+<!--            <div class="mr-3 lg:mr-0">-->
+<!--              <div class="text-900 font-bold mb-2">FedEx</div>-->
+<!--              <span class="text-600">Delivery: Next Week</span>-->
+<!--            </div>-->
+<!--            <div class="flex justify-content-between align-items-center">-->
+<!--              <span class="text-primary mr-2 font-medium">$1.00</span>-->
+<!--              <p-radioButton name="fedex" value="FedEx" formControlName="selectedValue"></p-radioButton>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
         <p-divider class="w-full px-2 mb-3"></p-divider>
         <div class="text-900 font-medium text-xl mt-4 lg:mt-0 mb-4 px-2">Payment</div>
@@ -117,36 +150,6 @@
     <div class="col-12 lg:col-3 p-4">
       <div class="surface-card border-round shadow-2 p-5">
         <app-my-cart></app-my-cart>
-
-<!--        <div class="flex justify-content-between align-items-center border-bottom-1 pb-3 surface-border">-->
-<!--          <span class="text-900 font-medium text-lg lg:text-xl"><i class="pi pi-shopping-cart text-xl mr-2"></i>Your Order (1)</span>-->
-<!--          <a tabindex="0" class="text-600 font-medium cursor-pointer hover:text-primary">Edit Cart</a>-->
-<!--        </div>-->
-
-        <!-- Product -->
-<!--        <div class="flex flex-column lg:flex-row flex-wrap lg:align-items-center py-3 my-3 border-bottom-1 surface-border" *ngFor = "let cartItem of cartItems">-->
-<!--          <img src="{{cartItem.product.imageURL}}" class="w-6rem sm:w-8rem flex-shrink-0"/>-->
-<!--          <div class="flex-auto lg:ml-3">-->
-<!--            <div class="flex align-items-center justify-content-between mb-3">-->
-<!--              <span class="text-900 font-medium">{{cartItem.product.name}}</span>-->
-<!--              <span class="text-900 font-bold">{{cartItem.product.unitPrice}}</span>-->
-<!--            </div>-->
-<!--            <div class="text-600 text-sm mb-3">-->
-<!--              <div *ngIf="cartItem.size"-->
-<!--                   class="text-600 text-sm mb-3"> Size: {{cartItem.size.sizeType}}-->
-<!--              </div>-->
-
-<!--            </div>-->
-<!--            <div class="flex flex-auto justify-content-between align-items-center">-->
-<!--              <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" [min]=1 inputStyleClass="w-2rem text-center py-2 px-1 border-transparent" [(ngModel)]="quantities1[0]"-->
-<!--                             class="border-1 surface-border border-round" decrementButtonClass="p-button-text text-600 hover:text-primary py-1 px-1" incrementButtonClass="p-button-text text-600 hover:text-primary py-1 px-1" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"></p-inputNumber>-->
-<!--              <button pButton pRipple icon="pi pi-trash" class="text-600 p-button-text p-button-rounded"></button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-
-
       </div>
     </div>
   </div>

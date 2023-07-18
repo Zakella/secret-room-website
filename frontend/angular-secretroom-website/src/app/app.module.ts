@@ -40,6 +40,10 @@ import {CheckboxModule} from "primeng/checkbox";
 import {PasswordModule} from "primeng/password";
 import { MyCartComponent } from './components/cart/my-cart/my-cart.component';
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {ReactiveFormsModule} from "@angular/forms";
+import {InputMaskModule} from "primeng/inputmask";
+import {MessageModule} from "primeng/message";
+import {MessagesModule} from "primeng/messages";
 
 
 
@@ -89,7 +93,11 @@ import {SidebarComponent} from "./components/sidebar/sidebar.component";
     PanelModule,
     RadioButtonModule,
     CheckboxModule,
-    PasswordModule
+    PasswordModule,
+    ReactiveFormsModule,
+    InputMaskModule,
+    MessageModule,
+    MessagesModule
 
 
   ],
