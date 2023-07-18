@@ -122,23 +122,53 @@
         </div>
         <p-divider class="w-full px-2 mb-3"></p-divider>
         <div class="text-900 font-medium text-xl mt-4 lg:mt-0 mb-4 px-2">Shipping Method</div>
-        <div class="col-12 flex flex-column lg:flex-row field justify-content-between">
-          <div *ngFor="let option of shippingOptions"
-               class="flex justify-content-around p-3 mt-3 lg:mt-0 border-round border-1 surface-border w-full hover:border-primary cursor-pointer"
-               (click)="form.controls['selectedValue'].setValue(option.name)"
-               [ngClass]="{'border-primary surface-50': form.controls['selectedValue'].value === option.name}">
+<!--        <div class="col-12 flex flex-column lg:flex-row field justify-content-between">-->
+<!--          <div *ngFor="let option of shippingOptions"-->
+<!--               class="flex justify-content-around p-3 mt-3 lg:mt-0 border-round border-1 surface-border w-full cursor-pointer"-->
+<!--               (click)="form.controls['selectedValue'].setValue(option.name)"-->
+<!--               [ngClass]="{'border-primary surface-50': form.controls['selectedValue'].value === option.name}">-->
+<!--&lt;!&ndash;            <div class="mr-3 lg:mr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="text-900 font-bold mb-2">{{option.name}}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="text-600" *ngIf="option?.delivery">Delivery: {{option?.delivery}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="flex justify-content-between align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="text-primary mr-2 font-medium" *ngIf="option?.cost">{{option?.cost}} MDL</span>&ndash;&gt;-->
+<!--&lt;!&ndash;              <p-radioButton name="selectedValue" [value]="option.name" formControlName="selectedValue"></p-radioButton>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-12 flex flex-column field" *ngFor="let option of shippingOptions">-->
+<!--          <div class="flex justify-content-between p-3 border-round border-1 surface-border w-full mr-3 hover:border-primary cursor-pointer"-->
+<!--               (click)="form.controls['selectedValue'].setValue(option.name)"-->
+<!--               [ngClass]="{'border-primary surface-50': form.controls['selectedValue'].value === option.name}">-->
+<!--            <div class="mr-3 lg:mr-0">-->
+<!--              <div class="text-900 font-bold mb-2">UPS</div>-->
+<!--              <span class="text-600">Delivery: Tomorrow</span>-->
+<!--            </div>-->
+<!--            <div class="flex justify-content-between align-items-center">-->
+<!--              <span class="text-primary mr-2 font-medium">$9.00</span>-->
+<!--              <p-radioButton name="ups" value="UPS" formControlName="selectedValue"></p-radioButton>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+        <div class="col-12 flex flex-column sm:flex-row field" *ngFor="let option of shippingOptions">
+          <div class="flex justify-content-between p-3 mt-3 lg:mt-0 border-round border-1 surface-border w-full hover:border-pink-200 cursor-pointer"
+               (click)="form.controls['selectedValue'].setValue(option.id)"
+               [ngClass]="{'border-pink-200 surface-50': form.controls['selectedValue'].value === option.id}">
             <div class="mr-3 lg:mr-0">
               <div class="text-900 font-bold mb-2">{{option.name}}</div>
-              <span class="text-600" *ngIf="option?.delivery">Delivery: {{option?.delivery}}</span>
+              <span class="text-600">{{option.description}}</span>
             </div>
             <div class="flex justify-content-between align-items-center">
-              <span class="text-primary mr-2 font-medium" *ngIf="option?.cost">{{option?.cost}} MDL</span>
-              <p-radioButton name="selectedValue" [value]="option.name" formControlName="selectedValue"></p-radioButton>
+              <span class="text-900 mr-2 font-medium">{{option.cost}} MDL </span>
+              <p-radioButton name="selectedValue" value="{{option.id}}" formControlName="selectedValue"></p-radioButton>
             </div>
           </div>
         </div>
-
-
         <p-divider class="w-full px-2 mb-3"></p-divider>
         <div class="text-900 font-medium text-xl mt-4 lg:mt-0 mb-4 px-2">Payment</div>
 <!--        <div class="col-12 mb-4">-->
@@ -182,8 +212,11 @@
         </div>
       </div>
     </div>
-    <div class="col-12 lg:col-3 p-4">
-      <div class="surface-card border-round shadow-2 p-5">
+
+
+
+    <div class="col-12 lg:col-4 p-4">
+      <div class="surface-card border-round shadow-2 p-3">
         <app-my-cart></app-my-cart>
       </div>
     </div>

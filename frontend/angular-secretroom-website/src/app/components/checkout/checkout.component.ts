@@ -3,15 +3,17 @@ import {CartItem} from "../../model/cart-item";
 import {CartService} from "../../services/cart.service";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
-
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
+
+
 export class CheckoutComponent implements OnInit {
 
-
+  // добавляем новое свойство selectedOption
+  selectedOption: string | null = null;
 
   cartItems: CartItem[] = [];
 
@@ -25,17 +27,22 @@ export class CheckoutComponent implements OnInit {
 
   shippingOptions = [
     {
+      id: "CR",
       name: 'Curier Rapid',
       cost: 35,
-      delivery: this.getDeliveryDate(1, 3)
+      description: "Delivery:" + this.getDeliveryDate(1, 3)
     },
     {
+      id: "PM",
       name: 'Posta Moldovei',
       cost: 35,
-      delivery: this.getDeliveryDate(7, 10)
+      description: "Delivery:" + this.getDeliveryDate(7, 10)
     },
     {
-      name: 'Pickup'
+      id: "PU",
+      name: 'Pickup',
+      cost: 0,
+      description: "Chisinau, Tudor Strisca 8/1"
     },
   ];
 
@@ -46,7 +53,7 @@ export class CheckoutComponent implements OnInit {
     country: {value: "Moldova, Republic of", disabled: true},
     name: ["", this.nameValidator],
     checked: this.fb.control(true),
-    selectedValue:  this.fb.control(null as string | null),
+    selectedValue: "",
     lastname: ["", this.nameValidator],
     address: ["", [Validators.required, Validators.minLength(3)]],
     city: ["", this.nameValidator],
@@ -57,18 +64,13 @@ export class CheckoutComponent implements OnInit {
     comment: ""
   });
 
-  constructor(private cartService: CartService, private fb: FormBuilder) {
-
-  }
+  constructor(private cartService: CartService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.loadCartItemsFromStorage();
-
     this.cardModified();
     this.getTotalAmount();
-
   }
-
 
   getTotalAmount() {
     this.cartService.totalAmount.subscribe(
@@ -88,28 +90,28 @@ export class CheckoutComponent implements OnInit {
     )
   }
 
-
   getDeliveryDate(minDays: number, maxDays: number): string {
     const startDate = new Date();
     const endDate = new Date();
     startDate.setDate(startDate.getDate() + minDays);
     endDate.setDate(endDate.getDate() + maxDays);
 
-    // format date as 'dd.mm.yyyy'
     const startDeliveryDate = `${this.pad(startDate.getDate())}.${this.pad(startDate.getMonth() + 1)}.${startDate.getFullYear()}`;
     const endDeliveryDate = `${this.pad(endDate.getDate())}.${this.pad(endDate.getMonth() + 1)}.${endDate.getFullYear()}`;
 
     return `${startDeliveryDate} - ${endDeliveryDate}`;
   }
 
-// Function to pad single digit numbers with leading zero
   pad(n: number) {
     return n < 10 ? '0' + n : n;
   }
+
+  // onOptionSelect(option) {
+  //   this.form.controls['selectedValue'].setValue(option.name);
+  //   this.selectedOption = option.name;
+  // }
 
   placeOrder() {
 
   }
 }
-
-
