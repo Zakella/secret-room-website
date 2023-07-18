@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartItem} from "../../model/cart-item";
 import {CartService} from "../../services/cart.service";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 
 @Component({
@@ -11,11 +11,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 })
 export class CheckoutComponent implements OnInit {
 
-  selectedValue: string = '';
 
-  quantities1: number[] = [1, 1, 1];
-
-  checked: boolean = true;
 
   cartItems: CartItem[] = [];
 
@@ -27,13 +23,30 @@ export class CheckoutComponent implements OnInit {
     Validators.pattern('^[A-Za-z]*$')
   ];
 
+  shippingOptions = [
+    {
+      name: 'Curier Rapid',
+      cost: 35,
+      delivery: this.getDeliveryDate(1, 3)
+    },
+    {
+      name: 'Posta Moldovei',
+      cost: 35,
+      delivery: this.getDeliveryDate(7, 10)
+    },
+    {
+      name: 'Pickup'
+    },
+  ];
+
+
   form = this.fb.group({
     email: ["", [Validators.required,
       Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
     country: {value: "Moldova, Republic of", disabled: true},
     name: ["", this.nameValidator],
     checked: this.fb.control(true),
-    selectedValue: this.fb.control(''),
+    selectedValue:  this.fb.control(null as string | null),
     lastname: ["", this.nameValidator],
     address: ["", [Validators.required, Validators.minLength(3)]],
     city: ["", this.nameValidator],
@@ -75,6 +88,24 @@ export class CheckoutComponent implements OnInit {
     )
   }
 
+
+  getDeliveryDate(minDays: number, maxDays: number): string {
+    const startDate = new Date();
+    const endDate = new Date();
+    startDate.setDate(startDate.getDate() + minDays);
+    endDate.setDate(endDate.getDate() + maxDays);
+
+    // format date as 'dd.mm.yyyy'
+    const startDeliveryDate = `${this.pad(startDate.getDate())}.${this.pad(startDate.getMonth() + 1)}.${startDate.getFullYear()}`;
+    const endDeliveryDate = `${this.pad(endDate.getDate())}.${this.pad(endDate.getMonth() + 1)}.${endDate.getFullYear()}`;
+
+    return `${startDeliveryDate} - ${endDeliveryDate}`;
+  }
+
+// Function to pad single digit numbers with leading zero
+  pad(n: number) {
+    return n < 10 ? '0' + n : n;
+  }
 
   placeOrder() {
 
