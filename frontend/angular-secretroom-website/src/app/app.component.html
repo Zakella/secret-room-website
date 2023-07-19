@@ -1,24 +1,23 @@
-<app-header></app-header>
 
-<div class="container-fluid main-container w-full">
-
-  <header class="flex-column sub-header">
-
+<div class="layout-wrapper">
+  <!-- Header -->
+  <app-header></app-header>
+  <div class="layout-top">
     <app-sub-header></app-sub-header>
-    <app-panel></app-panel> <!-- Панель с категориями товаров -->
+  </div>
+  <div class="layout-top">
+    <app-panel></app-panel>
+  </div>
 
-  </header>
-
-  <!-- Основная часть для вывода товара -->
-  <main class="text-center flex-column justify-content-center">
+  <!-- Body -->
+  <div class="layout-main">
     <router-outlet></router-outlet>
+  </div>
 
-  </main>
-
-  <app-footer></app-footer>
-
+  <!-- Footer -->
+  <div class="layout-footer">
+    <app-footer></app-footer>
+  </div>
 </div>
 
 <app-sidebar></app-sidebar>
-
-

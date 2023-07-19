@@ -1,5 +1,5 @@
 import {CartItem} from "../model/cart-item";
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 import {Injectable} from "@angular/core";
 
 @Injectable({
@@ -7,7 +7,7 @@ import {Injectable} from "@angular/core";
 })
 export class CartService {
 
-  public cartItems: CartItem[] = [];
+  public cartItems: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>([]);
 
   public totalAmount: Subject<number> = new Subject<number>();
   public totalQuantity: Subject<number> = new Subject<number>();
@@ -18,15 +18,16 @@ export class CartService {
   public sidebarVisible: Subject<boolean> = new Subject<boolean>();
 
   constructor() {
-    this.cartItems = this.loadCartItemsFromStorage();
+    this.cartItems.next(this.loadCartItemsFromStorage());
   }
 
   getCartItems(): CartItem[] {
-    return [...this.cartItems];
+    return [...this.cartItems.value];
   }
 
   addToCart(theCartItem: CartItem) {
-    this.cartItems.push(theCartItem);
+    const currentValue = this.cartItems.value;
+    this.cartItems.next([...currentValue, theCartItem]);
     this.saveCartItemsToStorage();
     this.computeCartTotals();
     this.setSidebarVisible(true);
@@ -40,7 +41,7 @@ export class CartService {
     let totalAmountValue: number = 0;
     let totalQuantityValue: number = 0;
 
-    for (let currentCartItem of this.cartItems) {
+    for (let currentCartItem of this.cartItems.value) {
       totalAmountValue += this.calculateCartItemAmount(currentCartItem);
       totalQuantityValue += currentCartItem.quantity;
       currentCartItem.amount = this.calculateCartItemAmount(currentCartItem);
@@ -56,7 +57,7 @@ export class CartService {
 
   private saveCartItemsToStorage() {
     try {
-      const cartItemsJson = JSON.stringify(this.cartItems);
+      const cartItemsJson = JSON.stringify(this.cartItems.value);
       localStorage.setItem(this.storageKey, cartItemsJson);
       this.cartModified.next(true);
     } catch (e) {
@@ -77,14 +78,18 @@ export class CartService {
   }
 
   deleteItemFromCart(cartItem: CartItem,  index:number) {
-    this.cartItems.splice(index, 1);
+    const currentValue = this.cartItems.value;
+    currentValue.splice(index, 1);
+    this.cartItems.next(currentValue);
     this.saveCartItemsToStorage();
     this.computeCartTotals();
     this.cartModified.next(true);
   }
 
   recalculateCartItem(cartItem: CartItem, index: number) {
-    this.cartItems[index] = cartItem;
+    const currentValue = this.cartItems.value;
+    currentValue[index] = cartItem;
+    this.cartItems.next(currentValue);
     this.saveCartItemsToStorage();
     this.computeCartTotals();
     this.cartModified.next(true);

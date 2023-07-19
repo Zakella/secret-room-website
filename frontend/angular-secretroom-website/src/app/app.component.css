@@ -1,0 +1,18 @@
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout-top {
+  /* стили для шапки */
+}
+
+.layout-main {
+  flex-grow: 1;
+  /* стили для основного содержимого */
+}
+
+.layout-footer {
+  /* стили для подвала */
+}

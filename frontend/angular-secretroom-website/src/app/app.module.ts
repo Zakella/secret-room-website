@@ -44,6 +44,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {InputMaskModule} from "primeng/inputmask";
 import {MessageModule} from "primeng/message";
 import {MessagesModule} from "primeng/messages";
+import { EmptyCartComponent } from './components/cart/empty-cart/empty-cart.component';
+import {ToolbarModule} from "primeng/toolbar";
+
 
 
 
@@ -70,7 +73,8 @@ import {MessagesModule} from "primeng/messages";
     LoginComponent,
     CheckoutComponent,
     MyCartComponent,
-    SidebarComponent
+    SidebarComponent,
+    EmptyCartComponent,
 
   ],
   imports: [
@@ -97,7 +101,8 @@ import {MessagesModule} from "primeng/messages";
     ReactiveFormsModule,
     InputMaskModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    ToolbarModule
 
 
   ],

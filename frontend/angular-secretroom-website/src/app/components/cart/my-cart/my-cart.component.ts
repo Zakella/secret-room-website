@@ -1,8 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {CartItem} from '../../../model/cart-item';
 import {CartService} from '../../../services/cart.service';
-import {Subscription, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-cart',
@@ -15,11 +15,14 @@ export class MyCartComponent implements OnInit, OnDestroy {
   totalQuantity: number = 0;
   private ngUnsubscribe = new Subject<void>();
 
+  @Input()
+  shippingCost: number = 0;
+
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
-    this.loadCartItemsFromStorage();
+    this.subscribeToCartItems();
     this.subscribeToTotalAmount();
     this.subscribeToTotalQuantity();
     this.subscribeToCartModification();
@@ -31,24 +34,26 @@ export class MyCartComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  private loadCartItemsFromStorage() {
-    this.cartItems = this.cartService.loadCartItemsFromStorage();
+  private subscribeToCartItems() {
+    this.cartService.cartItems.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
+      (items) => {
+        this.cartItems = items;
+      }
+    );
   }
 
   private subscribeToCartModification() {
-
-    this.cartService.cartModified.subscribe(
+    this.cartService.cartModified.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
       (data) => {
         if (data) {
-          this.cartItems = this.cartService.cartItems;
+          this.cartService.computeCartTotals();
         }
       }
     )
-
   }
 
   private subscribeToTotalAmount() {
-    this.cartService.totalAmount.subscribe(
+    this.cartService.totalAmount.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
       (data) => {
         this.totalAmount = data;
       }
@@ -57,7 +62,7 @@ export class MyCartComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToTotalQuantity() {
-    this.cartService.totalQuantity.subscribe(
+    this.cartService.totalQuantity.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
       (data) => {
         this.totalQuantity = data;
       }

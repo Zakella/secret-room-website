@@ -6,12 +6,20 @@
   <!-- body -->
   <ng-template pTemplate="content">
 
-   <app-my-cart></app-my-cart>
+    <ng-container *ngIf="!cartIsEmpty else emptyCart">
+      <app-my-cart></app-my-cart>
+    </ng-container>
+
+    <ng-template #emptyCart>
+      <app-empty-cart></app-empty-cart>
+    </ng-template>
+
+
   </ng-template>
   <!-- footer -->
-  <ng-template pTemplate="footer">
+  <ng-template pTemplate="footer" >
 
-    <div class="border-top-1 surface-border p-3 w-full">
+    <div class="border-top-1 surface-border p-3 w-full" *ngIf="!cartIsEmpty">
       <button pRipple class="mb-3 w-full vs-button" (click)="checkout()">
         <span class="label">Check out</span>
       </button>
@@ -24,3 +32,5 @@
   </ng-template>
 
 </p-sidebar>
+
+

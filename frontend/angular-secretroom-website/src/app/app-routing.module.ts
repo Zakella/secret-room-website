@@ -7,6 +7,7 @@ import {ProductNotFoundComponent} from "./components/products/product-not-found/
 import {ProductCardComponent} from "./components/products/product-card/product-card.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {CheckoutComponent} from "./components/checkout/checkout.component";
+import {EmptyCartComponent} from "./components/cart/empty-cart/empty-cart.component";
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+
+  {
+    path: 'empty-cart',
+    component: EmptyCartComponent
   },
 
   { path: '**', component: PageNotFoundComponent },

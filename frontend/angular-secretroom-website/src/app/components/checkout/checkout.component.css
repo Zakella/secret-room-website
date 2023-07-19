@@ -1,3 +1,14 @@
 .selected {
-  border: 2px solid #4CAF50; /* Или любой другой цвет, который вам нравится */
+  border: 2px solid var(--form-color);
 }
+
+.inbor-color{
+  background-color: var(--form-color);
+
+}
+
+
+input.p-inputtext:after {
+  background-color: var(--form-color);
+}
+

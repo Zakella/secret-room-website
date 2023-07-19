@@ -1,7 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartItem} from "../../model/cart-item";
 import {CartService} from "../../services/cart.service";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
+import {Router} from "@angular/router";
+
+interface ShippingOption {
+  id: string;
+  name: string;
+  cost: number;
+  description: string;
+}
 
 @Component({
   selector: 'app-checkout',
@@ -10,14 +20,18 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 })
 
 
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit , OnDestroy{
 
   // добавляем новое свойство selectedOption
   selectedOption: string | null = null;
 
   cartItems: CartItem[] = [];
 
+  cartIsEmpty: boolean = false;
+
   totalAmount: number = 0;
+
+  private ngUnsubscribe = new Subject<void>();
 
   nameValidator: Validators[] = [
     Validators.required,
@@ -25,11 +39,11 @@ export class CheckoutComponent implements OnInit {
     Validators.pattern('^[A-Za-z]*$')
   ];
 
-  shippingOptions = [
+  shippingOptions: ShippingOption[] = [
     {
       id: "CR",
       name: 'Curier Rapid',
-      cost: 35,
+      cost: 100,
       description: "Delivery:" + this.getDeliveryDate(1, 3)
     },
     {
@@ -44,12 +58,12 @@ export class CheckoutComponent implements OnInit {
       cost: 0,
       description: "Chisinau, Tudor Strisca 8/1"
     },
-  ];
+  ]
 
+  shippingCost:number = 0;
 
   form = this.fb.group({
-    email: ["", [Validators.required,
-      Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+    email: ["", [Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
     country: {value: "Moldova, Republic of", disabled: true},
     name: ["", this.nameValidator],
     checked: this.fb.control(true),
@@ -64,12 +78,13 @@ export class CheckoutComponent implements OnInit {
     comment: ""
   });
 
-  constructor(private cartService: CartService, private fb: FormBuilder) {}
+  constructor(private cartService: CartService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.loadCartItemsFromStorage();
     this.cardModified();
     this.getTotalAmount();
+    this.subscribeToCartItems();
   }
 
   getTotalAmount() {
@@ -84,7 +99,7 @@ export class CheckoutComponent implements OnInit {
     this.cartService.cartModified.subscribe(
       (data) => {
         if (data) {
-          this.cartItems = this.cartService.cartItems;
+          this.cartItems = this.cartService.cartItems.value;
         }
       }
     )
@@ -106,12 +121,34 @@ export class CheckoutComponent implements OnInit {
     return n < 10 ? '0' + n : n;
   }
 
-  // onOptionSelect(option) {
-  //   this.form.controls['selectedValue'].setValue(option.name);
-  //   this.selectedOption = option.name;
-  // }
-
   placeOrder() {
 
+  }
+
+  setShippingOptions(id: string) {
+    console.log(id);
+    this.form.controls.selectedValue.setValue(id);
+
+    let selectedOption = this.shippingOptions.find(option => option.id === id);
+
+    this.shippingCost = selectedOption?.cost || 0;
+
+  }
+
+  private subscribeToCartItems() {
+    this.cartService.cartItems.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
+      (items) => {
+        if (items.length === 0) {
+          this.router.navigate(['empty-cart']);
+
+        }
+
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

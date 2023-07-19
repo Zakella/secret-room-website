@@ -1,12 +1,17 @@
 
+:root {
+  --standart-color: rgb(244, 209, 218);
+  --form-color:rgb(244, 209, 218);
+}
+
 
 .vs-button {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  border: rgb(244, 209, 218);
-  background-color: rgb(244, 209, 218);
+  border: var(--standart-color);
+  background-color: var(--standart-color);
   /* Additional styles for the button */
   height: 2em; /* Change the height to desired value */
   border-radius: 5px; /* Add rounded corners with desired radius */
@@ -64,3 +69,4 @@ span {
     width: 75%; /* увеличиваем ширину на больших экранах */
   }
 }
+
