@@ -30,6 +30,15 @@ export class PanelComponent implements OnInit {
   }
 
 
+  protected readonly alert = alert;
+
+  goToBrandHomePage() {
+    if (this.router.url.includes('/vs')) {
+      this.router.navigate(['/vs']);
+    } else {
+      this.router.navigate(['/bb']);
+    }
+  }
 }
 
 

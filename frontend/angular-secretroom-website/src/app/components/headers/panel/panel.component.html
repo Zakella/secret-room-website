@@ -1,21 +1,30 @@
 
-
-<div class="grid align-items-center flex flex-column sm:flex-row field">
-  <div class="col">
-    <div class="text-center p-3 border-round-sm font-bold">
-      <app-language-pannel></app-language-pannel>
+<div class="surface-section px-4 py-1 md:px-6 lg:px-8">
+  <div class="grid align-items-center flex flex-column sm:flex-row field">
+    <div class="col">
+      <div class="text-center p-3 border-round-sm font-bold">
+        <app-language-pannel></app-language-pannel>
+      </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="text-center p-3 border-round-sm  ">
-      <div class="flex align-items-center justify-content-center py-3">
-        <img src="{{currentLogo}}" alt="Image" height="30">
+    <div class="col">
+      <div class="text-center p-3 border-round-sm  ">
+
+        <div class="flex align-items-center justify-content-center py-3">
+          <a href="" (click)="goToBrandHomePage()">
+          <img src="{{currentLogo}}" alt="Image" height="30">
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col">
+      <div class="text-center p-3 border-round-sm  font-bold ">
+        <app-search></app-search>
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="text-center p-3 border-round-sm  font-bold ">
-      <app-search></app-search>
-    </div>
-  </div>
+
 </div>
+
+
