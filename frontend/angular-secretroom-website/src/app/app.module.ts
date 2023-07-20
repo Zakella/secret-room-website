@@ -46,6 +46,7 @@ import {MessageModule} from "primeng/message";
 import {MessagesModule} from "primeng/messages";
 import { EmptyCartComponent } from './components/cart/empty-cart/empty-cart.component';
 import {ToolbarModule} from "primeng/toolbar";
+import {MenuModule} from "primeng/menu";
 
 
 
@@ -77,35 +78,36 @@ import {ToolbarModule} from "primeng/toolbar";
     EmptyCartComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    DropdownModule,
-    ButtonModule,
-    FormsModule,
-    ImageModule,
-    DividerModule,
-    StyleClassModule,
-    RippleModule,
-    AppRoutingModule,
-    InputNumberModule,
-    PaginatorModule,
-    SidebarModule,
-    BadgeModule,
-    CardModule,
-    PanelModule,
-    RadioButtonModule,
-    CheckboxModule,
-    PasswordModule,
-    ReactiveFormsModule,
-    InputMaskModule,
-    MessageModule,
-    MessagesModule,
-    ToolbarModule
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        DropdownModule,
+        ButtonModule,
+        FormsModule,
+        ImageModule,
+        DividerModule,
+        StyleClassModule,
+        RippleModule,
+        AppRoutingModule,
+        InputNumberModule,
+        PaginatorModule,
+        SidebarModule,
+        BadgeModule,
+        CardModule,
+        PanelModule,
+        RadioButtonModule,
+        CheckboxModule,
+        PasswordModule,
+        ReactiveFormsModule,
+        InputMaskModule,
+        MessageModule,
+        MessagesModule,
+        ToolbarModule,
+        MenuModule
 
 
-  ],
+    ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })

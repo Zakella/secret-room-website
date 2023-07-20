@@ -18,3 +18,12 @@ img {
     max-height: 200px;
   }
 }
+
+
+.my-custom-menu {
+  width: 200px; /* Set width of your menu */
+}
+
+.my-custom-menu .p-menuitem-link {
+  justify-content: flex-end;
+}
