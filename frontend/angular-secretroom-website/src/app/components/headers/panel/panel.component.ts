@@ -29,12 +29,10 @@ export class PanelComponent implements OnInit {
     });
   }
 
-
-  protected readonly alert = alert;
-
-  goToBrandHomePage() {
-    if (this.router.url.includes('/vs')) {
-      this.router.navigate(['/vs']);
+  goToBrandHomePage(event: Event) {
+    event.preventDefault();
+    if (this.router.url.includes('vs')) {
+      this.router.navigate(['/']);
     } else {
       this.router.navigate(['/bb']);
     }

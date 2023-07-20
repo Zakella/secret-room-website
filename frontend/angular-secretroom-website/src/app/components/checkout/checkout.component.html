@@ -147,11 +147,11 @@
 
     <div class="col-12 lg:col-4 p-4">
       <div class="surface-card border-round shadow-2 p-3">
-
-
-
         <app-my-cart [shippingCost]="shippingCost" ></app-my-cart>
       </div>
+      <button pRipple class="w-full vs-button h-3rem py-2 mt-2" [disabled]="!form.valid" (click)="placeOrder()">
+        <span class="label">Place order</span>
+      </button>
     </div>
   </div>
 </div>

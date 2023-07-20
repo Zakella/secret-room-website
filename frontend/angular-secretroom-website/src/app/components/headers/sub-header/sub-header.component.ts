@@ -1,5 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {CartService} from "../../../services/cart.service";
+import {takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 
 
@@ -8,30 +11,48 @@ import {Router} from "@angular/router";
   templateUrl: './sub-header.component.html',
   styleUrls: ['./sub-header.component.css']
 })
-export class SubHeaderComponent implements OnInit{
-
+export class SubHeaderComponent implements OnInit {
+  totalQuantity: number = 0;
+  private destroy$: Subject<void> = new Subject<void>();
 
   items: any[] = [];
 
+  constructor(private cartService: CartService) {}
+
   ngOnInit() {
+    this.cartService.totalQuantity
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(total => {
+        this.totalQuantity = total;
+        this.updateItems(); // обновляем элементы меню
+      });
+    this.cartService.computeCartTotals();
+  }
+
+  updateItems() {
     this.items = [
       {
         label: 'Cart',
-        icon: 'pi pi-shopping-cart', // Replace with your icon
+        icon: 'pi pi-shopping-cart',
+        badge: this.totalQuantity.toString(), // badge принимает строку, поэтому мы преобразуем число в строку
+        badgeStyleClass: 'green-badge',
         command: () => {
-          // Do something when Item 1 is clicked
+          this.cartService.setSidebarVisible(true);
         }
       },
       {
         label: 'Sign In',
-        icon: 'pi pi-user', // Replace with your icon
+        icon: 'pi pi-user',
         command: () => {
-          // Do something when Item 2 is clicked
+          // Действие при нажатии
         }
       }
-      // Add more items as needed
+      // Другие элементы меню...
     ];
+  }
 
 
-}
+
+
+
 }

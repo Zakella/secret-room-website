@@ -47,6 +47,7 @@ import {MessagesModule} from "primeng/messages";
 import { EmptyCartComponent } from './components/cart/empty-cart/empty-cart.component';
 import {ToolbarModule} from "primeng/toolbar";
 import {MenuModule} from "primeng/menu";
+import { OrderSummaryComponent } from './components/order/order-summary/order-summary.component';
 
 
 
@@ -76,6 +77,7 @@ import {MenuModule} from "primeng/menu";
     MyCartComponent,
     SidebarComponent,
     EmptyCartComponent,
+    OrderSummaryComponent,
 
   ],
     imports: [

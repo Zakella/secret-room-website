@@ -27,3 +27,16 @@ img {
 .my-custom-menu .p-menuitem-link {
   justify-content: flex-end;
 }
+
+.my-custom-menu .p-menuitem-link:hover {
+  background-color: #f1f1f1;
+}
+
+
+::ng-deep .p-menuitem-badge.green-badge {
+  background-color: var(--form-color) ;
+  color: white;
+  border-radius: 10px;
+}
+
+

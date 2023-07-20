@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { CartService } from "../../../services/cart.service";
 
 @Component({
-  selector: 'app-cart-status',
+    selector: 'app-cart-status',
   templateUrl: './cart-status.component.html',
   styleUrls: ['./cart-status.component.css']
 })

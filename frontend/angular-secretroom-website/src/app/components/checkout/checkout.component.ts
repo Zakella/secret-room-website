@@ -36,7 +36,7 @@ export class CheckoutComponent implements OnInit , OnDestroy{
   nameValidator: Validators[] = [
     Validators.required,
     Validators.minLength(3),
-    Validators.pattern('^[A-Za-z]*$')
+    Validators.pattern('^[A-Za-z\\s]*$')
   ];
 
   shippingOptions: ShippingOption[] = [
@@ -67,7 +67,7 @@ export class CheckoutComponent implements OnInit , OnDestroy{
     country: {value: "Moldova, Republic of", disabled: true},
     name: ["", this.nameValidator],
     checked: this.fb.control(true),
-    selectedValue: "",
+    selectedValue: ["", Validators.required],
     lastname: ["", this.nameValidator],
     address: ["", [Validators.required, Validators.minLength(3)]],
     city: ["", this.nameValidator],
@@ -122,6 +122,8 @@ export class CheckoutComponent implements OnInit , OnDestroy{
   }
 
   placeOrder() {
+
+    this.router.navigate(['order-success/1']);
 
   }
 
