@@ -1,6 +1,6 @@
 
 <script src="../sidebar/sidebar.component.ts"></script>
-<div class="surface-ground px-4 py-8 md:px-6 lg:px-8" [formGroup]="form" (ngSubmit)="placeOrder()">
+<form class="surface-ground px-4 py-8 md:px-6 lg:px-8" [formGroup]="form" (ngSubmit)="onSubmit($event)">
   <div class="grid -mr-3 -ml-3">
     <div class="col-12 lg:col-6 p-4" >
       <div class="surface-card grid formgrid p-fluid border-round shadow-2 p-4"  >
@@ -149,9 +149,10 @@
       <div class="surface-card border-round shadow-2 p-3">
         <app-my-cart [shippingCost]="shippingCost" ></app-my-cart>
       </div>
-      <button pRipple class="w-full vs-button h-3rem py-2 mt-2" [disabled]="!form.valid" (click)="placeOrder()">
+      <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit" [disabled]="!form.valid">
         <span class="label">Place order</span>
       </button>
     </div>
   </div>
-</div>
+</form>
+

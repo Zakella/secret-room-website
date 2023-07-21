@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartItem} from "../../model/cart-item";
 import {CartService} from "../../services/cart.service";
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 import {Router} from "@angular/router";
@@ -22,12 +22,8 @@ interface ShippingOption {
 
 export class CheckoutComponent implements OnInit , OnDestroy{
 
-  // добавляем новое свойство selectedOption
-  selectedOption: string | null = null;
 
   cartItems: CartItem[] = [];
-
-  cartIsEmpty: boolean = false;
 
   totalAmount: number = 0;
 
@@ -153,4 +149,13 @@ export class CheckoutComponent implements OnInit , OnDestroy{
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
+
+  onSubmit($event: any) {
+    console.log(this.form.value);
+    if(this.form.valid){
+      this.placeOrder();
+    }
+  }
+
+  protected readonly event = event;
 }
