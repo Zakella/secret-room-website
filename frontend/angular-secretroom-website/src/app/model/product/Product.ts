@@ -9,7 +9,7 @@
       public categoryName?: string,
       public description?: string,
       public shortDescription?: string,
-      public unitPrice?: number,
+      public unitPrice?: number |0,
       public imageURL?: string,
       public active?: boolean,
       public unitsInStock?: number,
