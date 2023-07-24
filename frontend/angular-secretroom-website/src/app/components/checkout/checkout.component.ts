@@ -2,11 +2,13 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartItem} from "../../model/cart-item";
 import {CartService} from "../../services/cart.service";
 import {FormBuilder, ValidatorFn, Validators} from "@angular/forms";
-import {combineLatest, Subject} from "rxjs";
+import {combineLatest, Subject, throwError} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {Order, OrderItem} from "../../model/order";
 import {ShippingOption} from "../../model/shipping-option";
+import {OrderService} from "../../services/order.service";
+import {ShippingService} from "../../services/shipping.service";
 
 @Component({
   selector: 'app-checkout',
@@ -30,11 +32,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     Validators.pattern('^[A-Za-z\\s]*$')
   ];
 
-  shippingOptions: ShippingOption[] = [
-    new ShippingOption("CR", 'Curier Rapid', 100, "Delivery: " + this.getDeliveryDate(1, 3)),
-    new ShippingOption("PM", 'Posta Moldovei', 35, "Delivery: " + this.getDeliveryDate(7, 10)),
-    new ShippingOption("PU", 'Pickup', 0, "Chisinau, Tudor Strisca 8/1")
-  ];
+  shippingOptions: ShippingOption[] = [];
 
   shippingCost: number = 0;
 
@@ -55,7 +53,12 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   });
 
 
-  constructor(private cartService: CartService, private fb: FormBuilder, private router: Router) {
+  constructor(private cartService: CartService,
+              private fb: FormBuilder,
+              private router: Router,
+              private orderService: OrderService,
+              private shippingService: ShippingService
+  ) {
   }
 
   ngOnInit(): void {
@@ -63,6 +66,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.cardModified();
     this.getTotalAmount();
     this.subscribeToCartItems();
+    this.subscribeToShippingOption();
   }
 
   getTotalAmount() {
@@ -85,7 +89,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   getDeliveryDate(minDays: number, maxDays: number): string {
     const current = new Date();
-    const formatter = new Intl.DateTimeFormat('en', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const formatter = new Intl.DateTimeFormat('en', {day: '2-digit', month: '2-digit', year: 'numeric'});
 
     const startDeliveryDate = formatter.format(new Date(current.getFullYear(), current.getMonth(), current.getDate() + minDays));
     const endDeliveryDate = formatter.format(new Date(current.getFullYear(), current.getMonth(), current.getDate() + maxDays));
@@ -94,15 +98,33 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
 
-  pad(n: number) {
-    return n < 10 ? '0' + n : n;
-  }
-
   placeOrder() {
 
     const order = this.createOrder();
 
     console.log(order);
+
+    this.orderService.sendOrder(order).subscribe(
+      {
+        next: response => {
+          console.log(response);
+          this.router.navigate([`/order-success/${response.orderId}`]);
+        },
+        error: error => {
+          if (error.status === 0) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('Server is not responding. Please try again later.');
+          } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong.
+            console.error(
+              `Backend returned code ${error.status}, body was: `, error.error);
+          }
+          // Return an observable with a user-facing error message.
+          return throwError(() => new Error('Something bad happened; please try again later.'));
+        }
+
+      });
 
 
   }
@@ -164,7 +186,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
 
   setShippingOptions(id: string) {
-    console.log(id);
+
     this.form.controls.selectedValue.setValue(id);
 
     let selectedOption = this.shippingOptions.find(option => option.id === id);
@@ -201,4 +223,22 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
 
+  private subscribeToShippingOption() {
+    this.shippingService.getShippingOptions()
+      .pipe(takeUntil(this.ngUnsubscribe)).subscribe(
+      {
+        next: response => {
+          this.shippingOptions = response.map(option => {
+            option.description = "Delivery: " + this.getDeliveryDate(option.expectedDeliveryFrom, option.expectedDeliveryTo);
+            return option;
+
+          })
+
+        },
+        error: error => {
+          console.log(error);
+        }
+      }
+    );
+  }
 }

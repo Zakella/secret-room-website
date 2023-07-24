@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.secretroomwebsite.product_category.ProductCategory;
 import com.secretroomwebsite.product_category.ProductCategoryRepository;
+import com.secretroomwebsite.shipping.Shipping;
+import com.secretroomwebsite.shipping.ShippingRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,8 +33,12 @@ public class DataInitializer implements CommandLineRunner {
 
     private final ProductCategoryRepository productCategoryRepository;
     private final ResourceLoader resourceLoader;
+    @Autowired
+    private ShippingRepository shippingRepository;
 
-    public DataInitializer(ProductCategoryRepository productCategoryRepository, ResourceLoader resourceLoader) {
+    public DataInitializer(ProductCategoryRepository productCategoryRepository,
+                           ResourceLoader resourceLoader,
+                           ShippingRepository shippingRepository) {
         this.productCategoryRepository = productCategoryRepository;
         this.resourceLoader = resourceLoader;
     }
@@ -39,6 +46,31 @@ public class DataInitializer implements CommandLineRunner {
     @Override
 
     public void run(String... args) throws Exception {
+
+        writeProductsInDatabase();
+        writeShippingOptionsInDatabase();
+
+
+    }
+
+    private void writeShippingOptionsInDatabase() throws IOException {
+
+            Resource resource = resourceLoader.getResource("classpath:json-data/shippingData.json");
+
+            // Create ObjectMapper
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JavaTimeModule());
+
+            // Read JSON file and convert it to a list of ProductCategory objects
+            List<Shipping> shippingOptions = Arrays.asList(objectMapper.readValue(resource.getInputStream(), Shipping[].class));
+            shippingRepository.saveAll(shippingOptions);
+
+            System.out.println("Shipping options data initialized successfully!");
+
+
+    }
+
+    private void writeProductsInDatabase() throws IOException {
 
 
 //        truncateTable("product_category");

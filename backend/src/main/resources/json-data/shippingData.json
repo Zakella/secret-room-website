@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Curier Rapid",
+    "cost": 100,
+    "description": "Delivery",
+    "expectedDeliveryFrom": 1,
+    "expectedDeliveryTo": 3
+  },
+  {
+    "id": 2,
+    "name": "Posta Moldovei",
+    "cost": 35,
+    "description": "Delivery",
+    "expectedDeliveryFrom": 7,
+    "expectedDeliveryTo": 10
+  },
+  {
+    "id": 3,
+    "name": "Pickup",
+    "cost": 0,
+    "description": "Chisinau, Tudor Strisca 8/1",
+    "expectedDeliveryFrom": 0,
+    "expectedDeliveryTo": 0
+  }
+]

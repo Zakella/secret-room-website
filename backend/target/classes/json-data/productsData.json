@@ -346,6 +346,102 @@
     ]
   },
 
+
+  {
+    "id": 4,
+    "brand": "BathAndBody",
+    "categoryName": "Shop Wellness",
+    "description": "Center your best you with a little something new.",
+    "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
+    "products": [
+      {
+        "id": 10,
+        "sku": " '7878787'",
+        "name": "All Body Care",
+        "description": "Ultimate Hydration Body Cream",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 270.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw618e440c/hires/026674474.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw002bb661/hires/026674474_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw87ffbb3d/hires/026676228.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "id": 11,
+        "sku": " '7878787'",
+        "name": "Midnight Blue Citrus",
+        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 330.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw70e6b9b7/hires/026674494_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "id": 12,
+        "sku": " '7878787'",
+        "name": "Sensual Amber",
+        "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 250.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dwe35dfd1d/hires/026681537_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+
+        ],
+        "sizes": []
+      }
+    ]
+  },
+
+
   {
     "id": 4,
     "brand": "BathAndBody",
@@ -517,4 +613,10 @@
       }
     ]
   }
+
+
+
+
+
 ]
+

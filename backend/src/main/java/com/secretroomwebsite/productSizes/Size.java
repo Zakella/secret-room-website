@@ -3,15 +3,14 @@ package com.secretroomwebsite.productSizes;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.secretroomwebsite.product.Product;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Table(name = "size")
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +28,9 @@ public class Size {
     private boolean available;
 
 
+    public Size(Product product, SizeType sizeType, boolean available) {
+        this.product = product;
+        this.sizeType = sizeType;
+        this.available = available;
+    }
 }
