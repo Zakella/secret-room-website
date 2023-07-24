@@ -4,11 +4,12 @@ import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.ProductRepository;
 import com.secretroomwebsite.productSizes.Size;
 import com.secretroomwebsite.productSizes.SizeType;
+import com.secretroomwebsite.product_category.ProductCategory;
+import com.secretroomwebsite.product_category.ProductCategoryRepository;
 import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -21,8 +22,6 @@ import java.util.Optional;
 
 import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -33,17 +32,21 @@ class OrderRepositoryTest {
 
     private Order order;
 
-    @Mock
-    private ProductRepository productRepository;
-    @Mock
+    @Autowired
     private ShippingRepository shippingRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
 
 
     @BeforeEach
     void setUp() {
-        Shipping shipping = new Shipping(1L, "Test Shipping", 10.0, "Test Description", 1, 3);
-        when(shippingRepository.save(any(Shipping.class))).thenReturn(shipping);
+        Shipping shipping = new Shipping("Test Shipping", 10.0, "Test Description", 1, 3);
+        shippingRepository.save(shipping);
 
         order = new Order();
         // Set properties for order
@@ -57,9 +60,17 @@ class OrderRepositoryTest {
         order.setTotalAmount(10.0);
         order.setTotalAmountOrder(10.0);
 
+
+        ProductCategory category = new ProductCategory();
+        category.setDescription("Category A");
+        category.setBrand(VictoriasSecret);
+        category.setCategoryName("Category A");
+        category.setImageUrl("assets/tests");
+        productCategoryRepository.save(category);
+
         Product product = Product.builder()
-                .id(1L)
                 .sku("SKU001")
+                .productCategory(category)
                 .name("Product 1")
                 .description("Description 1")
                 .brand(VictoriasSecret)
@@ -71,8 +82,7 @@ class OrderRepositoryTest {
                 .dateCreated(LocalDate.now())
                 .build();
 
-        when(productRepository.save(any(Product.class))).thenReturn(product); // Mocking the productRepository.save() method
-
+        this.productRepository.save(product);
         Size size = new Size(product, SizeType.S, true);
 
         OrderItem orderItem = new OrderItem(product, size, 5, 1200.00, order);
