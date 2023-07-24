@@ -1,4 +1,4 @@
-package com.secretroomwebsite.journey;
+package com.secretroomwebsite.product;
 
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product_category.ProductCategory;

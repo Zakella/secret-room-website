@@ -43,7 +43,7 @@ public class ProductDTO {
         ;
         List<String> imageUrls = product.getImages().stream()
                 .map((ProductImage::getImageUrl))
-                .collect(Collectors.toList());
+                .toList();
 
 
 
