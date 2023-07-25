@@ -1,4 +1,4 @@
-package com.secretroomwebsite.productImages;
+package com.secretroomwebsite.product.image;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.secretroomwebsite.product.Product;

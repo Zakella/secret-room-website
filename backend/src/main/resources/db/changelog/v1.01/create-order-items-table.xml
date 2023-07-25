@@ -13,13 +13,13 @@
             CREATE TABLE order_items (
                                          id SERIAL PRIMARY KEY,
                                          product_id INTEGER NOT NULL,
-                                         size_id INTEGER,
+                                         size_type VARCHAR(20),
                                          amount DECIMAL(10, 2) NOT NULL,
                                          quantity INTEGER NOT NULL,
                                          order_id INTEGER,
                                          FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE,
-                                         FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE SET NULL,
-                                         FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE)
+                                         FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+            );
 
      </sql>
     </changeSet>

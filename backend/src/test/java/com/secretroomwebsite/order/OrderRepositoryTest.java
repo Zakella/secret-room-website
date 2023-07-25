@@ -2,11 +2,11 @@ package com.secretroomwebsite.order;
 
 import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.product.Product;
-import com.secretroomwebsite.product.ProductRepository;
-import com.secretroomwebsite.productSizes.Size;
-import com.secretroomwebsite.productSizes.SizeType;
-import com.secretroomwebsite.product_category.ProductCategory;
-import com.secretroomwebsite.product_category.ProductCategoryRepository;
+import com.secretroomwebsite.product.dao.ProductRepository;
+import com.secretroomwebsite.product.sizes.Size;
+import com.secretroomwebsite.product.sizes.SizeType;
+import com.secretroomwebsite.product.category.ProductCategory;
+import com.secretroomwebsite.product.category.ProductCategoryRepository;
 import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
 import jakarta.persistence.EnumType;
@@ -59,9 +59,10 @@ class OrderRepositoryTest {
             order.setPhoneNumber("079294111");
             order.setDeliveryAddress("Test Delivery Address");
             order.setShippingOption(shipping);
-            order.setTotalQuantity(1);
-            order.setTotalAmount(10.0);
-            order.setTotalAmountOrder(10.0);
+            order.setTotalQuantity(10);
+            order.setTotalAmount(150.00);
+            order.setShippingCost(50.00);
+            order.setTotalAmountOrder(200.00);
 
 
             ProductCategory category = new ProductCategory();
@@ -103,10 +104,9 @@ class OrderRepositoryTest {
 
             this.productRepository.save(product2);
 
-            Size size = new Size(product, SizeType.S, true);
 
-            OrderItem orderItem1 = new OrderItem(product, size, 5, 1200.00, order);
-            OrderItem orderItem2 = new OrderItem(product2, null, 5, 1200.00, order);
+            OrderItem orderItem1 = new OrderItem(product, SizeType.S, 5, 50.00, order);
+            OrderItem orderItem2 = new OrderItem(product2, null, 5, 100.00, order);
 
             order.setItems(List.of(orderItem1, orderItem2));
 
@@ -175,8 +175,7 @@ class OrderRepositoryTest {
                 .build();
 
         this.productRepository.save(newProduct);
-        Size size = new Size(newProduct, SizeType.S, true);
-        OrderItem newOrderItem = new OrderItem(newProduct, size, 5, 1500.00, savedOrder);
+        OrderItem newOrderItem = new OrderItem(newProduct, SizeType.S, 5, 1500.00, savedOrder);
 
         // When
         List<OrderItem> items = new ArrayList<>(savedOrder.getItems());
@@ -212,6 +211,46 @@ class OrderRepositoryTest {
         // Then
         Optional<Order> optionalOrder = underTest.findById(orderId);
         assertThat(optionalOrder).isNotPresent();
+    }
+
+    @Test
+    void itShouldValidateTotalAmountOrder() {
+        // Given
+        Order savedOrder = underTest.save(order);
+
+        // When
+        Double totalAmountOrder = savedOrder.getTotalAmountOrder();
+        Double expectedTotalAmountOrder = savedOrder.getTotalAmount() + savedOrder.getShippingCost();
+
+        // Then
+        assertEquals(expectedTotalAmountOrder, totalAmountOrder, "TotalAmountOrder should be equal to the sum of TotalAmount and ShippingCost");
+    }
+
+    @Test
+    void itShouldValidateOrderItemsNotEmpty() {
+        // Given
+        Order savedOrder = underTest.save(order);
+
+        // When
+        List<OrderItem> orderItems = savedOrder.getItems();
+
+        // Then
+        assertFalse(orderItems.isEmpty(), "Order items should not be empty");
+    }
+
+    @Test
+    void itShouldValidateOrderItemAmount() {
+        // Given
+        Order savedOrder = underTest.save(order);
+
+        // When
+        List<OrderItem> orderItems = savedOrder.getItems();
+
+        // Then
+        orderItems.forEach(orderItem -> {
+            Double expectedAmount = orderItem.getQuantity() * orderItem.getProduct().getUnitPrice();
+            assertEquals(expectedAmount, orderItem.getAmount(), "Amount should be equal to the product of Quantity and UnitPrice for the product");
+        });
     }
 
 }

@@ -1,6 +1,5 @@
-package com.secretroomwebsite.product_category;
+package com.secretroomwebsite.product.category;
 
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

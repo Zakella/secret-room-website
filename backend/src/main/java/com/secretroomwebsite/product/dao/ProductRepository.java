@@ -1,6 +1,7 @@
-package com.secretroomwebsite.product;
+package com.secretroomwebsite.product.dao;
 
 import com.secretroomwebsite.enums.Brands;
+import com.secretroomwebsite.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;

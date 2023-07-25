@@ -1,11 +1,11 @@
 package com.secretroomwebsite.productDTO;
 
-import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product.Product;
-import com.secretroomwebsite.productSizes.SizeType;
-import com.secretroomwebsite.product_category.ProductCategory;
-import com.secretroomwebsite.productImages.ProductImage;
-import com.secretroomwebsite.productSizes.Size;
+import com.secretroomwebsite.product.dto.ProductDTO;
+import com.secretroomwebsite.product.sizes.SizeType;
+import com.secretroomwebsite.product.category.ProductCategory;
+import com.secretroomwebsite.product.image.ProductImage;
+import com.secretroomwebsite.product.sizes.Size;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

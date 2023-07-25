@@ -22,6 +22,7 @@
                                     shipping_option_id INTEGER,
                                     total_quantity INTEGER,
                                     total_amount DECIMAL(10, 2),
+                                    shipping_cost INTEGER,
                                     total_amount_order DECIMAL(10, 2),
                                     FOREIGN KEY (shipping_option_id) REFERENCES shipping_options(id) ON DELETE SET NULL
             );

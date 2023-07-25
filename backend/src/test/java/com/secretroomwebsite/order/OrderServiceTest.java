@@ -1,86 +1,69 @@
 package com.secretroomwebsite.order;
 
-import com.secretroomwebsite.order.dto.OrderItemDTO;
 import com.secretroomwebsite.order.dto.OrderRequestDTO;
-import com.secretroomwebsite.product.Product;
+import com.secretroomwebsite.order.dto.OrderRequestDtoToOrderConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
-class OrderServiceTest {
+public class OrderServiceTest {
 
     @Mock
     private OrderRepository orderRepository;
-    private OrderService underTest;
+
+    @Mock
+    private OrderRequestDtoToOrderConverter dtoConverter;
+
+    @InjectMocks
+    private OrderService orderService;
 
     @BeforeEach
-    void setUp() {
-        underTest = new OrderService(orderRepository);
+    public void init() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    void itShouldCreateOrder() {
-
+    public void createOrderTest() {
+        // Arrange
+        OrderRequestDTO testOrderRequestDTO = new OrderRequestDTO();
         Order testOrder = new Order();
         testOrder.setId(1L);
-// Here you can set other properties of the Order object, if necessary
 
-// Create test Product and OrderItemDTO objects
-        Product testProduct = new Product();
-        testProduct.setId(1L);
-// Here you can set other properties of the Product object, if necessary
+        when(dtoConverter.convert(any(OrderRequestDTO.class))).thenReturn(testOrder);
+        when(orderRepository.save(any(Order.class))).thenReturn(testOrder);
 
-        OrderItemDTO testOrderItemDTO = new OrderItemDTO(
-                testProduct,
-                "M",
-                2,
-                50.0,
-                testOrder
-        );
+        // Act
+        Long createdOrderId = orderService.createOrder(testOrderRequestDTO);
 
-// Create a test OrderRequestDTO object
-        OrderRequestDTO testOrderRequestDTO = new OrderRequestDTO(
-                "John",
-                "Doe",
-                "john.doe@example.com",
-                "079241106",
-                "123 Main St",
-                1L,
-                Arrays.asList(testOrderItemDTO),
-                OrderStatus.PENDING,
-                2,
-                50.0,
-                60.0
-        );
-
-// Mock the call of the save() method of the repository
-        Mockito.when(orderRepository.save(ArgumentMatchers.any(Order.class))).thenReturn(testOrder);
-
-// Call the method under test
-        OrderController orderService;
-        Long createdOrderId = underTest.createOrder(testOrderRequestDTO);
-
-// Check the result
-        assertEquals(testOrder.getId(), createdOrderId);
-
-// Verify that the save() method of the repository was called exactly once
-        Mockito.verify(orderRepository, Mockito.times(1)).save(ArgumentMatchers.any(Order.class));
+        // Assert
+        assertNotNull(createdOrderId);
+        assertEquals(1L, createdOrderId);
     }
 
     @Test
-    void itShouldGetAllOrders() {
-        //given
-        //when
-        //then
+    public void getAllOrdersTest() {
+        // Arrange
+        Order order1 = new Order();
+        Order order2 = new Order();
 
+        List<Order> orders = Arrays.asList(order1, order2);
+
+        when(orderRepository.findAll()).thenReturn(orders);
+
+        // Act
+        List<Order> returnedOrders = orderService.getAllOrders();
+
+        // Assert
+        assertNotNull(returnedOrders);
+        assertEquals(2, returnedOrders.size());
     }
 }

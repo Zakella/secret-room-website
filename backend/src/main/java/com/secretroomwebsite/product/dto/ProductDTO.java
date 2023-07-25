@@ -1,10 +1,9 @@
-package com.secretroomwebsite.productDTO;
+package com.secretroomwebsite.product.dto;
 
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product.Product;
-import com.secretroomwebsite.productImages.ProductImage;
-import com.secretroomwebsite.productSizes.Size;
-import com.secretroomwebsite.product_category.ProductCategory;
+import com.secretroomwebsite.product.image.ProductImage;
+import com.secretroomwebsite.product.sizes.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +13,6 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter

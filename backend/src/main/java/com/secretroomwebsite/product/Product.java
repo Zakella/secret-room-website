@@ -2,14 +2,13 @@ package com.secretroomwebsite.product;
 
 import com.fasterxml.jackson.annotation.*;
 import com.secretroomwebsite.enums.Brands;
-import com.secretroomwebsite.productImages.ProductImage;
-import com.secretroomwebsite.productSizes.Size;
-import com.secretroomwebsite.product_category.ProductCategory;
+import com.secretroomwebsite.product.image.ProductImage;
+import com.secretroomwebsite.product.sizes.Size;
+import com.secretroomwebsite.product.category.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDate;
 import java.util.List;

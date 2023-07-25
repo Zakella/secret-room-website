@@ -3,7 +3,7 @@ package com.secretroomwebsite.order.items;
 
 import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.product.Product;
-import com.secretroomwebsite.productSizes.Size;
+import com.secretroomwebsite.product.sizes.SizeType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -26,9 +26,8 @@ public class OrderItem {
     @NotNull
     private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "size_id")
-    private Size size;
+    @Enumerated(EnumType.STRING)
+    private SizeType sizeType;
 
     @Column(name = "amount")
     @NotNull(message = "Amount is mandatory")
@@ -43,14 +42,14 @@ public class OrderItem {
 
     private Order order;
 
-    public OrderItem(Product product,
-                     Size size,
-                     Integer quantity,
-                     Double amount,
+    public OrderItem(@NotNull Product product,
+                     SizeType sizeType,
+                     @NotNull Integer quantity,
+                     @NotNull Double amount,
                      Order order) {
 
         this.product = product;
-        this.size = size;
+        this.sizeType = sizeType;
         this.quantity = quantity;
         this.amount = amount;
         this.order = order;
@@ -61,27 +60,15 @@ public class OrderItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         OrderItem orderItem = (OrderItem) o;
-
-        if (!Objects.equals(id, orderItem.id)) return false;
-        if (!product.equals(orderItem.product)) return false;
-        if (!Objects.equals(size, orderItem.size)) return false;
-        if (!amount.equals(orderItem.amount)) return false;
-        if (!quantity.equals(orderItem.quantity)) return false;
-        return Objects.equals(order, orderItem.order);
+        return Objects.equals(id, orderItem.id) && Objects.equals(product, orderItem.product) && sizeType == orderItem.sizeType && Objects.equals(amount, orderItem.amount) && Objects.equals(quantity, orderItem.quantity) && Objects.equals(order, orderItem.order);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + product.hashCode();
-        result = 31 * result + (size != null ? size.hashCode() : 0);
-        result = 31 * result + amount.hashCode();
-        result = 31 * result + quantity.hashCode();
-        result = 31 * result + (order != null ? order.hashCode() : 0);
-        return result;
+        return Objects.hash(id, product, sizeType, amount, quantity, order);
     }
+
 
     // ... getters and setters ...
 }

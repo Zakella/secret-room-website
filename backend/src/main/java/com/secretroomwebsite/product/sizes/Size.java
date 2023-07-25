@@ -1,4 +1,4 @@
-package com.secretroomwebsite.productSizes;
+package com.secretroomwebsite.product.sizes;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.secretroomwebsite.product.Product;

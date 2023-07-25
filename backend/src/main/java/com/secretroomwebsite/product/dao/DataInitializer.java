@@ -1,9 +1,9 @@
-package com.secretroomwebsite.productDao;
+package com.secretroomwebsite.product.dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.secretroomwebsite.product_category.ProductCategory;
-import com.secretroomwebsite.product_category.ProductCategoryRepository;
+import com.secretroomwebsite.product.category.ProductCategory;
+import com.secretroomwebsite.product.category.ProductCategoryRepository;
 import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
 import jakarta.persistence.EntityManager;
@@ -15,7 +15,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 
 import java.io.IOException;

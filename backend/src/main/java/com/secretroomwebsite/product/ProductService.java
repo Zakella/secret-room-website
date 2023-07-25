@@ -2,15 +2,11 @@ package com.secretroomwebsite.product;
 
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.exception.ResourceNotFoundException;
-import com.secretroomwebsite.productDTO.ProductDTO;
-import lombok.Setter;
+import com.secretroomwebsite.product.dao.ProductRepository;
+import com.secretroomwebsite.product.dto.ProductDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static com.secretroomwebsite.enums.Brands.BathAndBody;
 import static com.secretroomwebsite.enums.Brands.VictoriasSecret;

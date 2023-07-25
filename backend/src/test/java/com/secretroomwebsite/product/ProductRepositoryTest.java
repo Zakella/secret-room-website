@@ -1,8 +1,9 @@
 package com.secretroomwebsite.product;
 
 import com.secretroomwebsite.AbstractTestcontainers;
-import com.secretroomwebsite.product_category.ProductCategory;
-import com.secretroomwebsite.product_category.ProductCategoryRepository;
+import com.secretroomwebsite.product.category.ProductCategory;
+import com.secretroomwebsite.product.category.ProductCategoryRepository;
+import com.secretroomwebsite.product.dao.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

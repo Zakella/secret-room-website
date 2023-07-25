@@ -1,14 +1,11 @@
 package com.secretroomwebsite.product;
 
-import com.secretroomwebsite.enums.Brands;
-import com.secretroomwebsite.productDTO.ProductDTO;
+import com.secretroomwebsite.product.dto.ProductDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import static com.secretroomwebsite.enums.Brands.BathAndBody;
 import static com.secretroomwebsite.enums.Brands.VictoriasSecret;

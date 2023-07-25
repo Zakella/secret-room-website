@@ -1,7 +1,7 @@
 package com.secretroomwebsite.order;
 
-import com.secretroomwebsite.order.dto.OrderMapper;
 import com.secretroomwebsite.order.dto.OrderRequestDTO;
+import com.secretroomwebsite.order.dto.OrderRequestDtoToOrderConverter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,18 +10,21 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final OrderRequestDtoToOrderConverter dtoConverter;
 
 
+    public OrderService(OrderRepository orderRepository, OrderRequestDtoToOrderConverter dtoConverter) {
 
-    public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
+        this.dtoConverter = dtoConverter;
     }
 
     public Long createOrder(OrderRequestDTO orderDTO) {
-        Order order = OrderMapper.INSTANCE.OrderDTOtoOrder( orderDTO );
+        Order order = this.dtoConverter.convert(orderDTO);
         Order savedOrder = orderRepository.save(order);
         return savedOrder.getId();
     }
+
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }

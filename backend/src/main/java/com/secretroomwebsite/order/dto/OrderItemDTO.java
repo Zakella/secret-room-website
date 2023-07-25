@@ -1,14 +1,17 @@
 package com.secretroomwebsite.order.dto;
 
-import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.product.Product;
+import com.secretroomwebsite.product.sizes.SizeType;
+import lombok.Data;
 
-public record OrderItemDTO(
-        Product product,
-        String productSize,
-        Integer quantity,
-        Double amount,
+import java.io.Serializable;
 
-        Order order
-) {
+@Data
+public class OrderItemDTO implements Serializable {
+    private Product product;
+    private SizeType size;
+    private Integer quantity;
+    private Double amount;
+
+    // getters and setters
 }

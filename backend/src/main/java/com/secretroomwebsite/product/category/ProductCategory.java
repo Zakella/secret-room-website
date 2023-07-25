@@ -1,6 +1,5 @@
-package com.secretroomwebsite.product_category;
+package com.secretroomwebsite.product.category;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product.Product;
@@ -10,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
