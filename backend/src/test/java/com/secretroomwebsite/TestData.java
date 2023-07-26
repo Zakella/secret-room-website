@@ -19,7 +19,6 @@ public class TestData {
 
     public static Shipping getTestShipping() {
         Shipping shipping = new Shipping();
-        shipping.setId(999L);
         shipping.setName("Posta Romana");
         shipping.setDescription("some description");
         shipping.setCost(50.0);
@@ -31,7 +30,6 @@ public class TestData {
 
     public static ProductCategory getTestProductCategory() {
         ProductCategory category = new ProductCategory();
-        category.setId(999L);
         category.setDescription("Category A");
         category.setBrand(VictoriasSecret);
         category.setCategoryName("Category A");
@@ -47,7 +45,6 @@ public class TestData {
     public static Product getProduct1() {
 
         return Product.builder()
-                .id(888L)
                 .sku("SKU001")
                 .productCategory(getTestProductCategory())
                 .name("Product 1")
@@ -67,7 +64,6 @@ public class TestData {
     public static Product getProduct2() {
 
         return Product.builder()
-                .id(777L)
                 .sku("SKU001")
                 .productCategory(getTestProductCategory())
                 .name("Product 2")

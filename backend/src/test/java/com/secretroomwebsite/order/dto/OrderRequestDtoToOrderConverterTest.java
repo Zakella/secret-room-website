@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Optional;
+
 import static com.secretroomwebsite.TestData.getTestOrderRequestDTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -35,14 +37,12 @@ public class OrderRequestDtoToOrderConverterTest {
         // Arrange
         Shipping mockShipping = new Shipping();
         mockShipping.setCost(50.0);
-        when(shippingRepository.getReferenceById(1L)).thenReturn(mockShipping);
+        when(shippingRepository.findById(1L)).thenReturn(Optional.of(mockShipping));
 
         OrderRequestDTO testOrderRequestDTO = getTestOrderRequestDTO();
 
-        // Act
         Order order = converter.convert(testOrderRequestDTO);
 
-        // Assert
         assertNotNull(order);
         assertEquals(testOrderRequestDTO.getFirstName(), order.getFirstName());
         assertEquals(testOrderRequestDTO.getLastName(), order.getLastName());
@@ -56,7 +56,6 @@ public class OrderRequestDtoToOrderConverterTest {
         assertEquals(testOrderRequestDTO.getTotalAmount(), order.getTotalAmount());
         assertEquals(testOrderRequestDTO.getTotalAmountOrder(), order.getTotalAmountOrder());
 
-        // Checking OrderItems
         assertEquals(testOrderRequestDTO.getItems().size(), order.getItems().size());
         for(int i = 0; i < order.getItems().size(); i++) {
             OrderItem orderItem = order.getItems().get(i);
@@ -66,4 +65,5 @@ public class OrderRequestDtoToOrderConverterTest {
             assertEquals(testOrderRequestDTO.getItems().get(i).getAmount(), orderItem.getAmount());
         }
     }
+
 }

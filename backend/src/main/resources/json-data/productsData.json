@@ -1,13 +1,11 @@
 [
   {
-    "id": 1,
     "brand": "VictoriasSecret",
     "categoryName": "Panties",
     "description": "Discover a wide range of women’s underwear at Victoria’s Secret",
     "imageUrl": "assets/demo-images/vs-groups/p1.jpg",
     "products": [
       {
-        "id": 1,
         "sku": " '7878787'",
         "name": "Logo Cotton Hiphugger Panty",
         "description": "Posey Lace Waist Cotton Hiphugger Panty",
@@ -57,7 +55,6 @@
 
       },
       {
-        "id": 2,
         "sku": " '123455655'",
         "name": " Lace-Trim Cheeky Panty",
         "description": "Posey Lace Waist Cotton Hiphugger Panty",
@@ -101,7 +98,6 @@
 
       },
       {
-        "id": 3,
         "sku": " '11220020'",
         "name": " Posey Lace Thong Panty",
         "description": "Discover our new Posey lace fabric. It's supersoft, stretchy, and built to last. Showcased on a classic thong, in an array of colors and prints",
@@ -152,14 +148,12 @@
   },
 
   {
-    "id": 2,
     "brand": "VictoriasSecret",
     "categoryName": "Beauty",
     "description": "Discover a wide range of women’s underwear at Victoria’s Secret.",
     "imageUrl": "assets/demo-images/vs-groups/b1.jpg",
     "products": [
       {
-        "id": 4,
         "sku": " '7878787'",
         "name": "Fine Fragrance Mist",
         "description": "Float in a cloud of your favorite fragrance.",
@@ -187,7 +181,6 @@
       },
 
       {
-        "id": 5,
         "sku": " '7878787'",
         "name": "Fine Fragrance Mist",
         "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all.",
@@ -215,7 +208,6 @@
       },
 
       {
-        "id": 6,
         "sku": " '7878787'",
         "name": "Fine Fragrance Mist",
         "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all. Pair with matching Fragrance Mist for a long-lasting fragrance experience.",
@@ -245,14 +237,13 @@
   },
 
   {
-    "id": 3,
     "brand": "VictoriasSecret",
     "categoryName": "Bags & Accessories",
     "description": "Discover a wide range of women’s underwear at Victoria’s Secret.",
     "imageUrl": "assets/demo-images/vs-groups/all1.jpg",
     "products": [
       {
-        "id": 7,
+
         "sku": " '7878787'",
         "name": "The Victoria Medium Shoulder Bag",
         "description": "Structured and chic, this style wears two ways. The jewelry-like chain strap goes from shoulder to crossbody with ease. In our signature V-Quilt finish with V Monogram Hardware.",
@@ -284,7 +275,7 @@
       },
 
       {
-        "id": 8,
+
         "sku": " '7878787'",
         "name": "Express Train Case",
         "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
@@ -312,7 +303,7 @@
       },
 
       {
-        "id": 9,
+
         "sku": " '7878787'",
         "name": "The Victoria Shoulder Tote",
         "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all. Pair with matching Fragrance Mist for a long-lasting fragrance experience.",
@@ -346,16 +337,15 @@
     ]
   },
 
-
   {
-    "id": 4,
+
     "brand": "BathAndBody",
     "categoryName": "Shop Wellness",
     "description": "Center your best you with a little something new.",
     "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
     "products": [
       {
-        "id": 10,
+
         "sku": " '7878787'",
         "name": "All Body Care",
         "description": "Ultimate Hydration Body Cream",
@@ -383,7 +373,6 @@
       },
 
       {
-        "id": 11,
         "sku": " '7878787'",
         "name": "Midnight Blue Citrus",
         "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
@@ -411,102 +400,6 @@
       },
 
       {
-        "id": 12,
-        "sku": " '7878787'",
-        "name": "Sensual Amber",
-        "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
-        "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
-        "unitPrice": 250.0,
-        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
-        "active": true,
-        "unitsInStock": 100,
-        "dateCreated": "2023-07-03",
-        "lastUpdated": null,
-        "productImages": [
-          {
-            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
-            "description": ""
-          },
-
-          {
-            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dwe35dfd1d/hires/026681537_alt_1.jpg?sh=471&yocs=o_s_",
-            "description": ""
-          }
-
-
-        ],
-        "sizes": []
-      }
-    ]
-  },
-
-
-  {
-    "id": 4,
-    "brand": "BathAndBody",
-    "categoryName": "Shop Wellness",
-    "description": "Center your best you with a little something new.",
-    "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
-    "products": [
-      {
-        "id": 10,
-        "sku": " '7878787'",
-        "name": "All Body Care",
-        "description": "Ultimate Hydration Body Cream",
-        "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
-        "unitPrice": 270.0,
-        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw618e440c/hires/026674474.jpg?sh=471&yocs=o_s_",
-        "active": true,
-        "unitsInStock": 100,
-        "dateCreated": "2023-07-03",
-        "lastUpdated": null,
-        "productImages": [
-          {
-            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw002bb661/hires/026674474_alt_1.jpg?sh=471&yocs=o_s_",
-            "description": ""
-          },
-
-          {
-            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw87ffbb3d/hires/026676228.jpg?sh=471&yocs=o_s_",
-            "description": ""
-          }
-
-        ],
-        "sizes": []
-      },
-
-      {
-        "id": 11,
-        "sku": " '7878787'",
-        "name": "Midnight Blue Citrus",
-        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
-        "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
-        "unitPrice": 330.0,
-        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
-        "active": true,
-        "unitsInStock": 100,
-        "dateCreated": "2023-07-03",
-        "lastUpdated": null,
-        "productImages": [
-          {
-            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
-            "description": ""
-          },
-
-          {
-            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw70e6b9b7/hires/026674494_alt_1.jpg?sh=471&yocs=o_s_",
-            "description": ""
-          }
-
-        ],
-        "sizes": []
-      },
-
-      {
-        "id": 12,
         "sku": " '7878787'",
         "name": "Sensual Amber",
         "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
@@ -537,14 +430,103 @@
   },
 
   {
-    "id": 5,
+    "brand": "BathAndBody",
+    "categoryName": "Body Care",
+    "description": "Center your best you with a little something new.",
+      "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
+    "products": [
+      {
+
+        "sku": " '7878787'",
+        "name": "All Body Care",
+        "description": "Ultimate Hydration Body Cream",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 270.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw618e440c/hires/026674474.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw002bb661/hires/026674474_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw87ffbb3d/hires/026676228.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Midnight Blue Citrus",
+        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 330.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw70e6b9b7/hires/026674494_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Sensual Amber",
+        "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 250.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dwe35dfd1d/hires/026681537_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+
+        ],
+        "sizes": []
+      }
+    ]
+  },
+
+  {
     "brand": "BathAndBody",
     "categoryName": "Shop Men's'",
     "description": "Now open: The Men’s Shop for all things head-to-toe you.",
     "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6157884b/images/Summer2023/xcat_mensshop_su1_hps.jpg?yocs=o_s_",
     "products": [
       {
-        "id": 13,
         "sku": " '7878787'",
         "name": "Coffee & Whiskey",
         "description": "What it smells like: your favorite creamy brew made the Irish way.\n\nFragrance notes: lightly brewed coffee, hint of vanilla and bold Irish whiskey.",
@@ -567,7 +549,6 @@
       },
 
       {
-        "id": 14,
         "sku": " '7878787'",
         "name": "Ocean",
         "description": "What it smells like: a cool, refreshing dip in the deep blue sea.\n\nFragrance notes: blue cypress, vetiver and coastal air.",
@@ -590,7 +571,6 @@
       },
 
       {
-        "id": 15,
         "sku": " '7878787'",
         "name": "Bourbon",
         "description": "What it smells like: a bold, smooth, barrel-aged pour.\n\nFragrance notes: white pepper, dark amber and Kentucky oak.",
@@ -613,8 +593,6 @@
       }
     ]
   }
-
-
 
 
 

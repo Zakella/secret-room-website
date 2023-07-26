@@ -1,113 +1,108 @@
-package com.secretroomwebsite.product.dao;;
-import com.secretroomwebsite.enums.Brands;
+package com.secretroomwebsite.product.dao;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.secretroomwebsite.product.category.ProductCategory;
 import com.secretroomwebsite.product.category.ProductCategoryRepository;
+import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import com.secretroomwebsite.product.Product;
 
 
-import static com.secretroomwebsite.enums.Brands.BathAndBody;
-import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    ProductCategoryRepository productCategoryRepository;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-    ProductRepository productRepository;
+    private final ProductCategoryRepository productCategoryRepository;
+    private final ResourceLoader resourceLoader;
+    @Autowired
+    private ShippingRepository shippingRepository;
 
-    ShippingRepository shippingRepository;
-
-
-
-    public DataInitializer(ProductCategoryRepository productCategoryRepository, ProductRepository productRepository, ShippingRepository shippingRepository) {
+    public DataInitializer(ProductCategoryRepository productCategoryRepository,
+                           ResourceLoader resourceLoader,
+                           ShippingRepository shippingRepository) {
         this.productCategoryRepository = productCategoryRepository;
-        this.productRepository = productRepository;
-        this.shippingRepository = shippingRepository;
+        this.resourceLoader = resourceLoader;
     }
 
     @Override
 
     public void run(String... args) throws Exception {
 
-        ProductCategory panties = createCategory(
-                "Panties",
-                "Discover a wide range of women’s underwear at Victoria’s Secret.",
-                "assets/demo-images/vs-groups/b1.jpg",
-                VictoriasSecret);
+        truncateTable("shipping_options");
+        truncateTable("size");
+        truncateTable("product_image");
+        truncateTable("product");
+        truncateTable("product_category");
 
-        ProductCategory beauty  = createCategory(
-                "Beauty",
-                "Discover a wide range of women’s underwear at Victoria’s Secret.",
-                "assets/demo-images/vs-groups/b1.jpg",
-                VictoriasSecret);
-
-        ProductCategory accessories  = createCategory(
-                "Bags & Accessories",
-                "Discover a wide range of women’s underwear at Victoria’s Secret.",
-                "assets/demo-images/vs-groups/all1.jpg",
-                VictoriasSecret);
-
-        ProductCategory wellness  = createCategory(
-                "Shop Wellness",
-                "Center your best you with a little something new.",
-                "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
-                BathAndBody);
-
-
-        ProductCategory mens  = createCategory(
-                "Shop Men's",
-                "Now open: The Men’s Shop for all things head-to-toe you.",
-                "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6157884b/images/Summer2023/xcat_mensshop_su1_hps.jpg?yocs=o_s_",
-                BathAndBody);
-
+        writeProductsInDatabase();
+        writeShippingOptionsInDatabase();
 
 
     }
 
-    private ProductCategory createCategory(String categoryName, String description, String imageUrl, Brands brand) {
+    private void writeShippingOptionsInDatabase() throws IOException {
 
-        ProductCategory category = new ProductCategory();
-        category.setCategoryName(categoryName);
-        category.setDescription(description);
-        category.setImageUrl(imageUrl);
-        category.setBrand(brand);
+        Resource resource = resourceLoader.getResource("classpath:json-data/shippingData.json");
 
-        return productCategoryRepository.save(category);
+        // Create ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+
+        // Read JSON file and convert it to a list of ProductCategory objects
+        List<Shipping> shippingOptions = Arrays.asList(objectMapper.readValue(resource.getInputStream(), Shipping[].class));
+        shippingRepository.saveAll(shippingOptions);
+
+        System.out.println("Shipping options data initialized successfully!");
+
 
     }
 
-    private Product createProduct(String sku,
-                                  ProductCategory productCategory,
-                                  String name, String description,
-                                  Brands brand, String shortDescription,
-                                  Double unitPrice,
-                                  String imageURL,
-                                  Boolean active,
-                                  Integer unitsInStock) {
+    private void writeProductsInDatabase() throws IOException {
 
-        Product product = new Product();
-        product.setSku(sku);
-        product.setProductCategory(productCategory);
-        product.setName(name);
-        product.setDescription(description);
-        product.setBrand(brand);
-        product.setShortDescription(shortDescription);
-        product.setUnitPrice(unitPrice);
-        product.setImageURL(imageURL);
-        product.setActive(active);
-        product.setUnitsInStock(unitsInStock);
 
-        return productRepository.save(product);
+//        truncateTable("product_category");
 
+        Resource resource = resourceLoader.getResource("classpath:json-data/productsData.json");
+
+        // Create ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+
+        // Read JSON file and convert it to a list of ProductCategory objects
+        List<ProductCategory> productCategories = Arrays.asList(objectMapper.readValue(resource.getInputStream(), ProductCategory[].class));
+
+
+        // Save each ProductCategory object in the database
+        productCategoryRepository.saveAll(productCategories);
+
+        System.out.println("Product Category data initialized successfully!");
     }
 
 
+    @Transactional
+    public void truncateTable(String tableName) {
 
+        jdbcTemplate.execute(String.format("DELETE FROM %s CASCADE", tableName));
 
+    }
 
 
 }
