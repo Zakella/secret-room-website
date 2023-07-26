@@ -1,101 +1,113 @@
-//package com.secretroomwebsite.product.dao;
-//
-//import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-//import com.secretroomwebsite.product.category.ProductCategory;
-//import com.secretroomwebsite.product.category.ProductCategoryRepository;
-//import com.secretroomwebsite.shipping.Shipping;
-//import com.secretroomwebsite.shipping.ShippingRepository;
-//import jakarta.persistence.EntityManager;
-//import jakarta.persistence.PersistenceContext;
-//import jakarta.transaction.Transactional;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.core.io.Resource;
-//import org.springframework.core.io.ResourceLoader;
-//import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.stereotype.Component;
-//
-//
-//import java.io.IOException;
-//import java.util.Arrays;
-//import java.util.List;
-//
-//@Component
-//public class DataInitializer implements CommandLineRunner {
-//
-//    @PersistenceContext
-//    private EntityManager entityManager;
-//
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
-//
-//    private final ProductCategoryRepository productCategoryRepository;
-//    private final ResourceLoader resourceLoader;
-//    @Autowired
-//    private ShippingRepository shippingRepository;
-//
-//    public DataInitializer(ProductCategoryRepository productCategoryRepository,
-//                           ResourceLoader resourceLoader,
-//                           ShippingRepository shippingRepository) {
-//        this.productCategoryRepository = productCategoryRepository;
-//        this.resourceLoader = resourceLoader;
-//    }
-//
-//    @Override
-//
-//    public void run(String... args) throws Exception {
-//
-//        writeProductsInDatabase();
-//        writeShippingOptionsInDatabase();
-//
-//
-//    }
-//
-//    private void writeShippingOptionsInDatabase() throws IOException {
-//
-//            Resource resource = resourceLoader.getResource("classpath:json-data/shippingData.json");
-//
-//            // Create ObjectMapper
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            objectMapper.registerModule(new JavaTimeModule());
-//
-//            // Read JSON file and convert it to a list of ProductCategory objects
-//            List<Shipping> shippingOptions = Arrays.asList(objectMapper.readValue(resource.getInputStream(), Shipping[].class));
-//            shippingRepository.saveAll(shippingOptions);
-//
-//            System.out.println("Shipping options data initialized successfully!");
-//
-//
-//    }
-//
-//    private void writeProductsInDatabase() throws IOException {
-//
-//
-////        truncateTable("product_category");
-//
-//        Resource resource = resourceLoader.getResource("classpath:json-data/productsData.json");
-//
-//        // Create ObjectMapper
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.registerModule(new JavaTimeModule());
-//
-//        // Read JSON file and convert it to a list of ProductCategory objects
-//        List<ProductCategory> productCategories = Arrays.asList(objectMapper.readValue(resource.getInputStream(), ProductCategory[].class));
-//
-//
-//        // Save each ProductCategory object in the database
-//        productCategoryRepository.saveAll(productCategories);
-//
-//        System.out.println("Product Category data initialized successfully!");
-//    }
-//
-//
-//    @Transactional
-//    public void truncateTable(String tableName) {
-//        String query = String.format("TRUNCATE %s RESTART IDENTITY CASCADE", tableName);
-//        jdbcTemplate.execute(query);
-//    }
-//
-//
-//}
+package com.secretroomwebsite.product.dao;;
+import com.secretroomwebsite.enums.Brands;
+import com.secretroomwebsite.product.category.ProductCategory;
+import com.secretroomwebsite.product.category.ProductCategoryRepository;
+import com.secretroomwebsite.shipping.ShippingRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import com.secretroomwebsite.product.Product;
+
+
+import static com.secretroomwebsite.enums.Brands.BathAndBody;
+import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
+
+@Component
+public class DataInitializer implements CommandLineRunner {
+
+
+    ProductCategoryRepository productCategoryRepository;
+
+    ProductRepository productRepository;
+
+    ShippingRepository shippingRepository;
+
+
+
+    public DataInitializer(ProductCategoryRepository productCategoryRepository, ProductRepository productRepository, ShippingRepository shippingRepository) {
+        this.productCategoryRepository = productCategoryRepository;
+        this.productRepository = productRepository;
+        this.shippingRepository = shippingRepository;
+    }
+
+    @Override
+
+    public void run(String... args) throws Exception {
+
+        ProductCategory panties = createCategory(
+                "Panties",
+                "Discover a wide range of women’s underwear at Victoria’s Secret.",
+                "assets/demo-images/vs-groups/b1.jpg",
+                VictoriasSecret);
+
+        ProductCategory beauty  = createCategory(
+                "Beauty",
+                "Discover a wide range of women’s underwear at Victoria’s Secret.",
+                "assets/demo-images/vs-groups/b1.jpg",
+                VictoriasSecret);
+
+        ProductCategory accessories  = createCategory(
+                "Bags & Accessories",
+                "Discover a wide range of women’s underwear at Victoria’s Secret.",
+                "assets/demo-images/vs-groups/all1.jpg",
+                VictoriasSecret);
+
+        ProductCategory wellness  = createCategory(
+                "Shop Wellness",
+                "Center your best you with a little something new.",
+                "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
+                BathAndBody);
+
+
+        ProductCategory mens  = createCategory(
+                "Shop Men's",
+                "Now open: The Men’s Shop for all things head-to-toe you.",
+                "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6157884b/images/Summer2023/xcat_mensshop_su1_hps.jpg?yocs=o_s_",
+                BathAndBody);
+
+
+
+    }
+
+    private ProductCategory createCategory(String categoryName, String description, String imageUrl, Brands brand) {
+
+        ProductCategory category = new ProductCategory();
+        category.setCategoryName(categoryName);
+        category.setDescription(description);
+        category.setImageUrl(imageUrl);
+        category.setBrand(brand);
+
+        return productCategoryRepository.save(category);
+
+    }
+
+    private Product createProduct(String sku,
+                                  ProductCategory productCategory,
+                                  String name, String description,
+                                  Brands brand, String shortDescription,
+                                  Double unitPrice,
+                                  String imageURL,
+                                  Boolean active,
+                                  Integer unitsInStock) {
+
+        Product product = new Product();
+        product.setSku(sku);
+        product.setProductCategory(productCategory);
+        product.setName(name);
+        product.setDescription(description);
+        product.setBrand(brand);
+        product.setShortDescription(shortDescription);
+        product.setUnitPrice(unitPrice);
+        product.setImageURL(imageURL);
+        product.setActive(active);
+        product.setUnitsInStock(unitsInStock);
+
+        return productRepository.save(product);
+
+    }
+
+
+
+
+
+
+}
