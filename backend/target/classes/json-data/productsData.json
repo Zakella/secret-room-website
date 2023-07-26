@@ -1,157 +1,600 @@
-//[
-//  {
-//    "id": 1,
-//    "brand": "VictoriasSecret",
-//    "categoryName": "Panties",
-//    "description": "Discover a wide range of women’s underwear at Victoria’s Secret",
-//    "imageUrl": "assets/demo-images/vs-groups/p1.jpg",
-//    "products": [
-//      {
-//        "id": 1,
-//        "sku": " '7878787'",
-//        "name": "Logo Cotton Hiphugger Panty",
-//        "description": "Posey Lace Waist Cotton Hiphugger Panty",
-//        "brand": "VictoriasSecret",
-//        "shortDescription": "Some description for product not less 50",
-//        "unitPrice": 320.0,
-//        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/88/63/88636ae721e84addbc7cd65b300b442e/1122002038SK_OM_F.jpg",
-//        "active": true,
-//        "unitsInStock": 100,
-//        "dateCreated": "2023-07-03",
-//        "lastUpdated": null,
-//        "productImages": [
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/27/51/27514dabe98a4cc087e44f1eb1b9a727/1122002038SK_OF_F.jpg",
-//            "description": ""
-//          },
-//
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/zz/23/06/17/00/1122002038SK_OM_S.jpg",
-//            "description": ""
-//          },
-//
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/86/c9/86c9328dbe2d41f09d16fb14f2786f2a/1122002038SK_OM_B.jpg",
-//            "description": ""
-//          }
-//
-//
-//        ],
-//        "sizes": [
-//          {
-//            "sizeType": "M",
-//            "available": true
-//          },
-//
-//          {
-//            "sizeType": "S",
-//            "available": true
-//          },
-//
-//          {
-//            "sizeType": "XS",
-//            "available": true
-//          }
-//
-//        ]
-//
-//      },
-//      {
-//        "id": 2,
-//        "sku": " '123455655'",
-//        "name": " Lace-Trim Cheeky Panty",
-//        "description": "Posey Lace Waist Cotton Hiphugger Panty",
-//        "brand": "VictoriasSecret",
-//        "shortDescription": "Some description for product not less 50",
-//        "unitPrice": 310.0,
-//        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
-//        "active": true,
-//        "unitsInStock": 100,
-//        "dateCreated": "2023-07-03",
-//        "lastUpdated": null,
-//        "productImages": [
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
-//            "description": ""
-//          },
-//
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
-//            "description": ""
-//          }
-//
-//        ],
-//        "sizes": [
-//          {
-//            "sizeType": "M",
-//            "available": true
-//          },
-//
-//          {
-//            "sizeType": "S",
-//            "available": true
-//          },
-//
-//          {
-//            "sizeType": "XS",
-//            "available": true
-//          }
-//
-//        ]
-//
-//      },
-//      {
-//        "id": 3,
-//        "sku": " '11220020'",
-//        "name": " Posey Lace Thong Panty",
-//        "description": "Discover our new Posey lace fabric. It's supersoft, stretchy, and built to last. Showcased on a classic thong, in an array of colors and prints",
-//        "brand": "VictoriasSecret",
-//        "shortDescription": "Some description for product not less 50",
-//        "unitPrice": 320.0,
-//        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/63/55/63555d50df89468bb613fb0349c1b8dd/112192095UCQ_OM_F.jpg",
-//        "active": true,
-//        "unitsInStock": 100,
-//        "dateCreated": "2023-07-03",
-//        "lastUpdated": null,
-//        "productImages": [
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/63/55/63555d50df89468bb613fb0349c1b8dd/112192095UCQ_OM_F.jpg",
-//            "description": ""
-//          },
-//
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/37/6e/376e71db5b9a4ab48c5ae1f035066236/112192095UCQ_OM_B.jpg",
-//            "description": ""
-//          },
-//
-//          {
-//            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/75/94/759426946445419ab2ad76cb354f2c07/112192095UCQ_OF_F.jpg",
-//            "description": ""
-//          }
-//        ],
-//        "sizes": [
-//          {
-//            "sizeType": "M",
-//            "available": true
-//          },
-//
-//          {
-//            "sizeType": "S",
-//            "available": true
-//          },
-//
-//          {
-//            "sizeType": "XS",
-//            "available": true
-//          }
-//
-//        ]
-//
-//      }
-//    ]
-//  }
-//
-//
-//
-//]
-//
+[
+  {
+    "brand": "VictoriasSecret",
+    "categoryName": "Panties",
+    "description": "Discover a wide range of women’s underwear at Victoria’s Secret",
+    "imageUrl": "assets/demo-images/vs-groups/p1.jpg",
+    "products": [
+      {
+        "sku": " '7878787'",
+        "name": "Logo Cotton Hiphugger Panty",
+        "description": "Posey Lace Waist Cotton Hiphugger Panty",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 320.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/88/63/88636ae721e84addbc7cd65b300b442e/1122002038SK_OM_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/27/51/27514dabe98a4cc087e44f1eb1b9a727/1122002038SK_OF_F.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/zz/23/06/17/00/1122002038SK_OM_S.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/86/c9/86c9328dbe2d41f09d16fb14f2786f2a/1122002038SK_OM_B.jpg",
+            "description": ""
+          }
+
+
+        ],
+        "sizes": [
+          {
+            "sizeType": "M",
+            "available": true
+          },
+
+          {
+            "sizeType": "S",
+            "available": true
+          },
+
+          {
+            "sizeType": "XS",
+            "available": true
+          }
+
+        ]
+
+      },
+      {
+        "sku": " '123455655'",
+        "name": " Lace-Trim Cheeky Panty",
+        "description": "Posey Lace Waist Cotton Hiphugger Panty",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 310.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
+            "description": ""
+          }
+
+        ],
+        "sizes": [
+          {
+            "sizeType": "M",
+            "available": true
+          },
+
+          {
+            "sizeType": "S",
+            "available": true
+          },
+
+          {
+            "sizeType": "XS",
+            "available": true
+          }
+
+        ]
+
+      },
+      {
+        "sku": " '11220020'",
+        "name": " Posey Lace Thong Panty",
+        "description": "Discover our new Posey lace fabric. It's supersoft, stretchy, and built to last. Showcased on a classic thong, in an array of colors and prints",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 320.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/63/55/63555d50df89468bb613fb0349c1b8dd/112192095UCQ_OM_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/63/55/63555d50df89468bb613fb0349c1b8dd/112192095UCQ_OM_F.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/37/6e/376e71db5b9a4ab48c5ae1f035066236/112192095UCQ_OM_B.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/75/94/759426946445419ab2ad76cb354f2c07/112192095UCQ_OF_F.jpg",
+            "description": ""
+          }
+        ],
+        "sizes": [
+          {
+            "sizeType": "M",
+            "available": true
+          },
+
+          {
+            "sizeType": "S",
+            "available": true
+          },
+
+          {
+            "sizeType": "XS",
+            "available": true
+          }
+
+        ]
+
+      }
+    ]
+  },
+
+  {
+    "brand": "VictoriasSecret",
+    "categoryName": "Beauty",
+    "description": "Discover a wide range of women’s underwear at Victoria’s Secret.",
+    "imageUrl": "assets/demo-images/vs-groups/b1.jpg",
+    "products": [
+      {
+        "sku": " '7878787'",
+        "name": "Fine Fragrance Mist",
+        "description": "Float in a cloud of your favorite fragrance.",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 520.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/e2/4c/e24cbaabb5e646f18c68743ab9b8d013/111673915170_OF_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/e2/4c/e24cbaabb5e646f18c68743ab9b8d013/111673915170_OF_F.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/cd/b3/cdb3a487f1944d5a8f05ef14a733ea47/SU20_BTY_058_e10552951.jpg",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Fine Fragrance Mist",
+        "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all.",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 520.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/cd/13/cd136324437645c488c246d31e390e91/112047171340_OF_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/91/23/912337a59b4d4a06b39c1e2e95126778/112047174285_OF_F.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/a8/f8/a8f86d6664e741a0ab86c03ea931aa85/112047170037_OF_F.jpg",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Fine Fragrance Mist",
+        "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all. Pair with matching Fragrance Mist for a long-lasting fragrance experience.",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 250.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/8a/3f/8a3f7697fa6f4b78900d44dccf7c6cb9/112047184285_OF_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/cb/cf/cbcfc5c15bdb4b02b9999e6013b17c5f/111910611340_OF_F.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/56/3c/563ce0ba5e5a414eb41383b343c5e83a/111910618527_OF_F.jpg",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      }
+    ]
+  },
+
+  {
+    "brand": "VictoriasSecret",
+    "categoryName": "Bags & Accessories",
+    "description": "Discover a wide range of women’s underwear at Victoria’s Secret.",
+    "imageUrl": "assets/demo-images/vs-groups/all1.jpg",
+    "products": [
+      {
+
+        "sku": " '7878787'",
+        "name": "The Victoria Medium Shoulder Bag",
+        "description": "Structured and chic, this style wears two ways. The jewelry-like chain strap goes from shoulder to crossbody with ease. In our signature V-Quilt finish with V Monogram Hardware.",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 950.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/45/aa/45aaf695c6784d6b97099e747b0749ed/11175324054R_OM_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/45/aa/45aaf695c6784d6b97099e747b0749ed/11175324054R_OM_F.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/5a/3b/5a3b066206e94fa8879656b35f2bb05b/11175324054R_OM_B.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/12/d7/12d702222f204c9da35a02ed2d9a77a2/11175324054R_OF_B.jpg",
+            "description": ""
+          }
+        ],
+        "sizes": []
+      },
+
+      {
+
+        "sku": " '7878787'",
+        "name": "Express Train Case",
+        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 850.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/47/55/4755658a388148c09a19aff10cf825b4/11197860696P_OM_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/5b/47/5b47fde748144d6e842c017d10637141/11197860696P_OM_B.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/d4/9a/d49a7013563f4c5b856ffebc6031400a/11197860696P_OF_DET.jpg",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+
+        "sku": " '7878787'",
+        "name": "The Victoria Shoulder Tote",
+        "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all. Pair with matching Fragrance Mist for a long-lasting fragrance experience.",
+        "brand": "VictoriasSecret",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 250.0,
+        "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/33/05/3305d4fdd33b4365881f3fc3c6e5f125/11175325001C_OM_F.jpg",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/33/05/3305d4fdd33b4365881f3fc3c6e5f125/11175325001C_OM_F.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/f0/fe/f0fe5a8f618c404cafabd129b0c440a6/11175325001C_OF_B.jpg",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/5c/4e/5c4eef3e49544c9da99f2ecce223a5c3/11175325001C_OM_S.jpg",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      }
+    ]
+  },
+
+  {
+
+    "brand": "BathAndBody",
+    "categoryName": "Shop Wellness",
+    "description": "Center your best you with a little something new.",
+    "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
+    "products": [
+      {
+
+        "sku": " '7878787'",
+        "name": "All Body Care",
+        "description": "Ultimate Hydration Body Cream",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 270.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw618e440c/hires/026674474.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw002bb661/hires/026674474_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw87ffbb3d/hires/026676228.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Midnight Blue Citrus",
+        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 330.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw70e6b9b7/hires/026674494_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Sensual Amber",
+        "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 250.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dwe35dfd1d/hires/026681537_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+
+        ],
+        "sizes": []
+      }
+    ]
+  },
+
+  {
+    "brand": "BathAndBody",
+    "categoryName": "Body Care",
+    "description": "Center your best you with a little something new.",
+      "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
+    "products": [
+      {
+
+        "sku": " '7878787'",
+        "name": "All Body Care",
+        "description": "Ultimate Hydration Body Cream",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 270.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw618e440c/hires/026674474.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw002bb661/hires/026674474_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw87ffbb3d/hires/026676228.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Midnight Blue Citrus",
+        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 330.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw70e6b9b7/hires/026674494_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Sensual Amber",
+        "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 250.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          },
+
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dwe35dfd1d/hires/026681537_alt_1.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+
+        ],
+        "sizes": []
+      }
+    ]
+  },
+
+  {
+    "brand": "BathAndBody",
+    "categoryName": "Shop Men's'",
+    "description": "Now open: The Men’s Shop for all things head-to-toe you.",
+    "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6157884b/images/Summer2023/xcat_mensshop_su1_hps.jpg?yocs=o_s_",
+    "products": [
+      {
+        "sku": " '7878787'",
+        "name": "Coffee & Whiskey",
+        "description": "What it smells like: your favorite creamy brew made the Irish way.\n\nFragrance notes: lightly brewed coffee, hint of vanilla and bold Irish whiskey.",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 280.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw7bf69228/hires/026651009.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw7bf69228/hires/026651009.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Ocean",
+        "description": "What it smells like: a cool, refreshing dip in the deep blue sea.\n\nFragrance notes: blue cypress, vetiver and coastal air.",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 330.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw3d1deafa/hires/026636424.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw3d1deafa/hires/026636424.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      },
+
+      {
+        "sku": " '7878787'",
+        "name": "Bourbon",
+        "description": "What it smells like: a bold, smooth, barrel-aged pour.\n\nFragrance notes: white pepper, dark amber and Kentucky oak.",
+        "brand": "BathAndBody",
+        "shortDescription": "Some description for product not less 50",
+        "unitPrice": 250.0,
+        "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw77717f61/hires/026636425.jpg?sh=471&yocs=o_s_",
+        "active": true,
+        "unitsInStock": 100,
+        "dateCreated": "2023-07-03",
+        "lastUpdated": null,
+        "productImages": [
+          {
+            "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw77717f61/hires/026636425.jpg?sh=471&yocs=o_s_",
+            "description": ""
+          }
+
+        ],
+        "sizes": []
+      }
+    ]
+  }
+
+
+
+]
+
