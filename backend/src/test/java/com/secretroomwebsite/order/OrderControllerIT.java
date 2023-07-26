@@ -45,8 +45,6 @@ class OrderControllerIT extends AbstractTestcontainers {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
 
-    private TestDataProvider dataProvider;
-
     private OrderRequestDTO orderRequestDTO;
 
 
@@ -54,7 +52,7 @@ class OrderControllerIT extends AbstractTestcontainers {
     void setUp() {
 
 
-        this.dataProvider = new TestDataProvider(shippingRepository, productRepository, productCategoryRepository);
+        TestDataProvider dataProvider = new TestDataProvider(shippingRepository, productRepository, productCategoryRepository);
         this.orderRequestDTO = dataProvider.prepareOrderDTOForTests();
 
     }
