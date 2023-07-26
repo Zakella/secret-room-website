@@ -37,7 +37,7 @@ public class OrderRequestDtoToOrderConverterTest {
         // Arrange
         Shipping mockShipping = new Shipping();
         mockShipping.setCost(50.0);
-        when(shippingRepository.findById(1L)).thenReturn(Optional.of(mockShipping));
+        when(shippingRepository.findById(mockShipping.getId())).thenReturn(Optional.of(mockShipping));
 
         OrderRequestDTO testOrderRequestDTO = getTestOrderRequestDTO();
 
