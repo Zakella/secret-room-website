@@ -1,5 +1,6 @@
 package com.secretroomwebsite.order.dto;
 
+import com.secretroomwebsite.exception.ResourceNotFoundException;
 import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.shipping.Shipping;
@@ -20,7 +21,13 @@ public class OrderRequestDtoToOrderConverter {
 
     public Order convert(OrderRequestDTO orderRequestDTO) {
 
-        Shipping shipping = this.shippingRepository.getReferenceById(orderRequestDTO.getShippingOption().getId());
+        System.out.println("Converting orderRequestDTO: " + orderRequestDTO);
+
+        Shipping shipping = this.shippingRepository.findById(orderRequestDTO.getShippingOption().getId())
+                .orElseThrow(() -> {
+                    System.out.println("Failed to find shipping option with id: " + orderRequestDTO.getShippingOption().getId());
+                    return new ResourceNotFoundException("Shipping option not found");
+                });
 
         Order order = new Order();
         order.setFirstName(orderRequestDTO.getFirstName());

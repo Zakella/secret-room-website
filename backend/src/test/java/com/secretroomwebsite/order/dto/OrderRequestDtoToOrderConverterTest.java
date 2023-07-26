@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static com.secretroomwebsite.TestData.getTestOrderRequestDTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -36,7 +37,7 @@ public class OrderRequestDtoToOrderConverterTest {
         mockShipping.setCost(50.0);
         when(shippingRepository.getReferenceById(1L)).thenReturn(mockShipping);
 
-        OrderRequestDTO testOrderRequestDTO = TestDataProvider.createTestOrderRequestDTO();
+        OrderRequestDTO testOrderRequestDTO = getTestOrderRequestDTO();
 
         // Act
         Order order = converter.convert(testOrderRequestDTO);

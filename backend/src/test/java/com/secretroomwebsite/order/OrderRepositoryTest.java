@@ -1,5 +1,6 @@
 package com.secretroomwebsite.order;
 
+import com.secretroomwebsite.AbstractTestcontainers;
 import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.dao.ProductRepository;
@@ -28,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class OrderRepositoryTest {
+class OrderRepositoryTest extends AbstractTestcontainers {
 
     @Autowired
     private OrderRepository underTest;

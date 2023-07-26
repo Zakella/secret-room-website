@@ -1,49 +1,78 @@
-    package com.secretroomwebsite.order;
+package com.secretroomwebsite.order;
 
-    import com.secretroomwebsite.TestDataProvider;
-    import com.secretroomwebsite.order.dto.OrderRequestDTO;
-    import org.junit.jupiter.api.BeforeEach;
-    import org.junit.jupiter.api.Test;
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.boot.test.context.SpringBootTest;
-    import org.springframework.http.MediaType;
-    import org.springframework.test.web.reactive.server.WebTestClient;
-    import reactor.core.publisher.Mono;
+import com.secretroomwebsite.AbstractTestcontainers;
+import com.secretroomwebsite.TestDataProvider;
+import com.secretroomwebsite.order.dto.OrderItemDTO;
+import com.secretroomwebsite.order.dto.OrderRequestDTO;
+import com.secretroomwebsite.product.Product;
+import com.secretroomwebsite.product.category.ProductCategory;
+import com.secretroomwebsite.product.dao.ProductRepository;
+import com.secretroomwebsite.shipping.Shipping;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Mono;
 
-    import static org.junit.jupiter.api.Assertions.*;
-    import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-    import static org.springframework.web.reactive.function.BodyInserters.fromValue;
+import static com.secretroomwebsite.TestData.*;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-    @SpringBootTest(webEnvironment = RANDOM_PORT)
-    class OrderControllerIT {
+import com.secretroomwebsite.product.category.ProductCategoryRepository;
+import com.secretroomwebsite.shipping.ShippingRepository;
 
-        @Autowired
-        private WebTestClient webTestClient;
+import java.util.List;
 
-        private static final String ORDERS_PATH = "/api/v1/orders";
+@SpringBootTest(webEnvironment = RANDOM_PORT)
+//    @AutoConfigureWebTestClient
+//@DataJpaTest
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class OrderControllerIT extends AbstractTestcontainers {
+
+    @Autowired
+    private WebTestClient webTestClient;
+
+    private static final String ORDERS_PATH = "/api/v1/orders";
 
 
+    @Autowired
+    private ShippingRepository shippingRepository;
 
-        @BeforeEach
-        void setUp() {
-        }
+    @Autowired
+    private ProductRepository productRepository;
 
-        @Test
-        void itShouldCreateOrder() {
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
-            OrderRequestDTO orderRequestDTO = TestDataProvider.createTestOrderRequestDTO();
+    private TestDataProvider dataProvider;
 
-            webTestClient.post()
-                    .uri(ORDERS_PATH)
-                    .accept(MediaType.APPLICATION_JSON)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(Mono.just(orderRequestDTO), OrderRequestDTO.class)
-                    .exchange()
-                    .expectStatus()
-                    .isCreated()
-                    .returnResult(Long.class);
+    private OrderRequestDTO orderRequestDTO;
 
-        }
 
+    @BeforeEach
+    void setUp() {
+
+
+        this.dataProvider = new TestDataProvider(shippingRepository, productRepository, productCategoryRepository);
+        this.orderRequestDTO = dataProvider.prepareOrderDTOForTests();
 
     }
+
+    @Test
+    void itShouldCreateOrder() {
+
+        webTestClient.post()
+                .uri(ORDERS_PATH)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(this.orderRequestDTO), OrderRequestDTO.class)
+                .exchange()
+                .expectStatus()
+                .isCreated()
+                .returnResult(Long.class);
+
+    }
+
+
+}
