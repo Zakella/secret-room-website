@@ -19,6 +19,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 
 public class Order {
 

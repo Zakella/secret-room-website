@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {ProductService} from "./services/products-services/product.service";
+import {ProductService} from "./services/product.service";
 import { HeaderComponent } from './components/headers/header/header.component';
 import { SubHeaderComponent } from './components/headers/sub-header/sub-header.component';
 import {LanguagePanelComponent} from "./components/headers/language-pannel/language-panel.component";

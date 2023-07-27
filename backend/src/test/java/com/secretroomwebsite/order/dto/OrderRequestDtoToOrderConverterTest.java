@@ -2,6 +2,7 @@ package com.secretroomwebsite.order.dto;
 
 import com.secretroomwebsite.TestDataProvider;
 import com.secretroomwebsite.order.Order;
+import com.secretroomwebsite.order.OrderStatus;
 import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
@@ -14,8 +15,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Optional;
 
 import static com.secretroomwebsite.TestData.getTestOrderRequestDTO;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 
@@ -44,6 +44,7 @@ public class OrderRequestDtoToOrderConverterTest {
         Order order = converter.convert(testOrderRequestDTO);
 
         assertNotNull(order);
+        assertEquals(order.getStatus(), OrderStatus.PENDING);
         assertEquals(testOrderRequestDTO.getFirstName(), order.getFirstName());
         assertEquals(testOrderRequestDTO.getLastName(), order.getLastName());
         assertEquals(testOrderRequestDTO.getEmail(), order.getEmail());
@@ -51,7 +52,6 @@ public class OrderRequestDtoToOrderConverterTest {
         assertEquals(testOrderRequestDTO.getDeliveryAddress(), order.getDeliveryAddress());
         assertEquals(mockShipping, order.getShippingOption());
         assertEquals(mockShipping.getCost(), order.getShippingCost());
-        assertEquals(testOrderRequestDTO.getStatus(), order.getStatus());
         assertEquals(testOrderRequestDTO.getTotalQuantity(), order.getTotalQuantity());
         assertEquals(testOrderRequestDTO.getTotalAmount(), order.getTotalAmount());
         assertEquals(testOrderRequestDTO.getTotalAmountOrder(), order.getTotalAmountOrder());
@@ -63,6 +63,8 @@ public class OrderRequestDtoToOrderConverterTest {
             assertEquals(testOrderRequestDTO.getItems().get(i).getSize(), orderItem.getSizeType());
             assertEquals(testOrderRequestDTO.getItems().get(i).getQuantity(), orderItem.getQuantity());
             assertEquals(testOrderRequestDTO.getItems().get(i).getAmount(), orderItem.getAmount());
+            assertEquals(order, orderItem.getOrder());
+
         }
     }
 

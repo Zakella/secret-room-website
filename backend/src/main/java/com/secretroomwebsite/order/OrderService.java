@@ -2,6 +2,8 @@ package com.secretroomwebsite.order;
 
 import com.secretroomwebsite.order.dto.OrderRequestDTO;
 import com.secretroomwebsite.order.dto.OrderRequestDtoToOrderConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,8 @@ public class OrderService {
     public Long createOrder(OrderRequestDTO orderDTO) {
         Order order = this.dtoConverter.convert(orderDTO);
         Order savedOrder = orderRepository.save(order);
+        Logger logger = LoggerFactory.getLogger(Order.class);
+        logger.info(String.valueOf(savedOrder));
         return savedOrder.getId();
     }
 
