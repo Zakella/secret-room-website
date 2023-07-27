@@ -1,5 +1,7 @@
 package com.secretroomwebsite.order;
 
+import com.secretroomwebsite.adress.Address;
+import com.secretroomwebsite.customer.Customer;
 import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.shipping.Shipping;
 import jakarta.persistence.*;
@@ -27,6 +29,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="order_tracking_number")
+    private String orderTrackingNumber;
+
     @NotNull
     private OrderStatus status;
 
@@ -53,10 +58,6 @@ public class Order {
     @NotBlank
     private String phoneNumber;
 
-
-    @NotBlank
-    private String deliveryAddress;
-
     @ManyToOne
     @JoinColumn(name = "shipping_option_id")
     private Shipping shippingOption;
@@ -73,27 +74,22 @@ public class Order {
     @NotNull
     private Double totalAmountOrder;
 
-
-
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     @NotEmpty
     @ToString.Exclude
     private List<OrderItem> items;
 
-    public Order() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipping_address_id", referencedColumnName = "id")
+    private Address shippingAddress;
+
+    String comment;
+
+    public Order() {}
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Objects.equals(id, order.id) && status == order.status && Objects.equals(placementDate, order.placementDate) && Objects.equals(firstName, order.firstName) && Objects.equals(lastName, order.lastName) && Objects.equals(email, order.email) && Objects.equals(phoneNumber, order.phoneNumber) && Objects.equals(deliveryAddress, order.deliveryAddress) && Objects.equals(shippingOption, order.shippingOption) && Objects.equals(totalQuantity, order.totalQuantity) && Objects.equals(totalAmount, order.totalAmount) && Objects.equals(shippingCost, order.shippingCost) && Objects.equals(totalAmountOrder, order.totalAmountOrder) && Objects.equals(items, order.items);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, status, placementDate, firstName, lastName, email, phoneNumber, deliveryAddress, shippingOption, totalQuantity, totalAmount, shippingCost, totalAmountOrder, items);
-    }
 }

@@ -1,6 +1,7 @@
 package com.secretroomwebsite.product.sizes;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.secretroomwebsite.enums.SizeType;
 import com.secretroomwebsite.product.Product;
 import jakarta.persistence.*;
 import lombok.*;

@@ -16,8 +16,11 @@
     <include file="/db/changelog/v1.01/create-product-images.xml"></include>
     <include file="/db/changelog/v1.01/create-products-sizes.xml"></include>
     <include file="/db/changelog/v1.01/create-shipping-table.xml"></include>
+    <include file="/db/changelog/v1.01/create-customer-table.xml"></include>
+    <include file="/db/changelog/v1.01/create-address.xml"></include>
     <include file="/db/changelog/v1.01/create-order-table.xml"></include>
     <include file="/db/changelog/v1.01/create-order-items-table.xml"></include>
+
 
 
 </databaseChangeLog>

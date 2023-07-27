@@ -1,27 +1,17 @@
 package com.secretroomwebsite;
 
-import com.secretroomwebsite.order.OrderStatus;
 import com.secretroomwebsite.order.dto.OrderItemDTO;
 import com.secretroomwebsite.order.dto.OrderRequestDTO;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.category.ProductCategory;
 import com.secretroomwebsite.product.category.ProductCategoryRepository;
 import com.secretroomwebsite.product.dao.ProductRepository;
-import com.secretroomwebsite.product.sizes.SizeType;
 import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
-import org.junit.experimental.categories.Category;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static com.secretroomwebsite.TestData.*;
-import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
 
 
 public class TestDataProvider {

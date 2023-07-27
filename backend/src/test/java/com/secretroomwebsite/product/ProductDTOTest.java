@@ -1,8 +1,7 @@
 package com.secretroomwebsite.product;
 
-import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.dto.ProductDTO;
-import com.secretroomwebsite.product.sizes.SizeType;
+import com.secretroomwebsite.enums.SizeType;
 import com.secretroomwebsite.product.category.ProductCategory;
 import com.secretroomwebsite.product.image.ProductImage;
 import com.secretroomwebsite.product.sizes.Size;

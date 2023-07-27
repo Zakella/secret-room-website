@@ -1,11 +1,16 @@
 package com.secretroomwebsite;
 
+import com.secretroomwebsite.adress.Address;
+import com.secretroomwebsite.checkout.purchase.Purchase;
+import com.secretroomwebsite.customer.Customer;
+import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderStatus;
 import com.secretroomwebsite.order.dto.OrderItemDTO;
 import com.secretroomwebsite.order.dto.OrderRequestDTO;
+import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.category.ProductCategory;
-import com.secretroomwebsite.product.sizes.SizeType;
+import com.secretroomwebsite.enums.SizeType;
 import com.secretroomwebsite.shipping.Shipping;
 
 import java.time.LocalDate;
@@ -122,6 +127,62 @@ public class TestData {
         testOrderRequestDTO.setTotalAmountOrder(200.0);
         return testOrderRequestDTO;
 
+    }
+
+    public static Purchase getTestPurchase() {
+        Purchase purchase = new Purchase();
+        purchase.setCustomer(getTestCustomer());
+        purchase.setShippingAddress(getTestAddress());
+        purchase.setOrder(getTestOrder());
+        purchase.setOrderItems(getTestOrderItems());
+        return purchase;
+    }
+
+    public static List<OrderItem> getTestOrderItems() {
+        return List.of(
+                new OrderItem(getProduct1(), SizeType.S, 5, 50.00, getTestOrder()),
+                new OrderItem(getProduct2(), null, 5, 100.00, getTestOrder())
+        );
+    }
+
+    public static Order getTestOrder() {
+        Order order = new Order();
+        order.setStatus(OrderStatus.PENDING);
+        // Set properties for order
+        order.setFirstName("Test First Name");
+        order.setLastName("Test Last Name");
+        order.setEmail("test@example.com");
+        order.setPhoneNumber("079294111");
+//            order.setDeliveryAddress("Test Delivery Address");
+        order.setShippingOption(getTestShipping());
+        order.setTotalQuantity(10);
+        order.setTotalAmount(150.00);
+        order.setShippingCost(50.00);
+        order.setTotalAmountOrder(200.00);
+        return order;
+
+    }
+
+
+    private static Address getTestAddress() {
+
+        Address address = new Address();
+        address.setCity("Bucharest");
+        address.setCountry("Moldova");
+        address.setStreet("Strada");
+        address.setZipCode("123456");
+
+
+        return address;
+    }
+
+    public static Customer getTestCustomer() {
+        Customer customer = new Customer();
+        customer.setName("John");
+        customer.setLastName("Doe");
+        customer.setEmail("joe@gmail.com@gmail.com");
+        customer.setPhone("079241106");
+        return customer;
     }
 
 

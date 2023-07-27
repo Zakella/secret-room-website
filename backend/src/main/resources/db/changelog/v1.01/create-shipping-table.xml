@@ -14,22 +14,12 @@
                                               name VARCHAR(255) NOT NULL,
                                               cost DECIMAL(10, 2) NOT NULL,
                                               description TEXT,
-                                              expected_delivery INTEGER
+                                              expected_delivery_from INTEGER,
+                                              expected_delivery_to INTEGER
             );
 
      </sql>
     </changeSet>
 
-    <changeSet id="1" author="admin">
 
-
-        <sql>
-
-            ALTER TABLE shipping_options
-                RENAME COLUMN expected_delivery TO expected_delivery_from;
-
-            ALTER TABLE shipping_options
-                ADD COLUMN expected_delivery_to INTEGER;
-        </sql>
-    </changeSet>
 </databaseChangeLog>

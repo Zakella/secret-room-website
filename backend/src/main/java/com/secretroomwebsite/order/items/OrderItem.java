@@ -3,7 +3,7 @@ package com.secretroomwebsite.order.items;
 
 import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.product.Product;
-import com.secretroomwebsite.product.sizes.SizeType;
+import com.secretroomwebsite.enums.SizeType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

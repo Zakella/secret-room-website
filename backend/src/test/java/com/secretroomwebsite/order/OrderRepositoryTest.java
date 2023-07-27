@@ -4,8 +4,7 @@ import com.secretroomwebsite.AbstractTestcontainers;
 import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.dao.ProductRepository;
-import com.secretroomwebsite.product.sizes.Size;
-import com.secretroomwebsite.product.sizes.SizeType;
+import com.secretroomwebsite.enums.SizeType;
 import com.secretroomwebsite.product.category.ProductCategory;
 import com.secretroomwebsite.product.category.ProductCategoryRepository;
 import com.secretroomwebsite.shipping.Shipping;
@@ -17,6 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import static com.secretroomwebsite.TestData.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
@@ -48,70 +49,23 @@ class OrderRepositoryTest extends AbstractTestcontainers {
 
     @BeforeEach
         void setUp() {
-            Shipping shipping = new Shipping("Test Shipping", 10.0, "Test Description", 1, 3);
+            Shipping shipping = getTestShipping();
             shippingRepository.save(shipping);
 
-            order = new Order();
-            order.setStatus(OrderStatus.PENDING);
-            // Set properties for order
-            order.setFirstName("Test First Name");
-            order.setLastName("Test Last Name");
-            order.setEmail("test@example.com");
-            order.setPhoneNumber("079294111");
-            order.setDeliveryAddress("Test Delivery Address");
-            order.setShippingOption(shipping);
-            order.setTotalQuantity(10);
-            order.setTotalAmount(150.00);
-            order.setShippingCost(50.00);
-            order.setTotalAmountOrder(200.00);
+            order = getTestOrder();
 
-
-            ProductCategory category = new ProductCategory();
-            category.setDescription("Category A");
-            category.setBrand(VictoriasSecret);
-            category.setCategoryName("Category A");
-            category.setImageUrl("assets/tests");
+            ProductCategory category = getTestProductCategory();
             productCategoryRepository.save(category);
 
-            Product product = Product.builder()
-                    .sku("SKU001")
-                    .productCategory(category)
-                    .name("Product 1")
-                    .description("Description 1")
-                    .brand(VictoriasSecret)
-                    .shortDescription("Short Description 1")
-                    .unitPrice(10.0)
-                    .imageURL("image1.jpg")
-                    .active(true)
-                    .unitsInStock(100)
-                    .dateCreated(LocalDate.now())
-                    .build();
+            Product product = getProduct1();
 
-            Product product2 = Product.builder()
-                    .sku("SKU001")
-                    .productCategory(category)
-                    .name("Product 2")
-                    .description("Description 2")
-                    .brand(VictoriasSecret)
-                    .shortDescription("Short Description 2")
-                    .unitPrice(20.0)
-                    .imageURL("image2.jpg")
-                    .active(true)
-                    .unitsInStock(200)
-                    .dateCreated(LocalDate.now())
-                    .build();
+            Product product2 = getProduct2();
 
             this.productRepository.save(product);
-
             this.productRepository.save(product2);
 
+            order.setItems(getTestOrderItems());
 
-            OrderItem orderItem1 = new OrderItem(product, SizeType.S, 5, 50.00, order);
-            OrderItem orderItem2 = new OrderItem(product2, null, 5, 100.00, order);
-
-            order.setItems(List.of(orderItem1, orderItem2));
-
-//            this.orderId = order.getId();
         }
 
     @Test
@@ -154,26 +108,10 @@ class OrderRepositoryTest extends AbstractTestcontainers {
         Order savedOrder = underTest.save(order);
         Long orderId = savedOrder.getId();
 
-        ProductCategory category = new ProductCategory();
-        category.setDescription("Category B");
-        category.setBrand(VictoriasSecret);
-        category.setCategoryName("Category B");
-        category.setImageUrl("assets/tests");
+        ProductCategory category = getTestProductCategory();
         productCategoryRepository.save(category);
 
-        Product newProduct = Product.builder()
-                .sku("SKU002")
-                .productCategory(category)
-                .name("Product 3")
-                .description("Description 3")
-                .brand(VictoriasSecret)
-                .shortDescription("Short Description 3")
-                .unitPrice(30.0)
-                .imageURL("image3.jpg")
-                .active(true)
-                .unitsInStock(300)
-                .dateCreated(LocalDate.now())
-                .build();
+        Product newProduct = getProduct1();
 
         this.productRepository.save(newProduct);
         OrderItem newOrderItem = new OrderItem(newProduct, SizeType.S, 5, 1500.00, savedOrder);

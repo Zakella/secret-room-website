@@ -1,7 +1,7 @@
 package com.secretroomwebsite.order.dto;
 
 import com.secretroomwebsite.product.Product;
-import com.secretroomwebsite.product.sizes.SizeType;
+import com.secretroomwebsite.enums.SizeType;
 import lombok.Data;
 
 import java.io.Serializable;

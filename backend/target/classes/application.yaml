@@ -1,7 +1,7 @@
 server:
   port: 8081
   error:
-    include-message: always
+    include-message: on_param
 
 
 spring:

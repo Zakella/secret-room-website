@@ -12,19 +12,24 @@
 
             CREATE TABLE orders (
                                     id SERIAL PRIMARY KEY,
-                                    placement_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                     status VARCHAR(255) NOT NULL,
+                                    order_tracking_number VARCHAR(50) NOT NULL,
+                                    placement_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                     first_name VARCHAR(255) NOT NULL,
                                     last_name VARCHAR(255) NOT NULL,
-                                    email VARCHAR(255) NOT NULL,
+                                    email VARCHAR(255),
                                     phone_number VARCHAR(255) NOT NULL,
-                                    delivery_address VARCHAR(255) NOT NULL,
                                     shipping_option_id INTEGER,
-                                    total_quantity INTEGER,
-                                    total_amount DECIMAL(10, 2),
-                                    shipping_cost INTEGER,
-                                    total_amount_order DECIMAL(10, 2),
-                                    FOREIGN KEY (shipping_option_id) REFERENCES shipping_options(id) ON DELETE SET NULL
+                                    total_quantity INTEGER NOT NULL,
+                                    total_amount DECIMAL(10, 2) NOT NULL,
+                                    shipping_cost DECIMAL(10, 2) NOT NULL,
+                                    total_amount_order DECIMAL(10, 2) NOT NULL,
+                                    customer_id INTEGER,
+                                    shipping_address_id INTEGER,
+                                    comment TEXT,
+                                    FOREIGN KEY (shipping_option_id) REFERENCES shipping_options(id) ON DELETE SET NULL,
+                                    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE SET NULL,
+                                    FOREIGN KEY (shipping_address_id) REFERENCES address(id) ON DELETE SET NULL
             );
 
      </sql>

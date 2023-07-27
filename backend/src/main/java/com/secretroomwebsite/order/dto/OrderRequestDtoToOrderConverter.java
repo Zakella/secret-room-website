@@ -38,7 +38,7 @@ public class OrderRequestDtoToOrderConverter {
         order.setLastName(orderRequestDTO.getLastName());
         order.setEmail(orderRequestDTO.getEmail());
         order.setPhoneNumber(orderRequestDTO.getPhoneNumber());
-        order.setDeliveryAddress(orderRequestDTO.getDeliveryAddress());
+//        order.setDeliveryAddress(orderRequestDTO.getDeliveryAddress());
         order.setShippingOption(shipping);
         order.setShippingCost(shipping.getCost());
         order.setTotalQuantity(orderRequestDTO.getTotalQuantity());

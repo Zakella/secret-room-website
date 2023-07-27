@@ -6,7 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
@@ -38,6 +40,5 @@ public class Customer {
     private String phone;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    @ToString.Exclude
-    private List<Order> orders;
+    private Set<Order> orders = new HashSet<>();
 }

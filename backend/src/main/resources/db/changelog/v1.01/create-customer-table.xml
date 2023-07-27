@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="admin">
+        <sql>
+            CREATE TABLE customers
+            (
+                id         serial PRIMARY KEY,
+                first_name text NOT NULL,
+                last_name  text NOT NULL,
+                email      text,
+                phone      text NOT NULL UNIQUE
+            );
+        </sql>
+    </changeSet>
+
+    <!-- Add more changeSets here with unique IDs if needed -->
+
+</databaseChangeLog>
