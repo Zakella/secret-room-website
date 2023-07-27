@@ -58,13 +58,18 @@ class OrderRepositoryTest extends AbstractTestcontainers {
             productCategoryRepository.save(category);
 
             Product product = getProduct1();
+            product.setProductCategory(category);
 
             Product product2 = getProduct2();
+            product2.setProductCategory(category);
 
-            this.productRepository.save(product);
-            this.productRepository.save(product2);
+            Product savedProduct1 = this.productRepository.save(product);
+            Product savedProduct2 = this.productRepository.save(product2);
 
-            order.setItems(getTestOrderItems());
+            order.setItems(List.of(
+                    new OrderItem(savedProduct1, SizeType.S, 5, 50.00, order),
+                    new OrderItem(savedProduct2, null, 5, 100.00, order)
+            ));
 
         }
 
@@ -112,6 +117,7 @@ class OrderRepositoryTest extends AbstractTestcontainers {
         productCategoryRepository.save(category);
 
         Product newProduct = getProduct1();
+        newProduct.setProductCategory(category);
 
         this.productRepository.save(newProduct);
         OrderItem newOrderItem = new OrderItem(newProduct, SizeType.S, 5, 1500.00, savedOrder);

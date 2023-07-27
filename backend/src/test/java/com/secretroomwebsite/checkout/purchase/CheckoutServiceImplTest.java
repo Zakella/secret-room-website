@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.secretroomwebsite.TestData.getTestPurchase;
+import static org.assertj.core.api.Assertions.as;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -43,6 +44,9 @@ class CheckoutServiceImplTest {
         // assert
 
         assertThat(customer).isEqualTo(purchase.getCustomer());
+        assertThat(response.orderTrackingNumber()).isEqualTo(purchase.getOrder().getOrderTrackingNumber());
+        assertThat(response.orderTrackingNumber()).isNotNull();
+        assertThat(response.orderTrackingNumber()).isNotEmpty();
         verify(customerRepository).save(customer);
 
     }

@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
 
@@ -134,31 +135,43 @@ public class TestData {
         purchase.setCustomer(getTestCustomer());
         purchase.setShippingAddress(getTestAddress());
         purchase.setOrder(getTestOrder());
-        purchase.setOrderItems(getTestOrderItems());
+        purchase.setOrderItems(getTestOrderItems(getTestOrder()));
         return purchase;
     }
 
-    public static List<OrderItem> getTestOrderItems() {
+    public static List<OrderItem> getTestOrderItems(Order order) {
         return List.of(
-                new OrderItem(getProduct1(), SizeType.S, 5, 50.00, getTestOrder()),
-                new OrderItem(getProduct2(), null, 5, 100.00, getTestOrder())
+                new OrderItem(getProduct1(), SizeType.S, 5, 50.00, order),
+                new OrderItem(getProduct2(), null, 5, 100.00, order)
         );
+    }
+
+    public static OrderItem getTestOrderItem(Product product, SizeType sizeType  ,Integer quantity, Double amount) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProduct(product);
+        orderItem.setSizeType(sizeType);
+        orderItem.setQuantity(quantity);
+        orderItem.setAmount(amount);
+        return orderItem;
     }
 
     public static Order getTestOrder() {
         Order order = new Order();
         order.setStatus(OrderStatus.PENDING);
+        order.setCustomer(getTestCustomer());
         // Set properties for order
         order.setFirstName("Test First Name");
         order.setLastName("Test Last Name");
         order.setEmail("test@example.com");
         order.setPhoneNumber("079294111");
-//            order.setDeliveryAddress("Test Delivery Address");
+        order.setShippingAddress(getTestAddress());
         order.setShippingOption(getTestShipping());
         order.setTotalQuantity(10);
         order.setTotalAmount(150.00);
         order.setShippingCost(50.00);
         order.setTotalAmountOrder(200.00);
+        order.setOrderTrackingNumber(UUID.randomUUID().toString());
+        order.setItems(getTestOrderItems(order));
         return order;
 
     }
