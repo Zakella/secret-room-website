@@ -46,11 +46,11 @@ public class DataInitializer implements CommandLineRunner {
 
     public void run(String... args) throws Exception {
 
-        truncateTable("shipping_options");
-        truncateTable("size");
-        truncateTable("product_image");
-        truncateTable("product");
-        truncateTable("product_category");
+        deleteTable("shipping_options");
+        deleteTable("size");
+        deleteTable("product_image");
+        deleteTable("product");
+        deleteTable("product_category");
 
         writeProductsInDatabase();
         writeShippingOptionsInDatabase();
@@ -98,7 +98,7 @@ public class DataInitializer implements CommandLineRunner {
 
 
     @Transactional
-    public void truncateTable(String tableName) {
+    public void deleteTable(String tableName) {
 
         jdbcTemplate.execute(String.format("DELETE FROM %s CASCADE", tableName));
 

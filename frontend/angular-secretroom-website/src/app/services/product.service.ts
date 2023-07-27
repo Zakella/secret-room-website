@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {Product} from "../../model/product/Product";
+import {Product} from "../model/product/Product";
 import {HttpParams } from "@angular/common/http";
 import { catchError } from 'rxjs/operators';
 

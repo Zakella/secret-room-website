@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ProductCategory} from "../../../model/product/Product-category";
-import {ProductCategoryService} from "../../../services/products-services/product-category.service";
+import {ProductCategoryService} from "../../../services/product-category.service";
 
 @Component({
   selector: 'app-group-list-bb',

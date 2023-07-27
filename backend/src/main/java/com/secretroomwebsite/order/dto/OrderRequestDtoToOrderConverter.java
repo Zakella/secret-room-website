@@ -2,6 +2,7 @@ package com.secretroomwebsite.order.dto;
 
 import com.secretroomwebsite.exception.ResourceNotFoundException;
 import com.secretroomwebsite.order.Order;
+import com.secretroomwebsite.order.OrderStatus;
 import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.secretroomwebsite.order.OrderStatus.PENDING;
 
 @Component
 public class OrderRequestDtoToOrderConverter {
@@ -30,6 +33,7 @@ public class OrderRequestDtoToOrderConverter {
                 });
 
         Order order = new Order();
+        order.setStatus(PENDING);
         order.setFirstName(orderRequestDTO.getFirstName());
         order.setLastName(orderRequestDTO.getLastName());
         order.setEmail(orderRequestDTO.getEmail());
@@ -37,15 +41,20 @@ public class OrderRequestDtoToOrderConverter {
         order.setDeliveryAddress(orderRequestDTO.getDeliveryAddress());
         order.setShippingOption(shipping);
         order.setShippingCost(shipping.getCost());
-        order.setStatus(orderRequestDTO.getStatus());
         order.setTotalQuantity(orderRequestDTO.getTotalQuantity());
         order.setTotalAmount(orderRequestDTO.getTotalAmount());
         order.setTotalAmountOrder(orderRequestDTO.getTotalAmountOrder());
 
         List<OrderItem> orderItems = orderRequestDTO.getItems().stream()
                 .map(this::convertOrderItemDtoToOrderItem)
+                .map(orderItem -> {
+                    orderItem.setOrder(order);
+                    return orderItem;
+                })
                 .collect(Collectors.toList());
+
         order.setItems(orderItems);
+
 
         return order;
     }

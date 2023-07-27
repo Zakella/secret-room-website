@@ -37,7 +37,7 @@
 
   export interface OrderItem {
     product: Product;
-    size?:Size;
+    sizeType?: string;
     amount: number;
     quantity: number;
   }

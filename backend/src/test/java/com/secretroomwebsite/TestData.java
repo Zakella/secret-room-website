@@ -109,7 +109,6 @@ public class TestData {
 
         OrderRequestDTO testOrderRequestDTO = new OrderRequestDTO();
         testOrderRequestDTO.setPlacementDate(new Date());
-        testOrderRequestDTO.setStatus(OrderStatus.PENDING);
         testOrderRequestDTO.setFirstName("John");
         testOrderRequestDTO.setLastName("Doe");
         testOrderRequestDTO.setEmail("john.doe@example.com");

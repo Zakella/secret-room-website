@@ -147,7 +147,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       const unitPrice = product?.unitPrice ?? 0;
       return {
         product,
-        size: cartItem.size,
+        size: cartItem.size?.sizeType,
         amount: unitPrice * cartItem.quantity,
         quantity: cartItem.quantity
       };

@@ -1,4 +1,4 @@
-package com.secretroomwebsite.productDTO;
+package com.secretroomwebsite.product;
 
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.dto.ProductDTO;
