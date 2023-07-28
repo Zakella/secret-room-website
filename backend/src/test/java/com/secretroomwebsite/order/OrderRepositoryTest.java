@@ -1,7 +1,6 @@
 package com.secretroomwebsite.order;
 
 import com.secretroomwebsite.AbstractTestcontainers;
-import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.dao.ProductRepository;
 import com.secretroomwebsite.enums.SizeType;
@@ -20,12 +19,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import static com.secretroomwebsite.TestData.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest

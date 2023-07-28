@@ -1,7 +1,10 @@
 package com.secretroomwebsite;
 
+import com.secretroomwebsite.checkout.purchase.Purchase;
+import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.dto.OrderItemDTO;
 import com.secretroomwebsite.order.dto.OrderRequestDTO;
+import com.secretroomwebsite.order.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.category.ProductCategory;
 import com.secretroomwebsite.product.category.ProductCategoryRepository;
@@ -12,6 +15,7 @@ import com.secretroomwebsite.shipping.ShippingRepository;
 import java.util.List;
 
 import static com.secretroomwebsite.TestData.*;
+import static com.secretroomwebsite.enums.SizeType.S;
 
 
 public class TestDataProvider {
@@ -55,6 +59,38 @@ public class TestDataProvider {
         orderRequestDTO.setItems(List.of(orderItemDTO1, orderItemDTO2));
         orderRequestDTO.setShippingOption(shipping);
         return orderRequestDTO;
+    }
+
+    public Purchase preparePurchaseForTest(){
+
+        Shipping shipping = shippingRepository.save(getTestShipping());
+
+        ProductCategory savedCategory = productCategoryRepository.save(getTestProductCategory());
+        Product product1 = getProduct1();
+        product1.setProductCategory(savedCategory);
+
+        Product product2 = getProduct2();
+        product2.setProductCategory(savedCategory);
+
+        Product savedProduct1 = productRepository.save(product1);
+        Product savedProduct2 = productRepository.save(product2);
+
+        Order order = getTestOrder();
+        order.setShippingOption(shipping);
+
+
+        Purchase purchase = getTestPurchase();
+        purchase.setOrderItems(
+                List.of(
+                        new OrderItem(savedProduct1, S, 5, 50.00, null),
+                        new OrderItem(savedProduct2, null, 5, 100.00, null))
+        );
+
+        purchase.setCustomer(getTestCustomer());
+        purchase.setOrder(order);
+        return purchase;
+
+
     }
 }
 

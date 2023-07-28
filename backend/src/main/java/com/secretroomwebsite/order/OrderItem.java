@@ -1,7 +1,6 @@
-package com.secretroomwebsite.order.items;
+package com.secretroomwebsite.order;
 
 
-import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.enums.SizeType;
 import jakarta.persistence.*;

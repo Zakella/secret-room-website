@@ -2,7 +2,6 @@ package com.secretroomwebsite.order;
 
 import com.secretroomwebsite.adress.Address;
 import com.secretroomwebsite.customer.Customer;
-import com.secretroomwebsite.order.items.OrderItem;
 import com.secretroomwebsite.shipping.Shipping;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +13,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "orders")

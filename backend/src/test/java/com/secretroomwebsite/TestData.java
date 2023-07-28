@@ -7,7 +7,7 @@ import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderStatus;
 import com.secretroomwebsite.order.dto.OrderItemDTO;
 import com.secretroomwebsite.order.dto.OrderRequestDTO;
-import com.secretroomwebsite.order.items.OrderItem;
+import com.secretroomwebsite.order.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.category.ProductCategory;
 import com.secretroomwebsite.enums.SizeType;
@@ -141,8 +141,8 @@ public class TestData {
 
     public static List<OrderItem> getTestOrderItems(Order order) {
         return List.of(
-                new OrderItem(getProduct1(), SizeType.S, 5, 50.00, order),
-                new OrderItem(getProduct2(), null, 5, 100.00, order)
+                new OrderItem(getProduct1(), SizeType.S, 5, 50.00, null),
+                new OrderItem(getProduct2(), null, 5, 100.00, null)
         );
     }
 
@@ -171,7 +171,6 @@ public class TestData {
         order.setShippingCost(50.00);
         order.setTotalAmountOrder(200.00);
         order.setOrderTrackingNumber(UUID.randomUUID().toString());
-        order.setItems(getTestOrderItems(order));
         return order;
 
     }
@@ -191,10 +190,10 @@ public class TestData {
 
     public static Customer getTestCustomer() {
         Customer customer = new Customer();
-        customer.setName("John");
+        customer.setFirstName("John");
         customer.setLastName("Doe");
-        customer.setEmail("joe@gmail.com@gmail.com");
-        customer.setPhone("079241106");
+        customer.setEmail("joe@gmail.com");
+        customer.setPhone("079241107");
         return customer;
     }
 

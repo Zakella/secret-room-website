@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(exclude = "orders")
 public class Customer {
 
     @Id
@@ -25,7 +24,7 @@ public class Customer {
 
     @NotBlank
     @Pattern(regexp="^[A-Za-z\\s]*$", message="Name should be valid")
-    private String name;
+    private String firstName;
 
     @NotBlank
     @Pattern(regexp="^[A-Za-z\\s]*$", message="LastName should be valid")
