@@ -46,15 +46,25 @@ public class DataInitializer implements CommandLineRunner {
 
     public void run(String... args) throws Exception {
 
+        // Delete tables
         deleteTable("shipping_options");
-        deleteTable("size");
-        deleteTable("product_image");
-        deleteTable("product");
-        deleteTable("product_category");
+        resetSequence("shipping_options");
 
+        deleteTable("size");
+        resetSequence("size");
+
+        deleteTable("product_image");
+        resetSequence("product_image");
+
+        deleteTable("product");
+        resetSequence("product");
+
+        deleteTable("product_category");
+        resetSequence("product_category");
+
+        // Write new data
         writeProductsInDatabase();
         writeShippingOptionsInDatabase();
-
 
     }
 
@@ -102,6 +112,11 @@ public class DataInitializer implements CommandLineRunner {
 
         jdbcTemplate.execute(String.format("DELETE FROM %s CASCADE", tableName));
 
+    }
+
+    @Transactional
+    public void resetSequence(String tableName) {
+        jdbcTemplate.execute(String.format("ALTER SEQUENCE %s_id_seq RESTART WITH 1", tableName));
     }
 
 

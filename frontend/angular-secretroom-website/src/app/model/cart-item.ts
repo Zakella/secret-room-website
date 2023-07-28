@@ -1,5 +1,5 @@
-import {Product} from "./product/Product";
-import {Size} from "./product/Sizes";
+import {Product} from "./product";
+import {Size} from "./sizes";
 
 export class CartItem {
   id?: string;

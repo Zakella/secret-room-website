@@ -94,4 +94,11 @@ export class CartService {
     this.computeCartTotals();
     this.cartModified.next(true);
   }
+
+  clearCart() {
+    this.cartItems.next([]);
+    this.saveCartItemsToStorage();
+    this.computeCartTotals();
+    this.cartModified.next(true);
+  }
 }

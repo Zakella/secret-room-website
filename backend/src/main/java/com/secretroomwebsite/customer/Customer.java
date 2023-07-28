@@ -30,7 +30,7 @@ public class Customer {
     @Pattern(regexp="^[A-Za-z\\s]*$", message="LastName should be valid")
     private String lastName;
 
-    @Pattern(regexp="^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message="Email should be valid")
+//    @Pattern(regexp="^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message="Email should be valid")
     private String email;
 
     @Pattern(regexp="^(06|07)\\d{7}$", message="Phone should be valid")
@@ -38,6 +38,5 @@ public class Customer {
     @Column(unique = true)  // Ensure phone number is unique across all customers
     private String phone;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private Set<Order> orders = new HashSet<>();
+
 }

@@ -79,6 +79,15 @@ class OrderRepositoryTest extends AbstractTestcontainers {
         // Then
         assertThat(savedOrder).isNotNull();
         assertThat(savedOrder.getId()).isEqualTo(order.getId());
+        assertThat(savedOrder.getStatus()).isEqualTo(order.getStatus());
+        assertThat(savedOrder.getPlacementDate()).isEqualTo(order.getPlacementDate());
+        assertThat(savedOrder.getShippingOption()).isEqualTo(order.getShippingOption());
+        assertThat(savedOrder.getTotalQuantity()).isEqualTo(order.getTotalQuantity());
+        assertThat(savedOrder.getTotalAmount()).isEqualTo(order.getTotalAmount());
+        assertThat(savedOrder.getShippingCost()).isEqualTo(order.getShippingCost());
+        assertThat(savedOrder.getTotalAmountOrder()).isEqualTo(order.getTotalAmountOrder());
+        assertThat(savedOrder.getItems()).isEqualTo(order.getItems());
+
     }
 
     @Test
@@ -97,8 +106,6 @@ class OrderRepositoryTest extends AbstractTestcontainers {
                 .isPresent()
                 .hasValueSatisfying(o -> {
                     assertThat(o.getId()).isEqualTo(orderId);
-                    assertThat(o.getFirstName()).isEqualTo(order.getFirstName());
-                    assertThat(o.getLastName()).isEqualTo(order.getLastName());
                     // add more assertions as needed
                 });
     }

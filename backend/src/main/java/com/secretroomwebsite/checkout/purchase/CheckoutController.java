@@ -1,6 +1,4 @@
 package com.secretroomwebsite.checkout.purchase;
-
-import com.secretroomwebsite.order.dto.OrderRequestDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

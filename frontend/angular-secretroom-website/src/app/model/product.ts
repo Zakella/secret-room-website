@@ -1,5 +1,5 @@
-  import {ProductImage} from "./ProductImage";
-  import {Size} from "./Sizes";
+  import {ProductImage} from "./product-image";
+  import {Size} from "./sizes";
 
   export class Product {
     constructor(

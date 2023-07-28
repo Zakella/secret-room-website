@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
-import {Product} from '../../../model/product/Product';
+import {Product} from '../../../model/product';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {PaginatorState} from 'primeng/paginator';

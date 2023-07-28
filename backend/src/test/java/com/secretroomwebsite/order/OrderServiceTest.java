@@ -22,9 +22,7 @@ public class OrderServiceTest {
 
     @Mock
     private OrderRepository orderRepository;
-
-    @Mock
-    private OrderRequestDtoToOrderConverter dtoConverter;
+    
 
     @InjectMocks
     private OrderService orderService;

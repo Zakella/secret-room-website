@@ -31,33 +31,16 @@ public class Order {
     private String orderTrackingNumber;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
 
     @CreationTimestamp
     private Date placementDate;
 
-
-    @NotBlank
-    @Pattern(regexp="^[A-Za-z\\s]*$", message="Name should be valid")
-    private String firstName;
-
-
-    @NotBlank
-    @Pattern(regexp="^[A-Za-z\\s]*$", message="Name should be valid")
-    private String lastName;
-
-
-    @Pattern(regexp="^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message="Email should be valid")
-    private String email;
-
-
-    @Pattern(regexp="^(06|07)\\d{7}$", message="Phone should be valid")
-    @NotBlank
-    private String phoneNumber;
-
     @ManyToOne
     @JoinColumn(name = "shipping_option_id")
+    @NotNull
     private Shipping shippingOption;
 
     @NotNull

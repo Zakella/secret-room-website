@@ -12,14 +12,10 @@
 
             CREATE TABLE orders (
                                     id SERIAL PRIMARY KEY,
-                                    status VARCHAR(255) NOT NULL,
+                                    status VARCHAR(10) NOT NULL,
                                     order_tracking_number VARCHAR(50) NOT NULL,
                                     placement_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                    first_name VARCHAR(255) NOT NULL,
-                                    last_name VARCHAR(255) NOT NULL,
-                                    email VARCHAR(255),
-                                    phone_number VARCHAR(255) NOT NULL,
-                                    shipping_option_id INTEGER,
+                                    shipping_option_id INTEGER NOT NULL,
                                     total_quantity INTEGER NOT NULL,
                                     total_amount DECIMAL(10, 2) NOT NULL,
                                     shipping_cost DECIMAL(10, 2) NOT NULL,

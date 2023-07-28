@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductCategoryService} from "../../../services/product-category.service";
-import {ProductCategory} from "../../../model/product/Product-category";
+import {ProductCategory} from "../../../model/product-category";
 
 @Component({
   selector: 'app-group-list-vs',

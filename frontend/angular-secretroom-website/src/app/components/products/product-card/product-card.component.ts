@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from "../../../services/product.service";
-import { Product } from "../../../model/product/Product";
+import { Product } from "../../../model/product";
 import {ActivatedRoute} from "@angular/router";
 import {CartService} from "../../../services/cart.service";
 import {CartItem} from "../../../model/cart-item";
-import {Size} from "../../../model/product/Sizes";
+import {Size} from "../../../model/sizes";
 import {LocationStrategy} from "@angular/common";
 
 

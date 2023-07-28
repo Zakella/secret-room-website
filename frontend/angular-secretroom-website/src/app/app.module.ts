@@ -48,6 +48,8 @@ import { EmptyCartComponent } from './components/cart/empty-cart/empty-cart.comp
 import {ToolbarModule} from "primeng/toolbar";
 import {MenuModule} from "primeng/menu";
 import { OrderSummaryComponent } from './components/order/order-summary/order-summary.component';
+import {MessageService} from "primeng/api";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -80,37 +82,38 @@ import { OrderSummaryComponent } from './components/order/order-summary/order-su
     OrderSummaryComponent,
 
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        DropdownModule,
-        ButtonModule,
-        FormsModule,
-        ImageModule,
-        DividerModule,
-        StyleClassModule,
-        RippleModule,
-        AppRoutingModule,
-        InputNumberModule,
-        PaginatorModule,
-        SidebarModule,
-        BadgeModule,
-        CardModule,
-        PanelModule,
-        RadioButtonModule,
-        CheckboxModule,
-        PasswordModule,
-        ReactiveFormsModule,
-        InputMaskModule,
-        MessageModule,
-        MessagesModule,
-        ToolbarModule,
-        MenuModule
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    DropdownModule,
+    ButtonModule,
+    FormsModule,
+    ImageModule,
+    DividerModule,
+    StyleClassModule,
+    RippleModule,
+    AppRoutingModule,
+    InputNumberModule,
+    PaginatorModule,
+    SidebarModule,
+    BadgeModule,
+    CardModule,
+    PanelModule,
+    RadioButtonModule,
+    CheckboxModule,
+    PasswordModule,
+    ReactiveFormsModule,
+    InputMaskModule,
+    MessageModule,
+    MessagesModule,
+    ToolbarModule,
+    MenuModule,
+    ToastModule
 
 
-    ],
-  providers: [ProductService],
+  ],
+  providers: [ProductService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

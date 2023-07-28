@@ -5,8 +5,6 @@ import com.secretroomwebsite.checkout.purchase.Purchase;
 import com.secretroomwebsite.customer.Customer;
 import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderStatus;
-import com.secretroomwebsite.order.dto.OrderItemDTO;
-import com.secretroomwebsite.order.dto.OrderRequestDTO;
 import com.secretroomwebsite.order.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.category.ProductCategory;
@@ -85,50 +83,6 @@ public class TestData {
 
     }
 
-    public static OrderItemDTO getOrderItemDto1() {
-
-        OrderItemDTO testOrderItemDTO1 = new OrderItemDTO();
-        testOrderItemDTO1.setProduct(getProduct1());
-        testOrderItemDTO1.setSize(SizeType.M);
-        testOrderItemDTO1.setQuantity(5);
-        testOrderItemDTO1.setAmount(50.0);
-
-        return testOrderItemDTO1;
-
-
-    }
-
-    public static OrderItemDTO getOrderItemDto2() {
-
-        OrderItemDTO testOrderItemDTO2 = new OrderItemDTO();
-        testOrderItemDTO2.setProduct(getProduct2());
-        testOrderItemDTO2.setSize(null);  // Please note that size is now of type SizeType
-        testOrderItemDTO2.setQuantity(5);
-        testOrderItemDTO2.setAmount(100.0);
-
-        return testOrderItemDTO2;
-
-
-    }
-
-    public static OrderRequestDTO getTestOrderRequestDTO() {
-
-        OrderRequestDTO testOrderRequestDTO = new OrderRequestDTO();
-        testOrderRequestDTO.setPlacementDate(new Date());
-        testOrderRequestDTO.setFirstName("John");
-        testOrderRequestDTO.setLastName("Doe");
-        testOrderRequestDTO.setEmail("john.doe@example.com");
-        testOrderRequestDTO.setPhoneNumber("079241106");
-        testOrderRequestDTO.setDeliveryAddress("123 Main St");
-        testOrderRequestDTO.setItems(Arrays.asList(getOrderItemDto1(), getOrderItemDto2()));
-        testOrderRequestDTO.setShippingOption(getTestShipping());
-        testOrderRequestDTO.setTotalQuantity(10);
-        testOrderRequestDTO.setTotalAmount(150.0);
-        testOrderRequestDTO.setDelivery(50.0);
-        testOrderRequestDTO.setTotalAmountOrder(200.0);
-        return testOrderRequestDTO;
-
-    }
 
     public static Purchase getTestPurchase() {
         Purchase purchase = new Purchase();
@@ -146,7 +100,7 @@ public class TestData {
         );
     }
 
-    public static OrderItem getTestOrderItem(Product product, SizeType sizeType  ,Integer quantity, Double amount) {
+    public static OrderItem getTestOrderItem(Product product, SizeType sizeType, Integer quantity, Double amount) {
         OrderItem orderItem = new OrderItem();
         orderItem.setProduct(product);
         orderItem.setSizeType(sizeType);
@@ -160,10 +114,6 @@ public class TestData {
         order.setStatus(OrderStatus.PENDING);
         order.setCustomer(getTestCustomer());
         // Set properties for order
-        order.setFirstName("Test First Name");
-        order.setLastName("Test Last Name");
-        order.setEmail("test@example.com");
-        order.setPhoneNumber("079294111");
         order.setShippingAddress(getTestAddress());
         order.setShippingOption(getTestShipping());
         order.setTotalQuantity(10);

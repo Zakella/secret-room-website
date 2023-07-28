@@ -2,8 +2,6 @@ package com.secretroomwebsite;
 
 import com.secretroomwebsite.checkout.purchase.Purchase;
 import com.secretroomwebsite.order.Order;
-import com.secretroomwebsite.order.dto.OrderItemDTO;
-import com.secretroomwebsite.order.dto.OrderRequestDTO;
 import com.secretroomwebsite.order.OrderItem;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.product.category.ProductCategory;
@@ -32,33 +30,6 @@ public class TestDataProvider {
         this.shippingRepository = shippingRepository;
         this.productRepository = productRepository;
         this.productCategoryRepository = productCategoryRepository;
-    }
-
-    public OrderRequestDTO prepareOrderDTOForTests() {
-
-        Shipping shipping = shippingRepository.save(getTestShipping());
-
-        ProductCategory savedCategory = productCategoryRepository.save(getTestProductCategory());
-        Product product1 = getProduct1();
-        product1.setProductCategory(savedCategory);
-
-        Product product2 = getProduct2();
-        product2.setProductCategory(savedCategory);
-
-        Product savedProduct1 = productRepository.save(product1);
-        Product savedProduct2 = productRepository.save(product2);
-
-        OrderRequestDTO orderRequestDTO = getTestOrderRequestDTO();
-
-        OrderItemDTO orderItemDTO1 = getOrderItemDto1();
-        orderItemDTO1.setProduct(savedProduct1);
-
-        OrderItemDTO orderItemDTO2 = getOrderItemDto2();
-        orderItemDTO2.setProduct(savedProduct2);
-
-        orderRequestDTO.setItems(List.of(orderItemDTO1, orderItemDTO2));
-        orderRequestDTO.setShippingOption(shipping);
-        return orderRequestDTO;
     }
 
     public Purchase preparePurchaseForTest(){

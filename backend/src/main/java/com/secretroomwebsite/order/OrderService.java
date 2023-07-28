@@ -1,6 +1,4 @@
 package com.secretroomwebsite.order;
-
-import com.secretroomwebsite.order.dto.OrderRequestDtoToOrderConverter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,13 +8,10 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final OrderRequestDtoToOrderConverter dtoConverter;
 
 
-    public OrderService(OrderRepository orderRepository, OrderRequestDtoToOrderConverter dtoConverter) {
-
+    public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-        this.dtoConverter = dtoConverter;
     }
 
 
