@@ -1,6 +1,7 @@
 package com.secretroomwebsite.order;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.secretroomwebsite.product.Product;
 import com.secretroomwebsite.enums.SizeType;
 import jakarta.persistence.*;
@@ -38,7 +39,7 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-
+    @JsonBackReference
     private Order order;
 
     public OrderItem(@NotNull Product product,

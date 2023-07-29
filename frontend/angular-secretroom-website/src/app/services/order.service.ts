@@ -11,13 +11,13 @@ import {ResponseOrder} from "../model/response-order";
 })
 export class OrderService {
 
-  private orderUrl = 'http://localhost:8081/api/v1/orders';
+  private orderUrl = 'http://localhost:8081/api/v1/purchase';
 
   constructor(private http: HttpClient) {
   }
 
-  sendOrder(order: Order): Observable<ResponseOrder> {
-    return this.http.post<ResponseOrder>(this.orderUrl, order);
+  getOrderDetails(orderUuid: String): Observable<Order> {
+    return this.http.post<Order>(this.orderUrl, orderUuid);
   }
 
 

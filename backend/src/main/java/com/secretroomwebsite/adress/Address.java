@@ -1,5 +1,6 @@
 package com.secretroomwebsite.adress;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.secretroomwebsite.order.Order;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class Address {
 
     @OneToOne
     @PrimaryKeyJoinColumn
+    @JsonIgnore
     private Order order;
 }
 

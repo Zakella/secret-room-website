@@ -1,5 +1,6 @@
 package com.secretroomwebsite.order;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.secretroomwebsite.adress.Address;
 import com.secretroomwebsite.customer.Customer;
 import com.secretroomwebsite.shipping.Shipping;
@@ -58,6 +59,7 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     @NotEmpty
     @ToString.Exclude
+    @JsonManagedReference
     private List<OrderItem> items;
 
     @ManyToOne

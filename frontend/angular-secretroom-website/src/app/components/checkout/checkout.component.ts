@@ -68,6 +68,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cartItems = this.cartService.loadCartItemsFromStorage();
+    if (this.cartItems.length === 0) {
+      this.router.navigate(['empty-cart']);
+    }
     this.cardModified();
     this.getTotalAmount();
     this.subscribeToCartItems();

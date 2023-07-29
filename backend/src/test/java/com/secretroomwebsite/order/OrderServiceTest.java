@@ -1,7 +1,6 @@
 package com.secretroomwebsite.order;
 
-import com.secretroomwebsite.order.dto.OrderRequestDTO;
-import com.secretroomwebsite.order.dto.OrderRequestDtoToOrderConverter;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,24 +26,6 @@ public class OrderServiceTest {
     @InjectMocks
     private OrderService orderService;
 
-
-    @Test
-    public void createOrderTest() {
-        // Arrange
-        OrderRequestDTO testOrderRequestDTO = new OrderRequestDTO();
-        Order testOrder = new Order();
-        testOrder.setId(1L);
-
-        when(dtoConverter.convert(any(OrderRequestDTO.class))).thenReturn(testOrder);
-        when(orderRepository.save(any(Order.class))).thenReturn(testOrder);
-
-        // Act
-        Long createdOrderId = orderService.createOrder(testOrderRequestDTO);
-
-        // Assert
-        assertNotNull(createdOrderId);
-        assertEquals(1L, createdOrderId);
-    }
 
     @Test
     public void getAllOrdersTest() {

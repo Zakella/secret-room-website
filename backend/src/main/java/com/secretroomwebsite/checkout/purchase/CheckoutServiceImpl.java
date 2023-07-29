@@ -62,16 +62,11 @@ public class CheckoutServiceImpl implements CheckoutService {
 
         // populate order with orderItems
         List<OrderItem> orderItems = purchase.getOrderItems();
-        orderItems.forEach(item -> orderService.addItems(order, item));
-
-        // populate order with billingAddress and shippingAddress
-
-
-        // populate customer with order
-
-
-        // save to the database\
-
+        orderItems.forEach(item -> {
+            orderService.addItems(order, item);
+            item.setOrder(order);
+                }
+        );
 
         order.setCustomer(customer);
         orderRepository.save(order);

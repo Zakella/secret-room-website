@@ -1,4 +1,6 @@
 package com.secretroomwebsite.order;
+
+import com.secretroomwebsite.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,5 +29,20 @@ public class OrderService {
             order.setItems(items);
         }
         items.add(item);
+    }
+
+    public OrderReview findOrderByTrackingNumber(String trackingNumber) {
+        Order order = orderRepository.findByOrderTrackingNumber(trackingNumber)
+                .orElseThrow(() -> new ResourceNotFoundException("Cannot find order by tracking number: " + trackingNumber));
+
+        String formattedId = String.format("%04d", order.getId());
+
+        return new OrderReview(
+                formattedId,
+                order.getShippingAddress(),
+                order.getItems(),
+                order.getTotalAmountOrder(),
+                order.getShippingOption()
+        );
     }
 }

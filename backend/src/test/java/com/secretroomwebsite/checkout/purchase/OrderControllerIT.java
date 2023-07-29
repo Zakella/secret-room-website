@@ -13,12 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
-import static com.secretroomwebsite.TestData.getTestPurchase;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CheckoutControllerIT extends AbstractTestcontainers {
+class OrderControllerIT extends AbstractTestcontainers {
 
     @Autowired
     private WebTestClient webTestClient;
@@ -34,6 +30,8 @@ class CheckoutControllerIT extends AbstractTestcontainers {
 
     Purchase testPurchase;
 
+    String purchasePath = "/api/v1/order";
+
 
     @BeforeEach
     void setUp() {
@@ -43,15 +41,10 @@ class CheckoutControllerIT extends AbstractTestcontainers {
 
     @Test
     void itShouldPlaceOrder() {
-        //Given
 
-
-        String purchasePath = "/api/v1/checkout";
-
-        //When
 
         webTestClient.post()
-                .uri(purchasePath)
+                .uri(this.purchasePath)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(testPurchase), Purchase.class)
@@ -59,7 +52,42 @@ class CheckoutControllerIT extends AbstractTestcontainers {
                 .expectStatus()
                 .isCreated();
 
-        //Then
+
+
+    }
+
+    @Test
+        void itShouldReturnUuid() {
+
+        String orderUuid = webTestClient.post()
+                .uri(purchasePath)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(testPurchase), Purchase.class)
+                .exchange()
+                .expectStatus()
+                .isCreated()
+                .returnResult(PurchaseResponse.class)
+                .getResponseBody()
+                .blockFirst()
+                .orderTrackingNumber();
+
+
+        String orderPath = this .purchasePath + "/" + orderUuid;
+
+        // When & Then
+        webTestClient.get()
+                .uri(orderPath)
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectHeader()
+                .contentType(MediaType.APPLICATION_JSON)
+                .expectBody()
+                .jsonPath("$.orderNumber").isEqualTo(orderUuid);
+
+         
+
 
     }
 }

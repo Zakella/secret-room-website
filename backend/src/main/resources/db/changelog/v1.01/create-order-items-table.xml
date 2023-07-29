@@ -16,7 +16,7 @@
                                          size_type VARCHAR(20),
                                          amount DECIMAL(10, 2) NOT NULL,
                                          quantity INTEGER NOT NULL,
-                                         order_id INTEGER,
+                                         order_id INTEGER NOT NULL ,
                                          FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE,
                                          FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
             );
