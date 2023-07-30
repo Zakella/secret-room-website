@@ -42,7 +42,8 @@ public class OrderService {
                 order.getShippingAddress(),
                 order.getItems(),
                 order.getTotalAmountOrder(),
-                order.getShippingOption()
+                order.getShippingOption(),
+                order.getTotalAmount()
         );
     }
 }

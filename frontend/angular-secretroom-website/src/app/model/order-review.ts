@@ -6,6 +6,8 @@ export interface OrderReview {
   orderNumber: string;
   shippingAddress: Address;
   items: OrderItem[];
+  subtotal: number;
   totalAmountOrder: number;
   shippingOption: ShippingOption;
+
 }
