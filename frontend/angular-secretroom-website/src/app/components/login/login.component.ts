@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  protected readonly console = console;
-  protected readonly alert = alert;
+  constructor(private router: Router) {
+  }
+
+  goToLoginPage() {
+    this.router.navigate(['/login']);
+  }
+
+
 }

@@ -1,59 +1,176 @@
 
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
-  <span class="text-700 text-xl">Thanks!</span>
-  <div class="text-900 font-bold text-4xl my-2">Successful Order 🚀</div>
-  <p class="text-700 text-xl mt-0 mb-4 p-0">Your order is on the way. It'll be shipped today. We'll inform you.</p>
-  <div style="height:3px;background:linear-gradient(90deg, #2196F3 0%, rgba(33, 150, 243, 0) 50%);"></div>
+<!--<div class="surface-section px-4 py-8 md:px-6 lg:px-8">-->
+<!--  <span class="text-700 text-xl">Thanks!</span>-->
+<!--  <div class="text-900 font-bold text-4xl my-2">Successful Order 🚀</div>-->
+<!--  <p class="text-700 text-xl mt-0 mb-4 p-0">Your order is on the way. It'll be shipped today. We'll inform you.</p>-->
+<!--  <div style="height:3px;background:linear-gradient(90deg, #2196F3 0%, rgba(33, 150, 243, 0) 50%);"></div>-->
 
-  <div class="flex flex-column sm:flex-row sm:align-items-center sm:justify-content-between py-5">
-    <div class="mb-3 sm:mb-0">
-      <span class="font-medium text-xl text-900 mr-2">Order number:</span>
-      <span class="font-medium text-xl text-blue-500">{{orderReview?.orderNumber}}</span>
-    </div>
-  </div>
-  <div class="border-round surface-border border-1">
-    <ul class="list-none p-0 m-0" >
-      <li class="p-3 border-bottom-1 surface-border flex align-items-start sm:align-items-center" *ngFor="let details of orderReview?.items">
-        <img src="{{details.product.imageURL}}" class="w-3rem sm:w-8rem flex-shrink-0 mr-3 shadow-2" />
-        <div class="flex flex-column">
-          <span class="text-900 font-medium text-xl mb-2">{{details.product.name}}</span>
-          <span class="text-600 mb-3">Blue | Medium</span>
-          <span class="text-900 font-medium">{{details.quantity}}</span>
+<!--  <div class="flex flex-column sm:flex-row sm:align-items-center sm:justify-content-between py-5">-->
+<!--    <div class="mb-3 sm:mb-0">-->
+<!--      <span class="font-medium text-xl text-900 mr-2">Order number:</span>-->
+<!--      <span class="font-medium text-xl text-blue-500">{{orderReview?.orderNumber}}</span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="border-round surface-border border-1">-->
+<!--    <ul class="list-none p-0 m-0" >-->
+<!--      <li class="p-3 border-bottom-1 surface-border flex align-items-start sm:align-items-center" *ngFor="let details of orderReview?.items">-->
+<!--        <img src="{{details.product.imageURL}}" class="w-3rem sm:w-8rem flex-shrink-0 mr-3 shadow-2" />-->
+<!--        <div class="flex flex-column">-->
+<!--          <span class="text-900 font-medium text-xl mb-2">{{details.product.name}}</span>-->
+<!--          <span class="text-600 mb-3">Blue | Medium</span>-->
+<!--          <span class="text-900 font-medium">{{details.quantity}}</span>-->
+<!--        </div>-->
+<!--        <span class="text-900 font-medium text-lg ml-auto">{{details.amount}} MDL</span>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--  <div class="flex flex-wrap mt-5 pb-3">-->
+<!--    <div class="w-full lg:w-6 pl-3">-->
+<!--      <span class="font-medium text-900">Shipping Address</span>-->
+<!--      <div class="flex flex-column text-900 mt-3 mb-5">-->
+<!--        <span>{{orderReview?.customer?.firstName}} {{orderReview?.customer?.lastName}}</span>-->
+<!--        <span class="mb-1">{{orderReview?.shippingAddress?.country}}</span>-->
+<!--        <span class="mb-1">{{orderReview?.shippingAddress?.city}} , {{orderReview?.shippingAddress?.street}} </span>-->
+<!--        <span class="mb-1"></span>-->
+<!--        <span class="mb-1">MD-{{orderReview?.shippingAddress?.zipCode}}</span>-->
+<!--        <span>tel: {{orderReview?.customer?.phone}}</span>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--    <div class="w-full lg:w-6 pl-3 lg:pl-0 lg:pr-3 flex align-items-end mt-5 lg:mt-0">-->
+<!--      <ul class="list-none p-0 m-0 w-full">-->
+<!--        <li class="mb-3"><span class="font-medium text-900">Summary</span></li>-->
+<!--        <li class="flex justify-content-between mb-3">-->
+<!--          <span class="text-900">Subtotal</span>-->
+<!--          <span class="text-900 font-medium text-lg">{{orderReview?.subtotal}} MDL</span>-->
+<!--        </li>-->
+<!--        <li class="flex justify-content-between mb-3">-->
+<!--          <span class="text-900">Shipping</span>-->
+<!--          <span class="text-900 font-medium text-lg">{{orderReview?.shippingOption?.cost}} MDL</span>-->
+<!--        </li>-->
+
+<!--        <li class="flex justify-content-between border-top-1 surface-border py-3">-->
+<!--          <span class="text-900 font-medium">Total</span>-->
+<!--          <span class="text-900 font-bold text-lg">{{orderReview?.totalAmountOrder}} MDL</span>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<section class="h-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-5">
+            <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;">{{orderReview?.customer?.firstName}}</span>!</h5>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+              <p class="small text-muted mb-0"></p>
+            </div>
+            <div class="card shadow-0 border mb-4" *ngFor="let details of orderReview?.items">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-3">
+                    <img src="{{details.product.imageURL}}"
+                         class="img-fluid" alt="Product">
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0">{{details.product.name}}</p>
+                  </div>
+<!--                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">-->
+<!--                    <p class="text-muted mb-0 small">{{details.product.shortDescription}}</p>-->
+<!--                  </div>-->
+
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">Qty: {{details.quantity}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">{{details.amount}} <span>MDL</span></p>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class="d-flex justify-content-between pt-2">
+              <p class="fw-bold mb-0">Order Details</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> $898.00</p>
+            </div>
+
+            <div class="d-flex justify-content-between pt-2">
+              <p class="text-muted mb-0">Invoice Number : 788152</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+            </div>
+
+            <div class="d-flex justify-content-between mb-5">
+              <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+            </div>
+          </div>
+          <div class="card-footer border-0 px-4 py-5"
+               style="background-color: rgb(244, 209, 218); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
+              paid: <span class="h2 mb-0 ms-2">$1040</span></h5>
+          </div>
         </div>
-        <span class="text-900 font-medium text-lg ml-auto">{{details.amount}} MDL</span>
-      </li>
-    </ul>
-  </div>
-  <div class="flex flex-wrap mt-5 pb-3">
-    <div class="w-full lg:w-6 pl-3">
-      <span class="font-medium text-900">Shipping Address</span>
-      <div class="flex flex-column text-900 mt-3 mb-5">
-        <span>{{orderReview?.customer?.firstName}} {{orderReview?.customer?.lastName}}</span>
-        <span class="mb-1">{{orderReview?.shippingAddress?.country}}</span>
-        <span class="mb-1">{{orderReview?.shippingAddress?.city}} , {{orderReview?.shippingAddress?.street}} </span>
-        <span class="mb-1"></span>
-        <span class="mb-1">MD-{{orderReview?.shippingAddress?.zipCode}}</span>
-        <span>tel: {{orderReview?.customer?.phone}}</span>
       </div>
-
     </div>
-    <div class="w-full lg:w-6 pl-3 lg:pl-0 lg:pr-3 flex align-items-end mt-5 lg:mt-0">
-      <ul class="list-none p-0 m-0 w-full">
-        <li class="mb-3"><span class="font-medium text-900">Summary</span></li>
-        <li class="flex justify-content-between mb-3">
-          <span class="text-900">Subtotal</span>
-          <span class="text-900 font-medium text-lg">{{orderReview?.subtotal}} MDL</span>
-        </li>
-        <li class="flex justify-content-between mb-3">
-          <span class="text-900">Shipping</span>
-          <span class="text-900 font-medium text-lg">{{orderReview?.shippingOption?.cost}} MDL</span>
-        </li>
+  </div>
+</section>
 
-        <li class="flex justify-content-between border-top-1 surface-border py-3">
-          <span class="text-900 font-medium">Total</span>
-          <span class="text-900 font-bold text-lg">{{orderReview?.totalAmountOrder}} MDL</span>
-        </li>
-      </ul>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-start text-black p-4">
+        <h5 class="modal-title text-uppercase mb-5" id="exampleModalLabel">Johnatan Miller</h5>
+        <h4 class="mb-5" style="color: #35558a;">Thanks for your order</h4>
+        <p class="mb-0" style="color: #35558a;">Payment summary</p>
+        <hr class="mt-2 mb-4"
+            style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
+
+        <div class="d-flex justify-content-between">
+          <p class="fw-bold mb-0">Ether Chair(Qty:1)</p>
+          <p class="text-muted mb-0">$1750.00</p>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <p class="small mb-0">Shipping</p>
+          <p class="small mb-0">$175.00</p>
+        </div>
+
+        <div class="d-flex justify-content-between pb-1">
+          <p class="small">Tax</p>
+          <p class="small">$200.00</p>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <p class="fw-bold">Total</p>
+          <p class="fw-bold" style="color: #35558a;">$2125.00</p>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
+        <button type="button" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">
+          Track your order
+        </button>
+      </div>
     </div>
   </div>
 </div>
+

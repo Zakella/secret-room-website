@@ -1,0 +1,19 @@
+.input-field {
+  position: relative;
+  margin-top: 35px;
+}
+
+.input-field label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transition: 0.2s;
+  font-size: 16px;
+}
+
+.input-field input:focus + label,
+.input-field input:not(:placeholder-shown) + label {
+  transform: translateY(-25px);
+  font-size: 14px;
+}

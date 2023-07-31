@@ -17,7 +17,7 @@ export class SubHeaderComponent implements OnInit {
 
   items: any[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router:Router) {}
 
   ngOnInit() {
     this.cartService.totalQuantity
@@ -44,7 +44,7 @@ export class SubHeaderComponent implements OnInit {
         label: 'Sign In',
         icon: 'pi pi-user',
         command: () => {
-          // Действие при нажатии
+          this.router.navigate(['/login']);
         }
       }
       // Другие элементы меню...
