@@ -35,7 +35,7 @@ public class OrderService {
         Order order = orderRepository.findByOrderTrackingNumber(trackingNumber)
                 .orElseThrow(() -> new ResourceNotFoundException("Cannot find order by tracking number: " + trackingNumber));
 
-        String formattedId = String.format("%04d", order.getId());
+        String formattedId = String.format("%05d", order.getId());
 
         return new OrderReview(
                 formattedId,
@@ -43,7 +43,8 @@ public class OrderService {
                 order.getItems(),
                 order.getTotalAmountOrder(),
                 order.getShippingOption(),
-                order.getTotalAmount()
+                order.getTotalAmount(),
+                order.getCustomer()
         );
     }
 }

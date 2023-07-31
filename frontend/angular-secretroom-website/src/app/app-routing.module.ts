@@ -9,6 +9,8 @@ import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.
 import {CheckoutComponent} from "./components/checkout/checkout.component";
 import {EmptyCartComponent} from "./components/cart/empty-cart/empty-cart.component";
 import {OrderSummaryComponent} from "./components/order/order-summary/order-summary.component";
+import {LoginPageComponent} from "./components/login-page/login-page.component";
+import {RegistrationComponent} from "./components/registration/registration.component";
 
 const routes: Routes = [
   {
@@ -52,6 +54,16 @@ const routes: Routes = [
   {
     path: 'order-success/:id',
     component: OrderSummaryComponent
+  },
+
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+
+  {
+    path: 'sign-up',
+    component: RegistrationComponent
   },
 
   { path: '**', component: PageNotFoundComponent },

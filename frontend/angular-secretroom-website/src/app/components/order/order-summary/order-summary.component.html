@@ -28,9 +28,12 @@
     <div class="w-full lg:w-6 pl-3">
       <span class="font-medium text-900">Shipping Address</span>
       <div class="flex flex-column text-900 mt-3 mb-5">
-        <span class="mb-1">Celeste Slater</span>
-        <span class="mb-1">606-3727 Ullamcorper. Roseville NH 11523</span>
-        <span>(786) 713-8616</span>
+        <span>{{orderReview?.customer?.firstName}} {{orderReview?.customer?.lastName}}</span>
+        <span class="mb-1">{{orderReview?.shippingAddress?.country}}</span>
+        <span class="mb-1">{{orderReview?.shippingAddress?.city}} , {{orderReview?.shippingAddress?.street}} </span>
+        <span class="mb-1"></span>
+        <span class="mb-1">MD-{{orderReview?.shippingAddress?.zipCode}}</span>
+        <span>tel: {{orderReview?.customer?.phone}}</span>
       </div>
 
     </div>

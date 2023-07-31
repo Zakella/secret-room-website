@@ -50,6 +50,8 @@ import {MenuModule} from "primeng/menu";
 import { OrderSummaryComponent } from './components/order/order-summary/order-summary.component';
 import {MessageService} from "primeng/api";
 import {ToastModule} from "primeng/toast";
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 
 
@@ -80,6 +82,8 @@ import {ToastModule} from "primeng/toast";
     SidebarComponent,
     EmptyCartComponent,
     OrderSummaryComponent,
+    LoginPageComponent,
+    RegistrationComponent,
 
   ],
   imports: [

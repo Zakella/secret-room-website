@@ -46,7 +46,7 @@ public class DataInitializer implements CommandLineRunner {
 
     public void run(String... args) throws Exception {
 
-        // Delete tables
+//         Delete tables
 //        deleteTable("shipping_options");
 //        resetSequence("shipping_options");
 //

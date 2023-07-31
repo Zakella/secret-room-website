@@ -49,7 +49,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     lastname: ["", this.nameValidator],
     address: ["", [Validators.required, Validators.minLength(3)]],
     city: ["", this.nameValidator],
-    zip: ["", [Validators.required, Validators.minLength(4)]],
+    zip: ["", [Validators.required, Validators.pattern(/^\d+$/)]],
     phone: ["", [Validators.required, Validators.pattern(/^(06|07)\d{7}$/)]],
     payment: "",
     delivery: "",
