@@ -1,0 +1,53 @@
+.surface-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.surface-card:hover {
+  transform: scale(1.05);
+}
+
+
+.product-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  width: 200px; /* Adjust the width as needed */
+}
+
+.product-name {
+  width: 100%; /* Occupies full width of product-details */
+  height: 65px; /* Fixed height for product name */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-description {
+  width: 100%; /* Occupies full width of product-details */
+  max-height: 150px; /* Maximum height for product description */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-image {
+  max-height: 270px; /* Adjust the height as needed */
+  object-fit: contain; /* Preserve aspect ratio while fitting within the container */
+}
+
+.product-price {
+  font-weight: bold;
+}
+
+.link-no-underline {
+  text-decoration: none;
+}
+

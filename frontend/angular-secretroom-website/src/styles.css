@@ -123,3 +123,19 @@ span {
   line-height: 20px;
   letter-spacing: 0.04em;
 }
+
+
+.vs-gr{
+
+  font-feature-settings: "liga" 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  white-space: normal;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-family: BentonSans, Helvetica, Arial, sans-serif;
+  font-size: 0.6rem;
+  line-height: 20px;
+  letter-spacing: 0.16em;
+
+}

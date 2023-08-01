@@ -15,6 +15,7 @@
       public unitsInStock?: number,
       public brand?: string,
       public brandAlias?: string,
+      public brandShortName?: string,
 
       public productImages?: ProductImage[],
       public productSizes?: Size[]

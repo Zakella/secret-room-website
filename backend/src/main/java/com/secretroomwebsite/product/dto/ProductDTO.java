@@ -13,6 +13,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -37,6 +38,7 @@ public class ProductDTO {
     private List<ProductImage> productImages;
     private List<Size> productSizes;
     private String brandAlias;
+    private String brandShortName;
 
     public static ProductDTO fromProduct(Product product) {
         ;
@@ -63,7 +65,15 @@ public class ProductDTO {
                 .productImages(product.getImages())
                 .productSizes(product.getSizes())
                 .brandAlias(product.getBrand().getName())
+                .brandShortName(getBrandShortName(product.getBrand()))
                 .build();
+    }
+
+    private static String getBrandShortName(Brands brand) {
+        if (Objects.requireNonNull(brand) == Brands.BathAndBody) {
+            return "bb";
+        }
+        return "vs";
     }
 
 
