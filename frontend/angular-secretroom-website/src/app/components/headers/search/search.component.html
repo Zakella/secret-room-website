@@ -1,5 +1,5 @@
 <div class="form-group has-search flex-fill w-full">
   <span class="fa fa-search form-control-feedback"></span>
   <input type="text" class="form-control" placeholder="Search"
-         #searchBox id="search-box" (input)="search(searchBox.value)">
+         [formControl]="searchForm">
 </div>

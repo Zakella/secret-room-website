@@ -1,26 +1,23 @@
-import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { SearchService } from './search.service';
+import {Component, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {SearchService} from './search.service';
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   private searchTerms: Subject<string> = new Subject<string>();
   brand: string = '';
   defaultRoot: string = '';
 
-  constructor(private router: Router, private searchService: SearchService) {
-    this.searchTerms.pipe(
-      debounceTime(500),
-      distinctUntilChanged()
-    ).subscribe(value => {
-      this.searchProducts(value);
-    });
+  searchForm = this.fb.control('');
+
+  constructor(private router: Router, private searchService: SearchService, private fb: FormBuilder) {
   }
 
   search(value: string): void {
@@ -33,6 +30,9 @@ export class SearchComponent {
     this.defaultRoot = `${this.brand}/all-${this.brand}-products`;
 
     this.searchService.setSearchResults(value);
+    if (!this.brand) {
+      this.brand = 'vs';
+    }
 
     if (value) {
       this.router.navigate([`${this.brand}/search/${value}`]);
@@ -40,4 +40,18 @@ export class SearchComponent {
       this.router.navigate([this.defaultRoot]);
     }
   }
+
+  ngOnInit(): void {
+    this.searchForm.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(value => {
+      if (value !== null) {
+        console.log(value);  // optional: logs the current form value
+        this.searchProducts(value);
+      }
+    });
+  }
+
+
 }

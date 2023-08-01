@@ -70,3 +70,56 @@ span {
   }
 }
 
+.vs-font{
+  color: inherit;
+  font-feature-settings: "liga" 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  white-space: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: BentonSans, Helvetica, Arial, sans-serif;
+  font-size: 0.689rem;
+  line-height: 16px;
+  letter-spacing: 0.16em;
+}
+
+.vs-title
+{
+  color: inherit;
+  font-feature-settings: "liga" 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  white-space: normal;
+  font-weight: 200;
+  font-family: BentonSans, Helvetica, Arial, sans-serif;
+  font-size: 1.424rem;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+}
+
+
+.vs-disc
+{
+  font-feature-settings: "liga" 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  white-space: normal;
+  font-weight: 200;
+  font-family: BentonSans, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+}
+
+
+.vs-price
+{
+  font-feature-settings: "liga" 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  white-space: nowrap;
+  font-size: 1.125rem;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+}

@@ -13,10 +13,10 @@
       </div>
       <div class="col-12 lg:col-3 py-3 lg:pl-4">
         <div class="flex align-items-center font-medium text-900 mb-4">
-          <span>{{product.name}}</span> <i class="pi ml-3 cursor-pointer"></i>
+          <span class="vs-title">{{product.name}}</span> <i class="pi ml-3 cursor-pointer"></i>
         </div>
 
-        <span class="text-900 font-medium block mb-5 text-left price mt-3">
+        <span class="text-900 font-medium block mb-5 text-left price mt-3 vs-price">
           {{product.unitPrice}} MDL
         </span>
 
@@ -53,8 +53,10 @@
 
 
         <ol class="list-none p-0 m-0 surface-100 text-center text-900">
-          <li class="line-height-3 p-3 font-bold border-bottom-1 border-300">Product description</li>
-          <li class="line-height-3 p-3 border-bottom-1 border-300">{{product.description}}</li>
+          <li class="line-height-3 p-3 font-bold border-bottom-1 border-300"><span class="vs-title"> Product description </span></li>
+          <li class="line-height-3 p-3 border-bottom-1 border-300">
+            <span class="vs-disc">{{product.description}}</span>
+            </li>
         </ol>
 
         <button pButton pRipple class="p-button-outlined p-button-secondary w-full h-2rem border-1" style="margin-top: 2em;" (click)="goBack()">

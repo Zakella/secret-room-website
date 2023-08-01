@@ -65,13 +65,12 @@
       <div class="col-lg-10 col-xl-8">
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-5">
-            <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;">{{orderReview?.customer?.firstName}}</span>!</h5>
+            <h5 class="text-muted mb-0">
+              <span> Thanks for your Order</span>
+              , <span style="color: #a8729a;">{{orderReview?.customer?.firstName}}</span>!</h5>
           </div>
           <div class="card-body p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
-              <p class="small text-muted mb-0"></p>
-            </div>
+
             <div class="card shadow-0 border mb-4" *ngFor="let details of orderReview?.items">
               <div class="card-body">
                 <div class="row">
@@ -80,14 +79,23 @@
                          class="img-fluid" alt="Product">
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0">{{details.product.name}}</p>
+                    <p class="text-muted mb-0">
+                      <span>{{details.product.name}}</span>
+
+                    </p>
                   </div>
-<!--                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">-->
-<!--                    <p class="text-muted mb-0 small">{{details.product.shortDescription}}</p>-->
-<!--                  </div>-->
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center" >
+                    <p class="text-muted mb-0 small" *ngIf="details.sizeType != null">
+                      <span>  Size: {{details?.sizeType}} </span>
+
+                    </p>
+                  </div>
 
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0 small">Qty: {{details.quantity}}</p>
+                    <p class="text-muted mb-0 small">
+                      <span> Qty: {{details.quantity}}</span>
+
+                    </p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class="text-muted mb-0 small">{{details.amount}} <span>MDL</span></p>
@@ -101,28 +109,42 @@
 
             <div class="d-flex justify-content-between pt-2">
               <p class="fw-bold mb-0">Order Details</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> $898.00</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> {{orderReview?.subtotal}} MDL</p>
             </div>
 
             <div class="d-flex justify-content-between pt-2">
-              <p class="text-muted mb-0">Invoice Number : 788152</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
+              <p class="text-muted mb-0">
+                <span>{{orderReview?.customer?.firstName}} {{orderReview?.customer?.lastName}}</span>
+              </p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Shipping</span> {{orderReview?.shippingOption?.cost}} MDL</p>
             </div>
 
             <div class="d-flex justify-content-between">
-              <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+              <p class="text-muted mb-0"><span>{{orderReview?.shippingAddress?.country}}</span></p>
+<!--              <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>-->
             </div>
 
-            <div class="d-flex justify-content-between mb-5">
-              <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+            <div class="d-flex justify-content-between">
+              <p class="text-muted mb-0"> <span>{{orderReview?.shippingAddress?.city}} , {{orderReview?.shippingAddress?.street}} </span> </p>
+<!--              <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>-->
             </div>
+
+            <div class="d-flex justify-content-between">
+              <p class="text-muted mb-0"><span>MD-{{orderReview?.shippingAddress?.zipCode}}</span></p>
+              <!--              <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>-->
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <p class="text-muted mb-0"><span>tel: {{orderReview?.customer?.phone}}</span></p>
+              <!--              <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>-->
+            </div>
+
+
           </div>
           <div class="card-footer border-0 px-4 py-5"
                style="background-color: rgb(244, 209, 218); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
             <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
-              paid: <span class="h2 mb-0 ms-2">$1040</span></h5>
+              paid: <span class="h2 mb-0 ms-2">{{orderReview?.totalAmountOrder}} MDL</span></h5>
           </div>
         </div>
       </div>
@@ -130,47 +152,4 @@
   </div>
 </section>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-     aria-hidden="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header border-bottom-0">
-        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-start text-black p-4">
-        <h5 class="modal-title text-uppercase mb-5" id="exampleModalLabel">Johnatan Miller</h5>
-        <h4 class="mb-5" style="color: #35558a;">Thanks for your order</h4>
-        <p class="mb-0" style="color: #35558a;">Payment summary</p>
-        <hr class="mt-2 mb-4"
-            style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
-
-        <div class="d-flex justify-content-between">
-          <p class="fw-bold mb-0">Ether Chair(Qty:1)</p>
-          <p class="text-muted mb-0">$1750.00</p>
-        </div>
-
-        <div class="d-flex justify-content-between">
-          <p class="small mb-0">Shipping</p>
-          <p class="small mb-0">$175.00</p>
-        </div>
-
-        <div class="d-flex justify-content-between pb-1">
-          <p class="small">Tax</p>
-          <p class="small">$200.00</p>
-        </div>
-
-        <div class="d-flex justify-content-between">
-          <p class="fw-bold">Total</p>
-          <p class="fw-bold" style="color: #35558a;">$2125.00</p>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
-        <button type="button" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">
-          Track your order
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 

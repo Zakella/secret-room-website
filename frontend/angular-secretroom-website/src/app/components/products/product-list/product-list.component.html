@@ -1,27 +1,37 @@
-<div class="surface-ground px-4 py-8 md:px-6 lg:px-8" >
+
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+
   <div class="grid -mt-3 -ml-3 -mr-3">
     <div class="col-12 md:col-6 lg:col-2" *ngFor="let product of products">
       <div class="p-2">
         <div class="shadow-2 p-4 surface-card border-round">
 
+          <div class="flex justify-content-center align-items-center mb-3">
+            <span class="vs-font">{{product.brandAlias}}</span>
+          </div>
+
+
           <a [routerLink]="'/'+ brand+'/product-view/' + product.id" class="link-no-underline">
-          <div class="relative mb-3">
 
-            <span class="surface-card text-900 shadow-2 px-3 py-2 absolute"
-                  style="border-radius: 1.5rem; left: 1rem; top: 1rem">{{product.categoryName}}</span>
-              <img src="{{product.imageURL}}" class="w-full product-image"/>
+            <div class="relative mb-3">
+              <span class="surface-card text-900 shadow-2 px-3 py-2 absolute vs-price"
+                    style="border-radius: 1.5rem; left: 1rem; top: 1rem">
+                {{product.unitPrice}} MDL
+              </span>
 
-          </div>
-          <div class="flex justify-content-between align-items-center mb-3">
-            <a [routerLink]="'/'+ brand+'/product-view/' + product.id" class="text-900 font-medium text-xl product-name link-no-underline">
-              {{product.name}}
-            </a>
-          </div>
-          <p class="mt-0 mb-3 text-600 line-height-3 product-description">
-            {{product.shortDescription}}
-          </p>
-          <span class="text-pink-800 text-m font-medium">{{ product.unitPrice }} MDL</span>
+              <img src="{{product.imageURL}}" class="w-full" alt="product"/>
+
+            </div>
+            <div class="flex justify-content-between align-items-center mb-3">
+              <span class="text-900 vs-font">{{product.name}}</span>
+            </div>
+
+            <p class="mt-0 mb-3 text-600 line-height-3">
+              <span class="vs-disc">{{product.shortDescription}}</span>
+            </p>
+
           </a>
+
         </div>
       </div>
     </div>
@@ -37,3 +47,5 @@
     [rowsPerPageOptions]="[5, 10, 15]"
   ></p-paginator>
 </div>
+
+

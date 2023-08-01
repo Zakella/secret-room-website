@@ -36,6 +36,7 @@ public class ProductDTO {
     private LocalDate lastUpdated;
     private List<ProductImage> productImages;
     private List<Size> productSizes;
+    private String brandAlias;
 
     public static ProductDTO fromProduct(Product product) {
         ;
@@ -61,6 +62,9 @@ public class ProductDTO {
                 .lastUpdated(product.getLastUpdated())
                 .productImages(product.getImages())
                 .productSizes(product.getSizes())
+                .brandAlias(product.getBrand().getName())
                 .build();
     }
+
+
 }

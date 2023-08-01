@@ -14,6 +14,7 @@
       public active?: boolean,
       public unitsInStock?: number,
       public brand?: string,
+      public brandAlias?: string,
 
       public productImages?: ProductImage[],
       public productSizes?: Size[]

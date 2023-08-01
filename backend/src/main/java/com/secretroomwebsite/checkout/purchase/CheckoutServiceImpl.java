@@ -45,6 +45,8 @@ public class CheckoutServiceImpl implements CheckoutService {
         if (customerFromDB.isPresent()) {
             // we found them ... let's assign them accordingly
             customer = customerFromDB.get();
+            customer.setFirstName(purchase.getCustomer().getFirstName());
+            customer.setLastName(purchase.getCustomer().getLastName());
         }
 
         customerRepository.save(customer);
