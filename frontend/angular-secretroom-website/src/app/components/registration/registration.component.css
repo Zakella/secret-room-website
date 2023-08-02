@@ -8,6 +8,27 @@ input::placeholder {
   color: rgb(244, 209, 218);
 }
 
+
+.cascading-right {
+  margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+
+input:focus {
+  border-color: rgb(244, 209, 218);
+  outline: none !important;
+  box-shadow: 0 0 0 0.2rem rgba(244, 209, 218, 0.5);
+}
+
+input::placeholder {
+  color: rgb(244, 209, 218);
+}
+
 .form-outline {
   position: relative;
   padding-top: 1rem;

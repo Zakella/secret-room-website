@@ -13,14 +13,19 @@
         </div>
         <div class="col-12 field">
 
-          <label for="email2" class="text-900 font-medium mb-3">Email</label>
-          <input id="email2" type="text" class="p-inputtext w-full mb-3" formControlName="email">
+<!--          <label for="email2" class="text-900 font-medium mb-3">Email</label>-->
+<!--          <input id="email2" type="text" class="p-inputtext w-full mb-3" formControlName="email">-->
+
+          <app-vs-input type="email" label="Email address" id="email" formControlName="email"></app-vs-input>
+
+
+
 
           <p-message severity="error" text="Email is not valid"
                      *ngIf="form.controls.email.dirty && form.controls.email.hasError('pattern')"></p-message>
 
         </div>
-        <p-divider class="w-full px-2 mb-3"></p-divider>
+<!--        <p-divider class="w-full px-2 mb-3"></p-divider>-->
         <div class="col-12 mt-4 lg:mt-0 mb-4">
           <div class="text-900 font-medium text-xl">Shipping</div>
         </div>
@@ -29,8 +34,10 @@
           <input id="country2" type="text" formControlName="country" class="p-inputtext w-full mb-3">
         </div>
         <div class="col-12 lg:col-6 field mb-0">
-          <label for="name2" class="text-900 font-medium mb-3">Name</label>
-          <input id="name2" type="text" formControlName="name" class="p-inputtext w-full mb-3">
+<!--          <label for="name2" class="text-900 font-medium mb-3">Name</label>-->
+<!--          <input id="name2" type="text" formControlName="name" class="p-inputtext w-full mb-3">-->
+          <app-vs-input type="email" label="Email address" id="name2" formControlName="name"></app-vs-input>
+
 
           <p-message severity="error" text="Name is required"
                      *ngIf="form.controls.name.dirty && form.controls.name.hasError('required')">

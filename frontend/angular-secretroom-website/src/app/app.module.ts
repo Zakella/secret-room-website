@@ -51,6 +51,8 @@ import { OrderSummaryComponent } from './components/order/order-summary/order-su
 import {MessageService} from "primeng/api";
 import {ToastModule} from "primeng/toast";
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { VsInputComponent } from './components/vs-input/vs-input.component';
 
 
 
@@ -81,7 +83,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     SidebarComponent,
     EmptyCartComponent,
     OrderSummaryComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegistrationComponent,
+    VsInputComponent
 
   ],
   imports: [
