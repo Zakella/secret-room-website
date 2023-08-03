@@ -41,3 +41,8 @@ input::placeholder {
   transition: all 0.3s ease;
   background: white;
 }
+
+
+input:disabled {
+  background-color: white;
+}

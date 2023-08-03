@@ -53,10 +53,8 @@ import {ToastModule} from "primeng/toast";
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VsInputComponent } from './components/vs-input/vs-input.component';
-
-
-
-
+import {NgxMaskModule} from "ngx-mask";
+// import {NgxMaskModule} from 'ngx-mask'
 
 @NgModule({
     declarations: [
@@ -116,7 +114,15 @@ import { VsInputComponent } from './components/vs-input/vs-input.component';
     MessagesModule,
     ToolbarModule,
     MenuModule,
-    ToastModule
+    ToastModule,
+
+    NgxMaskModule.forRoot({
+      showMaskTyped : true,
+      // clearIfNotMatch : true
+    })
+
+
+
 
 
   ],

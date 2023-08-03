@@ -1,4 +1,17 @@
 <div class="form-outline mb-4">
-  <input [type]="type" [id]="id" class="form-control form-control-lg p-2" placeholder=" " />
+  <input [type]="type"
+         [id]="id"
+         [(ngModel)]="value"
+         (ngModelChange)="onChange($event)"
+         (blur)="onTouched()"
+         [disabled]="disabled"
+         [minlength]="minLength ?? null"
+         [maxlength]="maxLength ?? null"
+         class="form-control form-control-lg p-2"
+         placeholder=""
+         [attr.maxlength]="maxLength"
+         [mask]="mask"
+         [prefix]="prefix"
+  >
   <label class="form-label vs-disc" [for]="id">{{label}}</label>
 </div>

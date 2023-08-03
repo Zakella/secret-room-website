@@ -50,7 +50,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     address: ["", [Validators.required, Validators.minLength(3)]],
     city: ["", this.nameValidator],
     zip: ["", [Validators.required, Validators.pattern(/^\d+$/)]],
-    phone: ["", [Validators.required, Validators.pattern(/^(06|07)\d{7}$/)]],
+    phone: ["", [Validators.required, Validators.pattern(/^0[67]\d{7}$/)]],
     payment: "",
     delivery: "",
     comment: ""
@@ -127,6 +127,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           // this.fb.group({).reset();
           this.cartService.clearCart();
           this.router.navigate([`/order-success/${response.orderTrackingNumber}`]);
+
         },
         error: error => {
           if (error.status === 0) {

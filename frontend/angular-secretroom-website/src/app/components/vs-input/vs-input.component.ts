@@ -17,23 +17,21 @@ export class VsInputComponent implements ControlValueAccessor {
   @Input() label!: string;
   @Input() id!: string;
   @Input() type: string = 'text';
+  @Input() disabled: boolean = false;
+  @Input() minLength?: number;
+  @Input() maxLength?: number ;
+  @Input() mask: string = '';
+  @Input() prefix: string = '';
 
-  private _value: any = '';
-  onChange: any = () => {};
-  onTouch: any = () => {};
+  value: string = '';
+  onChange = (value: string) => {};
+  onTouched = () => {};
 
-  get value() {
-    return this._value;
-  }
 
-  set value(val) {
-    this._value = val;
-    this.onChange(val);
-    this.onTouch(val);
-  }
 
-  writeValue(value: any): void {
+  writeValue(value: string): void {
     this.value = value;
+
   }
 
   registerOnChange(fn: any): void {
@@ -41,6 +39,11 @@ export class VsInputComponent implements ControlValueAccessor {
   }
 
   registerOnTouched(fn: any): void {
-    this.onTouch = fn;
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean) : void {
+    this.disabled = isDisabled;
+    console.log('Set disabled state', isDisabled);
   }
 }

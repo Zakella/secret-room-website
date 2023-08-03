@@ -13,13 +13,7 @@
         </div>
         <div class="col-12 field">
 
-<!--          <label for="email2" class="text-900 font-medium mb-3">Email</label>-->
-<!--          <input id="email2" type="text" class="p-inputtext w-full mb-3" formControlName="email">-->
-
           <app-vs-input type="email" label="Email address" id="email" formControlName="email"></app-vs-input>
-
-
-
 
           <p-message severity="error" text="Email is not valid"
                      *ngIf="form.controls.email.dirty && form.controls.email.hasError('pattern')"></p-message>
@@ -35,6 +29,8 @@
 
 
           <app-vs-input type="text" label="Country" id="country2" formControlName="country"></app-vs-input>
+
+
         </div>
         <div class="col-12 lg:col-6 field mb-0">
 <!--          <label for="name2" class="text-900 font-medium mb-3">Name</label>-->
@@ -97,7 +93,8 @@
 <!--          <label for="pc2" class="text-900 font-medium mb-3">Postal Code</label>-->
 <!--          <input id="pc2" type="text" class="p-inputtext w-full mb-3" formControlName="zip" maxlength="4" >-->
 
-          <app-vs-input type="text" label="Postal Code" id="pc2" formControlName="zip" maxlength="4"></app-vs-input>
+          <app-vs-input type="text" label="Postal Code" id="pc2" formControlName="zip" [maxLength]="4"></app-vs-input>
+
 
           <p-message severity="error" text="Zip code is required"
                      *ngIf="form.controls.zip.dirty && form.controls.zip.hasError('required')">
@@ -132,8 +129,14 @@
 
 
         <div class="col-12 field mb-0">
-          <label for="phone" class="text-900 font-medium mb-3">Phone</label>
-          <p-inputMask id="phone" mask="0********" formControlName="phone" placeholder="0********"></p-inputMask>
+
+          <app-vs-input type="text"
+                        label="Phone" id="phone"
+                        formControlName="phone"
+                        [maxLength]="9"
+          >
+
+          </app-vs-input>
 
           <p-message severity="error" text="Phone is required"
                      *ngIf="form.controls.phone.dirty && form.controls.phone.hasError('required')">
@@ -147,8 +150,7 @@
         </div>
 
 
-        <p-divider class="w-full px-2 mb-3"></p-divider>
-        <div class="text-900 font-medium text-xl mt-4 lg:mt-0 mb-4 px-2">Shipping Method</div>
+        <div class="text-900 font-medium text-xl mt-4 lg:mt-1 mb-4 px-2 vs-title ">Shipping Method</div>
 
         <! -- Shipping Options -->
 
@@ -188,5 +190,3 @@
 <!--<div class="card flex justify-content-center gap-2">-->
   <p-toast></p-toast>
 
-<!--  <button type="button" pButton pRipple (click)="showError('test')" label="Error" class="p-button-danger"></button>-->
-<!--</div>-->
