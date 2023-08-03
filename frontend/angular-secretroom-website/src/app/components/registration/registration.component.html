@@ -10,16 +10,16 @@
             ">
           <div class="card-body p-5 shadow-5 text-center">
             <h5 class="fw-normal mb-3 pb-3 vs-title" style="letter-spacing: 1px;">Sign up now</h5>
-            <form>
+            <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
                 <div class="col-md-6 mb-4">
 
-                  <app-vs-input type="text" label="First name" id="name" formControlName="firstname"></app-vs-input>
+                  <app-vs-input type="text" label="First name" id="name" formControlName="firstName"></app-vs-input>
 
                 </div>
                 <div class="col-md-6 mb-4">
-                  <app-vs-input type="text" label="Last name" id="lastname" formControlName="lastname"></app-vs-input>
+                  <app-vs-input type="text" label="Last name" id="lastname" formControlName="lastName"></app-vs-input>
                 </div>
               </div>
 
@@ -37,7 +37,7 @@
               <app-vs-input type="password" label="Password" id="password" formControlName="password"></app-vs-input>
 
               <!-- Submit button -->
-              <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit">
+              <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit" [disabled]="!form.valid">
                 <span class="label">Sing in</span>
               </button>
 

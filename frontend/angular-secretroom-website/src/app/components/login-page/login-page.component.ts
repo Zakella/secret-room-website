@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
+import {CartService} from "../../services/cart.service";
+import {Router} from "@angular/router";
+import {PurchaseService} from "../../services/purchase.service";
+import {ShippingService} from "../../services/shipping.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-login-page',
@@ -7,4 +13,14 @@ import { Component } from '@angular/core';
 })
 export class LoginPageComponent {
 
+  form = this.fb.group({
+    email: ["", Validators.required],
+    password: ["",Validators.required],
+  });
+
+  constructor(private fb: FormBuilder) {}
+
+  onSubmit($event: any) {
+
+  }
 }

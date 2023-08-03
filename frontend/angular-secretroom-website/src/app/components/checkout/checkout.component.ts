@@ -132,7 +132,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         error: error => {
           if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.
-            console.error('Server is not responding. Please try again later.');
+            this.showError('Server is not responding. Please try again later.');
           } else {
             // The backend returned an unsuccessful response code.
             // The response body may contain clues as to what went wrong.
@@ -142,6 +142,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           }
           // Return an observable with a user-facing error message.
           return throwError(() => new Error('Something bad happened; please try again later.'));
+
+
         }
 
       });
