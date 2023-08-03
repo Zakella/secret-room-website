@@ -1,0 +1,8 @@
+:host ::ng-deep .p-radiobutton.p-component .p-radiobutton-box.p-highlight {
+  background-color: var(--standart-color);
+  border-color:var(--standart-color)
+}
+
+:host  .p-radiobutton.p-component .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+  color: #FFFFFF;
+}

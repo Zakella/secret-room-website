@@ -14,16 +14,12 @@
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
                 <div class="col-md-6 mb-4">
-                  <div class="form-outline mb-4">
-                    <input type="email" id="formFirstName" class="form-control form-control-lg p-2" placeholder=" " />
-                    <label class="form-label vs-disc" for="formFirstName">First name</label>
-                  </div>
+
+                  <app-vs-input type="text" label="First name" id="name" formControlName="firstname"></app-vs-input>
+
                 </div>
                 <div class="col-md-6 mb-4">
-                  <div class="form-outline mb-4">
-                    <input type="email" id="formLastName" class="form-control form-control-lg p-2" placeholder=" " />
-                    <label class="form-label vs-disc" for="formLastName">Last name</label>
-                  </div>
+                  <app-vs-input type="text" label="Last name" id="lastname" formControlName="lastname"></app-vs-input>
                 </div>
               </div>
 
@@ -33,16 +29,12 @@
 <!--                <label class="form-label" for="form3Example3">Email address</label>-->
 <!--              </div>-->
 
-              <div class="form-outline mb-4">
-                <input type="email" id="form2Example17" class="form-control form-control-lg p-2" placeholder=" " />
-                <label class="form-label vs-disc" for="form2Example17">Email address</label>
-              </div>
+              <!-- email input -->
+              <app-vs-input type="email" label="Email address" id="email" formControlName="email"></app-vs-input>
 
               <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" id="form2Example27" class="form-control form-control-lg p-2" placeholder=" " />
-                <label class="form-label vs-disc" for="form2Example27">Password</label>
-              </div>
+
+              <app-vs-input type="password" label="Password" id="password" formControlName="password"></app-vs-input>
 
               <!-- Submit button -->
               <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit">
