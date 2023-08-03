@@ -23,4 +23,11 @@ spring:
     change-log: classpath:db/changelog/changelog.xml
     enabled: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://keycloak.victoriasecret.md/realms/srwebtest/protocol/openid-connect/certs
 
+
+#  spring.security.oauth2.resourceserver.jwt.jwk-set-uri = http://localhost:8180/realms/eazybankdev/protocol/openid-connect/certs
