@@ -1,0 +1,10 @@
+
+GET https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/auth?
+    client_id=srwebclient
+    &response_type=code
+    &scope=openid
+    &redirect_uri=http://localhost:4200/myAccount
+    &state=1234567890
+
+
+

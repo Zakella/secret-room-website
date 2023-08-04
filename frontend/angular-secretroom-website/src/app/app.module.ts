@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
@@ -54,7 +54,24 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VsInputComponent } from './components/vs-input/vs-input.component';
 import {NgxMaskModule} from "ngx-mask";
-// import {NgxMaskModule} from 'ngx-mask'
+import { MyAccountComponent } from './components/my-account/my-account.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'https://keycloak.victoriasecret.md/',
+        realm: 'srWebTest',
+        clientId: 'srwebpublic',
+      },
+      initOptions: {
+        pkceMethod: 'S256',
+          redirectUri: 'http://localhost:4200/myAccount',
+      },loadUserProfileAtStartUp: false
+    });
+}
 
 @NgModule({
     declarations: [
@@ -84,7 +101,8 @@ import {NgxMaskModule} from "ngx-mask";
         LoginPageComponent,
         RegistrationComponent,
         VsInputComponent,
-        VsInputComponent
+        VsInputComponent,
+        MyAccountComponent
 
     ],
   imports: [
@@ -115,18 +133,28 @@ import {NgxMaskModule} from "ngx-mask";
     ToolbarModule,
     MenuModule,
     ToastModule,
+    KeycloakAngularModule,
 
     NgxMaskModule.forRoot({
       showMaskTyped : true,
       // clearIfNotMatch : true
     })
-
+/**/
 
 
 
 
   ],
-  providers: [ProductService, MessageService],
+  providers: [
+    ProductService,
+    MessageService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

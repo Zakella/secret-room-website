@@ -11,6 +11,8 @@ import {EmptyCartComponent} from "./components/cart/empty-cart/empty-cart.compon
 import {OrderSummaryComponent} from "./components/order/order-summary/order-summary.component";
 import {LoginPageComponent} from "./components/login-page/login-page.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
+import {MyAccountComponent} from "./components/my-account/my-account.component";
+import {AuthKeyClockGuard} from "./routeguards/AuthKeyClockGuard";
 
 
 const routes: Routes = [
@@ -66,6 +68,19 @@ const routes: Routes = [
     path: 'registration',
     component: RegistrationComponent
   },
+
+  {
+    path: 'myAccount',
+    component:MyAccountComponent, canActivate: [AuthKeyClockGuard],data: {
+      roles: ['USER']
+    }
+  },
+
+  // {
+  //   path: 'myAccount',
+  //   component:MyAccountComponent
+  //
+  // },
 
   { path: '**', component: PageNotFoundComponent },
 ];

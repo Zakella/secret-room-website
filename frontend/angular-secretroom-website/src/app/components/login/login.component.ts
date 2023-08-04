@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import { KeycloakService } from 'keycloak-angular';
+import { KeycloakProfile } from 'keycloak-js';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +10,17 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
 
-  constructor(private router: Router) {
+  // user = new User();
+  //
+  // public isLoggedIn = false;
+  // public userProfile: KeycloakProfile | null = null;
+
+  constructor(private readonly keycloak: KeycloakService) {
   }
 
   goToLoginPage() {
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
+    this.keycloak.login();
   }
 
 

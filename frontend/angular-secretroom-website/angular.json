@@ -33,7 +33,12 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeflex/primeflex.css"
             ],
-            "scripts": []
+            "scripts": [],
+
+            "allowedCommonJsDependencies": [
+              "base64-js",
+              "js-sha256"
+            ]
           },
           "configurations": {
             "production": {
