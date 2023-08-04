@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 
-@CrossOrigin("http://localhost:4200/")
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 

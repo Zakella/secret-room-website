@@ -23,4 +23,21 @@ spring:
     change-log: classpath:db/changelog/changelog.xml
     enabled: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/certs
 
+
+#  spring.security.oauth2.resourceserver.jwt.jwk-set-uri = http://localhost:8180/realms/eazybankdev/protocol/openid-connect/certs
+#  "issuer": "https://keycloak.victoriasecret.md/realms/srWebTest",
+#  "authorization_endpoint": "https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/auth",
+#  "token_endpoint": "https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/token",
+#  "introspection_endpoint": "https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/token/introspect",
+#  "userinfo_endpoint": "https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/userinfo",
+#  "end_session_endpoint": "https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/logout",
+#  "frontchannel_logout_session_supported": true,
+#  "frontchannel_logout_supported": true,
+#  "jwks_uri": "https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/certs",
+#  "check_session_iframe": "https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/login-status-iframe.html",

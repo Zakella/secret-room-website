@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/product-category")
-@CrossOrigin("http://localhost:4200/")
 public class ProductCategoryController {
 
     public ProductGroupService productGroupService;

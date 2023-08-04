@@ -1,6 +1,7 @@
 package com.secretroomwebsite.config;
 
-import com.secretroomwebsite.config.CsrfCookieFilter;
+import com.secretroomwebsite.config.KeycloakRoleConverter;
+import com.secretroomwebsite.exception.ErrorHandlerAuth;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.context.annotation.Bean;
@@ -9,29 +10,28 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-
-import java.util.Arrays;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import java.util.Collections;
 import java.util.List;
 
 
 @Configuration
-public class ProjectSecurityConfig {
+public class SecurityConfig {
+
+    private final ErrorHandlerAuth errorHandler;
+
+    public SecurityConfig(final ErrorHandlerAuth errorHandler) {
+        this.errorHandler = errorHandler;
+    }
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
-        requestHandler.setCsrfRequestAttributeName("_csrf");
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new KeycloakRoleConverter());
 
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .cors(corsCustomizer -> corsCustomizer.configurationSource(new CorsConfigurationSource() {
+        http.cors(corsCustomizer -> corsCustomizer.configurationSource(new CorsConfigurationSource() {
                     @Override
                     public CorsConfiguration getCorsConfiguration(@NotNull HttpServletRequest request) {
                         CorsConfiguration config = new CorsConfiguration();
@@ -43,20 +43,23 @@ public class ProjectSecurityConfig {
                         config.setMaxAge(3600L);
                         return config;
                     }
-                })).csrf((csrf) -> csrf.csrfTokenRequestHandler(requestHandler).ignoringRequestMatchers("/contact","/register")
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-                .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
-                .authorizeHttpRequests((requests)->requests
-                        .requestMatchers("/myAccount").hasRole("USER")
-                        .requestMatchers("/myBalance").hasAnyRole("USER","ADMIN")
-                        .requestMatchers("/myLoans").authenticated()
-                        .requestMatchers("/myCards").hasRole("USER")
-                        .requestMatchers("/user").authenticated()
-                        .requestMatchers("/product-category","/contact","/register").permitAll())
-                .oauth2ResourceServer(oauth2ResourceServerCustomizer ->
-                        oauth2ResourceServerCustomizer.jwt(jwtCustomizer -> jwtCustomizer.jwtAuthenticationConverter(jwtAuthenticationConverter)));
+                }))
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(r ->
+                        r.requestMatchers("/api/v1/customer/**")
+                                .authenticated()
+                                .anyRequest().permitAll()
+                )
+                .exceptionHandling(e -> e.authenticationEntryPoint(errorHandler))
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .oauth2ResourceServer(
+                        httpSecurityOAuth2ResourceServerConfigurer ->
+                                httpSecurityOAuth2ResourceServerConfigurer.jwt(
+                                        jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwtAuthenticationConverter)));
+
         return http.build();
     }
 
 
 }
+

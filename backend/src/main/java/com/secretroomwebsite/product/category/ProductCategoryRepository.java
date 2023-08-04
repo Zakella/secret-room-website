@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@CrossOrigin("http://localhost:4200/")
+
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long> {
 
     List<ProductCategory> findAll();
