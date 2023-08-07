@@ -58,6 +58,7 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 
+
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
@@ -68,10 +69,11 @@ function initializeKeycloak(keycloak: KeycloakService) {
       },
       initOptions: {
         pkceMethod: 'S256',
-          redirectUri: 'http://localhost:4200/myAccount',
+        // redirectUri: 'http://localhost:4200/myAccount',
       },loadUserProfileAtStartUp: false
     });
 }
+
 
 @NgModule({
     declarations: [

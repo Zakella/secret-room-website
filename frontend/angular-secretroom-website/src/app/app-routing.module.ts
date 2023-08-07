@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {inject, NgModule} from '@angular/core';
+import {CanActivateFn, RouterModule, Routes} from '@angular/router';
 import {GroupListBbComponent} from "./components/product-groups/group-list-bb/group-list-bb.component";
 import {GroupListVsComponent} from "./components/product-groups/group-list-vs/group-list-vs.component";
 import {ProductListComponent} from "./components/products/product-list/product-list.component";
@@ -12,8 +12,12 @@ import {OrderSummaryComponent} from "./components/order/order-summary/order-summ
 import {LoginPageComponent} from "./components/login-page/login-page.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
 import {MyAccountComponent} from "./components/my-account/my-account.component";
-import {AuthKeyClockGuard} from "./routeguards/AuthKeyClockGuard";
+import {AuthGuard} from "./authentication/auth.guard";
 
+
+const isAuthenticated: CanActivateFn = (route, state) => {
+  return inject(AuthGuard).isAccessAllowed(route, state);
+}
 
 const routes: Routes = [
   {
@@ -71,9 +75,8 @@ const routes: Routes = [
 
   {
     path: 'myAccount',
-    component:MyAccountComponent, canActivate: [AuthKeyClockGuard],data: {
-      roles: ['USER']
-    }
+    canActivate: [isAuthenticated],
+    component: MyAccountComponent
   },
 
   // {
