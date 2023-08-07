@@ -16,12 +16,12 @@ export class LoginComponent {
   // public isLoggedIn = false;
   // public userProfile: KeycloakProfile | null = null;
 
-  constructor(private authService: AuthService,) {
+  constructor(private authService: AuthService,private router: Router) {
   }
 
   goToLoginPage() {
-    // this.router.navigate(['/login']);
-    this.authService.login();
+    this.router.navigate(['/login']);
+    // this.authService.login();
   }
 
 
