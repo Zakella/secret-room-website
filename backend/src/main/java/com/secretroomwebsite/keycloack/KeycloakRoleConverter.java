@@ -1,4 +1,4 @@
-package com.secretroomwebsite.config;
+package com.secretroomwebsite.keycloack;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;

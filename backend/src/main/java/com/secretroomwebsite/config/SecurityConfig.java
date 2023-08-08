@@ -1,6 +1,6 @@
 package com.secretroomwebsite.config;
 
-import com.secretroomwebsite.config.KeycloakRoleConverter;
+import com.secretroomwebsite.keycloack.KeycloakRoleConverter;
 import com.secretroomwebsite.exception.ErrorHandlerAuth;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.constraints.NotNull;

@@ -59,18 +59,34 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 
 
+// function initializeKeycloak(keycloak: KeycloakService) {
+//   return () =>
+//     keycloak.init({
+//       config: {
+//         url: 'https://keycloak.victoriasecret.md/',
+//         realm: 'srWebTest',
+//         clientId: 'srwebpublic',
+//       },
+//       initOptions: {
+//         pkceMethod: 'S256',
+//         // redirectUri: 'http://localhost:4200/myAccount',
+//       },loadUserProfileAtStartUp: false
+//     });
+// }
+
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
-        url: 'https://keycloak.victoriasecret.md/',
+        url: 'https://keycloak.victoriasecret.md',
         realm: 'srWebTest',
-        clientId: 'srwebpublic',
+        clientId: 'test-frontend'
       },
       initOptions: {
-        pkceMethod: 'S256',
-        // redirectUri: 'http://localhost:4200/myAccount',
-      },loadUserProfileAtStartUp: false
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
+      }
     });
 }
 
