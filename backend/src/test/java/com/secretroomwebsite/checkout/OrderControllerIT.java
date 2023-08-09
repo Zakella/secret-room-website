@@ -1,4 +1,4 @@
-package com.secretroomwebsite.checkout.purchase;
+package com.secretroomwebsite.checkout;
 
 import com.secretroomwebsite.AbstractTestcontainers;
 import com.secretroomwebsite.TestDataProvider;

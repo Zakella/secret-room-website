@@ -1,5 +1,5 @@
 package com.secretroomwebsite.order;
-import com.secretroomwebsite.checkout.purchase.CheckoutService;
+import com.secretroomwebsite.checkout.CheckoutService;
 import com.secretroomwebsite.purchase.Purchase;
 import com.secretroomwebsite.purchase.PurchaseResponse;
 import org.springframework.http.HttpStatus;
