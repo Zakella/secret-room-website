@@ -10,7 +10,7 @@
             ">
           <div class="card-body p-5 shadow-5 text-center">
             <h5 class="fw-normal mb-3 pb-3 vs-title" style="letter-spacing: 1px;">Sign up now</h5>
-            <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
                 <div class="col-md-6 mb-4">
@@ -37,9 +37,15 @@
               <app-vs-input type="password" label="Password" id="password" formControlName="password"></app-vs-input>
 
               <!-- Submit button -->
-              <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit" [disabled]="!form.valid">
+              <button pRipple class="w-full vs-button h-3rem py-2 mt-2" type="submit" [disabled]="!registrationForm.valid">
                 <span class="label">Sing in</span>
               </button>
+
+              <div class="mt-4">
+<!--                <p-messages severity="error"  text="User already exists"-->
+<!--                            [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" *ngIf="userExists"></p-messages>-->
+                <p-message severity="error" text="User already exists" *ngIf="userExists"></p-message>
+              </div>
 
               <!-- Register buttons -->
               <div class="text-center mt-3">

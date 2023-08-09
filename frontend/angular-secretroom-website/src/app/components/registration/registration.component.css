@@ -62,3 +62,7 @@ input::placeholder {
   transition: all 0.3s ease;
   background: white;
 }
+
+.mt-4 {
+  margin-top: 0.8rem; /* Adjust as needed */
+}

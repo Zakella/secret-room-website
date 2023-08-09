@@ -27,26 +27,6 @@ export class LoginPageComponent {
 
   onSubmit($event: any) {
 
-    // const tokenEndpoint = 'https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/token';
-    //
-    //
-    // const body = new HttpParams()
-    //   .set('client_id', 'test2')
-    //   .set('grant_type', 'password')
-    //   .set('username', "Slava")
-    //   .set('password', '456');
-    //
-    // this.httpClient.post(tokenEndpoint, body.toString(), {
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded'
-    //   }
-    // }).subscribe(response => {
-    //   // Обработка ответа. Сохраните токен и т.д.
-    //   console.log(response);
-    // }, error => {
-    //   // Обработка ошибок.
-    //   console.error('Error:', error);
-    // });
 
 
   }

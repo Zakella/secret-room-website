@@ -36,10 +36,16 @@ public class CheckoutServiceImpl implements CheckoutService {
     public PurchaseResponse placeOrder(Purchase purchase) {
 
 
-        // check if this is an existing customer
-//        String theEmail = customer.getEmail();
+        if (purchase == null) {
+            throw new IllegalArgumentException("Purchase cannot be null");
+        }
 
         Customer customer = purchase.getCustomer();
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer cannot be null");
+        }
+
+
         Optional<Customer> customerFromDB = customerRepository.findByPhone(customer.getPhone());
 
         if (customerFromDB.isPresent()) {
@@ -51,9 +57,11 @@ public class CheckoutServiceImpl implements CheckoutService {
 
         customerRepository.save(customer);
 
-
         // retrieve the order info from dto
         Order order = purchase.getOrder();
+        if (order == null) {
+            throw new IllegalArgumentException("Order cannot be null");
+        }
 
         // generate tracking number
         String orderTrackingNumber = generateOrderTrackingNumber();
@@ -64,9 +72,14 @@ public class CheckoutServiceImpl implements CheckoutService {
 
         // populate order with orderItems
         List<OrderItem> orderItems = purchase.getOrderItems();
+
+        if (orderItems == null || orderItems.isEmpty()) {
+            throw new IllegalArgumentException("Order items cannot be null or empty");
+        }
+
         orderItems.forEach(item -> {
-            orderService.addItems(order, item);
-            item.setOrder(order);
+                    orderService.addItems(order, item);
+                    item.setOrder(order);
                 }
         );
 
