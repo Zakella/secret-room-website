@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {CartService} from "../../services/cart.service";
-import {Router} from "@angular/router";
-import {PurchaseService} from "../../services/purchase.service";
-import {ShippingService} from "../../services/shipping.service";
-import {MessageService} from "primeng/api";
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({

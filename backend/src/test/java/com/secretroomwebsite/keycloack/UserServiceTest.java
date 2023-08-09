@@ -63,7 +63,6 @@ class UserServiceTest {
     @DisplayName("Should throw UserAlreadyExistsException when the email is already registered")
     void createUserWhenEmailIsAlreadyRegisteredThenThrowUserAlreadyExistsException() {
         UserDTO userDTO = new UserDTO(
-                "john.doe",
                 "john.doe@example.com",
                 "password",
                 "John",
@@ -71,7 +70,7 @@ class UserServiceTest {
         );
 
         UserRepresentation userRepresentation = new UserRepresentation();
-        userRepresentation.setEmail(userDTO.emailId());
+        userRepresentation.setEmail(userDTO.email());
 
         UsersResource usersResource = mock(UsersResource.class);
         when(keycloakAdminService.getInstance().realm(userRealm).users()).thenReturn(usersResource);
@@ -89,7 +88,6 @@ class UserServiceTest {
     @DisplayName("Should create a new user successfully when the email is not already registered")
     void createUserWhenEmailIsNotRegistered() {
         UserDTO userDTO = new UserDTO(
-                "john.doe",
                 "john.doe@example.com",
                 "password123",
                 "John",
@@ -97,10 +95,9 @@ class UserServiceTest {
         );
 
         UserRepresentation userRepresentation = new UserRepresentation();
-        userRepresentation.setUsername(userDTO.userName());
         userRepresentation.setFirstName(userDTO.firstname());
         userRepresentation.setLastName(userDTO.lastName());
-        userRepresentation.setEmail(userDTO.emailId());
+        userRepresentation.setEmail(userDTO.email());
         assertThrows(UserAlreadyExistsException.class, () -> userService.createUser(userDTO));
         userRepresentation.setEnabled(true);
 
@@ -113,7 +110,7 @@ class UserServiceTest {
         userService.createUser(userDTO);
 
         verify(usersResource, times(1)).create(userRepresentation);
-        verify(keycloakTokenService, times(1)).fetchAccessToken(userDTO.emailId(), userDTO.password());
+        verify(keycloakTokenService, times(1)).fetchAccessToken(userDTO.email(), userDTO.password());
     }
 
     @Test
@@ -129,7 +126,6 @@ class UserServiceTest {
 
         // Create a userDTO
         UserDTO userDTO = new UserDTO(
-                "john.doe",
                 "john.doe@example.com",
                 "password123",
                 "John",
@@ -145,7 +141,6 @@ class UserServiceTest {
     @DisplayName("Should throw UserCreationException when the user creation fails")
     void createUserWhenUserCreationFailsThenThrowException() {
         UserDTO userDTO = new UserDTO(
-                "john.doe",
                 "john.doe@example.com",
                 "password123",
                 "John",
@@ -157,10 +152,10 @@ class UserServiceTest {
         credential.setValue(userDTO.password());
 
         UserRepresentation user = new UserRepresentation();
-        user.setUsername(userDTO.userName());
+        user.setUsername(userDTO.email());
         user.setFirstName(userDTO.firstname());
         user.setLastName(userDTO.lastName());
-        user.setEmail(userDTO.emailId());
+        user.setEmail(userDTO.email());
         user.setCredentials(Collections.singletonList(credential));
         user.setEnabled(true);
 
@@ -181,7 +176,6 @@ class UserServiceTest {
     @DisplayName("Should create the user successfully and return access token when the username is not taken")
     void createUserWhenUsernameIsNotTaken() {
         UserDTO userDTO = new UserDTO(
-                "john.doe",
                 "john.doe@example.com",
                 "password",
                 "John",
@@ -193,10 +187,10 @@ class UserServiceTest {
         credential.setValue(userDTO.password());
 
         UserRepresentation user = new UserRepresentation();
-        user.setUsername(userDTO.userName());
+        user.setUsername(userDTO.email());
         user.setFirstName(userDTO.firstname());
         user.setLastName(userDTO.lastName());
-        user.setEmail(userDTO.emailId());
+        user.setEmail(userDTO.email());
         user.setCredentials(Collections.singletonList(credential));
         user.setEnabled(true);
 
@@ -217,11 +211,11 @@ class UserServiceTest {
                 "session_state",
                 "scope"
         );
-        when(keycloakTokenService.fetchAccessToken(userDTO.emailId(), userDTO.password())).thenReturn(responseToken);
+        when(keycloakTokenService.fetchAccessToken(userDTO.email(), userDTO.password())).thenReturn(responseToken);
 
         userService.createUser(userDTO);
 
         verify(usersResource, times(1)).create(user);
-        verify(keycloakTokenService, times(1)).fetchAccessToken(userDTO.emailId(), userDTO.password());
+        verify(keycloakTokenService, times(1)).fetchAccessToken(userDTO.email(), userDTO.password());
     }
 }
