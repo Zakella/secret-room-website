@@ -39,7 +39,7 @@ public class UserService {
 
     public UserResponseDTO createUser(UserDTO userDTO) {
         // Step 1: Create user
-        CredentialRepresentation credential = createPasswordCredential(userDTO.password());
+
         UserRepresentation user = createUserRepresentation(userDTO);
         UsersResource usersResource = keycloakAdminService.getInstance().realm(userRealm).users();
         Response response = usersResource.create(user);
@@ -95,15 +95,14 @@ public class UserService {
 
     private void handleCreateUserResponse(Response response, String email, String password) {
         switch (response.getStatus()) {
-            case 201:
+            case 201 -> {
                 logger.info("Successfully created user with email: {}", email);
                 KeycloakTokenResponse responseToken = this.keycloakTokenService.fetchAccessToken(email, password);
                 logger.info("Token: {}", responseToken.access_token());
-                break;
-            case 409:
-                throw new UserAlreadyExistsException("User already exists with email: " + email);
-            default:
-                throw new UserCreationException("Failed to create user with email: " + email + ". Status: " + response.getStatus());
+            }
+            case 409 -> throw new UserAlreadyExistsException("User already exists with email: " + email);
+            default ->
+                    throw new UserCreationException("Failed to create user with email: " + email + ". Status: " + response.getStatus());
         }
     }
 }
