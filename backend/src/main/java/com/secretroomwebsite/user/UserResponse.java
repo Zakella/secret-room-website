@@ -1,4 +1,4 @@
-package com.secretroomwebsite.keycloack;
+package com.secretroomwebsite.user;
 
 public record UserResponse(
     String accessToken,

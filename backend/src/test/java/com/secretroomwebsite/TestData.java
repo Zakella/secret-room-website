@@ -1,7 +1,7 @@
 package com.secretroomwebsite;
 
 import com.secretroomwebsite.adress.Address;
-import com.secretroomwebsite.checkout.purchase.Purchase;
+import com.secretroomwebsite.purchase.Purchase;
 import com.secretroomwebsite.customer.Customer;
 import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderStatus;
@@ -12,8 +12,6 @@ import com.secretroomwebsite.enums.SizeType;
 import com.secretroomwebsite.shipping.Shipping;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 

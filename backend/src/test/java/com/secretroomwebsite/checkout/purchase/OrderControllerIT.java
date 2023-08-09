@@ -4,6 +4,8 @@ import com.secretroomwebsite.AbstractTestcontainers;
 import com.secretroomwebsite.TestDataProvider;
 import com.secretroomwebsite.product.category.ProductCategoryRepository;
 import com.secretroomwebsite.product.dao.ProductRepository;
+import com.secretroomwebsite.purchase.Purchase;
+import com.secretroomwebsite.purchase.PurchaseResponse;
 import com.secretroomwebsite.shipping.ShippingRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -6,6 +6,8 @@ import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderRepository;
 import com.secretroomwebsite.order.OrderService;
 import com.secretroomwebsite.order.OrderItem;
+import com.secretroomwebsite.purchase.Purchase;
+import com.secretroomwebsite.purchase.PurchaseResponse;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

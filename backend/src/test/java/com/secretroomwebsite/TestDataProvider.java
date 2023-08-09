@@ -1,6 +1,6 @@
 package com.secretroomwebsite;
 
-import com.secretroomwebsite.checkout.purchase.Purchase;
+import com.secretroomwebsite.purchase.Purchase;
 import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderItem;
 import com.secretroomwebsite.product.Product;

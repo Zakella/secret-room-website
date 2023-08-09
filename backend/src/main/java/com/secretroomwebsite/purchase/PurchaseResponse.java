@@ -1,4 +1,4 @@
-package com.secretroomwebsite.checkout.purchase;
+package com.secretroomwebsite.purchase;
 
 import lombok.Data;
 

@@ -1,7 +1,11 @@
-package com.secretroomwebsite.keycloack;
+package com.secretroomwebsite.user;
 
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
+import com.secretroomwebsite.keycloack.KeycloakAdminService;
+import com.secretroomwebsite.keycloack.KeycloakTokenResponse;
+import com.secretroomwebsite.keycloack.KeycloakTokenService;
+import com.secretroomwebsite.keycloack.ResponseAuthKeycloak;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;

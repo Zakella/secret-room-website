@@ -2,6 +2,8 @@ package com.secretroomwebsite.keycloack;
 
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
+import com.secretroomwebsite.user.UserDTO;
+import com.secretroomwebsite.user.UserService;
 import jakarta.ws.rs.core.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

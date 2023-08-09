@@ -1,7 +1,7 @@
 package com.secretroomwebsite.order;
 import com.secretroomwebsite.checkout.purchase.CheckoutService;
-import com.secretroomwebsite.checkout.purchase.Purchase;
-import com.secretroomwebsite.checkout.purchase.PurchaseResponse;
+import com.secretroomwebsite.purchase.Purchase;
+import com.secretroomwebsite.purchase.PurchaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

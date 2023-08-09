@@ -1,4 +1,4 @@
-package com.secretroomwebsite.checkout.purchase;
+package com.secretroomwebsite.purchase;
 import com.secretroomwebsite.adress.Address;
 import com.secretroomwebsite.customer.Customer;
 import com.secretroomwebsite.order.Order;
