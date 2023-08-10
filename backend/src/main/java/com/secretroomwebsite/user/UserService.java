@@ -6,6 +6,7 @@ import com.secretroomwebsite.keycloack.KeycloakAdminService;
 import com.secretroomwebsite.keycloack.KeycloakTokenResponse;
 import com.secretroomwebsite.keycloack.KeycloakTokenService;
 import com.secretroomwebsite.keycloack.ResponseAuthKeycloak;
+import com.secretroomwebsite.order.OrderService;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
@@ -28,17 +29,24 @@ public class UserService {
     private final KeycloakAdminService keycloakAdminService;
     private final KeycloakTokenService keycloakTokenService;
 
+    private final OrderService orderService;
+
     @Value("${keycloak.user-realm}")
     private String userRealm;
 
     @Value("${keycloak.server-url}")
     private String serverUrl;
 
+
+
     @Autowired
-    public UserService(KeycloakAdminService keycloakAdminService, KeycloakTokenService keycloakTokenService) {
+    public UserService(KeycloakAdminService keycloakAdminService,
+                       KeycloakTokenService keycloakTokenService,
+                       OrderService orderService) {
+
         this.keycloakAdminService = keycloakAdminService;
         this.keycloakTokenService = keycloakTokenService;
-
+        this.orderService = orderService;
     }
 
     public UserResponseDTO createUser(UserDTO userDTO) {
@@ -108,5 +116,30 @@ public class UserService {
             default ->
                     throw new UserCreationException("Failed to create user with email: " + email + ". Status: " + response.getStatus());
         }
+    }
+
+
+
+    public UserAccountInfo getAccountData(String email){
+
+        return new UserAccountInfo(
+                this.orderService.getOrdersByUserEmail(email)
+        );
+
+
+    }
+
+    public UserResponseDTO login(UserDTO userDTO) {
+        // Step 1: Get access token
+        KeycloakTokenResponse responseToken = this.keycloakTokenService.fetchAccessToken(userDTO.email(), userDTO.password());
+
+        // Step 2: Extract access token
+        String accessToken = responseToken.access_token();
+
+        // Step 3: Send request and get user info
+        ResponseAuthKeycloak userResponse = getUserInfo(accessToken);
+
+        // Step 4: Return response DTO
+        return new UserResponseDTO(accessToken, userResponse.given_name(), userResponse.family_name(), userResponse.email());
     }
 }

@@ -10,6 +10,5 @@ import java.util.Optional;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
     Optional<Order> findByOrderTrackingNumber(String uuid);
-
-    Optional<List<Order>> findAllByCustomer_Phone(String phone);
+    List<Order> findByCustomer_EmailOrderByPlacementDateDesc(String email);
 }

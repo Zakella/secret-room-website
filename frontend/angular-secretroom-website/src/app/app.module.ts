@@ -1,11 +1,11 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { ProductListComponent } from './components/products/product-list/product-list.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
+import {ProductListComponent} from './components/products/product-list/product-list.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ProductService} from "./services/product.service";
-import { HeaderComponent } from './components/headers/header/header.component';
-import { SubHeaderComponent } from './components/headers/sub-header/sub-header.component';
+import {HeaderComponent} from './components/headers/header/header.component';
+import {SubHeaderComponent} from './components/headers/sub-header/sub-header.component';
 import {LanguagePanelComponent} from "./components/headers/language-pannel/language-panel.component";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {DropdownModule} from "primeng/dropdown";
@@ -18,111 +18,80 @@ import {ImageModule} from "primeng/image";
 import {DividerModule} from "primeng/divider";
 import {StyleClassModule} from "primeng/styleclass";
 import {RippleModule} from "primeng/ripple";
-import { FooterComponent } from './components/footer/footer.component';
-import { GroupListVsComponent } from './components/product-groups/group-list-vs/group-list-vs.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {GroupListVsComponent} from './components/product-groups/group-list-vs/group-list-vs.component';
 import {GroupListBbComponent} from "./components/product-groups/group-list-bb/group-list-bb.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {SearchComponent} from "./components/headers/search/search.component";
-import { ProductNotFoundComponent } from './components/products/product-not-found/product-not-found.component';
-import { ProductCardComponent } from './components/products/product-card/product-card.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {ProductNotFoundComponent} from './components/products/product-not-found/product-not-found.component';
+import {ProductCardComponent} from './components/products/product-card/product-card.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {InputNumberModule} from "primeng/inputnumber";
 import {PaginatorModule} from "primeng/paginator";
-import { CartStatusComponent } from './components/cart/cart-status/cart-status.component';
-import { LoginComponent } from './components/login/login.component';
+import {CartStatusComponent} from './components/cart/cart-status/cart-status.component';
+import {LoginComponent} from './components/login/login.component';
 import {SidebarModule} from "primeng/sidebar";
 import {BadgeModule} from "primeng/badge";
 import {CardModule} from "primeng/card";
 import {PanelModule} from "primeng/panel";
-import { CheckoutComponent } from './components/checkout/checkout.component';
+import {CheckoutComponent} from './components/checkout/checkout.component';
 import {RadioButtonModule} from "primeng/radiobutton";
 import {CheckboxModule} from "primeng/checkbox";
 import {PasswordModule} from "primeng/password";
-import { MyCartComponent } from './components/cart/my-cart/my-cart.component';
+import {MyCartComponent} from './components/cart/my-cart/my-cart.component';
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {InputMaskModule} from "primeng/inputmask";
 import {MessageModule} from "primeng/message";
 import {MessagesModule} from "primeng/messages";
-import { EmptyCartComponent } from './components/cart/empty-cart/empty-cart.component';
+import {EmptyCartComponent} from './components/cart/empty-cart/empty-cart.component';
 import {ToolbarModule} from "primeng/toolbar";
 import {MenuModule} from "primeng/menu";
-import { OrderSummaryComponent } from './components/order/order-summary/order-summary.component';
+import {OrderSummaryComponent} from './components/order/order-summary/order-summary.component';
 import {MessageService} from "primeng/api";
 import {ToastModule} from "primeng/toast";
-import { LoginPageComponent } from './components/login-page/login-page.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { VsInputComponent } from './components/vs-input/vs-input.component';
+import {LoginPageComponent} from './components/login-page/login-page.component';
+import {RegistrationComponent} from './components/registration/registration.component';
+import {VsInputComponent} from './components/vs-input/vs-input.component';
 import {NgxMaskModule} from "ngx-mask";
-import { MyAccountComponent } from './components/my-account/my-account.component';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-
-
-
-// function initializeKeycloak(keycloak: KeycloakService) {
-//   return () =>
-//     keycloak.init({
-//       config: {
-//         url: 'https://keycloak.victoriasecret.md/',
-//         realm: 'srWebTest',
-//         clientId: 'srwebpublic',
-//       },
-//       initOptions: {
-//         pkceMethod: 'S256',
-//         // redirectUri: 'http://localhost:4200/myAccount',
-//       },loadUserProfileAtStartUp: false
-//     });
-// }
-
-function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'https://keycloak.victoriasecret.md',
-        realm: 'srWebTest',
-        clientId: 'test-frontend'
-      },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html'
-      }
-    });
-}
-
+import {MyAccountComponent} from './components/my-account/my-account.component';
+import { AccountNotFoundComponent } from './components/account-not-found/account-not-found.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpInterceptorService} from "./services/interceptor/http-interceptor.service";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ProductListComponent,
-        HeaderComponent,
-        SubHeaderComponent,
-        LanguagePanelComponent,
-        PanelComponent,
-        BbLogoComponent,
-        VsLogoComponent,
-        FooterComponent,
-        ProductListComponent,
-        GroupListVsComponent,
-        GroupListBbComponent,
-        SearchComponent,
-        ProductNotFoundComponent,
-        ProductCardComponent,
-        PageNotFoundComponent,
-        CartStatusComponent,
-        LoginComponent,
-        CheckoutComponent,
-        MyCartComponent,
-        SidebarComponent,
-        EmptyCartComponent,
-        OrderSummaryComponent,
-        LoginPageComponent,
-        RegistrationComponent,
-        VsInputComponent,
-        VsInputComponent,
-        MyAccountComponent
+  declarations: [
+    AppComponent,
+    ProductListComponent,
+    HeaderComponent,
+    SubHeaderComponent,
+    LanguagePanelComponent,
+    PanelComponent,
+    BbLogoComponent,
+    VsLogoComponent,
+    FooterComponent,
+    ProductListComponent,
+    GroupListVsComponent,
+    GroupListBbComponent,
+    SearchComponent,
+    ProductNotFoundComponent,
+    ProductCardComponent,
+    PageNotFoundComponent,
+    CartStatusComponent,
+    LoginComponent,
+    CheckoutComponent,
+    MyCartComponent,
+    SidebarComponent,
+    EmptyCartComponent,
+    OrderSummaryComponent,
+    LoginPageComponent,
+    RegistrationComponent,
+    VsInputComponent,
+    VsInputComponent,
+    MyAccountComponent,
+    AccountNotFoundComponent
 
-    ],
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -151,28 +120,21 @@ function initializeKeycloak(keycloak: KeycloakService) {
     ToolbarModule,
     MenuModule,
     ToastModule,
-    KeycloakAngularModule,
 
     NgxMaskModule.forRoot({
-      showMaskTyped : true,
+      showMaskTyped: true,
       // clearIfNotMatch : true
     })
-/**/
-
-
+    /**/
 
 
   ],
   providers: [
     ProductService,
     MessageService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

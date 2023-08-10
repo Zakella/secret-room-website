@@ -47,4 +47,10 @@ public class OrderService {
                 order.getCustomer()
         );
     }
+
+
+    public List<Order> getOrdersByUserEmail(String email) {
+        return orderRepository.findOrderByCustomerEmail(email);
+
+    }
 }

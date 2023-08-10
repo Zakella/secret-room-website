@@ -16,9 +16,6 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
 
-  getOrderDetails(orderUuid: String): Observable<Order> {
-    return this.http.post<Order>(this.orderUrl, orderUuid);
-  }
 
 
 }

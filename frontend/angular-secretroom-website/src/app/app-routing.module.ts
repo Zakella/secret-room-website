@@ -12,12 +12,10 @@ import {OrderSummaryComponent} from "./components/order/order-summary/order-summ
 import {LoginPageComponent} from "./components/login-page/login-page.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
 import {MyAccountComponent} from "./components/my-account/my-account.component";
-import {AuthGuard} from "./authentication/auth.guard";
+import {AccessGuardService} from "./authentication/access-guard.service";
+import {AccountNotFoundComponent} from "./components/account-not-found/account-not-found.component";
 
 
-const isAuthenticated: CanActivateFn = (route, state) => {
-  return inject(AuthGuard).isAccessAllowed(route, state);
-}
 
 const routes: Routes = [
   {
@@ -75,9 +73,15 @@ const routes: Routes = [
 
   {
     path: 'myAccount',
-    canActivate: [isAuthenticated],
+    canActivate: [AccessGuardService],
     component: MyAccountComponent
   },
+
+  {
+    path: 'account-not-found',
+    component: AccountNotFoundComponent
+  },
+
 
   // {
   //   path: 'myAccount',

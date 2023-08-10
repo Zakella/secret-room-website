@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthenticationService} from "../../services/authentication.service";
 import {User} from "../../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-registration',
@@ -20,7 +21,8 @@ export class RegistrationComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
   }
 
@@ -35,8 +37,10 @@ export class RegistrationComponent {
 
       this.authenticationService.registration(user).subscribe(
         {
-          next: data => {
-            console.log(data);
+          next: authResponse => {
+
+            localStorage.setItem('user', JSON.stringify(authResponse))
+            this.router.navigate(["myAccount"])
 
           },
           error: error => {

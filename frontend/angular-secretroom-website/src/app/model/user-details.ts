@@ -1,4 +1,4 @@
-export class UserResponse {
+export class UserDetails {
   accessToken: string;
   givenName: string;
   familyName: string;
