@@ -58,6 +58,8 @@ import {MyAccountComponent} from './components/my-account/my-account.component';
 import { AccountNotFoundComponent } from './components/account-not-found/account-not-found.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {HttpInterceptorService} from "./services/interceptor/http-interceptor.service";
+import {CarouselModule} from "primeng/carousel";
+import {TagModule} from "primeng/tag";
 
 @NgModule({
   declarations: [
@@ -124,7 +126,9 @@ import {HttpInterceptorService} from "./services/interceptor/http-interceptor.se
     NgxMaskModule.forRoot({
       showMaskTyped: true,
       // clearIfNotMatch : true
-    })
+    }),
+    CarouselModule,
+    TagModule,
     /**/
 
 

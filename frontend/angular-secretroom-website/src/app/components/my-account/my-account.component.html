@@ -1,1 +1,31 @@
-<p>my-account works!</p>
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+  <div class="flex flex-column md:flex-row justify-content-between align-items-center mb-4">
+    <div class="flex flex-column text-center md:text-left">
+      <span class="text-900 text-3xl font-medium mb-2">My Orders</span>
+      <span class="text-600 text-xl">Dignissim diam quis enim lobortis.</span>
+    </div>
+    <span class="p-input-icon-right mt-5 mb-2 md:mt-0 md:mb-0 w-full lg:w-25rem">
+      <i class="pi pi-search text-gray-400"></i>
+      <input type="text" class="p-inputtext w-full lg:w-25rem surface-50" placeholder="Search"/>
+    </span>
+  </div>
+  <div class="surface-card grid grid-nogutter border-round shadow-2 mb-6" *ngFor="let order of userAccount.orders">
+    <div class="col-12 flex p-2 surface-100 border-round-top">
+      <div class="p-2 flex-auto text-center md:text-left">
+        <span class="text-700 block">Order Number</span>
+        <span class="text-900 font-medium block mt-2">45123</span>
+      </div>
+      <p-divider align="center" layout="vertical" styleClass="h-full  mx-0 lg:mx-3 surface-border"></p-divider>
+      <div class="p-2 flex-auto text-center md:text-left">
+        <span class="text-700 block">Order Date</span>
+        <span class="text-900 font-medium block mt-2">{{ order.placementDate | date:'dd MMMM yyyy' }} </span>
+      </div>
+      <p-divider align="center" layout="vertical" styleClass="h-full  mx-0 lg:mx-3 surface-border"></p-divider>
+      <div class="p-2 flex-auto text-center md:text-left">
+        <span class="text-700 block">Total Amount</span>
+        <span class="text-900 font-medium block mt-2">{{order.totalAmount}} MDL</span>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -50,7 +50,7 @@ public class OrderService {
 
 
     public List<Order> getOrdersByUserEmail(String email) {
-        return orderRepository.findOrderByCustomerEmail(email);
+        return orderRepository.findByCustomer_EmailOrderByPlacementDateDesc(email);
 
     }
 }

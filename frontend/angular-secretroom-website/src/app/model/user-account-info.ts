@@ -1,9 +1,9 @@
 import {Order} from "./order";
 
 export class UserAccountInfo {
-  ordersHistory: Order[];
+  orders: Order[];
 
   constructor(ordersHistory: Order[]) {
-    this.ordersHistory = ordersHistory;
+    this.orders = ordersHistory;
   }
 }

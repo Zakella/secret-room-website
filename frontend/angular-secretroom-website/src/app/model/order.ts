@@ -9,8 +9,10 @@
       public delivery?: number,
       public totalQuantity?: number,
       public totalAmount?: number,
-      public totalAmountOrder?: number
-    )
+      public totalAmountOrder?: number,
+      public items?: OrderItem[]
+
+  )
     {
       this.placementDate = placementDate;
       this.shippingOption = shippingOption;
@@ -18,6 +20,7 @@
       this.totalQuantity = totalQuantity;
       this.totalAmount = totalAmount;
       this.totalAmountOrder = totalAmountOrder;
+      this.items = items;
 
     }
   }

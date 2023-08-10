@@ -16,7 +16,7 @@
 #--data-urlencode 'username=USER-NAME'
 #--data-urlencode 'client_id=photo-app-client'
 #--data-urlencode 'grant_type=password'
-POST https://keycloak.victoriasecret.md/realms/srWebTest/protocol/openid-connect/token
+POST  http://localhost:8081/api/v1/users/login
 Content-Type: application/x-www-form-urlencoded
 
 client_id=test2&grant_type=password&password=456&username=Slava

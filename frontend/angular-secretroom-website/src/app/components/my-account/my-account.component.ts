@@ -10,7 +10,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./my-account.component.css']
 })
 export class MyAccountComponent implements OnInit {
-  userAccount: UserAccountInfo = new UserAccountInfo([])
+  userAccount: UserAccountInfo = new UserAccountInfo([]);
+
+  responsiveOptions: any[] | undefined;
 
   constructor(private userService: UserService, private router: Router) {
   }
@@ -34,8 +36,32 @@ export class MyAccountComponent implements OnInit {
         }
       });
 
+      this.responsiveOptions = [
+        {
+          breakpoint: '1199px',
+          numVisible: 1,
+          numScroll: 1
+        },
+        {
+          breakpoint: '991px',
+          numVisible: 2,
+          numScroll: 1
+        },
+        {
+          breakpoint: '767px',
+          numVisible: 1,
+          numScroll: 1
+        }
+      ];
     }
 
 
+
+
   }
+
+
+
+
+
 }
