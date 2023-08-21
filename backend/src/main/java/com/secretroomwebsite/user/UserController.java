@@ -4,10 +4,7 @@ import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -31,6 +28,12 @@ public class UserController {
     public ResponseEntity<UserResponseDTO> login(@RequestBody UserDTO userDTO) {
         UserResponseDTO userResponseDTO = userService.login(userDTO);
         return ResponseEntity.ok(userResponseDTO);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(@RequestHeader("Authorization") String accessToken) {
+        userService.logout(accessToken.replace("Bearer ", ""));
+        return ResponseEntity.ok().build();
     }
 
 

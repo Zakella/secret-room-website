@@ -36,7 +36,12 @@ export class AuthenticationService {
 
   registration(user: User): Observable<UserDetails> {
     const url = 'http://localhost:8081/api/v1/users'; // Replace with your registration API endpoint from UserController
-    return this.http.post<UserDetails>(url, user);
+    return this.http.post<UserDetails>(url, user).pipe(
+      tap((userDetails: UserDetails) => {
+        // Login the user after successful registration
+        this.loggedIn.next(true);
+      })
+    );
   }
 
   login(user: User): Observable<UserDetails> {
@@ -49,7 +54,28 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    localStorage.removeItem('userToken');
-    this.loggedIn.next(false);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser && storedUser !== "null") {
+      const userDetails: UserDetails = JSON.parse(storedUser);
+      const token = userDetails.accessToken;
+      if (token) {
+        this.http.get('http://localhost:8081/api/v1/users/logout', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).subscribe(() => {
+          localStorage.removeItem('user');
+          this.loggedIn.next(false);
+        });
+      }
+    }
+  }
+
+  getUserDetails(): UserDetails | null {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser && storedUser !== "null") {
+      return JSON.parse(storedUser);
+    }
+    return null;
   }
 }

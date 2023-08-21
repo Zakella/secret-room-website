@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 import java.util.List;
@@ -142,4 +143,19 @@ public class UserService {
         // Step 4: Return response DTO
         return new UserResponseDTO(accessToken, userResponse.given_name(), userResponse.family_name(), userResponse.email());
     }
+
+    public void logout(String accessToken) {
+        WebClient webClient = WebClient.create(serverUrl + "/realms/" + userRealm + "/protocol/openid-connect/logout");
+        webClient.get()
+                .header("Authorization", "Bearer " + accessToken)
+                .exchangeToMono(response -> {
+                    if (response.statusCode().is2xxSuccessful()) {
+                        return Mono.empty();
+                    } else {
+                        return response.createException().flatMap(Mono::error);
+                    }
+                })
+                .block();
+    }
+
 }

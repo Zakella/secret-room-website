@@ -13,6 +13,7 @@ import {Customer} from "../../model/customer";
 import {Address} from "../../model/address";
 import {Order} from "../../model/order";
 import { MessageService } from 'primeng/api';
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-checkout',
@@ -62,7 +63,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
               private router: Router,
               private purchaseService: PurchaseService,
               private shippingService: ShippingService,
-              private messageService: MessageService
+              private messageService: MessageService,
+              private authService: AuthenticationService
+
   ) {
   }
 
@@ -75,6 +78,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.getTotalAmount();
     this.subscribeToCartItems();
     this.subscribeToShippingOption();
+    // Set user details in the form
+    this.setUserDetails();
   }
 
   getTotalAmount() {
@@ -83,6 +88,18 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this.totalAmount = data;
       }
     )
+  }
+
+  private setUserDetails() {
+    // Get user details and set form values
+    const userDetails = this.authService.getUserDetails();
+    if (userDetails) {
+      this.form.patchValue({
+        name: userDetails.givenName,
+        lastname: userDetails.familyName,
+        email: userDetails.email
+      });
+    }
   }
 
   cardModified() {
