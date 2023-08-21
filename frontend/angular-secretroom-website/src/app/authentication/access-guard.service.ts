@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
-import {JwtHelperService} from "@auth0/angular-jwt";
-import {UserDetails} from "../model/user-details";
+import {AuthenticationService} from "../services/authentication.service";
+ // Обновите этот путь
 
 interface CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
@@ -12,29 +12,18 @@ interface CanActivate {
   providedIn: 'root'
 })
 export class AccessGuardService implements CanActivate{
+  private isLoggedIn!: boolean;
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private authService: AuthenticationService) {
+    this.authService.isLoggedIn().subscribe(loggedIn => this.isLoggedIn = loggedIn);
   }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const storedUser = localStorage.getItem("user");
-
-    if(storedUser){
-      const userDetails:UserDetails = JSON.parse(storedUser);
-      const token = userDetails.accessToken;
-      console.log(token);
-
-      if(token){
-        const jwtHelper:JwtHelperService = new JwtHelperService();
-        const isTokenNonExpired = !jwtHelper.isTokenExpired(token);
-        if(isTokenNonExpired){
-          return true;
-        }
-      }
+    if (this.isLoggedIn) {
+      return true;
+    } else {
+      this.router.navigate(['login']);
+      return false;
     }
-
-    this.router.navigate(['login']);
-    return false;
-
   }
-
 }

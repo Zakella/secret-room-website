@@ -29,7 +29,7 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
 import {InputNumberModule} from "primeng/inputnumber";
 import {PaginatorModule} from "primeng/paginator";
 import {CartStatusComponent} from './components/cart/cart-status/cart-status.component';
-import {LoginComponent} from './components/login/login.component';
+
 import {SidebarModule} from "primeng/sidebar";
 import {BadgeModule} from "primeng/badge";
 import {CardModule} from "primeng/card";
@@ -80,7 +80,7 @@ import {TagModule} from "primeng/tag";
     ProductCardComponent,
     PageNotFoundComponent,
     CartStatusComponent,
-    LoginComponent,
+
     CheckoutComponent,
     MyCartComponent,
     SidebarComponent,
