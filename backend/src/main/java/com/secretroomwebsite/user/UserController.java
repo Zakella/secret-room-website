@@ -1,5 +1,6 @@
 package com.secretroomwebsite.user;
 
+import com.secretroomwebsite.keycloack.PasswordChangeRequest;
 import com.secretroomwebsite.order.Order;
 import com.secretroomwebsite.order.OrderService;
 import org.springframework.http.HttpStatus;
@@ -31,8 +32,12 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> logout(@RequestHeader("Authorization") String accessToken) {
-        userService.logout(accessToken.replace("Bearer ", ""));
+    public ResponseEntity<Void> logout(@RequestHeader("Authorization") String accessToken, @RequestBody Map<String, String> body) {
+        String refreshToken = body.get("refresh_token");
+        if (refreshToken == null || refreshToken.isEmpty()) {
+            throw new IllegalArgumentException("Refresh token must not be null or empty");
+        }
+        userService.logout(accessToken.replace("Bearer ", ""), refreshToken);
         return ResponseEntity.ok().build();
     }
 
@@ -46,5 +51,10 @@ public class UserController {
         return new ResponseEntity<>(userService.getAccountData(userEmail), HttpStatus.OK);
     }
 
+    @PostMapping("/change-password")
+    public ResponseEntity<Void> changeUserPassword(@RequestBody PasswordChangeRequest request) {
+        userService.changeUserPassword(request.userId(), request.newPassword());
+        return ResponseEntity.ok().build();
+    }
 
 }

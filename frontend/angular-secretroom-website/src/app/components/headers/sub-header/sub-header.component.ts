@@ -98,7 +98,7 @@ export class SubHeaderComponent implements OnInit {
   private updateMenuItems() {
     this.loggedInItems = [
       {
-        label: this.userDetails?.givenName, // Use user name
+        label: this.userDetails?.givenName,
         styleClass: '.vs-title',
         icon: 'pi pi-check',
         command: () => {

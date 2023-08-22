@@ -1,10 +1,10 @@
 
-POST http://localhost:8081/api/v1/users/login
+POST http://localhost:8081/api/v1/users/change-password
 Content-Type: application/json
 
 {
-  "email": "zapolski.slava@gmail.com",
-  "password": "123"
+  "userId": "zapolski.slava@gmail.com",
+  "newPassword": "456"
 }
 
 

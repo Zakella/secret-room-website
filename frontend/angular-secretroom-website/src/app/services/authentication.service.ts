@@ -54,12 +54,14 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser && storedUser !== "null") {
-      const userDetails: UserDetails = JSON.parse(storedUser);
+    const userDetails = this.getUserDetails();
+    if (userDetails) {
       const token = userDetails.accessToken;
-      if (token) {
-        this.http.get('http://localhost:8081/api/v1/users/logout', {
+      const refreshToken = userDetails.refreshToken;
+      if (token && refreshToken) {
+        this.http.post('http://localhost:8081/api/v1/users/logout', {
+          refresh_token: refreshToken
+        }, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -70,7 +72,6 @@ export class AuthenticationService {
       }
     }
   }
-
   getUserDetails(): UserDetails | null {
     const storedUser = localStorage.getItem("user");
     if (storedUser && storedUser !== "null") {

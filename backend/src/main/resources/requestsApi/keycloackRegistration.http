@@ -16,10 +16,15 @@
 #--data-urlencode 'username=USER-NAME'
 #--data-urlencode 'client_id=photo-app-client'
 #--data-urlencode 'grant_type=password'
-POST  http://localhost:8081/api/v1/users/login
-Content-Type: application/x-www-form-urlencoded
+POST http://localhost:8081/api/v1/users
+Content-Type: application/json
 
-client_id=test2&grant_type=password&password=456&username=Slava
+{
+  "email": "test667@gmail.com",
+  "password": "password",
+  "firstname": "Slava",
+  "lastName": "456"
+}
 
 ###
 

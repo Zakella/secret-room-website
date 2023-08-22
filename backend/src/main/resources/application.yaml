@@ -38,4 +38,5 @@ keycloak:
   admin-user: ${KEYCLOAK_ADMIN_USER}
   admin-password: ${KEYCLOAK_ADMIN_PASSWORD}
   user-realm: srWebTest
+  webclient-id: test2
 
