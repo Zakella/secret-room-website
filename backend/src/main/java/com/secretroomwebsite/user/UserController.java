@@ -49,15 +49,21 @@ public class UserController {
         return new ResponseEntity<>(userService.getAccountData(userEmail), HttpStatus.OK);
     }
 
-    @PostMapping("/change-password")
-    public ResponseEntity<Void> changeUserPassword(@RequestBody PasswordChangeRequest request) {
-        userService.changeUserPassword(request.userId(), request.newPassword());
-        return ResponseEntity.ok().build();
-    }
-
     @GetMapping("/restore-password")
     public ResponseEntity<Void> restorePassword(@RequestParam String email) {
         userService.restorePassword(email);
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<Void> resetPassword(@RequestBody Map<String, String> body) {
+        String token = body.get("token");
+        String newPassword = body.get("newPassword");
+        if (token == null || token.isEmpty() || newPassword == null || newPassword.isEmpty()) {
+            throw new IllegalArgumentException("Token and new password must not be null or empty");
+        }
+        userService.resetPassword(token, newPassword);
+        return ResponseEntity.ok().build();
+    }
+
 }

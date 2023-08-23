@@ -3,6 +3,7 @@ package com.secretroomwebsite.user;
 import com.secretroomwebsite.authentication.*;
 import com.secretroomwebsite.emailClient.EmailService;
 import com.secretroomwebsite.exception.ResourceNotFoundException;
+import com.secretroomwebsite.exception.TokenExpiredException;
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
 import com.secretroomwebsite.order.OrderService;
@@ -222,8 +223,20 @@ public class UserService {
         PasswordResetToken passwordResetToken = createPasswordResetTokenForUser(user);
         sendEmailWithTokenRestorePassword( passwordResetToken, email);
 
+    }
 
+    public void resetPassword(String token, String newPassword) {
+        PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(token);
+        if (passwordResetToken == null) {
+            throw new NotFoundException("Token not found");
+        }
 
+        if (passwordResetToken.getExpiryDate().before(new Date())) {
+            throw new TokenExpiredException("Token expired");
+        }
+
+        changeUserPassword(passwordResetToken.getUserId(), newPassword);
+        passwordResetTokenRepository.delete(passwordResetToken);
     }
 
     private void sendEmailWithTokenRestorePassword(PasswordResetToken passwordResetToken, String to) {
