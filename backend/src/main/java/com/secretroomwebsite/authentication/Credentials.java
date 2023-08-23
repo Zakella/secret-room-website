@@ -1,4 +1,4 @@
-package com.secretroomwebsite.keycloack;
+package com.secretroomwebsite.authentication;
 
 import org.keycloak.representations.idm.CredentialRepresentation;
 

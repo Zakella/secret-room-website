@@ -60,6 +60,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {HttpInterceptorService} from "./services/interceptor/http-interceptor.service";
 import {CarouselModule} from "primeng/carousel";
 import {TagModule} from "primeng/tag";
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import {TagModule} from "primeng/tag";
     VsInputComponent,
     VsInputComponent,
     MyAccountComponent,
-    AccountNotFoundComponent
+    AccountNotFoundComponent,
+    ResetPasswordComponent
 
   ],
   imports: [

@@ -1,4 +1,4 @@
-package com.secretroomwebsite.keycloack;
+package com.secretroomwebsite.authentication;
 
 import jakarta.ws.rs.client.ClientBuilder;
 import org.keycloak.OAuth2Constants;

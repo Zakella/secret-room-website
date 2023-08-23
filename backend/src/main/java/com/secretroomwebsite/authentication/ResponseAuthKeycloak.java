@@ -1,4 +1,4 @@
-package com.secretroomwebsite.keycloack;
+package com.secretroomwebsite.authentication;
 
 public record ResponseAuthKeycloak(
     String sub,

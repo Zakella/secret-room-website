@@ -14,6 +14,7 @@ import {RegistrationComponent} from "./components/registration/registration.comp
 import {MyAccountComponent} from "./components/my-account/my-account.component";
 import {AccessGuardService} from "./authentication/access-guard.service";
 import {AccountNotFoundComponent} from "./components/account-not-found/account-not-found.component";
+import {ResetPasswordComponent} from "./components/reset-password/reset-password.component";
 
 
 
@@ -81,6 +82,8 @@ const routes: Routes = [
     path: 'account-not-found',
     component: AccountNotFoundComponent
   },
+
+  { path: 'reset-password', component: ResetPasswordComponent },
 
 
   // {

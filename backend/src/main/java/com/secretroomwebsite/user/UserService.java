@@ -1,15 +1,14 @@
 package com.secretroomwebsite.user;
 
+import com.secretroomwebsite.authentication.*;
+import com.secretroomwebsite.emailClient.EmailService;
 import com.secretroomwebsite.exception.ResourceNotFoundException;
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
-import com.secretroomwebsite.keycloack.KeycloakAdminService;
-import com.secretroomwebsite.keycloack.KeycloakTokenResponse;
-import com.secretroomwebsite.keycloack.KeycloakTokenService;
-import com.secretroomwebsite.keycloack.ResponseAuthKeycloak;
 import com.secretroomwebsite.order.OrderService;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response;
+import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
@@ -27,7 +26,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -48,15 +49,24 @@ public class UserService {
     @Value("${keycloak.webclient-id}")
     private String clientId;
 
+    @Value("${frontend.reset-password-url}")
+    private String resetPasswordUrl ;
+
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
+
+    private final EmailService emailService;
+
 
     @Autowired
     public UserService(KeycloakAdminService keycloakAdminService,
                        KeycloakTokenService keycloakTokenService,
-                       OrderService orderService) {
+                       OrderService orderService, PasswordResetTokenRepository passwordResetTokenRepository, EmailService emailService) {
 
         this.keycloakAdminService = keycloakAdminService;
         this.keycloakTokenService = keycloakTokenService;
         this.orderService = orderService;
+        this.passwordResetTokenRepository = passwordResetTokenRepository;
+        this.emailService = emailService;
     }
 
     public UserResponseDTO createUser(UserDTO userDTO) {
@@ -132,12 +142,9 @@ public class UserService {
 
     private void handleCreateUserResponse(Response response, String email, String password) {
         switch (response.getStatus()) {
-            case 201 -> {
-                logger.info("Successfully created user with email: {}", email);
-            }
+            case 201 -> logger.info("Successfully created user with email: {}", email);
             case 409 -> throw new UserAlreadyExistsException("User already exists with email: " + email);
-            default ->
-                    throw new UserCreationException("Failed to create user with email: " + email + ". Status: " + response.getStatus());
+            default -> throw new UserCreationException("Failed to create user with email: " + email + ". Status: " + response.getStatus());
         }
     }
 
@@ -187,5 +194,58 @@ public class UserService {
                 })
                 .block();
     }
+
+    public UserRepresentation getUserByEmail(String email) {
+        // Получаем экземпляр Keycloak
+        Keycloak keycloak = keycloakAdminService.getInstance();
+
+        // find users by email
+        List<UserRepresentation> users = keycloak.realm(userRealm)
+                .users()
+                .search(email, 0, 1);
+
+        // if users is empty, then throw NotFoundException
+        if (users.isEmpty()) {
+            throw new NotFoundException("User with email " + email + " not found");
+        }
+
+
+        return users.get(0);
+    }
+
+    public void restorePassword(String email) {
+        UserRepresentation user = getUserByEmail(email);
+        if (user == null) {
+            throw new NotFoundException("User with email " + email + " not found");
+        }
+
+        PasswordResetToken passwordResetToken = createPasswordResetTokenForUser(user);
+        sendEmailWithTokenRestorePassword( passwordResetToken, email);
+
+
+
+    }
+
+    private void sendEmailWithTokenRestorePassword(PasswordResetToken passwordResetToken, String to) {
+
+        String subject = "Password Reset Request";
+        String text = "To reset your password, click the following link: "
+                + resetPasswordUrl + "?token=" + passwordResetToken.getToken();
+
+        emailService.sendSimpleMessage(to, subject, text);
+    }
+
+    private PasswordResetToken createPasswordResetTokenForUser(UserRepresentation user) {
+
+        PasswordResetToken passwordResetToken = new PasswordResetToken();
+        passwordResetToken.setToken(UUID.randomUUID().toString());
+        passwordResetToken.setUserId(user.getId());
+        passwordResetToken.setExpiryDate(new Date(System.currentTimeMillis() + 3600000));
+
+
+        return passwordResetTokenRepository.save(passwordResetToken);
+    }
+
+
 
 }

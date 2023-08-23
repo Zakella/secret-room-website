@@ -1,5 +1,8 @@
 package com.secretroomwebsite.keycloack;
 
+import com.secretroomwebsite.authentication.KeycloakAdminService;
+import com.secretroomwebsite.authentication.KeycloakTokenResponse;
+import com.secretroomwebsite.authentication.KeycloakTokenService;
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
 import com.secretroomwebsite.user.UserDTO;

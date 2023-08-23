@@ -5,7 +5,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <!-- DO NOT REMOVE. This is a master changelog that runs all other changelogs. -->
 
     <property name="uuid.type" dbms="oracle" value="varchar2(32)"/>
     <property name="uuid.type" dbms="!oracle" value="uuid"/>
@@ -20,6 +19,8 @@
     <include file="/db/changelog/v1.01/create-address.xml"></include>
     <include file="/db/changelog/v1.01/create-order-table.xml"></include>
     <include file="/db/changelog/v1.01/create-order-items-table.xml"></include>
+    <include file="/db/changelog/v1.01/password-reset-table.xml"></include>
+
 
 
 

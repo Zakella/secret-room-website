@@ -22,6 +22,21 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/changelog.xml
     enabled: true
+  mail:
+    from: support@victoriasecret.md
+    host: smtp.gmail.com
+    port: 587
+    username: ${SUPPORT_MAIL_USERNAME}
+    password: ${SUPPORT_MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
+
 
   security:
     oauth2:
@@ -39,4 +54,7 @@ keycloak:
   admin-password: ${KEYCLOAK_ADMIN_PASSWORD}
   user-realm: srWebTest
   webclient-id: test2
+
+frontend:
+  reset-password-url: http://localhost:4200/reset-password
 

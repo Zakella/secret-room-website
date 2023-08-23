@@ -1,4 +1,4 @@
-package com.secretroomwebsite.keycloack;
+package com.secretroomwebsite.authentication;
 
 import com.secretroomwebsite.exception.KeycloakAuthenticationException;
 import com.secretroomwebsite.exception.KeycloakCommunicationException;

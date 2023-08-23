@@ -1,13 +1,11 @@
 package com.secretroomwebsite.user;
 
-import com.secretroomwebsite.keycloack.PasswordChangeRequest;
-import com.secretroomwebsite.order.Order;
+import com.secretroomwebsite.authentication.PasswordChangeRequest;
 import com.secretroomwebsite.order.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -57,4 +55,9 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/restore-password")
+    public ResponseEntity<Void> restorePassword(@RequestParam String email) {
+        userService.restorePassword(email);
+        return ResponseEntity.ok().build();
+    }
 }
