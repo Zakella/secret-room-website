@@ -61,6 +61,8 @@ import {HttpInterceptorService} from "./services/interceptor/http-interceptor.se
 import {CarouselModule} from "primeng/carousel";
 import {TagModule} from "primeng/tag";
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import {DialogModule} from "primeng/dialog";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 @NgModule({
   declarations: [
@@ -131,6 +133,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     }),
     CarouselModule,
     TagModule,
+    DialogModule,
+    ProgressSpinnerModule,
     /**/
 
 

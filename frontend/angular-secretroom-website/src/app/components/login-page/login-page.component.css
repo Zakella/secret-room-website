@@ -41,3 +41,12 @@ input::placeholder {
   transition: all 0.3s ease;
   background: white;
 }
+
+:host  .text-center {
+  text-align: center;
+}
+
+:host ::ng-deep .p-toast .p-toast-message-success {
+  background: var(--standart-color);
+  color: black;
+}

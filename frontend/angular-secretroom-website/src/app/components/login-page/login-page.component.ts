@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-login-page',
@@ -13,13 +14,26 @@ export class LoginPageComponent {
 
   form = this.fb.group({
     email: ["", [Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
-    password: ["",Validators.required],
+    password: ["", Validators.required],
   });
+
+  restoreForm = this.fb.group({
+    email: ["", [Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+  });
+
   badCredentials: boolean = false
+  visible: boolean = false;
+
+  errorMessage: string | null = null;
+
+  loading: boolean = false;
+
+  isSuccess: boolean = false;
 
   constructor(private fb: FormBuilder,
               private auth: AuthenticationService,
-              private rotuer: Router  ) {
+              private rotuer: Router,
+              private messageService: MessageService) {
 
   }
 
@@ -44,6 +58,38 @@ export class LoginPageComponent {
           }
         }
       });
+    }
+  }
+
+
+  showDialog() {
+    this.visible = true;
+  }
+
+  onSubmitRestore() {
+    if (this.restoreForm.valid) {
+      const email = this.restoreForm.value.email;
+      if (email) {
+        this.loading = true;
+        this.auth.restorePassword(email).subscribe({
+          next: () => {
+            this.visible = false;
+            this.loading = false;
+            this.errorMessage = null;
+            this.isSuccess = true; // Set isSuccess to true
+            this.restoreForm.controls.email.reset();
+          },
+          error: (err) => {
+            this.loading = false;
+            if (err.status === 404) {
+              this.errorMessage = err.error.message;
+            } else {
+              console.log(err);
+              this.errorMessage = err.error.message;
+            }
+          }
+        });
+      }
     }
   }
 
