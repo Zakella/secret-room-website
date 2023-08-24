@@ -7,6 +7,8 @@ import com.secretroomwebsite.exception.TokenExpiredException;
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
 import com.secretroomwebsite.order.OrderService;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.admin.client.Keycloak;
@@ -19,11 +21,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.mail.MailParseException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring6.SpringTemplateEngine;
 import reactor.core.publisher.Mono;
 
 import java.util.Collections;
@@ -57,6 +64,12 @@ public class UserService {
 
     private final EmailService emailService;
 
+    @Autowired
+    private SpringTemplateEngine templateEngine;
+
+    @Autowired
+    private JavaMailSender emailSender;
+
 
     @Autowired
     public UserService(KeycloakAdminService keycloakAdminService,
@@ -71,19 +84,25 @@ public class UserService {
     }
 
     public UserResponseDTO createUser(UserDTO userDTO) {
-        // Step 1: Create user
+        logger.info("Creating user with email: {}", userDTO.email()); // Добавлено логирование
 
+        // Step 1: Create user
         UserRepresentation user = createUserRepresentation(userDTO);
         UsersResource usersResource = keycloakAdminService.getInstance().realm(userRealm).users();
         Response response = usersResource.create(user);
         handleCreateUserResponse(response, userDTO.email(), userDTO.password());
 
         // Step 2: Get access token
-        KeycloakTokenResponse responseToken = this.keycloakTokenService.fetchAccessToken(userDTO.email(), userDTO.password());
+        KeycloakTokenResponse responseToken;
+        try {
+            responseToken = this.keycloakTokenService.fetchAccessToken(userDTO.email(), userDTO.password());
+        } catch (Exception e) {
+            logger.error("Failed to fetch access token for user: {}", userDTO.email(), e); // Добавлено логирование
+            throw new RuntimeException("Failed to fetch access token for user: " + userDTO.email(), e);
+        }
 
         // Step 3: Extract access token
         String accessToken = responseToken.access_token();
-
         String refreshToken = responseToken.refresh_token();
 
         // Step 4: Send request and get user info
@@ -91,7 +110,6 @@ public class UserService {
 
         // Step 5: Return response DTO
         return new UserResponseDTO(accessToken, refreshToken , userResponse.given_name(), userResponse.family_name(), userResponse.email());
-
     }
 
     private ResponseAuthKeycloak getUserInfo(String accessToken) {
@@ -217,21 +235,23 @@ public class UserService {
     public void restorePassword(String email) {
         UserRepresentation user = getUserByEmail(email);
         if (user == null) {
+            logger.error("User with email {} not found", email); // Добавлено логирование
             throw new NotFoundException("User with email " + email + " not found");
         }
 
         PasswordResetToken passwordResetToken = createPasswordResetTokenForUser(user);
         sendEmailWithTokenRestorePassword( passwordResetToken, email);
-
     }
 
     public void resetPassword(String token, String newPassword) {
         PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(token);
         if (passwordResetToken == null) {
+            logger.error("Token not found: {}", token); // Добавлено логирование
             throw new NotFoundException("Token not found");
         }
 
         if (passwordResetToken.getExpiryDate().before(new Date())) {
+            logger.error("Token expired: {}", token); // Добавлено логирование
             throw new TokenExpiredException("Token expired");
         }
 
@@ -240,12 +260,15 @@ public class UserService {
     }
 
     private void sendEmailWithTokenRestorePassword(PasswordResetToken passwordResetToken, String to) {
+        String htmlContent = generateHtmlContent(passwordResetToken);
+        emailService.sendMessage(to, "Password Reset Request", htmlContent);
+    }
 
-        String subject = "Password Reset Request";
-        String text = "To reset your password, click the following link: "
-                + resetPasswordUrl + "?token=" + passwordResetToken.getToken();
+    private String generateHtmlContent(PasswordResetToken passwordResetToken) {
+        Context context = new Context();
+        context.setVariable("resetUrl", resetPasswordUrl + "?token=" + passwordResetToken.getToken());
 
-        emailService.sendSimpleMessage(to, subject, text);
+        return templateEngine.process("restore-password", context);
     }
 
     private PasswordResetToken createPasswordResetTokenForUser(UserRepresentation user) {
