@@ -19,9 +19,9 @@
 
 
     <div class="flex justify-end">
-      <a pRipple class="cursor-pointer block lg:hidden text-700 ml-2" (click)="menuMob.toggle($event)">
+      <a pRipple class="cursor-pointer block lg:hidden text-700 ml-2" (click)="setMobileMenu($event)">
         <i class="pi pi-bars text-4xl"></i>
-        <p-menu #menuMob [popup]="true" [model]="itemsMob" styleClass="my-custom-menu" appendTo="body"></p-menu>
+        <p-menu #menuMob [popup]="true" [model]="mobileMenu" styleClass="my-custom-menu" appendTo="body"></p-menu>
       </a>
     </div>
 
@@ -38,8 +38,8 @@
         <li class="border-top-1 surface-border lg:border-top-none">
           <a pRipple class="flex flex-col lg:flex-row px-6 p-3 lg:px-3 lg:py-2 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150">
 <!--            <app-login></app-login>-->
-            <p-menu #menuMain [model]="(isLoggedIn$ | async) ? loggedInItems : loggedOutItems" [popup]="true" appendTo="body" styleClass="my-custom-menu"></p-menu>
-            <a (click)="onMenuClick($event)" class="text-900 font-medium inline-flex justify-center items-center cursor-pointer px-2 sm:px-3 hover:text-primary position-relative">
+            <p-menu #menuMain [model]="mainMenu" [popup]="true" appendTo="body" styleClass="my-custom-menu"></p-menu>
+            <a (click)="setMainMenu($event)" class="text-900 font-medium inline-flex justify-center items-center cursor-pointer px-2 sm:px-3 hover:text-primary position-relative">
               <li class="flex">
                 <i class="pi pi-user" style="font-size: 1.3rem"></i>
               </li>

@@ -17,30 +17,19 @@ export class SubHeaderComponent implements OnInit {
   totalQuantity: number = 0;
   private destroy$: Subject<void> = new Subject<void>();
 
-  itemsMob: any[] = [];
-  items: any[] = [];
+  mobileMenu: any[] = [];
+  mainMenu: any[] = [];
   userDetails: UserDetails | null = null;
 
-  commonItems: any[] = [];
 
-  loggedInItems: any[] = [];
-
-  loggedOutItems: any[] = [
-    {
-      label: 'Sign In',
-      icon: 'pi pi-sign-in',
-      command: () => {
-        this.router.navigate(['/login']);
-      }
-    }
-  ];
-
-  isLoggedIn$: Observable<boolean>;
+  isLoggedIn: boolean = false; // Add this line
 
   @ViewChild('menuMain') menuMain!: Menu;
 
-  constructor(private cartService: CartService, private router:Router, private authService: AuthenticationService) {
-    this.isLoggedIn$ = this.authService.isLoggedIn();
+  constructor(private cartService: CartService,
+              private router: Router,
+              private authService: AuthenticationService) {
+
   }
 
   ngOnInit() {
@@ -50,17 +39,17 @@ export class SubHeaderComponent implements OnInit {
     this.updateUserDetails();
   }
 
-  onMenuClick(event: any) {
-    this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
-      if (isLoggedIn) {
-        this.updateUserDetails();
-        this.menuMain.model = this.loggedInItems;
-      } else {
-        this.menuMain.model = this.loggedOutItems;
-      }
-      this.menuMain.toggle(event);
-    });
-  }
+  // onMenuClick(event: any) {
+  //   this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
+  //     if (isLoggedIn) {
+  //       this.updateUserDetails();
+  //       this.menuMain.model = this.loggedInItems;
+  //     } else {
+  //       this.menuMain.model = this.loggedOutItems;
+  //     }
+  //     this.menuMain.toggle(event);
+  //   });
+  // }
 
   logout() {
     this.authService.logout();
@@ -70,7 +59,7 @@ export class SubHeaderComponent implements OnInit {
   // Update user details and menu items
   updateUserDetails() {
     this.userDetails = this.authService.getUserDetails(); // Get user details
-    this.updateMenuItems();
+
   }
 
   // Private methods
@@ -78,8 +67,9 @@ export class SubHeaderComponent implements OnInit {
   // Subscribe to user status
   private subscribeToUserStatus() {
     this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
-      this.commonItems = isLoggedIn ? this.loggedInItems : this.loggedOutItems;
-      this.loadItemsMenu();
+      this.isLoggedIn = isLoggedIn;
+      // this.commonItems = isLoggedIn ? this.loggedInItems : this.loggedOutItems;
+      // this.loadItemsMenu();
     });
     this.updateUserDetails();
   }
@@ -90,46 +80,115 @@ export class SubHeaderComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(total => {
         this.totalQuantity = total;
-        this.loadItemsMenu();
       });
   }
 
-  // Update menu items based on user details
-  private updateMenuItems() {
-    this.loggedInItems = [
-      {
-        label: this.userDetails?.givenName,
-        styleClass: '.vs-title',
-        icon: 'pi pi-check',
-        command: () => {
-          this.router.navigate(['/myAccount']);
+  setMobileMenu(event: any) {
+    if (this.isLoggedIn) {
+      this.userDetails = this.authService.getUserDetails(); // Get user details
+
+      this.mobileMenu = [
+        {
+          label: 'Cart',
+          icon: 'pi pi-shopping-cart',
+          badge: this.totalQuantity.toString(),
+          badgeStyleClass: 'green-badge',
+          command: () => {
+            this.cartService.setSidebarVisible(true);
+          }
+        },
+
+        {
+          label: this.userDetails?.givenName,
+          styleClass: '.vs-title',
+          icon: 'pi pi-check',
+          command: () => {
+            this.router.navigate(['/myAccount']);
+          }
+        },
+        {
+          label: 'Logout',
+          styleClass: '.vs-title',
+          icon: 'pi pi-sign-out',
+          command: () => {
+            this.logout();
+          }
         }
-      },
-      {
-        label: 'Logout',
-        styleClass: '.vs-title',
-        icon: 'pi pi-sign-out',
-        command: () => {
-          this.logout();
+
+      ]
+
+    } else {
+
+      this.mobileMenu = [
+        {
+          label: 'Cart',
+          icon: 'pi pi-shopping-cart',
+          badge: this.totalQuantity.toString(),
+          badgeStyleClass: 'green-badge',
+          command: () => {
+            this.cartService.setSidebarVisible(true);
+          }
+        },
+
+        {
+          label: 'Sign In',
+          icon: 'pi pi-sign-in',
+          command: () => {
+            this.router.navigate(['/login']);
+          }
         }
-      }
-    ];
+        ]
+
+    }
+
+    this.menuMain.model = this.mobileMenu;
+    this.menuMain.toggle(event);
+
   }
 
-  loadItemsMenu() {
-    this.itemsMob = [
-      {
-        label: 'Cart',
-        icon: 'pi pi-shopping-cart',
-        badge: this.totalQuantity.toString(),
-        badgeStyleClass: 'green-badge',
-        command: () => {
-          this.cartService.setSidebarVisible(true);
-        }
-      },
-      ...this.commonItems
-    ];
+  setMainMenu(event: any) {
+    if (this.isLoggedIn) {
+      this.userDetails = this.authService.getUserDetails(); // Get user details
 
-    this.items = [...this.commonItems];
+      this.mainMenu = [
+        {
+          label: this.userDetails?.givenName,
+          styleClass: '.vs-title',
+          icon: 'pi pi-check',
+          command: () => {
+            this.router.navigate(['/myAccount']);
+          }
+        },
+        {
+          label: 'Logout',
+          styleClass: '.vs-title',
+          icon: 'pi pi-sign-out',
+          command: () => {
+            this.logout();
+          }
+        }
+
+      ]
+
+    } else {
+
+      this.mainMenu = [
+
+        {
+          label: 'Sign In',
+          icon: 'pi pi-sign-in',
+          command: () => {
+            this.router.navigate(['/login']);
+          }
+        }
+      ]
+
+    }
+
+    this.menuMain.model = this.mobileMenu;
+    this.menuMain.toggle(event);
+
   }
+
+
 }

@@ -99,6 +99,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         lastname: userDetails.familyName,
         email: userDetails.email
       });
+      // Disable the email field if the user is logged in
+      this.form.controls.email.disable();
     }
   }
 
@@ -181,7 +183,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
 
   private createOrder() {
-
     // Calculate the total amount and total quantity from the cart items
     const totalAmount = this.totalAmount;
     const orderQuantity = this.cartItems.reduce(
@@ -191,20 +192,27 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     const selectedShippingOptionId = this.form.get('selectedValue')?.value ?? '';
     const selectedOption = this.shippingOptions.find(option => option.id === selectedShippingOptionId);
 
-    const delivery = selectedOption?.cost || 0
+    const delivery = selectedOption?.cost || 0;
+
     // Create a default shipping option if selectedOption is undefined
 
+    // Create the shipping address
+    const shippingAddress = this.createShippingAddress();
+
+    const customer = this.createCustomer();
 
     // Create the order object
     return new Order(
+      null,
       new Date(), // placementDate (current date)
       selectedOption,
+      shippingAddress, // pass the shipping address here
+      customer,
       delivery,
       orderQuantity,
       totalAmount,
       totalAmount + delivery,
     );
-
   }
 
 

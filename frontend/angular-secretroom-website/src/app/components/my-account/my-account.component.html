@@ -1,53 +1,85 @@
 <div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
   <div class="flex flex-column md:flex-row justify-content-between align-items-center mb-4">
     <div class="flex flex-column text-center md:text-left">
-      <span class="text-900 text-3xl font-medium mb-2">My Orders</span>
-      <span class="text-600 text-xl">Dignissim diam quis enim lobortis.</span>
+      <span class="text-900 text-3xl font-medium mb-2 vs-title">My Orders</span>
+      <span class="text-600 text-xl" *ngIf="userAccount.orders.length; else noOrders"></span>
+      <ng-template #noOrders>
+        <span class="text-600 text-xl">No orders yet.</span>
+      </ng-template>
     </div>
     <span class="p-input-icon-right mt-5 mb-2 md:mt-0 md:mb-0 w-full lg:w-25rem">
       <i class="pi pi-search text-gray-400"></i>
-      <input type="text" class="p-inputtext w-full lg:w-25rem surface-50" placeholder="Search"/>
+     <input type="text" class="p-inputtext w-full lg:w-25rem surface-50 vs-title" placeholder="Search"
+            (input)="onSearch($event)">
     </span>
   </div>
-  <div class="surface-card grid grid-nogutter border-round shadow-2 mb-6" *ngFor="let order of userAccount.orders">
-    <div class="col-12 flex p-2 surface-100 border-round-top">
+  <div class="surface-card grid grid-nogutter border-round shadow-2 mb-6" *ngFor="let order of displayOrders">
+    <!-- Order Header -->
+    <div class="col-12 flex p-2  border-round-top header">
       <div class="p-2 flex-auto text-center md:text-left">
-        <span class="text-700 block">Order Number</span>
-        <span class="text-900 font-medium block mt-2">45123</span>
+        <span class="text-700 block vs-title">Order Number</span>
+        <span class="text-900 font-medium block mt-2 vs-disc">{{order.id}}</span>
       </div>
       <p-divider align="center" layout="vertical" styleClass="h-full  mx-0 lg:mx-3 surface-border"></p-divider>
       <div class="p-2 flex-auto text-center md:text-left">
-        <span class="text-700 block">Order Date</span>
-        <span class="text-900 font-medium block mt-2">{{ order.placementDate | date:'dd MMMM yyyy' }} </span>
+        <span class="text-700 block vs-title">Order Date</span>
+        <span class="text-900 font-medium block mt-2 vs-disc">{{ order.placementDate | date:'dd MMMM yyyy' }} </span>
       </div>
       <p-divider align="center" layout="vertical" styleClass="h-full  mx-0 lg:mx-3 surface-border"></p-divider>
       <div class="p-2 flex-auto text-center md:text-left">
-        <span class="text-700 block">Total Amount</span>
-        <span class="text-900 font-medium block mt-2">{{order.totalAmount}} MDL</span>
+        <span class="text-700 block vs-title vs-title">Total Amount</span>
+        <span class="text-900 font-medium block mt-2 vs-disc">{{order.totalAmount}} MDL</span>
       </div>
     </div>
+
+    <!-- Order Items -->
 
 
     <div class="col-12 md:col-6 lg:col-2" *ngFor="let item of order.items">
       <div class="p-2">
         <div class="shadow-2 p-4 surface-card border-round">
-          <div class="relative mb-3">
-            <img src="{{item.product.imageURL}}" class="w-full" />
-          </div>
-          <div class="flex justify-content-between align-items-center mb-3">
-            <span class="text-900 font-medium text-xl">{{item.product.name}}</span>
-          </div>
 
-          <div *ngIf="item.sizeType"
-               class="text-600 text-sm mb-3"> Size: {{item.sizeType}}
-          </div>
+          <a [routerLink]="'/'+ item.product.brand+'/product-view/' + item.product.id" class="link-no-underline">
+            <div class="relative mb-3">
 
-          <span class="text-primary text-xl font-medium">{{item.amount}} MDL</span>
+
+              <img src="{{item.product.imageURL}}" class="w-full product-image"/>
+
+            </div>
+            <div class="flex justify-content-between align-items-center mb-3">
+              <a [routerLink]="'/'+ item.product.brand+'/product-view/' + item.product.id" class="text-900 font-medium text-xl product-name link-no-underline vs-title">
+                {{item.product.name}}
+              </a>
+            </div>
+
+            <div class="mt-0 mb-1 text-600 line-height-3 product-description vs-disc" >
+              <span class="vs-disc"> Size: {{item.sizeType ? item.sizeType : '-'}} </span>
+            </div>
+
+            <div class="mt-0 mb-1 text-600 line-height-3 product-description vs-disc" >
+              <span class="vs-disc"> Qty : {{item.quantity}} </span>
+            </div>
+
+            <span class="text-900 text-m font-medium vs-price">{{ item.product.unitPrice }} MDL</span>
+          </a>
         </div>
       </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="flex flex-column md:flex-row justify-content-between align-items-center p-4">
+      <div class="flex flex-column text-center md:text-left">
+        <span class="text-900 text-3xl font-medium mb-2 vs-title">Shipping address</span>
+        <span class="text-600 text-xl vs-disc" style="line-height: 2; text-align: center;">
+      {{order.customer?.lastName}}, {{order.customer?.firstName}},<br/>
+          {{order.shippingAddress?.country}},<br/>
+          {{order.shippingAddress?.city}},<br/>
+          {{order.shippingAddress?.street}},<br/>
+      <span>MD-{{order.shippingAddress?.zipCode}}</span>
+    </span>
+      </div>
+    </footer>
   </div>
 
-  </div>
+</div>
 
