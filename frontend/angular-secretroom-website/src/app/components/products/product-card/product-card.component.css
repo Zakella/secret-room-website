@@ -8,3 +8,16 @@
 .icon {
   margin-right: 8px;
 }
+
+:host ::ng-deep .p-inputnumber .p-button-text {
+  color: var(--form-color);
+}
+
+
+:host ::ng-deep .p-inputnumber .p-button-text:hover {
+  color: var(--form-color);
+}
+
+:host ::ng-deep .p-inputnumber .p-inputnumber-input:focus {
+  box-shadow: none ;
+}

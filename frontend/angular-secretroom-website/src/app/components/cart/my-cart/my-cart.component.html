@@ -56,66 +56,29 @@
 
 
   </div>
-  <!--  <p-card header="{{cartItem.product.name}}" subheader="{{cartItem.product.brand}}"-->
-  <!--          [style]="{'font-family': 'BentonSans, Helvetica, Arial, sans-serif'}">-->
 
-  <!--    <img src="{{cartItem.product.imageURL}}" class="w-6rem sm:w-8rem flex-shrink-0"/>-->
-  <!--    <div class="flex-auto px-3">-->
-  <!--      <div class="flex align-items-center justify-content-between mb-3 mt-1">-->
-  <!--        <span>Total: {{cartItem.amount}} MDL</span>-->
-  <!--&lt;!&ndash;        <span class="text-900 font-bold">{{cartItem.amount}} MDL</span>&ndash;&gt;-->
-  <!--      </div>-->
-
-  <!--      <div *ngIf="cartItem.size"-->
-  <!--           class="text-600 text-sm mb-3"> Size: {{cartItem.size.sizeType}}-->
-  <!--      </div>-->
-
-  <!--      <div class="flex flex-auto justify-content-between align-items-center">-->
-  <!--        <p-inputNumber [showButtons]="true"-->
-  <!--                       buttonLayout="horizontal"-->
-  <!--                       pinnerMode="horizontal"-->
-  <!--                       [min]="1"-->
-  <!--                       [max]="100"-->
-  <!--                       [(ngModel)]="cartItem.quantity"-->
-  <!--                       (ngModelChange)="recalculateCartItem(cartItem, i)"-->
-  <!--                       inputStyleClass="w-3rem text-center py-2 px-1 border-transparent"-->
-  <!--                       class="border-1 surface-border border-round"-->
-  <!--                       decrementButtonClass="p-button-text py-1 px-1"-->
-  <!--                       incrementButtonClass="p-button-text py-1 px-1"-->
-  <!--                       incrementButtonIcon="pi pi-plus"-->
-  <!--                       decrementButtonIcon="pi pi-minus">-->
-
-  <!--        </p-inputNumber>-->
-  <!--        <button-->
-  <!--          pButton pRipple icon="pi pi-trash" class="p-button-danger p-button-text p-button-rounded"-->
-  <!--          (click)="deleteItemFromCart(cartItem, i)"-->
-  <!--        ></button>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--  </p-card>-->
 </div>
 
 
 <div class="surface-card p-4 border-round shadow-2">
   <div class="border-bottom-1 surface-border pb-4">
-    <span class="text-900 text-xl block">Order Summary</span>
+    <span class="text-900 text-xl block vs-title">Order Summary</span>
   </div>
   <div class="border-bottom-1 surface-border my-3 py-2">
     <div class="flex justify-content-between mb-3">
-      <span class="text-900">Subtotal</span>
-      <span class="text-900">{{totalAmount}} MDL</span>
+      <span class="text-900 vs-disc">Subtotal</span>
+      <span class="text-900 vs-price">{{totalAmount}} MDL</span>
     </div>
 
     <div class="flex justify-content-between mb-3">
-      <span class="text-900">Delivery</span>
-      <span class="text-900">{{shippingCost}} MDL</span>
+      <span class="text-900 vs-disc">Delivery</span>
+      <span class="text-900 vs-price">{{shippingCost}} MDL</span>
     </div>
   </div>
   <div class="border-bottom-1 surface-border my-3 py-2">
     <div class="flex justify-content-between mb-3">
-      <span class="text-900 font-medium font-bold">Total</span>
-      <span class="text-900 font-bold">{{totalAmount + shippingCost }} MDL</span>
+      <span class="text-900 font-medium font-bold vs-disc">Total</span>
+      <span class="text-900 font-bold vs-price">{{totalAmount + shippingCost }} MDL</span>
     </div>
   </div>
 

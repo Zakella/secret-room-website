@@ -8,3 +8,23 @@
   vertical-align: bottom;
 }
 
+/*p-dropdown .p-dropdown:focus {*/
+/*  border-color: var(--form-color) !important;*/
+/*  box-shadow: none !important;*/
+/*}*/
+
+
+/*:host ::ng-deep .custom-dropdown-panel .p-dropdown-items-wrapper {*/
+/*  border: 1px solid var(--form-color) !important;*/
+/*}*/
+
+/*:host ::ng-deep .custom-dropdown .p-dropdown-label {*/
+/*  border: 1px solid var(--form-color) !important;*/
+/*}*/
+/*p-dropdown .p-dropdown:focus {*/
+/*  border-color: var(--form-color) !important;*/
+/*  box-shadow: none !important;*/
+/*}*/
+:host ::ng-deep p-dropdown .p-dropdown:focus {
+  outline-style: none !important;
+}
