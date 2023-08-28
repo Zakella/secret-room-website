@@ -119,8 +119,10 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     private String fillOrderSummaryTemplate(OrderReview orderReview) {
         Context context = new Context();
-        context.setVariable("orderReview", orderReview);
-
+        context.setVariable("customerName", orderReview.customer().getFirstName());
+        context.setVariable("products", orderReview.items());
+        context.setVariable("totalSum", orderReview.totalAmountOrder());
+        context.setVariable("deliveryAddress", orderReview.shippingAddress());
         return templateEngine.process("order-summary", context);
     }
 

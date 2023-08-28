@@ -1,90 +1,110 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Вставьте ваш CSS здесь */
-    </style>
+        body, td, th, h2 {
+            font-feature-settings: "liga" 0;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizelegibility;
+            white-space: normal;
+            font-weight: 200;
+            font-family: BentonSans, Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 20px;
+            letter-spacing: 0.04em;
+        }
 
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .email-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .order-details {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .order-details th, .order-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .order-details th {
+            background-color: rgb(244, 209, 218);
+        }
+
+
+
+        h2 {
+            font-weight: bold; /* Жирное начертание */
+        }
+
+    </style>
 </head>
 <body>
-<section class="h-100 gradient-custom">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-lg-10 col-xl-8">
-                <div class="card" style="border-radius: 10px;">
-                    <div class="card-header px-4 py-5">
-                        <h5 class="text-muted mb-0">
-                            <span class="vs-title"> Thanks for your Order</span>
-                            , <span style="color: #a8729a;" th:text="${orderReview.customer.firstName}"></span>!
-                        </h5>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="card shadow-0 border mb-4" th:each="details : ${orderReview.items}">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img th:src="${details.product.imageURL}"
-                                             class="img-fluid" alt="Product">
-                                    </div>
-                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                        <p class="text-muted mb-0">
-                                            <span class="vs-disc" th:text="${details.product.name}"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center" >
-                                        <p class="text-muted mb-0 small" th:if="${details.sizeType != null}">
-                                            <span class="vs-disc">  Size: <span th:text="${details.sizeType}"></span> </span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                        <p class="text-muted mb-0 small">
-                                            <span class="vs-disc"> Qty: <span th:text="${details.quantity}"></span></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                        <p class="text-muted mb-0 small"><span class="vs-disc"> <span th:text="${details.amount}"></span> MDL</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between pt-2">
-                            <p class="fw-bold mb-0 vs-disc">Order Details</p>
-                            <p class="text-muted mb-0"><span class="fw-bold me-4 vs-disc">Total</span> <span th:text="${orderReview.subtotal}"></span> MDL</p>
-                        </div>
-                        <div class="d-flex justify-content-between pt-2">
-                            <p class="text-muted mb-0 vs-disc">
-                                <span th:text="${orderReview.customer.firstName + ' ' + orderReview.customer.lastName}"></span>
-                            </p>
-                            <p class="text-muted mb-0"><span class="fw-bold me-4 vs-disc">Shipping</span> <span th:text="${orderReview.shippingOption.cost}"></span> MDL</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted mb-0 vs-disc"><span th:text="${orderReview.shippingAddress.country}"></span></p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted mb-0 vs-disc"> <span th:text="${orderReview.shippingAddress.city + ' , ' + orderReview.shippingAddress.street}"></span> </p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted mb-0 vs-disc"><span th:text="'MD-' + orderReview.shippingAddress.zipCode"></span></p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p class="text-muted mb-0 vs-disc"><span th:text="'tel: ' + orderReview.customer.phone"></span></p>
-                        </div>
-                    </div>
-                    <div class="card-footer border-0 px-4 py-5"
-                         style="background-color: rgb(244, 209, 218); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
-                            paid: <span class="h2 mb-0 ms-2 vs-title" th:text="${orderReview.totalAmountOrder}"></span> MDL</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="email-container">
+    <div class="header">
+        <h2>Спасибо за ваш заказ!</h2>
     </div>
-</section>
+
+    <div class="content">
+        Уважаемый <span th:text="${customerName}"></span>,<br><br>
+
+        Вот детали вашего заказа:<br><br>
+
+        <table class="order-details">
+            <thead>
+            <tr>
+                <th>Номер Продукта</th>
+                <th>Продукт</th>
+                <th>Размер</th>
+                <th>Количество</th>
+                <th>Сумма</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Вам потребуется повторить следующий блок для каждого продукта в заказе -->
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.size}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td th:text="${product.sum}"></td>
+            </tr>
+            <!-- Конец блока для продукта -->
+            </tbody>
+        </table>
+
+        Итого к оплате: <span th:text="${totalSum}"></span><br><br>
+
+        Если у вас есть какие-либо вопросы, пожалуйста, свяжитесь с нами.<br><br>
+
+        С наилучшими пожеланиями,<br>
+        Victoria Secret Moldova
+    </div>
+
+    <div class="footer">
+        Адрес доставки: <span th:text="${deliveryAddress}"></span><br>
+        Это автоматическое сообщение. Пожалуйста, не отвечайте на него.
+    </div>
+</div>
 </body>
 </html>
