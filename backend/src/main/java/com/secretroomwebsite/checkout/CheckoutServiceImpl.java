@@ -1,5 +1,6 @@
 package com.secretroomwebsite.checkout;
 
+import com.secretroomwebsite.adress.Address;
 import com.secretroomwebsite.customer.Customer;
 import com.secretroomwebsite.customer.CustomerRepository;
 import com.secretroomwebsite.emailClient.EmailService;
@@ -120,10 +121,24 @@ public class CheckoutServiceImpl implements CheckoutService {
     private String fillOrderSummaryTemplate(OrderReview orderReview) {
         Context context = new Context();
         context.setVariable("customerName", orderReview.customer().getFirstName());
-        context.setVariable("products", orderReview.items());
+        context.setVariable("orderItems", orderReview.items());
         context.setVariable("totalSum", orderReview.totalAmountOrder());
-        context.setVariable("deliveryAddress", orderReview.shippingAddress());
+        context.setVariable("deliveryAddress", getDeliveryAddress(orderReview));
         return templateEngine.process("order-summary", context);
+    }
+
+    private String getDeliveryAddress(OrderReview orderReview) {
+        Customer customer = orderReview.customer();
+        Address address = orderReview.shippingAddress();
+
+        return String.format("%s %s, %s, %s, %s, %s, %s",
+                customer.getFirstName(),
+                customer.getLastName(),
+                address.getCountry(),
+                address.getCity(),
+                address.getStreet(),
+                address.getZipCode(),
+                customer.getPhone());
     }
 
 }

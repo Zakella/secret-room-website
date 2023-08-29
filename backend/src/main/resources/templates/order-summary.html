@@ -4,107 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body, td, th, h2 {
-            font-feature-settings: "liga" 0;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizelegibility;
-            white-space: normal;
-            font-weight: 200;
-            font-family: BentonSans, Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            line-height: 20px;
-            letter-spacing: 0.04em;
-        }
-
         body {
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #f4f4f41;
         }
-
         .email-container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
             max-width: 600px;
             margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid rgb(244, 209, 218); /* Add border */
         }
-
-        .header, .footer {
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: white;
+        }
+        .header img {
+            max-width: 200px;
+        }
+        .order-details {
             text-align: center;
             margin-bottom: 20px;
         }
-
-        .order-details {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 20px;
+        .content {
+            padding: 20px;
         }
-
-        .order-details th, .order-details td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+        .footer {
+            text-align: left; /* Align text to the left */
+            padding: 20px 0;
+            background-color: white; /* Change background color to white */
         }
-
-        .order-details th {
-            background-color: rgb(244, 209, 218);
+        .footer a {
+            color: #000000;
+            text-decoration: none;
         }
-
-
-
-        h2 {
-            font-weight: bold; /* Жирное начертание */
+        /* Media queries for mobile devices */
+        @media (max-width: 600px) {
+            .email-container {
+                width: 100%;
+            }
+            .header img {
+                max-width: 150px;
+            }
         }
-
+        /* Additional styles for customer information */
+        .footer h3 {
+            text-align: center;
+            font-weight: bold;
+        }
+        .footer p:first-child {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 <div class="email-container">
     <div class="header">
-        <h2>Спасибо за ваш заказ!</h2>
+        <div class="order-details">
+            <h2>ORDER #1234</h2>
+            <p>December 16, 2023</p>
+        </div>
+        <img src="https://logos-world.net/wp-content/uploads/2020/07/Victorias-Secret-Logo-700x394.png" alt="Logo">
+        <p>Thank you for your order!</p>
+        <p>Hi Della Cannon, your order is being prepared for shipping.</p>
+        <p>We’ll let you know as soon as it’s headed your way.</p>
+        <p>— Team Good Style!</p>
     </div>
-
     <div class="content">
-        Уважаемый <span th:text="${customerName}"></span>,<br><br>
-
-        Вот детали вашего заказа:<br><br>
-
-        <table class="order-details">
-            <thead>
-            <tr>
-                <th>Номер Продукта</th>
-                <th>Продукт</th>
-                <th>Размер</th>
-                <th>Количество</th>
-                <th>Сумма</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Вам потребуется повторить следующий блок для каждого продукта в заказе -->
-            <tr th:each="product : ${products}">
-                <td th:text="${product.id}"></td>
-                <td th:text="${product.name}"></td>
-                <td th:text="${product.size}"></td>
-                <td th:text="${product.quantity}"></td>
-                <td th:text="${product.sum}"></td>
-            </tr>
-            <!-- Конец блока для продукта -->
-            </tbody>
-        </table>
-
-        Итого к оплате: <span th:text="${totalSum}"></span><br><br>
-
-        Если у вас есть какие-либо вопросы, пожалуйста, свяжитесь с нами.<br><br>
-
-        С наилучшими пожеланиями,<br>
-        Victoria Secret Moldova
+        <!-- Order Summary -->
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">ORDER SUMMARY</h3>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <!-- Product Image -->
+            <img src="https://www.victoriassecret.com/p/760x1013/tif/63/55/63555d50df89468bb613fb0349c1b8dd/112192095UCQ_OM_F.jpg" alt="Product" style="width: 100px;">
+            <!-- Product Description -->
+            <div>
+                <p>Woman's jacket</p>
+                <p>COLOUR: BLUE</p>
+                <p>SIZE: XS</p>
+                <p>QTY: 1</p>
+                <p><strong>$45.00</strong></p>
+            </div>
+        </div>
+        <!-- Subtotal, Tax, Shipping -->
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">Subtotal: $90.00</h3>
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">Tax: $00.00</h3>
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">Shipping: $00.00</h3>
+        <!-- Total -->
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">Total: $90.00</h3>
     </div>
-
     <div class="footer">
-        Адрес доставки: <span th:text="${deliveryAddress}"></span><br>
-        Это автоматическое сообщение. Пожалуйста, не отвечайте на него.
-    </div>
-</div>
-</body>
-</html>
+        <!-- Customer Information -->
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">CUSTOMER INFORMATION</h3>
+        <p style="font-weight: bold;">Shipping Address</p>
+        <p>Della Cannon</p>
+        <p>9618 Cinder Turnabout,</p>
+        <p>Jenny Lind,</p>
+        <p>Northwest Territories</p>
+        <p style="font-weight: bold;">Shipping Method</p>
+        <p>FedEx Home Delivery</p>
+        <p style="font-weight: bold;">Billing Address</p>
+        <p>Della Cannon</p>
+        <p>9618 Cinder Turnabout,</p>
+        <p>Jenny Lind,</p>
+        <p>Northwest Territories
