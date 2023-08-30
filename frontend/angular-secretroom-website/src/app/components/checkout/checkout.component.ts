@@ -29,6 +29,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   totalAmount: number = 0;
 
+  loading: boolean = false;
+
   private ngUnsubscribe = new Subject<void>();
 
   nameValidator: ValidatorFn[] = [
@@ -40,6 +42,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   shippingOptions: ShippingOption[] = [];
 
   shippingCost: number = 0;
+
+
 
   form = this.fb.group({
     email: ["", [Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
@@ -116,7 +120,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   getDeliveryDate(minDays: number, maxDays: number): string {
     const current = new Date();
-    const formatter = new Intl.DateTimeFormat('en', {day: '2-digit', month: '2-digit', year: 'numeric'});
+    const formatter = new Intl.DateTimeFormat('ru', {day: '2-digit', month: '2-digit', year: 'numeric'});
 
     const startDeliveryDate = formatter.format(new Date(current.getFullYear(), current.getMonth(), current.getDate() + minDays));
     const endDeliveryDate = formatter.format(new Date(current.getFullYear(), current.getMonth(), current.getDate() + maxDays));
@@ -124,9 +128,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     return `${startDeliveryDate} - ${endDeliveryDate}`;
   }
 
-
   placeOrder() {
 
+    this.loading = true;
 
     let purchase = new Purchase(
       this.createCustomer(),
@@ -146,9 +150,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           // this.fb.group({).reset();
           this.cartService.clearCart();
           this.router.navigate([`/order-success/${response.orderTrackingNumber}`]);
+          this.loading = false;
 
         },
         error: error => {
+          this.loading = false;
           if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.
             this.showError('Server is not responding. Please try again later.');
@@ -306,4 +312,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.form.get('zip')?.value ?? '',
     );
   }
+
+
+  markFieldAsTouched(fieldName: string) {
+    const field = this.form.get(fieldName);
+    if (field) {
+      field.markAsTouched();
+    }
+  }
+
 }

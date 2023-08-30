@@ -1,5 +1,5 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-vs-input',
@@ -19,19 +19,21 @@ export class VsInputComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() disabled: boolean = false;
   @Input() minLength?: number;
-  @Input() maxLength?: number ;
+  @Input() maxLength?: number;
   @Input() mask: string = '';
   @Input() prefix: string = '';
+  @Input() invalidLabel: boolean = false;
+  @Input() highlightWhenEmpty: boolean = false;
+
 
   value: string = '';
   onChange = (value: string) => {};
   onTouched = () => {};
-
-
+  isInvalid: boolean = false;
 
   writeValue(value: string): void {
     this.value = value;
-
+    this.isInvalid = !value;
   }
 
   registerOnChange(fn: any): void {
@@ -42,8 +44,12 @@ export class VsInputComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean) : void {
+  setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    console.log('Set disabled state', isDisabled);
+  }
+
+  onBlur(): void {
+    this.isInvalid = !this.value;
+    this.onTouched();
   }
 }

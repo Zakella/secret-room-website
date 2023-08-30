@@ -15,6 +15,9 @@ public class EmailService {
     @Value("${spring.mail.from}")
     private String from;
 
+    @Value("${spring.mail.copyTo}")
+    private String copyTo;
+
     private final JavaMailSender emailSender;
 
     public EmailService(JavaMailSender emailSender) {
@@ -26,8 +29,9 @@ public class EmailService {
             MimeMessage message = emailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setFrom(from); // replace with your email
+            helper.setFrom(from);
             helper.setTo(to);
+            helper.addCc(copyTo);
             helper.setSubject(subject);
             helper.setText(text, true);
 
@@ -35,5 +39,6 @@ public class EmailService {
         } catch (MessagingException e) {
             throw new MailParseException(e);
         }
-}
+    }
+
 }

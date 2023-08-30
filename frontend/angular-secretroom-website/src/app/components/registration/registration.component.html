@@ -15,11 +15,11 @@
               <div class="row">
                 <div class="col-md-6 mb-4">
 
-                  <app-vs-input type="text" label="First name" id="name" formControlName="firstName"></app-vs-input>
+                  <app-vs-input type="text" label="First name" id="name" formControlName="firstName" [highlightWhenEmpty]="true"></app-vs-input>
 
                 </div>
                 <div class="col-md-6 mb-4">
-                  <app-vs-input type="text" label="Last name" id="lastname" formControlName="lastName"></app-vs-input>
+                  <app-vs-input type="text" label="Last name" id="lastname" formControlName="lastName" [highlightWhenEmpty]="true"></app-vs-input>
                 </div>
               </div>
 
@@ -30,11 +30,11 @@
 <!--              </div>-->
 
               <!-- email input -->
-              <app-vs-input type="email" label="Email address" id="email" formControlName="email"></app-vs-input>
+              <app-vs-input type="email" label="Email address" id="email" formControlName="email" [highlightWhenEmpty]="true"></app-vs-input>
 
               <!-- Password input -->
 
-              <app-vs-input type="password" label="Password" id="password" formControlName="password"></app-vs-input>
+              <app-vs-input type="password" label="Password" id="password" formControlName="password" [highlightWhenEmpty]="true"></app-vs-input>
 
               <!-- Submit button -->
               <button pRipple class="w-full vs-button h-3rem py-2 mt-2" type="submit" [disabled]="!registrationForm.valid">
@@ -47,18 +47,18 @@
                 <p-message severity="error" text="User already exists" *ngIf="userExists"></p-message>
               </div>
 
-              <!-- Register buttons -->
-              <div class="text-center mt-3">
-                <p>or sign up with:</p>
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-facebook-f"></i>
-                </button>
+<!--              &lt;!&ndash; Register buttons &ndash;&gt;-->
+<!--              <div class="text-center mt-3">-->
+<!--                <p>or sign up with:</p>-->
+<!--                <button type="button" class="btn btn-link btn-floating mx-1">-->
+<!--                  <i class="fab fa-facebook-f"></i>-->
+<!--                </button>-->
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-google"></i>
-                </button>
+<!--                <button type="button" class="btn btn-link btn-floating mx-1">-->
+<!--                  <i class="fab fa-google"></i>-->
+<!--                </button>-->
 
-              </div>
+<!--              </div>-->
             </form>
           </div>
         </div>

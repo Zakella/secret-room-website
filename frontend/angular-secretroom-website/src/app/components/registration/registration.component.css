@@ -66,3 +66,7 @@ input::placeholder {
 .mt-4 {
   margin-top: 0.8rem; /* Adjust as needed */
 }
+
+.invalid-field label {
+  color: red;
+}

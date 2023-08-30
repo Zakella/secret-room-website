@@ -46,3 +46,11 @@ input::placeholder {
 input:disabled {
   background-color: white;
 }
+
+.invalid-label {
+  color: red;
+}
+
+.highlight-empty {
+  color: red;
+}

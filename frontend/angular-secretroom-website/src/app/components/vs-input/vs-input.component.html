@@ -3,7 +3,7 @@
          [id]="id"
          [(ngModel)]="value"
          (ngModelChange)="onChange($event)"
-         (blur)="onTouched()"
+         (blur)="onBlur()"
          [disabled]="disabled"
          [minlength]="minLength ?? null"
          [maxlength]="maxLength ?? null"
@@ -13,5 +13,5 @@
          [mask]="mask"
          [prefix]="prefix"
   >
-  <label class="form-label vs-disc" [for]="id">{{label}}</label>
+  <label class="form-label vs-disc" [for]="id" [class.highlight-empty]="highlightWhenEmpty && !value">{{label}}</label>
 </div>

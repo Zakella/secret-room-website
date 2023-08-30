@@ -6,3 +6,11 @@
 :host  .p-radiobutton.p-component .p-radiobutton-box.p-highlight .p-radiobutton-icon {
   color: #FFFFFF;
 }
+
+.ng-invalid {
+  border-color: red;
+}
+
+.invalid-shipping-method {
+  color: red;
+}

@@ -13,11 +13,10 @@
         </div>
         <div class="col-12 field">
 
-          <app-vs-input type="email" label="Email address" id="email" formControlName="email"></app-vs-input>
+          <app-vs-input type="email" label="Email address" id="email" formControlName="email" class="required" (blur)="markFieldAsTouched('email')" [highlightWhenEmpty]="true"></app-vs-input>
 
           <p-message severity="error" text="Email is not valid"
-                     *ngIf="form.controls.email.dirty && form.controls.email.hasError('pattern')"></p-message>
-
+                     *ngIf="form.controls.email.touched && form.controls.email.hasError('pattern') && form.controls.email.dirty && form.controls.email.value !== ''"></p-message>
         </div>
 <!--        <p-divider class="w-full px-2 mb-3"></p-divider>-->
         <div class="col-12 mt-4 lg:mt-0 mb-4">
@@ -35,7 +34,7 @@
         <div class="col-12 lg:col-6 field mb-0">
 <!--          <label for="name2" class="text-900 font-medium mb-3">Name</label>-->
 <!--          <input id="name2" type="text" formControlName="name" class="p-inputtext w-full mb-3">-->
-          <app-vs-input type="text" label="Name" id="name2" formControlName="name"></app-vs-input>
+          <app-vs-input type="text" label="Name" id="name2" formControlName="name" [highlightWhenEmpty]="true"></app-vs-input>
 
 
           <p-message severity="error" text="Name is required"
@@ -56,7 +55,7 @@
 <!--          <label for="surname2" class="text-900 font-medium mb-3">Lastname</label>-->
 <!--          <input id="surname2" type="text" class="p-inputtext w-full mb-3" formControlName="lastname">-->
 
-          <app-vs-input type="text" label="Lastname" id="surname2" formControlName="lastname"></app-vs-input>
+          <app-vs-input type="text" label="Lastname" id="surname2" formControlName="lastname" [highlightWhenEmpty]="true"></app-vs-input>
 
           <p-message severity="error" text="Name is required"
                      *ngIf="form.controls.lastname.dirty && form.controls.lastname.hasError('required')">
@@ -76,7 +75,7 @@
 <!--          <label for="address3" class="text-900 font-medium mb-3 vs-title">Apartment, Suite, etc.</label>-->
 <!--          <input id="address3" type="text" class="p-inputtext w-full mb-3" formControlName="address">-->
 
-          <app-vs-input type="text" label="Apartment, Suite, etc." id="address3" formControlName="address"></app-vs-input>
+          <app-vs-input type="text" label="Apartment, Suite, etc." id="address3" formControlName="address" [highlightWhenEmpty]="true"></app-vs-input>
 
           <p-message severity="error" text="Address is required"
                      *ngIf="form.controls.address.dirty && form.controls.address.hasError('required')">
@@ -93,7 +92,7 @@
 <!--          <label for="pc2" class="text-900 font-medium mb-3">Postal Code</label>-->
 <!--          <input id="pc2" type="text" class="p-inputtext w-full mb-3" formControlName="zip" maxlength="4" >-->
 
-          <app-vs-input type="text" label="Postal Code" id="pc2" formControlName="zip" [maxLength]="4"></app-vs-input>
+          <app-vs-input type="text" label="Postal Code" id="pc2" formControlName="zip" [maxLength]="4" [highlightWhenEmpty]="true"></app-vs-input>
 
 
           <p-message severity="error" text="Zip code is required"
@@ -110,7 +109,7 @@
 <!--          <label for="city2" class="text-900 font-medium mb-3">City</label>-->
 <!--          <input id="city2" type="text" class="p-inputtext w-full mb-3" formControlName="city">-->
 
-          <app-vs-input type="text" label="City" id="city2" formControlName="city"></app-vs-input>
+          <app-vs-input type="text" label="City" id="city2" formControlName="city" [highlightWhenEmpty]="true"></app-vs-input>
 
           <p-message severity="error" text="City is required"
                      *ngIf="form.controls.city.dirty && form.controls.city.hasError('required')">
@@ -134,6 +133,7 @@
                         label="Phone" id="phone"
                         formControlName="phone"
                         [maxLength]="9"
+                        [highlightWhenEmpty]="true"
           >
 
           </app-vs-input>
@@ -180,8 +180,11 @@
       <div class="surface-card border-round shadow-2 p-3">
         <app-my-cart [shippingCost]="shippingCost" ></app-my-cart>
       </div>
-      <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit" [disabled]="!form.valid">
-        <span class="label">Place order</span>
+      <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit" [disabled]="!form.valid || loading">
+        <span *ngIf="!loading" class="label">Place order</span>
+        <div *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
       </button>
     </div>
   </div>
