@@ -17,5 +17,7 @@ public record OrderReview(
         Double totalAmountOrder,
         Shipping shippingOption,
         Double subtotal,
-        Customer customer
+        Customer customer,
+
+        String comment
 ) { }

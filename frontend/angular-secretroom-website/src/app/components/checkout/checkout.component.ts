@@ -35,9 +35,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   nameValidator: ValidatorFn[] = [
     Validators.required,
-    Validators.minLength(3),
     Validators.pattern('^[A-Za-z\\s]*$')
   ];
+
 
   shippingOptions: ShippingOption[] = [];
 
@@ -136,7 +136,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.createCustomer(),
       this.createShippingAddress(),
       this.createOrder(),
-      this.createOrderItems()
+      this.createOrderItems(),
+      this.setComment()
     );
 
     // const order = this.createOrder();
@@ -321,4 +322,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     }
   }
 
+  private setComment() {
+    return this.form.get('comment')?.value ?? '';
+  }
 }

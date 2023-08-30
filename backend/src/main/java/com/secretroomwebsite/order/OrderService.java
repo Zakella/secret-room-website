@@ -45,7 +45,8 @@ public class OrderService {
                 order.getTotalAmountOrder(),
                 order.getShippingOption(),
                 order.getTotalAmount(),
-                order.getCustomer()
+                order.getCustomer(),
+                order.getComment()
         );
     }
 

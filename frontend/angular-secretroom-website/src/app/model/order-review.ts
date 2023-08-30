@@ -11,5 +11,6 @@ export interface OrderReview {
   totalAmountOrder: number;
   shippingOption: ShippingOption;
   customer: Customer;
+  comment: string;
 
 }

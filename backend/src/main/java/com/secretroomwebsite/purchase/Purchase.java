@@ -14,5 +14,6 @@ public class Purchase {
     private Address shippingAddress;
     private Order order;
     private List<OrderItem> orderItems;
+    private String comment;
 
 }

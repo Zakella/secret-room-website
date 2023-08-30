@@ -8,12 +8,14 @@ export class Purchase {
   shippingAddress: Address;
   order: Order;
   orderItems: OrderItem[];
+  comment: string;
 
-  constructor(customer: Customer, shippingAddress: Address, order: Order, orderItems: OrderItem[]) {
+  constructor(customer: Customer, shippingAddress: Address, order: Order, orderItems: OrderItem[], comment: string) {
     this.customer = customer;
     this.shippingAddress = shippingAddress;
     this.order = order;
     this.orderItems = orderItems;
+    this.comment = comment;
   }
 
 }

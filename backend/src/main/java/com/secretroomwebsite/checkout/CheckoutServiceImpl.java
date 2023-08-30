@@ -102,6 +102,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         order.setStatus(PENDING);
         order.setShippingAddress(purchase.getShippingAddress());
         order.setShippingCost(order.getShippingOption().getCost());
+        order.setComment(purchase.getComment());
 
         // populate order with orderItems
         List<OrderItem> orderItems = purchase.getOrderItems();
@@ -147,6 +148,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         context.setVariable("subtotal", formattedSubtotal);
         context.setVariable("shippingOption", orderReview.shippingOption().getName());
         context.setVariable("estimatedDelivery", orderReview.shippingOption().getDescription());
+        context.setVariable("comment", orderReview.comment());
         return templateEngine.process("order-summary", context);
     }
 

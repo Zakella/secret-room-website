@@ -14,7 +14,8 @@
       public totalQuantity?: number,
       public totalAmount?: number,
       public totalAmountOrder?: number,
-      public items?: OrderItem[]
+      public items?: OrderItem[],
+      public comment?: string
 
   )
     {
@@ -28,6 +29,7 @@
       this.totalAmount = totalAmount;
       this.totalAmountOrder = totalAmountOrder;
       this.items = items;
+      this.comment = comment;
 
     }
   }
@@ -40,7 +42,7 @@
   }
 
 
-  export class ShippingAddress { // и экспортируйте этот класс
+  export class ShippingAddress {
     constructor(
       public street?: string,
       public city?: string,
