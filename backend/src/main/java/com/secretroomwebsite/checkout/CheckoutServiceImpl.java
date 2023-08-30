@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -119,11 +121,32 @@ public class CheckoutServiceImpl implements CheckoutService {
 
 
     private String fillOrderSummaryTemplate(OrderReview orderReview) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        String formattedDate = formatter.format(orderReview.orderDate());
+
+        DecimalFormat df = new DecimalFormat("#");
+        String formattedSubtotal = df.format(orderReview.subtotal()) + " MDL";
+        String formattedTotal = df.format(orderReview.totalAmountOrder()) + " MDL";
+        String formattedShipping = df.format(orderReview.shippingOption().getCost()) + " MDL";
+
+        Customer customer = orderReview.customer();
+        Address address = orderReview.shippingAddress();
+
         Context context = new Context();
-        context.setVariable("customerName", orderReview.customer().getFirstName());
+        context.setVariable("orderNumber", orderReview.orderNumber());
+        context.setVariable("currentDate", formattedDate);
+        context.setVariable("customerName", customer.getFirstName() + " " + customer.getLastName());
+        context.setVariable("customerPhone", customer.getPhone());
+        context.setVariable("deliveryCountry", address.getCountry());
+        context.setVariable("deliveryCity", address.getCity());
+        context.setVariable("deliveryStreet", address.getStreet());
+        context.setVariable("deliveryZip", address.getZipCode());
         context.setVariable("orderItems", orderReview.items());
-        context.setVariable("totalSum", orderReview.totalAmountOrder());
-        context.setVariable("deliveryAddress", getDeliveryAddress(orderReview));
+        context.setVariable("totalSum", formattedTotal);
+        context.setVariable("shipping", formattedShipping);
+        context.setVariable("subtotal", formattedSubtotal);
+        context.setVariable("shippingOption", orderReview.shippingOption().getName());
+        context.setVariable("estimatedDelivery", orderReview.shippingOption().getDescription());
         return templateEngine.process("order-summary", context);
     }
 
@@ -131,7 +154,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         Customer customer = orderReview.customer();
         Address address = orderReview.shippingAddress();
 
-        return String.format("%s %s, %s, %s, %s, %s, %s",
+        return String.format("%s, %s, %s, %s,\n%s, %s,\nphone : %s",
                 customer.getFirstName(),
                 customer.getLastName(),
                 address.getCountry(),
@@ -140,6 +163,7 @@ public class CheckoutServiceImpl implements CheckoutService {
                 address.getZipCode(),
                 customer.getPhone());
     }
+
 
 }
 

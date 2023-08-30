@@ -39,6 +39,7 @@ public class OrderService {
 
         return new OrderReview(
                 formattedId,
+                order.getPlacementDate(), // Assuming the placementDate is a java.util.Date
                 order.getShippingAddress(),
                 order.getItems(),
                 order.getTotalAmountOrder(),
