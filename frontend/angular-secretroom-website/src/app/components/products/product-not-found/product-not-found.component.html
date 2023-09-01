@@ -2,12 +2,12 @@
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
   <div class="flex flex-wrap">
     <div class="w-full lg:w-6 px-4 py-8 md:px-6 lg:px-8" style="background: linear-gradient(116.38deg, #F4D1DA 0%, #FFFFFF 100%);">
-      <div class="text-4xl text-gray-900 mb-3 font-medium"><span>Oops! Product not found </span></div>
+      <div class="text-4xl text-gray-900 mb-3 font-medium"><span>{{'Oops! Product not found' | transloco}}</span></div>
       <p class="line-height-3 mt-0 mb-7 p-0 text-gray-900 text-2xl">
-        <span>Unfortunately, the product you're looking for is no longer available in our store. We're constantly updating our inventory, so you might find something else you'll love. Thanks for understanding!</span>
+        <span>{{'Product not available' | transloco}} </span>
       </p>
       <button pRipple class="vs-button h-3rem py-2 mt-2" [routerLink]="'/vs'">
-        <span class="label">Go to the home page</span>
+        <span class="label">{{'Go to the home page' | transloco}}</span>
       </button>
 
     </div>

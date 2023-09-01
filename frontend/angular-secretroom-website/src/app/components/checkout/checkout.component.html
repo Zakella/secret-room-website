@@ -5,48 +5,50 @@
     <div class="col-12 lg:col-6 p-4" >
       <div class="surface-card grid formgrid p-fluid border-round shadow-2 p-4"  >
         <div class="col-12 mb-4 flex flex-column lg:flex-row align-items-center justify-content-between">
-          <div class="text-900 font-medium text-xl vs-title">Contact Information</div>
+          <div class="text-900 font-medium text-xl vs-title">{{'Contact Information' | transloco}}</div>
           <div class="mt-3 lg:mt-0">
-            <span class="text-600 mr-2 vs-disc">Already hava an account?</span>
-            <a href="/login" tabindex="0" class="cursor-pointer text-900 hover:text-primary transition-duration-150 vs-disc">Login</a>
+            <span class="text-600 mr-2 vs-disc">{{'Already hava an account?' | transloco}}</span>
+            <a href="/login" tabindex="0" class="cursor-pointer text-900 hover:text-primary transition-duration-150 vs-disc">
+              {{'Login' | transloco}}
+            </a>
           </div>
         </div>
         <div class="col-12 field">
 
-          <app-vs-input type="email" label="Email address" id="email" formControlName="email" class="required" (blur)="markFieldAsTouched('email')" [highlightWhenEmpty]="true"></app-vs-input>
+          <app-vs-input type="email" label="{{'Email' | transloco}}" id="email" formControlName="email" class="required" (blur)="markFieldAsTouched('email')" [highlightWhenEmpty]="true"></app-vs-input>
 
-          <p-message severity="error" text="Email is not valid"
+          <p-message severity="error" text="{{'Email is not valid' | transloco}}"
                      *ngIf="form.controls.email.touched && form.controls.email.hasError('pattern') && form.controls.email.dirty && form.controls.email.value !== ''"></p-message>
         </div>
 <!--        <p-divider class="w-full px-2 mb-3"></p-divider>-->
         <div class="col-12 mt-4 lg:mt-0 mb-4">
-          <div class="text-900 font-medium text-xl vs-title">Shipping</div>
+          <div class="text-900 font-medium text-xl vs-title">{{ 'Shipping' | transloco}}</div>
         </div>
         <div class="col-12 field mb-0">
 <!--          <label for="country2" class="text-900 font-medium mb-3">Country</label>-->
 <!--          <input id="country2" type="text" formControlName="country" class="p-inputtext w-full mb-3">-->
 
 
-          <app-vs-input type="text" label="Country" id="country2" formControlName="country"></app-vs-input>
+          <app-vs-input type="text" label= "{{ 'Country' | transloco}} " id="country2" formControlName="country"></app-vs-input>
 
 
         </div>
         <div class="col-12 lg:col-6 field mb-0">
 <!--          <label for="name2" class="text-900 font-medium mb-3">Name</label>-->
 <!--          <input id="name2" type="text" formControlName="name" class="p-inputtext w-full mb-3">-->
-          <app-vs-input type="text" label="Name" id="name2" formControlName="name" [highlightWhenEmpty]="true"></app-vs-input>
+          <app-vs-input type="text" label="{{ 'Name' | transloco}}" id="name2" formControlName="name" [highlightWhenEmpty]="true"></app-vs-input>
 
 
-          <p-message severity="error" text="Name is required"
+          <p-message severity="error" text="{{'Name is required' | transloco}}"
                      *ngIf="form.controls.name.dirty && form.controls.name.hasError('required')">
           </p-message>
 
 
-          <p-message severity="error" text="Name should be at least 3 characters"
+          <p-message severity="error" text="{{'Name should be at least 3 characters' | transloco}} "
                      *ngIf="form.controls.name.dirty && form.controls.name.hasError('minLength')">
           </p-message>
 
-          <p-message severity="error" text="Name should contain only letters"
+          <p-message severity="error" text="{{'Name should contain only letters' | transloco}}"
                      *ngIf="form.controls.name.dirty && form.controls.name.hasError('pattern')">
           </p-message>
 
@@ -55,14 +57,14 @@
 <!--          <label for="surname2" class="text-900 font-medium mb-3">Lastname</label>-->
 <!--          <input id="surname2" type="text" class="p-inputtext w-full mb-3" formControlName="lastname">-->
 
-          <app-vs-input type="text" label="Lastname" id="surname2" formControlName="lastname" [highlightWhenEmpty]="true"></app-vs-input>
+          <app-vs-input type="text" label="{{ 'Lastname' | transloco}}" id="surname2" formControlName="lastname" [highlightWhenEmpty]="true"></app-vs-input>
 
-          <p-message severity="error" text="Name is required"
+          <p-message severity="error" text="{{'Name is required' | transloco}}"
                      *ngIf="form.controls.lastname.dirty && form.controls.lastname.hasError('required')">
           </p-message>
 
 
-          <p-message severity="error" text="Name should contain only letters"
+          <p-message severity="error" text="{{'Name should contain only letters' | transloco}} "
                      *ngIf="form.controls.lastname.dirty && form.controls.lastname.hasError('pattern')">
           </p-message>
 
@@ -71,7 +73,7 @@
 <!--          <label for="address3" class="text-900 font-medium mb-3 vs-title">Apartment, Suite, etc.</label>-->
 <!--          <input id="address3" type="text" class="p-inputtext w-full mb-3" formControlName="address">-->
 
-          <app-vs-input type="text" label="Apartment, Suite, etc." id="address3" formControlName="address" [highlightWhenEmpty]="true"></app-vs-input>
+          <app-vs-input type="text" label="{{ 'Address' | transloco}}" id="address3" formControlName="address" [highlightWhenEmpty]="true"></app-vs-input>
 
           <p-message severity="error" text="Address is required"
                      *ngIf="form.controls.address.dirty && form.controls.address.hasError('required')">
@@ -88,7 +90,7 @@
 <!--          <label for="pc2" class="text-900 font-medium mb-3">Postal Code</label>-->
 <!--          <input id="pc2" type="text" class="p-inputtext w-full mb-3" formControlName="zip" maxlength="4" >-->
 
-          <app-vs-input type="text" label="Postal Code" id="pc2" formControlName="zip" [maxLength]="4" [highlightWhenEmpty]="true"></app-vs-input>
+          <app-vs-input type="text" label="{{ 'Zip' | transloco}}" id="pc2" formControlName="zip" [maxLength]="4" [highlightWhenEmpty]="true"></app-vs-input>
 
 
           <p-message severity="error" text="Zip code is required"
@@ -105,7 +107,7 @@
 <!--          <label for="city2" class="text-900 font-medium mb-3">City</label>-->
 <!--          <input id="city2" type="text" class="p-inputtext w-full mb-3" formControlName="city">-->
 
-          <app-vs-input type="text" label="City" id="city2" formControlName="city" [highlightWhenEmpty]="true"></app-vs-input>
+          <app-vs-input type="text" label="{{ 'City' | transloco}}" id="city2" formControlName="city" [highlightWhenEmpty]="true"></app-vs-input>
 
           <p-message severity="error" text="City is required"
                      *ngIf="form.controls.city.dirty && form.controls.city.hasError('required')">
@@ -126,7 +128,7 @@
         <div class="col-12 field mb-0">
 
           <app-vs-input type="text"
-                        label="Phone" id="phone"
+                        label="{{ 'Phone' | transloco}} " id="phone"
                         formControlName="phone"
                         [maxLength]="9"
                         [highlightWhenEmpty]="true"
@@ -148,7 +150,7 @@
         <div class="col-12 field mb-0">
 
           <app-vs-input type="text"
-                        label="Сomment" id="comment"
+                        label="{{ 'Сomment' | transloco}}" id="comment"
                         formControlName="comment"
                         [maxLength]="250"
           >
@@ -157,7 +159,7 @@
 
           <!--          <input id="phone" type="text" class="p-inputtext w-full mb-3" formControlName="phone" placeholder="6******* or 7*******">-->
         </div>
-        <div class="text-900 font-medium text-xl mt-4 lg:mt-1 mb-4 px-2 vs-title ">Shipping Method</div>
+        <div class="text-900 font-medium text-xl mt-4 lg:mt-1 mb-4 px-2 vs-title ">{{ 'Shipping Method' | transloco}}</div>
 
         <! -- Shipping Options -->
 
@@ -188,9 +190,9 @@
         <app-my-cart [shippingCost]="shippingCost" ></app-my-cart>
       </div>
       <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit" [disabled]="!form.valid || loading">
-        <span *ngIf="!loading" class="label">Place order</span>
+        <span *ngIf="!loading" class="label">{{ 'Place order' | transloco}} </span>
         <div *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">{{ 'Loading' | transloco}}...</span>
         </div>
       </button>
     </div>

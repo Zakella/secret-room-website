@@ -21,11 +21,11 @@
 
     <div class="border-top-1 surface-border p-3 w-full" *ngIf="!cartIsEmpty">
       <button pRipple class="mb-3 w-full vs-button" (click)="checkout()">
-        <span class="label">Check out</span>
+        <span class="label">{{ 'Check out' | transloco}}</span>
       </button>
 
       <button pButton pRipple class="p-button-outlined p-button-secondary w-full" (click)="sidebarVisible=false">
-        <span class="label">Continue Shopping</span>
+        <span class="label">{{'Continue Shopping' | transloco}}</span>
       </button>
 
     </div>

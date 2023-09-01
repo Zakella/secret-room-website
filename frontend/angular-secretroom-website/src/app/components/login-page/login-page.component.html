@@ -13,28 +13,28 @@
 
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-                  <h5 class="fw-normal mb-3 pb-3 vs-title" style="letter-spacing: 1px;">Sign into your account</h5>
+                  <h5 class="fw-normal mb-3 pb-3 vs-title" style="letter-spacing: 1px;">{{'Sign into your account' |transloco}}</h5>
 
 
-                  <app-vs-input type="email" label="Email address" id="email" formControlName="email"></app-vs-input>
+                  <app-vs-input type="email" label="{{'Email' |transloco}}" id="email" formControlName="email"></app-vs-input>
 
-                  <app-vs-input type="password" label="Password" id="password" formControlName="password"></app-vs-input>
+                  <app-vs-input type="password" label= "{{'Password' |transloco}}" id="password" formControlName="password"></app-vs-input>
 
                   <div class="pt-1 mb-4">
                     <!-- Submit button -->
                     <button pRipple class="w-full vs-button h-3rem py-2 mt-2"  type="submit" [disabled]="!form.valid">
-                      <span class="label">Sing in</span>
+                      <span class="label">{{'Sing in' |transloco}} </span>
                     </button>
 
                     <div class="mt-4 d-flex justify-content-center">
-                      <p-message severity="error" text="Unknown username or password" *ngIf="badCredentials"></p-message>
+                      <p-message severity="error" text="{{'Unknown username or password' |transloco}} " *ngIf="badCredentials"></p-message>
                     </div>
 
                   </div>
 
-                  <a class="small text-muted vs-disc" (click)="showDialog()">Forgot password?</a>
-                  <p class="mb-5 pb-lg-2 vs-disc mt-2" style="color: #393f81;">Don't have an account? <a href="/registration"
-                                                                                                         style="color: #393f81;">Register here</a></p>
+                  <a class="small text-muted vs-disc" (click)="showDialog()">{{'Forgot Password' |transloco}}</a>
+                  <p class="mb-5 pb-lg-2 vs-disc mt-2" style="color: #393f81;">{{'No account' |transloco}}  <a href="/registration"
+                                                                                                         style="color: #393f81;">{{'Register here' |transloco}}</a></p>
 
                 </form>
 

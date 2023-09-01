@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {TranslocoService} from "@ngneat/transloco";
 
 interface Languages {
   name: string;
@@ -16,21 +17,26 @@ export class LanguagePanelComponent implements OnInit {
   languages: Languages[] | undefined;
   selectedLanguage: Languages | undefined;
 
+  constructor(private router: Router, private translocoService: TranslocoService) { }
   ngOnInit() {
-
-
-    this.selectedLanguage = {name: 'Romanian', code: 'Ro', icon: 'assets/flags/romania.png'};
+    const lang = localStorage.getItem('lang') || 'Ro';
 
     this.languages = [
-      this.selectedLanguage,
+      {name: 'Romanian', code: 'Ro', icon: 'assets/flags/romania.png'},
       {name: 'Russian', code: 'Ru', icon: 'assets/flags/russia.png'},
     ];
+
+    this.selectedLanguage = this.languages.find(language => language.code === lang) || this.languages[0];
+
+    this.translocoService.setActiveLang(this.selectedLanguage.code.toLowerCase());
   }
 
-  constructor(private router: Router) { }
+
 
 
   putSelectedInStorage() {
-    localStorage.setItem("lang", <string>this.selectedLanguage?.code);
+    const lang = <string>this.selectedLanguage?.code;
+    localStorage.setItem("lang", lang);
+    this.translocoService.setActiveLang(lang.toLowerCase());
   }
 }

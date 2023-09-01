@@ -48,12 +48,12 @@
 
         <button pRipple class="w-full mb-5 vs-button" (click)="addProductInCart()" >
           <i class="pi pi-shopping-cart"></i>
-          <span class="label" >Add to Cart</span>
+          <span class="label" >{{'Add to Cart' | transloco}}</span>
         </button>
 
 
         <ol class="list-none p-0 m-0 surface-100 text-center text-900">
-          <li class="line-height-3 p-3 font-bold border-bottom-1 border-300"><span class="vs-title"> Product description </span></li>
+          <li class="line-height-3 p-3 font-bold border-bottom-1 border-300"><span class="vs-title"> {{'Product description' | transloco}} </span></li>
           <li class="line-height-3 p-3 border-bottom-1 border-300">
             <span class="vs-disc">{{product.description}}</span>
             </li>
@@ -61,7 +61,7 @@
 
         <button pButton pRipple class="p-button-outlined p-button-secondary w-full h-2rem border-1" style="margin-top: 2em;" (click)="goBack()">
           <span class="icon"><i class="fas fa-arrow-left"></i></span>
-          <span class="label">Back to list</span>
+          <span class="label">{{'Back to list'| transloco}}</span>
         </button>
 
 

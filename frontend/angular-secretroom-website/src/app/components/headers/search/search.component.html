@@ -5,6 +5,8 @@
 <!--</div>-->
 <span class="p-input-icon-right mt-5 mb-2 md:mt-0 md:mb-0 w-full lg:w-25rem">
       <i class="pi pi-search text-gray-400"></i>
-     <input type="text" class="p-inputtext w-full lg:w-25rem surface-50 vs-title" placeholder="Search"
-            [formControl]="searchForm">
+
+<input type="text" class="p-inputtext w-full lg:w-25rem surface-50 vs-title" [placeholder]="'Search' | transloco"
+       [formControl]="searchForm">
+
     </span>

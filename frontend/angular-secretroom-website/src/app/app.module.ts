@@ -63,6 +63,7 @@ import {TagModule} from "primeng/tag";
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import {DialogModule} from "primeng/dialog";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
+import { TranslocoRootModule } from './transloco-root.module';
 
 @NgModule({
   declarations: [
@@ -135,6 +136,7 @@ import {ProgressSpinnerModule} from "primeng/progressspinner";
     TagModule,
     DialogModule,
     ProgressSpinnerModule,
+    TranslocoRootModule,
     /**/
 
 

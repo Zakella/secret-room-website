@@ -1,6 +1,6 @@
 <div class="flex justify-content-between align-items-center border-bottom-1 pb-3 surface-border">
     <span class="text-900 font-medium text-lg lg:text-xl"><i
-      class="pi pi-shopping-cart text-xl mr-2"></i>Your Order ({{totalQuantity}})</span>
+      class="pi pi-shopping-cart text-xl mr-2"></i>{{ 'Your Order' | transloco }}  ({{totalQuantity}})</span>
 </div>
 
 
@@ -24,7 +24,7 @@
 
 
         <div *ngIf="cartItem.size"
-             class="text-600 text-sm mb-3"> Size: {{cartItem.size.sizeType}}
+             class="text-600 text-sm mb-3"> {{'Size' | transloco}}: {{cartItem.size.sizeType}}
         </div>
 
         <span class="text-900 text-m font-medium vs-price">{{ cartItem.amount }} MDL</span>
@@ -62,22 +62,22 @@
 
 <div class="surface-card p-4 border-round shadow-2">
   <div class="border-bottom-1 surface-border pb-4">
-    <span class="text-900 text-xl block vs-title">Order Summary</span>
+    <span class="text-900 text-xl block vs-title">{{'Order Summary' | transloco}}</span>
   </div>
   <div class="border-bottom-1 surface-border my-3 py-2">
     <div class="flex justify-content-between mb-3">
-      <span class="text-900 vs-disc">Subtotal</span>
+      <span class="text-900 vs-disc">{{'Subtotal' | transloco}} </span>
       <span class="text-900 vs-price">{{totalAmount}} MDL</span>
     </div>
 
     <div class="flex justify-content-between mb-3">
-      <span class="text-900 vs-disc">Delivery</span>
+      <span class="text-900 vs-disc">{{'Delivery' | transloco}}  </span>
       <span class="text-900 vs-price">{{shippingCost}} MDL</span>
     </div>
   </div>
   <div class="border-bottom-1 surface-border my-3 py-2">
     <div class="flex justify-content-between mb-3">
-      <span class="text-900 font-medium font-bold vs-disc">Total</span>
+      <span class="text-900 font-medium font-bold vs-disc">{{'Total' | transloco}}</span>
       <span class="text-900 font-bold vs-price">{{totalAmount + shippingCost }} MDL</span>
     </div>
   </div>
