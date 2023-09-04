@@ -9,17 +9,39 @@
             backdrop-filter: blur(30px);
             ">
           <div class="card-body p-5 shadow-5 text-center">
-            <h5 class="fw-normal mb-3 pb-3 vs-title" style="letter-spacing: 1px;">Sign up now</h5>
+            <h5 class="fw-normal mb-3 pb-3 vs-title" style="letter-spacing: 1px;">{{'Sign up now' | transloco}} </h5>
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
                 <div class="col-md-6 mb-4">
 
-                  <app-vs-input type="text" label="First name" id="name" formControlName="firstName" [highlightWhenEmpty]="true"></app-vs-input>
+                  <app-vs-input type="text" label="{{'Name' | transloco}}" id="name" formControlName="firstName" [highlightWhenEmpty]="true"></app-vs-input>
+
+                  <p-message severity="error" text="{{'Name is required' | transloco}}"
+                             *ngIf="registrationForm.controls.firstName.dirty && registrationForm.controls.firstName.hasError('required')">
+                  </p-message>
+
+
+                  <p-message severity="error" text="{{'Name should be at least 3 characters' | transloco}} "
+                             *ngIf="registrationForm.controls.firstName.dirty && registrationForm.controls.firstName.hasError('minLength')">
+                  </p-message>
+
+                  <p-message severity="error" text="{{'Name should contain only letters' | transloco}}"
+                             *ngIf="registrationForm.controls.firstName.dirty && registrationForm.controls.firstName.hasError('pattern')">
+                  </p-message>
 
                 </div>
                 <div class="col-md-6 mb-4">
-                  <app-vs-input type="text" label="Last name" id="lastname" formControlName="lastName" [highlightWhenEmpty]="true"></app-vs-input>
+                  <app-vs-input type="text" label="{{'Lastname' | transloco}}" id="lastname" formControlName="lastName" [highlightWhenEmpty]="true"></app-vs-input>
+
+                  <p-message severity="error" text="{{'Name is required' | transloco}}"
+                             *ngIf="registrationForm.controls.lastName.dirty && registrationForm.controls.lastName.hasError('required')">
+                  </p-message>
+
+
+                  <p-message severity="error" text="{{'Name should contain only letters' | transloco}} "
+                             *ngIf="registrationForm.controls.lastName.dirty && registrationForm.controls.lastName.hasError('pattern')">
+                  </p-message>
                 </div>
               </div>
 
@@ -30,21 +52,29 @@
 <!--              </div>-->
 
               <!-- email input -->
-              <app-vs-input type="email" label="Email address" id="email" formControlName="email" [highlightWhenEmpty]="true"></app-vs-input>
+              <app-vs-input type="email" label="{{'Email' | transloco}}" id="email" formControlName="email" [highlightWhenEmpty]="true"></app-vs-input>
+
+              <p-message severity="error" text="{{'Email is not valid' | transloco}}"
+                         *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.hasError('pattern') && registrationForm.controls.email.dirty && registrationForm.controls.email.value !== ''"></p-message>
 
               <!-- Password input -->
 
-              <app-vs-input type="password" label="Password" id="password" formControlName="password" [highlightWhenEmpty]="true"></app-vs-input>
+              <app-vs-input type="password" label="{{'Password' | transloco}}" id="password" formControlName="password" [highlightWhenEmpty]="true"></app-vs-input>
+
+
+              <p-message severity="error" text="{{'Password must be at least 8 characters long and contain both letters and numbers' | transloco}}"
+                         *ngIf="registrationForm.controls.password.dirty && registrationForm.controls.password.hasError('pattern')">
+              </p-message>
 
               <!-- Submit button -->
               <button pRipple class="w-full vs-button h-3rem py-2 mt-2" type="submit" [disabled]="!registrationForm.valid">
-                <span class="label">Sing in</span>
+                <span class="label">{{'Sing in' | transloco}} </span>
               </button>
 
               <div class="mt-4">
 <!--                <p-messages severity="error"  text="User already exists"-->
 <!--                            [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" *ngIf="userExists"></p-messages>-->
-                <p-message severity="error" text="User already exists" *ngIf="userExists"></p-message>
+                <p-message severity="error" text="{{'User already exists' | transloco}} " *ngIf="userExists"></p-message>
               </div>
 
 <!--              &lt;!&ndash; Register buttons &ndash;&gt;-->

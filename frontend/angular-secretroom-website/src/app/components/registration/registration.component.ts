@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, ValidatorFn, Validators} from '@angular/forms';
 import {AuthenticationService} from "../../services/authentication.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
@@ -11,11 +11,23 @@ import {Router} from "@angular/router";
 
 })
 export class RegistrationComponent {
+
+  nameValidator: ValidatorFn[] = [
+    Validators.required,
+    Validators.pattern('^[A-Za-z\\s]*$')
+  ];
+
+  passwordValidator: ValidatorFn[] = [
+    Validators.required,
+    Validators.minLength(8),
+    Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')
+  ];
+
   registrationForm = this.fb.group({
-    email: [null, Validators.required],
-    password: [null, Validators.required],
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
+    email: ["", [Validators.required ,Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+    password: ["", this.passwordValidator],
+    firstName: ["", this.nameValidator],
+    lastName: ["", this.nameValidator],
   });
   userExists: boolean = false;
 
@@ -32,7 +44,7 @@ export class RegistrationComponent {
         this.registrationForm.value.email || '',
         this.registrationForm.value.password || '',
         this.registrationForm.value.firstName || '',
-        this.registrationForm.value.lastName || ''
+        this.registrationForm.value.lastName  || ''
       );
 
       this.authenticationService.registration(user).subscribe(

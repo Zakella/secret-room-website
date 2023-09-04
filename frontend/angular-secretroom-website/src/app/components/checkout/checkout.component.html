@@ -75,12 +75,12 @@
 
           <app-vs-input type="text" label="{{ 'Address' | transloco}}" id="address3" formControlName="address" [highlightWhenEmpty]="true"></app-vs-input>
 
-          <p-message severity="error" text="Address is required"
+          <p-message severity="error" text="{{ 'Address is required' | transloco}} "
                      *ngIf="form.controls.address.dirty && form.controls.address.hasError('required')">
           </p-message>
 
 
-          <p-message severity="error" text="Address should be at least 3 characters"
+          <p-message severity="error" text="{{ 'Address should be at least 3 characters' | transloco}}"
                      *ngIf="form.controls.address.dirty && form.controls.address.hasError('minLength')">
           </p-message>
 
@@ -93,11 +93,11 @@
           <app-vs-input type="text" label="{{ 'Zip' | transloco}}" id="pc2" formControlName="zip" [maxLength]="4" [highlightWhenEmpty]="true"></app-vs-input>
 
 
-          <p-message severity="error" text="Zip code is required"
+          <p-message severity="error" text="{{ 'Zip code is required' | transloco}} "
                      *ngIf="form.controls.zip.dirty && form.controls.zip.hasError('required')">
           </p-message>
 
-          <p-message severity="error" text="Zip need to be 4 digits"
+          <p-message severity="error" text="{{ 'Zip need to be 4 digits' | transloco}}"
                      *ngIf="form.controls.zip.dirty && form.controls.zip.hasError('pattern')">
           </p-message>
 
@@ -109,16 +109,16 @@
 
           <app-vs-input type="text" label="{{ 'City' | transloco}}" id="city2" formControlName="city" [highlightWhenEmpty]="true"></app-vs-input>
 
-          <p-message severity="error" text="City is required"
+          <p-message severity="error" text="{{ 'City is required' | transloco}} "
                      *ngIf="form.controls.city.dirty && form.controls.city.hasError('required')">
           </p-message>
 
 
-          <p-message severity="error" text="City should be at least 3 characters"
+          <p-message severity="error" text="{{ 'City should be at least 3 characters' | transloco}}  "
                      *ngIf="form.controls.city.dirty && form.controls.city.hasError('minLength')">
           </p-message>
 
-          <p-message severity="error" text="City should contain only letters"
+          <p-message severity="error" text="{{ 'City should contain only letters' | transloco}}  "
                      *ngIf="form.controls.city.dirty && form.controls.city.hasError('pattern')">
           </p-message>
 
@@ -136,12 +136,12 @@
 
           </app-vs-input>
 
-          <p-message severity="error" text="Phone is required"
+          <p-message severity="error" text="{{ 'Phone is required' | transloco}} "
                      *ngIf="form.controls.phone.dirty && form.controls.phone.hasError('required')">
           </p-message>
 
 
-          <p-message severity="error" text="Phone need to be format 06******* or 07*******"
+          <p-message severity="error" text="{{ 'Phone need to be format 06******* or 07*******' | transloco}}"
                      *ngIf="form.controls.phone.dirty && form.controls.phone.hasError('pattern')">
           </p-message>
 <!--          <input id="phone" type="text" class="p-inputtext w-full mb-3" formControlName="phone" placeholder="6******* or 7*******">-->

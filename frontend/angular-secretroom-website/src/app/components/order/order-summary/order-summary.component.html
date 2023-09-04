@@ -6,7 +6,7 @@
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-5">
             <h5 class="text-muted mb-0">
-              <span class="vs-title"> Thanks for your Order</span>
+              <span class="vs-title"> {{'Thanks for your Order' | transloco}}</span>
               , <span style="color: #a8729a;">{{orderReview?.customer?.firstName}}</span>!</h5>
           </div>
           <div class="card-body p-4">
@@ -26,14 +26,14 @@
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center" >
                     <p class="text-muted mb-0 small" *ngIf="details.sizeType != null">
-                      <span class="vs-disc">  Size: {{details?.sizeType}} </span>
+                      <span class="vs-disc"> {{'Size' | transloco}}: {{details?.sizeType}} </span>
 
                     </p>
                   </div>
 
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class="text-muted mb-0 small">
-                      <span class="vs-disc"> Qty: {{details.quantity}}</span>
+                      <span class="vs-disc">{{'Qty' | transloco}}: {{details.quantity}}</span>
 
                     </p>
                   </div>
@@ -48,15 +48,15 @@
 
 
             <div class="d-flex justify-content-between pt-2">
-              <p class="fw-bold mb-0 vs-disc">Order Details</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4 vs-disc">Total</span> {{orderReview?.subtotal}} MDL</p>
+              <p class="fw-bold mb-0 vs-disc">{{'Order Details' | transloco}}</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4 vs-disc">{{'Subtotal' | transloco}}</span> {{orderReview?.subtotal}} MDL</p>
             </div>
 
             <div class="d-flex justify-content-between pt-2">
               <p class="text-muted mb-0 vs-disc">
                 <span>{{orderReview?.customer?.firstName}} {{orderReview?.customer?.lastName}}</span>
               </p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4 vs-disc">Shipping</span> {{orderReview?.shippingOption?.cost}} MDL</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4 vs-disc">{{'Shipping' | transloco}} </span> {{orderReview?.shippingOption?.cost}} MDL</p>
             </div>
 
             <div class="d-flex justify-content-between">
@@ -79,15 +79,15 @@
             </div>
 
             <div class="d-flex justify-content-between">
-              <p class="text-muted mb-0 vs-disc"><span>Comment : {{orderReview?.comment}}</span></p>
+              <p class="text-muted mb-0 vs-disc"><span>{{'Comment' | transloco}}   : {{orderReview?.comment}}</span></p>
             </div>
 
 
           </div>
           <div class="card-footer border-0 px-4 py-5"
                style="background-color: rgb(244, 209, 218); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-            <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
-              paid: <span class="h2 mb-0 ms-2 vs-title">{{orderReview?.totalAmountOrder}} MDL</span></h5>
+            <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">{{'Total' | transloco}}
+              : <span class="h2 mb-0 ms-2 vs-title">{{orderReview?.totalAmountOrder}} MDL</span></h5>
           </div>
         </div>
       </div>

@@ -51,19 +51,19 @@
   <p-dialog [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '20vw' }"
             [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
-      <div class="vs-title">Password Reset</div>
+      <div class="vs-title">{{'Password Reset' | transloco}}</div>
     </ng-template>
-    <app-vs-input type="email" label="Email address" id="restorePassword" formControlName="email"></app-vs-input>
+    <app-vs-input type="email" label="{{'Email address' | transloco}}" id="restorePassword" formControlName="email"></app-vs-input>
     <p>
     <span>
-        Enter your email address and we'll send you an email with instructions to reset your password.
+        {{'Enter your email address and we\'ll send you an email with instructions to reset your password.' | transloco}}
     </span>
     </p>
 
     <button pRipple class="w-full vs-button h-3rem py-2 mt-2" type="submit" [disabled]="!restoreForm.valid || loading">
-      <span *ngIf="!loading" class="label">Restore</span>
+      <span *ngIf="!loading" class="label">{{'Restore' | transloco}}</span>
       <div *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
-        <span class="sr-only">Loading...</span>
+        <span class="sr-only">{{'Loading...' | transloco}}</span>
       </div>
     </button>
 
@@ -72,21 +72,22 @@
     </div>
   </p-dialog>
 
-  <p-dialog header="Success" [(visible)]="isSuccess" >
+  <p-dialog header="{{'Success' | transloco}}" [(visible)]="isSuccess" >
     <ng-template pTemplate="header">
-      <span class="text-xl font-bold">Success</span>
+      <span class="text-xl font-bold">{{'Success' | transloco}}</span>
     </ng-template>
     <p>
-      Email has been sent!
+      {{'Email has been sent!' | transloco}}
     </p>
     <ng-template pTemplate="footer">
       <div style="display: flex; justify-content: flex-end;">
-        <button pRipple class="vs-button h-2rem py-1" type="submit" (click)="isSuccess = false"> <!-- Add (click) handler here -->
+        <button pRipple class="vs-button h-2rem py-1" type="submit" (click)="isSuccess = false">
           <span class="label">Ok</span>
         </button>
       </div>
     </ng-template>
   </p-dialog>
-
 </form>
+
+
 

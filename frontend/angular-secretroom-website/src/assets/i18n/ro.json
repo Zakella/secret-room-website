@@ -49,8 +49,50 @@
   "Name is required": "Numele este obligatoriu",
   "Name should be at least 3 characters": "Numele trebuie să aibă cel puțin 3 caractere",
   "Name should contain only letters": "Numele trebuie să conțină doar litere latină",
+  "Address is required": "Adresa este obligatorie",
+  "Address should be at least 3 characters": "Adresa trebuie să aibă cel puțin 3 caractere",
+  "Zip code is required": "Codul poștal este obligatoriu",
+  "City is required": "Orașul este obligatoriu",
+  "City should be at least 3 characters": "Orașul trebuie să aibă cel puțin 3 caractere",
+  "City should contain only letters": "Orașul trebuie să conțină doar litere latină",
+  "Phone is required": "Numărul de telefon este obligatoriu",
+  "Phone need to be format 06******* or 07*******": "Telefonul trebuie să fie în format 06******* sau 07*******",
+  "Sign up now": "Înregistrează-te acum",
+  "User already exists": "Utilizatorul există deja",
+  "Password must be at least 8 characters long and contain both letters and numbers": "Parola trebuie să aibă cel puțin 8 caractere și să conțină atât litere latine, cât și cifre.",
+  "Thanks for your Order": "Mulțumim pentru comanda dvs",
+  "Qty": "Cantitate",
+  "Order Details": "Detalii comandă",
+  "Comment": "Comentariu",
+  "Total paid": "Total de plată",
+  "My Orders": "Comenzile mele",
+  "No orders yet.": "Nu există comenzi încă.",
+  "Order Number": "Numărul comenzii",
+  "Order Date": "Data comenzii",
+  "Total Amount": "Suma totală",
+  "Shipping address": "Adresa de livrare",
+  "Password Reset": "Resetare parolă",
+  "Email address": "Adresă de email",
+  "Enter your email address and we'll send you an email with instructions to reset your password.": "Introduceți adresa dvs. de email și vă vom trimite un email cu instrucțiuni pentru resetarea parolei.",
+  "Restore": "Restaurare",
+  "Loading...": "Se încarcă...",
+  "Success": "Succes",
+  "Email has been sent!": "Emailul a fost trimis!",
 
+  "Change password": "Schimbă parola",
+  "Your new password": "Noua ta parolă",
+  "Repeat password": "Repetă parola",
+  "Confirm": "Confirmă",
+  "Password changed successfully": "Parola a fost schimbată cu succes",
+  "Are you lost?": "Te-ai rătăcit?",
+  "Sorry, we couldn't find the page.": "Ne pare rău, nu am putut găsi pagina.",
+  "Search by order number": "Căutare după numărul comenzii"
 
 
 
 }
+
+
+
+
+

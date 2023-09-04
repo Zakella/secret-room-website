@@ -12,7 +12,7 @@ import {PurchaseService} from "../../services/purchase.service";
 import {Customer} from "../../model/customer";
 import {Address} from "../../model/address";
 import {Order} from "../../model/order";
-import { MessageService } from 'primeng/api';
+import {MessageService} from 'primeng/api';
 import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
@@ -44,9 +44,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   shippingCost: number = 0;
 
 
-
   form = this.fb.group({
-    email: ["", [Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+    email: ["", [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
     country: {value: "Moldova, Republic of", disabled: true},
     name: ["", this.nameValidator],
     checked: this.fb.control(true),
@@ -69,11 +68,22 @@ export class CheckoutComponent implements OnInit, OnDestroy {
               private shippingService: ShippingService,
               private messageService: MessageService,
               private authService: AuthenticationService
-
   ) {
   }
 
   ngOnInit(): void {
+
+    this.authService.loggedIn.subscribe(loggedIn => {
+      if (this.form.controls.email) {
+        if (loggedIn) {
+          this.setUserDetails();
+          this.form.controls.email.disable();
+        } else {
+          this.form.controls.email.enable();
+        }
+      }
+    });
+
     this.cartItems = this.cartService.loadCartItemsFromStorage();
     if (this.cartItems.length === 0) {
       this.router.navigate(['empty-cart']);
@@ -103,8 +113,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         lastname: userDetails.familyName,
         email: userDetails.email
       });
-      // Disable the email field if the user is logged in
-      this.form.controls.email.disable();
     }
   }
 
@@ -325,4 +333,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   private setComment() {
     return this.form.get('comment')?.value ?? '';
   }
+
+
 }

@@ -7,8 +7,6 @@ import com.secretroomwebsite.exception.TokenExpiredException;
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
 import com.secretroomwebsite.order.OrderService;
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.admin.client.Keycloak;
@@ -21,9 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.mail.MailParseException;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -86,6 +82,9 @@ public class UserService {
     public UserResponseDTO createUser(UserDTO userDTO) {
         logger.info("Creating user with email: {}", userDTO.email()); // Добавлено логирование
 
+        if (isPasswordPolicyValid(userDTO.password())) {
+            throw new IllegalArgumentException("Password does not meet the policy requirements");
+        }
         // Step 1: Create user
         UserRepresentation user = createUserRepresentation(userDTO);
         UsersResource usersResource = keycloakAdminService.getInstance().realm(userRealm).users();
@@ -121,10 +120,10 @@ public class UserService {
                 .block();
     }
 
-    public List<UserRepresentation> searchUserByUsername(String userName) {
+    public void searchUserByUsername(String userName) {
         UsersResource usersResource = keycloakAdminService.getInstance().realm(userRealm).users();
 
-        return usersResource.search(userName, true);
+        usersResource.search(userName, true);
     }
 
 
@@ -136,6 +135,12 @@ public class UserService {
     }
 
     public void changeUserPassword(String userId, String newPassword) {
+        // Step 1: Check if the new password meets the policy requirements
+        if (isPasswordPolicyValid(newPassword)) {
+            throw new IllegalArgumentException("New password does not meet the policy requirements");
+        }
+
+        // Step 2: Change the user password
         try {
             UserResource userResource = keycloakAdminService.getInstance().realm(userRealm).users().get(userId);
             CredentialRepresentation credential = new CredentialRepresentation();
@@ -282,6 +287,10 @@ public class UserService {
         return passwordResetTokenRepository.save(passwordResetToken);
     }
 
+    private boolean isPasswordPolicyValid(String password) {
+        String passwordPolicyRegex = "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$";
+        return !password.matches(passwordPolicyRegex);
+    }
 
 
 }

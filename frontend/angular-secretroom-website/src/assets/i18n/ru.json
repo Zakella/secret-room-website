@@ -4,7 +4,6 @@
   "Subtotal": "Промежуточный итог",
   "Delivery": "Доставка",
   "Delete": "Удалить",
-  "Total": "Итого",
   "Quantity": "Количество",
   "Product Name": "Название продукта",
   "Size": "Размер",
@@ -51,7 +50,48 @@
   "Email is not valid": "Электронная почта недействительна",
   "Name is required": "Имя обязательно",
   "Name should be at least 3 characters long": "Имя должно быть не менее 3 символов",
-  "Name should contain only letters": "Имя должно содержать только латинские буквы"
+  "Name should contain only letters": "Имя должно содержать только латинские буквы",
+  "Address is required": "Адрес обязателен",
+  "Address should be at least 3 characters long": "Адрес должен быть не менее 3 символов",
+  "Zip code is required": "Индекс обязателен",
+  "City is required": "Город обязателен",
+  "City should be at least 3 characters": "Город должен быть не менее 3 символов",
+  "City should contain only letters": "Город должен содержать только латинские буквы",
+  "Phone is required": "Телефон обязателен",
+  "Phone need to be format 06******* or 07*******": "Телефон должен быть в формате 06******* или 07*******",
+  "Sign up now": "Зарегистрируйтесь сейчас",
+  "User already exists": "Пользователь уже существует",
+  "Password must be at least 8 characters long and contain both letters and numbers": "Пароль должен быть не менее 8 символов и содержать как как латинские буквы, так и цифры",
+  "Order Details": "Детали заказа",
+  "Thanks for your Order": "Спасибо за ваш заказ",
+   "Total": "Всего к оплате",
+
+  "Comment": "Комментарий",
+  "My Orders": "Мои заказы",
+  "No orders yet.": "Заказов пока нет.",
+  "Order Number": "Номер заказа",
+  "Order Date": "Дата заказа",
+  "Total Amount": "Общая сумма",
+  "Qty": "Количество",
+  "Shipping address": "Адрес доставки",
+  "Password Reset": "Сброс пароля",
+  "Email address": "Адрес электронной почты",
+  "Enter your email address and we'll send you an email with instructions to reset your password.": "Введите адрес электронной почты, и мы отправим вам письмо с инструкциями по сбросу пароля.",
+  "Restore": "Восстановить",
+  "Loading...": "Загрузка...",
+  "Email has been sent!": "Письмо отправлено!",
+  "Change password": "Изменить пароль",
+  "Your new password": "Ваш новый пароль",
+  "Repeat password": "Повторите пароль",
+  "Confirm": "Подтвердить",
+  "Success": "Успех",
+  "Password changed successfully": "Пароль успешно изменен",
+  "Are you lost?": "Вы заблудились?",
+  "Sorry, we couldn't find the page.": "Извините, мы не смогли найти страницу.",
+  "Search by order number": "Поиск по номеру заказа"
+
+
+
 
 
 }

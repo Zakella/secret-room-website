@@ -11,7 +11,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
     this.userIsLoggedIn();
@@ -23,9 +23,12 @@ export class AuthenticationService {
       const userDetails: UserDetails = JSON.parse(storedUser);
       const token = userDetails.accessToken;
       if (token) {
-        const jwtHelper:JwtHelperService = new JwtHelperService();
+        const jwtHelper: JwtHelperService = new JwtHelperService();
         const isTokenNonExpired = !jwtHelper.isTokenExpired(token);
-        this.loggedIn.next(isTokenNonExpired);
+        if (!isTokenNonExpired) {
+          localStorage.removeItem("user");
+          this.loggedIn.next(false);
+        }
       }
     }
   }

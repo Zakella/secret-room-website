@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, ValidatorFn, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router, ActivatedRoute} from "@angular/router";
 
@@ -12,13 +12,22 @@ import {Router, ActivatedRoute} from "@angular/router";
 export class ResetPasswordComponent implements OnInit {
   isSuccess: boolean = false;
 
+
+  passwordValidator: ValidatorFn[] = [
+    Validators.required,
+    Validators.minLength(8),
+    Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')
+  ];
+
   form = this.fb.group({
-    password: ["", Validators.required],
+    password: ["", this.passwordValidator],
     passwordConfirmation: ["", Validators.required],
   });
 
   errorMessage: string | null = null;
   token: string | null = null;
+
+
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
