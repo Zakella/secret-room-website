@@ -8,7 +8,6 @@ import com.secretroomwebsite.order.*;
 import com.secretroomwebsite.purchase.Purchase;
 import com.secretroomwebsite.purchase.PurchaseResponse;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -16,6 +15,7 @@ import org.thymeleaf.context.Context;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,18 +29,18 @@ public class CheckoutServiceImpl implements CheckoutService {
     private final OrderService orderService;
     private final OrderRepository orderRepository;
 
-    @Autowired
-    private TemplateEngine templateEngine;
+    private final TemplateEngine templateEngine;
 
-    @Autowired
-    private EmailService emailService;
+    private final EmailService emailService;
 
     public CheckoutServiceImpl(CustomerRepository customerRepository,
                                OrderService orderService,
-                               OrderRepository orderRepository) {
+                               OrderRepository orderRepository, TemplateEngine templateEngine, EmailService emailService) {
         this.customerRepository = customerRepository;
         this.orderService = orderService;
         this.orderRepository = orderRepository;
+        this.templateEngine = templateEngine;
+        this.emailService = emailService;
     }
 
     @Override
@@ -53,13 +53,12 @@ public class CheckoutServiceImpl implements CheckoutService {
         Order order = createOrder(purchase, customer);
 
         OrderReview orderReview = orderService.findOrderByTrackingNumber(order.getOrderTrackingNumber());
-        String orderSummaryHtml = fillOrderSummaryTemplate(orderReview);
+        String orderSummaryHtml = fillOrderSummaryTemplate(orderReview, purchase.getLanguage());
 
-        emailService.sendMessage("zapolski.slava@gmail.com", "Order Summary", orderSummaryHtml);
+        emailService.sendMessage(purchase.getCustomer().getEmail(), "Order Summary", orderSummaryHtml);
 
         return new PurchaseResponse(order.getOrderTrackingNumber(), orderSummaryHtml);
     }
-
 
 
     private void validatePurchase(Purchase purchase) {
@@ -121,7 +120,7 @@ public class CheckoutServiceImpl implements CheckoutService {
     }
 
 
-    private String fillOrderSummaryTemplate(OrderReview orderReview) {
+    private String fillOrderSummaryTemplate(OrderReview orderReview, String language) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         String formattedDate = formatter.format(orderReview.orderDate());
 
@@ -149,21 +148,11 @@ public class CheckoutServiceImpl implements CheckoutService {
         context.setVariable("shippingOption", orderReview.shippingOption().getName());
         context.setVariable("estimatedDelivery", orderReview.shippingOption().getDescription());
         context.setVariable("comment", orderReview.comment());
+
+        Locale locale = new Locale(language.toLowerCase());
+        context.setLocale(locale);
+
         return templateEngine.process("order-summary", context);
-    }
-
-    private String getDeliveryAddress(OrderReview orderReview) {
-        Customer customer = orderReview.customer();
-        Address address = orderReview.shippingAddress();
-
-        return String.format("%s, %s, %s, %s,\n%s, %s,\nphone : %s",
-                customer.getFirstName(),
-                customer.getLastName(),
-                address.getCountry(),
-                address.getCity(),
-                address.getStreet(),
-                address.getZipCode(),
-                customer.getPhone());
     }
 
 

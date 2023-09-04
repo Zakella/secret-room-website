@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Order} from "../model/order";
 import {Observable} from "rxjs";
-import {ResponseOrder} from "../model/response-order";
 import {ResponsePurchase} from "../model/response-purchase";
 import {Purchase} from "../model/purchase";
 import {OrderReview} from "../model/order-review";

@@ -15,5 +15,6 @@ public class Purchase {
     private Order order;
     private List<OrderItem> orderItems;
     private String comment;
+    private String language;
 
 }

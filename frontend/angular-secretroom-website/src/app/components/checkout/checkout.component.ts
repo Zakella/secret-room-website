@@ -140,12 +140,15 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
+    const lang = localStorage.getItem('lang') || 'ro';
+
     let purchase = new Purchase(
       this.createCustomer(),
       this.createShippingAddress(),
       this.createOrder(),
       this.createOrderItems(),
-      this.setComment()
+      this.setComment(),
+      lang
     );
 
     // const order = this.createOrder();

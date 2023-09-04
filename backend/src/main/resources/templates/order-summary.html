@@ -98,11 +98,12 @@
     </style>
 </head>
 <body>
+
 <div class="email-container">
     <div class="header">
 
         <div class="order-details vs-title">
-            <h2 th:text="'ORDER #' + ${orderNumber}"></h2>
+            <h2 th:text="#{order.summary.orderNumber(${orderNumber})}"></h2>
             <p th:text="${currentDate}"></p>
         </div>
         <a href="https://victoriasecret.md/">
@@ -110,15 +111,15 @@
         </a>
 
         <div class="vs-disc">
-            <p>Thank you for your order!</p>
-            <p th:text="'Hi ' + ${customerName} + ', your order is being prepared for shipping.'"></p>
-            <p>We’ll let you know as soon as it’s headed your way.</p>
+            <p th:text="#{order.summary.thankYou}"></p>
+            <p th:text="#{order.summary.hiCustomer(${customerName})}"></p>
+            <p th:text="#{order.summary.preparingForShipping}"></p>
         </div>
     </div>
     <div class="content">
         <!-- Order Summary -->
         <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">
-            <span class="vs-title">ORDER SUMMARY</span>
+            <span class="vs-title" th:text="#{order.summary.orderSummary}"></span>
         </h3>
         <div th:each="item : ${orderItems}" style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
             <!-- Product Image -->
@@ -126,41 +127,44 @@
             <!-- Product Description -->
             <div class="vs-disc">
                 <p th:text="${item.product.name}"></p>
-                <p th:text="${item.sizeType != null ? 'Size: ' + item.sizeType : 'Size: -'}"></p>
-                <p th:text="'Qty: ' + ${item.quantity}"></p>
-                <p th:text="${#numbers.formatInteger(item.amount, 0)} + ' MDL'"></p>
+                <p th:if="${item.sizeType}" th:text="#{order.summary.sizeType(${item.sizeType})}"></p>
+                <p th:unless="${item.sizeType}" th:text="#{order.summary.sizeTypeDefault}"></p>
+                <p th:text="#{order.summary.quantity(${item.quantity})}"></p>
+                <p th:text="#{order.summary.amount(${item.amount})}"></p>
             </div>
         </div>
         <!-- Subtotal, Tax, Shipping -->
         <div class="vs-disc">
             <h6 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">
-                <span class="vs-title" style="font-size:  1.5em;" th:text="'Subtotal: ' + ${subtotal}"></span>
+                <span class="vs-title" style="font-size:  1.5em;" th:text="#{order.summary.subtotal(${subtotal})}"></span>
             </h6>
             <h6 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">
-                <span class="vs-title" style="font-size:  1.5em;" th:text="'Shipping: ' + ${shipping}"></span>
+                <span class="vs-title" style="font-size:  1.5em;" th:text="#{order.summary.shipping(${shipping})}"></span>
             </h6>
             <!-- Total -->
             <h6 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;">
-                <span class="vs-title" style="font-size: 1.5em;" th:text="'Total: ' + ${totalSum}"></span>
+                <span class="vs-title" style="font-size: 1.5em;" th:text="#{order.summary.totalSum(${totalSum})}"></span>
             </h6>
         </div>
     </div>
     <div class="footer">
         <!-- Customer Information -->
-        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;" class="vs-disc">CUSTOMER INFORMATION</h3>
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 20px;" class="vs-disc" th:text="#{order.summary.customerInformation}"></h3>
         <div class="vs-disc">
-            <p style="font-weight: bold; margin-top: 0; margin-bottom: 0;">Shipping Address</p>
+            <p style="font-weight: bold; margin-top: 0; margin-bottom: 0;" th:text="#{order.summary.shippingAddress}"></p>
             <p style="margin-top: 0; margin-bottom: 0;" th:text="${customerName} + ', phone:' + ${customerPhone}"></p>
             <p style="margin-top: 0; margin-bottom: 0;" th:text="${deliveryCountry} + ', ' + ${deliveryCity} + ','"></p>
             <p style="margin-top: 0; margin-bottom: 0;" th:text="${deliveryStreet} + ', ' + ${deliveryZip}"></p>
-            <p style="font-weight: bold; margin-top: 1em; margin-bottom: 0;">Shipping Method</p>
+            <p style="font-weight: bold; margin-top: 1em; margin-bottom: 0;" th:text="#{order.summary.shippingMethod}"></p>
             <p style="margin-top: 0; margin-bottom: 0;" th:text="${shippingOption}"></p>
-            <p style="font-weight: bold; margin-top: 1em; margin-bottom: 0;">Estimated delivery</p>
+            <p style="font-weight: bold; margin-top: 1em; margin-bottom: 0;" th:text="#{order.summary.estimatedDelivery}"></p>
             <p style="margin-top: 0; margin-bottom: 0;" th:text="${estimatedDelivery}"></p>
 
-            <p style="font-weight: bold; margin-top: 1em; margin-bottom: 0;">Comment</p>
+            <p style="font-weight: bold; margin-top: 1em; margin-bottom: 0;" th:text="#{order.summary.comment}"></p>
             <p style="margin-top: 0; margin-bottom: 0;" th:text="${comment}"></p>
         </div>
     </div>
+</div>
 </body>
 </html>
+

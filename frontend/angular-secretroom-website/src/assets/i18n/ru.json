@@ -4,7 +4,7 @@
   "Subtotal": "Промежуточный итог",
   "Delivery": "Доставка",
   "Delete": "Удалить",
-  "Quantity": "Количество",
+  "Quantity": "Кол-во",
   "Product Name": "Название продукта",
   "Size": "Размер",
   "Amount": "Сумма",
@@ -72,7 +72,7 @@
   "Order Number": "Номер заказа",
   "Order Date": "Дата заказа",
   "Total Amount": "Общая сумма",
-  "Qty": "Количество",
+  "Qty": "Кол-во",
   "Shipping address": "Адрес доставки",
   "Password Reset": "Сброс пароля",
   "Email address": "Адрес электронной почты",
@@ -88,7 +88,10 @@
   "Password changed successfully": "Пароль успешно изменен",
   "Are you lost?": "Вы заблудились?",
   "Sorry, we couldn't find the page.": "Извините, мы не смогли найти страницу.",
-  "Search by order number": "Поиск по номеру заказа"
+  "Search by order number": "Поиск по номеру заказа",
+  "Cart": "Корзина",
+  "Logout": "Выйти",
+  "Sign In": "Войти в аккаунт"
 
 
 

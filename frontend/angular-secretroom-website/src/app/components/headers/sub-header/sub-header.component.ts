@@ -7,6 +7,7 @@ import {Observable, Subject} from "rxjs";
 import {Menu} from 'primeng/menu';
 import {AuthenticationService} from "../../../services/authentication.service";
 import {UserDetails} from "../../../model/user-details";
+import {TranslocoService} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-sub-header',
@@ -26,11 +27,12 @@ export class SubHeaderComponent implements OnInit {
 
   @ViewChild('menuMain') menuMain!: Menu;
 
-  constructor(private cartService: CartService,
-              private router: Router,
-              private authService: AuthenticationService) {
-
-  }
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private authService: AuthenticationService,
+    private translocoService: TranslocoService
+  ) {}
 
   ngOnInit() {
     this.subscribeToUserStatus();
@@ -38,18 +40,6 @@ export class SubHeaderComponent implements OnInit {
     this.cartService.computeCartTotals();
     this.updateUserDetails();
   }
-
-  // onMenuClick(event: any) {
-  //   this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
-  //     if (isLoggedIn) {
-  //       this.updateUserDetails();
-  //       this.menuMain.model = this.loggedInItems;
-  //     } else {
-  //       this.menuMain.model = this.loggedOutItems;
-  //     }
-  //     this.menuMain.toggle(event);
-  //   });
-  // }
 
   logout() {
     this.authService.logout();
@@ -89,7 +79,7 @@ export class SubHeaderComponent implements OnInit {
 
       this.mobileMenu = [
         {
-          label: 'Cart',
+          label: this.translocoService.translate('Cart'),
           icon: 'pi pi-shopping-cart',
           badge: this.totalQuantity.toString(),
           badgeStyleClass: 'green-badge',
@@ -107,7 +97,7 @@ export class SubHeaderComponent implements OnInit {
           }
         },
         {
-          label: 'Logout',
+          label: this.translocoService.translate('Logout'),
           styleClass: '.vs-title',
           icon: 'pi pi-sign-out',
           command: () => {
@@ -121,7 +111,7 @@ export class SubHeaderComponent implements OnInit {
 
       this.mobileMenu = [
         {
-          label: 'Cart',
+          label: this.translocoService.translate('Cart'),
           icon: 'pi pi-shopping-cart',
           badge: this.totalQuantity.toString(),
           badgeStyleClass: 'green-badge',
@@ -131,7 +121,7 @@ export class SubHeaderComponent implements OnInit {
         },
 
         {
-          label: 'Sign In',
+          label: this.translocoService.translate('Sign In'),
           icon: 'pi pi-sign-in',
           command: () => {
             this.router.navigate(['/login']);
@@ -160,7 +150,7 @@ export class SubHeaderComponent implements OnInit {
           }
         },
         {
-          label: 'Logout',
+          label: this.translocoService.translate('Logout'),
           styleClass: '.vs-title',
           icon: 'pi pi-sign-out',
           command: () => {
@@ -175,7 +165,7 @@ export class SubHeaderComponent implements OnInit {
       this.mainMenu = [
 
         {
-          label: 'Sign In',
+          label: this.translocoService.translate('Sign In') ,
           icon: 'pi pi-sign-in',
           command: () => {
             this.router.navigate(['/login']);

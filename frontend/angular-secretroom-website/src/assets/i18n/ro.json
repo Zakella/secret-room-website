@@ -86,7 +86,10 @@
   "Password changed successfully": "Parola a fost schimbată cu succes",
   "Are you lost?": "Te-ai rătăcit?",
   "Sorry, we couldn't find the page.": "Ne pare rău, nu am putut găsi pagina.",
-  "Search by order number": "Căutare după numărul comenzii"
+  "Search by order number": "Căutare după numărul comenzii",
+  "Cart": "Coș",
+  "Logout": "Deconectare",
+  "Sign In": "Autentificare"
 
 
 
