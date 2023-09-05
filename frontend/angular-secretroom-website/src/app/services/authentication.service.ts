@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable, BehaviorSubject, tap} from 'rxjs';
-import {User} from "../model/user";
-import {UserDetails} from "../model/user-details";
-import {AccessGuardService} from "../authentication/access-guard.service";
-import {JwtHelperService} from "@auth0/angular-jwt";
-
+import { Observable, BehaviorSubject, tap } from 'rxjs';
+import { User } from "../model/user";
+import { UserDetails } from "../model/user-details";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +24,7 @@ export class AuthenticationService {
         const jwtHelper: JwtHelperService = new JwtHelperService();
         const isTokenNonExpired = !jwtHelper.isTokenExpired(token);
         if (!isTokenNonExpired) {
-          localStorage.removeItem("user");
-          this.loggedIn.next(false);
+          this.logout();
         }
       }
     }
@@ -75,6 +72,7 @@ export class AuthenticationService {
       }
     }
   }
+
   getUserDetails(): UserDetails | null {
     const storedUser = localStorage.getItem("user");
     if (storedUser && storedUser !== "null") {
@@ -92,5 +90,4 @@ export class AuthenticationService {
     const url = 'http://localhost:8081/api/v1/users/reset-password'; // Replace with your reset password API endpoint from UserController
     return this.http.post<void>(url, { token, newPassword });
   }
-
 }

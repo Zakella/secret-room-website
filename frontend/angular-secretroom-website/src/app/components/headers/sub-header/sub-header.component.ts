@@ -23,7 +23,7 @@ export class SubHeaderComponent implements OnInit {
   userDetails: UserDetails | null = null;
 
 
-  isLoggedIn: boolean = false; // Add this line
+  userIsLoggedIn: boolean = false;
 
   @ViewChild('menuMain') menuMain!: Menu;
 
@@ -57,7 +57,7 @@ export class SubHeaderComponent implements OnInit {
   // Subscribe to user status
   private subscribeToUserStatus() {
     this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
-      this.isLoggedIn = isLoggedIn;
+      this.userIsLoggedIn = isLoggedIn;
       // this.commonItems = isLoggedIn ? this.loggedInItems : this.loggedOutItems;
       // this.loadItemsMenu();
     });
@@ -74,7 +74,7 @@ export class SubHeaderComponent implements OnInit {
   }
 
   setMobileMenu(event: any) {
-    if (this.isLoggedIn) {
+    if (this.userIsLoggedIn) {
       this.userDetails = this.authService.getUserDetails(); // Get user details
 
       this.mobileMenu = [
@@ -137,7 +137,7 @@ export class SubHeaderComponent implements OnInit {
   }
 
   setMainMenu(event: any) {
-    if (this.isLoggedIn) {
+    if (this.userIsLoggedIn) {
       this.userDetails = this.authService.getUserDetails(); // Get user details
 
       this.mainMenu = [

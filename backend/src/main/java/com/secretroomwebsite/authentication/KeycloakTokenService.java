@@ -21,13 +21,16 @@ public class KeycloakTokenService {
     @Value("${keycloak.user-realm}")
     private String userRealm;
 
+    @Value("${keycloak.webclient-id}")
+    private String webclientId;
+
 
     public KeycloakTokenService() {}
 
 
     public KeycloakTokenResponse fetchAccessToken(String username, String password) {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.add("client_id", "test2");
+        map.add("client_id", webclientId);
         map.add("grant_type", "password");
         map.add("username", username);
         map.add("password", password);

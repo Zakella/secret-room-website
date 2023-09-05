@@ -20,14 +20,13 @@
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class="text-muted mb-0">
-                      <span class="vs-disc">{{details.product.name}}</span>
+                      <span class="vs-disc"> {{currentLang === 'Ro' ? details.product.nameRo : details.product.nameRu}}</span>
 
                     </p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center" >
-                    <p class="text-muted mb-0 small" *ngIf="details.sizeType != null">
-                      <span class="vs-disc"> {{'Size' | transloco}}: {{details?.sizeType}} </span>
-
+                    <p class="text-muted mb-0 small">
+                      <span class="vs-disc"> {{'Size' | transloco}}: {{details?.sizeType ? details?.sizeType : '-'}} </span>
                     </p>
                   </div>
 

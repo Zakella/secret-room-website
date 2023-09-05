@@ -127,7 +127,8 @@
             <img th:src="${item.product.imageURL}" alt="Product" style="width: 150px; margin-right: 20px;">
             <!-- Product Description -->
             <div class="vs-disc">
-                <p th:text="${item.product.name}"></p>
+                <p th:if="${#locale.language == 'ru'}" th:text="${item.product.nameRu}"></p>
+                <p th:if="${#locale.language != 'ru'}" th:text="${item.product.nameRo}"></p>
                 <p th:if="${item.sizeType}" th:text="#{order.summary.sizeType(${item.sizeType})}"></p>
                 <p th:unless="${item.sizeType}" th:text="#{order.summary.sizeTypeDefault}"></p>
                 <p th:text="#{order.summary.quantity(${item.quantity})}"></p>

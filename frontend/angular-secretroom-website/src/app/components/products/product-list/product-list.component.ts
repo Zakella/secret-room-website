@@ -36,25 +36,30 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.subscribeToLanguageChanges();
+    this.loadProducts();
+  }
 
-    this.brand = this.router.url.includes('vs') ? 'vs' : 'bb';
+  private loadProducts(): void {
+    this.brand = this.getBrandFromUrl();
 
     this.groupId = this.activatedRoute.snapshot.paramMap.get('groupId')
     this.groupId ? this.loadProductsByGroupId(this.groupId) : this.loadAllProductsByBrandRoute();
 
-
     const keyword = this.activatedRoute.snapshot.paramMap.get('keyword')
     if (keyword) {
       this.searchForProductsByKeyword(keyword);
-      return;
     }
+  }
 
+  private getBrandFromUrl(): string {
+    return this.router.url.includes('vs') ? 'vs' : 'bb';
+  }
+  private subscribeToLanguageChanges(): void {
     this.languageService.language$.subscribe(lang => {
       this.currentLang = lang;
     });
-
   }
-
 
   searchForProductsByKeyword(keyword: string): void {
     const brand = this.router.url.includes('vs') ? 'vs' : 'bb';

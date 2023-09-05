@@ -152,6 +152,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         Locale locale = new Locale(language.toLowerCase());
         context.setLocale(locale);
 
+
         return templateEngine.process("order-summary", context);
     }
 
