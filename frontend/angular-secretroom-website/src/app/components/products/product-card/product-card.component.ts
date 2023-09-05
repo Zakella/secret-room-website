@@ -6,6 +6,7 @@ import {CartService} from "../../../services/cart.service";
 import {CartItem} from "../../../model/cart-item";
 import {Size} from "../../../model/sizes";
 import {LocationStrategy} from "@angular/common";
+import {LanguageService} from "../../../services/language.service";
 
 
 @Component({
@@ -18,10 +19,15 @@ export class ProductCardComponent implements OnInit {
   mainImage:string | undefined;
   currentSize:string | undefined;
   quantity: number = 1;
+  currentLang: string;
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private cartService: CartService,
-              private location: LocationStrategy) {}
+              private location: LocationStrategy,
+              private languageService: LanguageService) {
+
+    this.currentLang = 'Ro';
+  }
 
   ngOnInit(): void {
     const productId: string = this.route.snapshot.paramMap.get('id')!;
@@ -39,6 +45,10 @@ export class ProductCardComponent implements OnInit {
         }
       }
     )
+
+    this.languageService.language$.subscribe(lang => {
+      this.currentLang = lang;
+    });
   }
 
   addProductInCart() {

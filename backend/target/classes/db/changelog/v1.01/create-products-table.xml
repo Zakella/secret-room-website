@@ -9,18 +9,21 @@
     CREATE TABLE IF NOT EXISTS product (
                                            id BIGSERIAL PRIMARY KEY,
                                            sku VARCHAR(255),
-        name VARCHAR(255),
-        description VARCHAR(255),
-        unit_price NUMERIC(13,2),
-        image_url VARCHAR(255),
-        active BOOLEAN DEFAULT TRUE,
-        units_in_stock INT,
-        date_created TIMESTAMP(6),
-        last_updated TIMESTAMP(6),
-        category_id BIGINT NOT NULL,
-        brand VARCHAR(20) NOT NULL,
-        short_description VARCHAR(50) NOT NULL,
-        CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES product_category (id)
+                                            name_ro VARCHAR(50) NOT NULL,
+                                            name_ru VARCHAR(50) NOT NULL,
+                                            description_ro VARCHAR(500) NOT NULL,
+                                            description_ru VARCHAR(500) NOT NULL,
+                                            short_description_ro VARCHAR(50) NOT NULL,
+                                            short_description_ru VARCHAR(50) NOT NULL,
+                                            unit_price NUMERIC(13,2),
+                                            image_url VARCHAR(255),
+                                            active BOOLEAN DEFAULT TRUE,
+                                            units_in_stock INT,
+                                            date_created TIMESTAMP(6),
+                                            last_updated TIMESTAMP(6),
+                                            category_id BIGINT NOT NULL,
+                                            brand VARCHAR(20) NOT NULL,
+                                            CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES product_category (id)
         );
      </sql>
     </changeSet>

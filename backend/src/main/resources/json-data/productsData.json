@@ -1,22 +1,28 @@
 [
   {
     "brand": "VictoriasSecret",
-    "categoryName": "Panties",
-    "description": "Discover a wide range of women’s underwear at Victoria’s Secret",
+    "nameRo": "Lenjerie intimă",
+    "nameRu": "Нижнее белье",
+    "descriptionRo": "Descoperiți o gamă largă de lenjerie pentru femei la Victoria’s Secret",
+    "descriptionRu": "Откройте для себя широкий ассортимент женского нижнего белья в Victoria’s Secret",
     "imageUrl": "assets/demo-images/vs-groups/p1.jpg",
     "products": [
       {
         "sku": " '7878787'",
-        "name": "Logo Cotton Hiphugger Panty",
-        "description": "Posey Lace Waist Cotton Hiphugger Panty",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Logo Bumbac Hiphugger Panty",
+        "nameRu": "Логотип хлопковые трусики Hiphugger",
+        "descriptionRo": "Chiloți de bumbac cu talie din dantelă Posey",
+        "descriptionRu": "Хлопковые трусики Hiphugger с поясом из кружева Posey",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 320.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/88/63/88636ae721e84addbc7cd65b300b442e/1122002038SK_OM_F.jpg",
         "active": true,
         "unitsInStock": 100,
         "dateCreated": "2023-07-03",
         "lastUpdated": null,
+
         "productImages": [
           {
             "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/27/51/27514dabe98a4cc087e44f1eb1b9a727/1122002038SK_OF_F.jpg",
@@ -56,16 +62,21 @@
       },
       {
         "sku": " '123455655'",
-        "name": " Lace-Trim Cheeky Panty",
-        "description": "Posey Lace Waist Cotton Hiphugger Panty",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Chiloți Cheeky cu bordură din dantelă",
+        "nameRu": "Трусики Cheeky с кружевной отделкой",
+        "descriptionRo": "Chiloți de bumbac cu talie din dantelă Posey",
+        "descriptionRu": "Хлопковые трусики Hiphugger с поясом из кружева Posey",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
+
         "unitPrice": 310.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
         "active": true,
         "unitsInStock": 100,
         "dateCreated": "2023-07-03",
         "lastUpdated": null,
+
         "productImages": [
           {
             "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/35/7c/357cbed19f6d41fc81ef8ed561498fa6/1122020154A2_OM_B.jpg",
@@ -99,16 +110,20 @@
       },
       {
         "sku": " '11220020'",
-        "name": " Posey Lace Thong Panty",
-        "description": "Discover our new Posey lace fabric. It's supersoft, stretchy, and built to last. Showcased on a classic thong, in an array of colors and prints",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Chiloți Thong din dantelă Posey",
+        "nameRu": "Трусики-стринги из кружева Posey",
+        "descriptionRo": "Descoperiți noul nostru material din dantelă Posey. Este super moale, elastic și durabil. Prezentat pe un chiloți thong clasic, într-o varietate de culori și imprimeuri",
+        "descriptionRu": "Откройте для себя нашу новую ткань из кружева Posey. Она сверхмягкая, эластичная и долговечная. Представлены на классических стрингах, в различных цветах и принтах",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 320.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/63/55/63555d50df89468bb613fb0349c1b8dd/112192095UCQ_OM_F.jpg",
         "active": true,
         "unitsInStock": 100,
         "dateCreated": "2023-07-03",
         "lastUpdated": null,
+
         "productImages": [
           {
             "imageUrl": "https://www.victoriassecret.com/p/760x1013/tif/63/55/63555d50df89468bb613fb0349c1b8dd/112192095UCQ_OM_F.jpg",
@@ -149,16 +164,21 @@
 
   {
     "brand": "VictoriasSecret",
-    "categoryName": "Beauty",
-    "description": "Discover a wide range of women’s underwear at Victoria’s Secret.",
+    "nameRo": "Frumusețe",
+    "nameRu": "Красота",
+    "descriptionRo": "Descoperiți o gamă largă de lenjerie pentru femei la Victoria’s Secret.",
+    "descriptionRu": "Откройте для себя широкий ассортимент женского белья в Victoria’s Secre",
     "imageUrl": "assets/demo-images/vs-groups/b1.jpg",
     "products": [
       {
         "sku": " '7878787'",
-        "name": "Fine Fragrance Mist",
-        "description": "Float in a cloud of your favorite fragrance.",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Parfum fin în ceață",
+        "nameRu": "Тонкий ароматный туман",
+        "descriptionRo": "Plutiti într-un nor al parfumului vostru preferat.",
+        "descriptionRu": "Парите в облаке вашего любимого аромата.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 520.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/e2/4c/e24cbaabb5e646f18c68743ab9b8d013/111673915170_OF_F.jpg",
         "active": true,
@@ -182,10 +202,13 @@
 
       {
         "sku": " '7878787'",
-        "name": "Fine Fragrance Mist",
-        "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all.",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Parfum fin în ceață",
+        "nameRu": "Тонкий ароматный туман",
+        "descriptionRo": "Sărbătoriți colecția care vă sărbătorește. Pentru fiecare moment și fiecare parte a voastră, descoperiți arome unice care le îmbrățișează pe toate.",
+        "descriptionRu": "Празднуйте коллекцию, которая празднует вас. Для каждого момента и каждой стороны вас, откройте для себя уникальные ароматы, которые объединяют все это.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 520.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/cd/13/cd136324437645c488c246d31e390e91/112047171340_OF_F.jpg",
         "active": true,
@@ -209,10 +232,13 @@
 
       {
         "sku": " '7878787'",
-        "name": "Fine Fragrance Mist",
-        "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all. Pair with matching Fragrance Mist for a long-lasting fragrance experience.",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Parfum fin în ceață",
+        "nameRu": "Тонкий ароматный туман",
+        "descriptionRo": "Sărbătoriți colecția care vă sărbătorește. Pentru fiecare moment și fiecare parte a voastră, descoperiți arome unice care le îmbrățișează pe toate. Asociați cu Fragrance Mist potrivit pentru o experiență de parfum de lungă durată.",
+        "descriptionRu": "Празднуйте коллекцию, которая празднует вас. Для каждого момента и каждой стороны вас, откройте для себя уникальные ароматы, которые объединяют все это. Сопоставьте с соответствующим ароматным туманом для долгого ароматного опыта.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 250.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/8a/3f/8a3f7697fa6f4b78900d44dccf7c6cb9/112047184285_OF_F.jpg",
         "active": true,
@@ -238,17 +264,22 @@
 
   {
     "brand": "VictoriasSecret",
-    "categoryName": "Bags & Accessories",
-    "description": "Discover a wide range of women’s underwear at Victoria’s Secret.",
+    "nameRo": "Genti și accesorii",
+    "nameRu": "Сумки и аксессуары",
+    "descriptionRo": "Descoperiți o gamă largă de lenjerie pentru femei la Victoria’s Secret",
+    "descriptionRu": "Откройте для себя широкий ассортимент женского нижнего белья в Victoria’s Secret",
     "imageUrl": "assets/demo-images/vs-groups/all1.jpg",
     "products": [
       {
 
         "sku": " '7878787'",
-        "name": "The Victoria Medium Shoulder Bag",
-        "description": "Structured and chic, this style wears two ways. The jewelry-like chain strap goes from shoulder to crossbody with ease. In our signature V-Quilt finish with V Monogram Hardware.",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Geanta de umar medie Victoria",
+        "nameRu": "Средняя сумка на плечо Victoria",
+        "descriptionRo": "Structurată și chic, acest stil se poartă în două moduri. Curea în formă de lanț, asemănătoare bijuteriilor, trece cu ușurință de la umăr la crossbody. În finisajul nostru semnătură V-Quilt cu hardware Monogram V.",
+        "descriptionRu": "Структурированная и шикарная, эта модель носится двумя способами. Цепочка-ремень, напоминающая украшение, легко переходит от плеча к сумке через плечо. В нашем фирменном исполнении V-Quilt с монограммой V.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 950.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/45/aa/45aaf695c6784d6b97099e747b0749ed/11175324054R_OM_F.jpg",
         "active": true,
@@ -277,10 +308,13 @@
       {
 
         "sku": " '7878787'",
-        "name": "Express Train Case",
-        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Caz de tren Express",
+        "nameRu": "Кейс для путешествий Express",
+        "descriptionRo": "Călătoriți pentru a vedea toată frumusețea vieții. Perfect pentru organizarea și ambalarea machiajului, pensulelor de machiaj, brumelor și esențialelor de călătorie",
+        "descriptionRu": "Путешествуйте, чтобы увидеть всю красоту жизни. Идеально подходит для организации и упаковки макияжа, кистей для макияжа, спреев и необходимых вещей в путешествии",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 850.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/47/55/4755658a388148c09a19aff10cf825b4/11197860696P_OM_F.jpg",
         "active": true,
@@ -305,10 +339,13 @@
       {
 
         "sku": " '7878787'",
-        "name": "The Victoria Shoulder Tote",
-        "description": "Celebrate the collection that celebrates you. For every moment and every side of you, discover unique scents that embrace it all. Pair with matching Fragrance Mist for a long-lasting fragrance experience.",
         "brand": "VictoriasSecret",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Geanta de umar Victoria",
+        "nameRu": "Сумка на плечо Victoria",
+        "descriptionRo": "Sărbătoriți colecția care vă sărbătorește. Pentru fiecare moment și fiecare parte a voastră, descoperiți arome unice care le îmbrățișează pe toate. Asociați cu Fragrance Mist potrivit pentru o experiență de parfum de lungă durată.",
+        "descriptionRu": "Празднуйте коллекцию, которая празднует вас. Для каждого момента и каждой стороны вас, откройте для себя уникальные ароматы, которые объединяют все это. Сопоставьте с соответствующим ароматным туманом для долгого ароматного опыта.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 250.0,
         "imageURL": "https://www.victoriassecret.com/p/760x1013/tif/33/05/3305d4fdd33b4365881f3fc3c6e5f125/11175325001C_OM_F.jpg",
         "active": true,
@@ -340,17 +377,22 @@
   {
 
     "brand": "BathAndBody",
-    "categoryName": "Shop Wellness",
-    "description": "Center your best you with a little something new.",
+    "nameRo": "Magazin de Wellness",
+    "nameRu": "Магазин Здоровья",
+    "descriptionRo": "Concentrați-vă cel mai bun \"eu\" cu ceva nou.",
+    "descriptionRu": "Сосредоточьте свое лучшее \"я\" с помощью чего-то нового",
     "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
     "products": [
       {
 
         "sku": " '7878787'",
-        "name": "All Body Care",
-        "description": "Ultimate Hydration Body Cream",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Toate produsele pentru îngrijirea corpului",
+        "nameRu": "Все для ухода за телом",
+        "descriptionRo": "Crema corporală pentru hidratare ultimă",
+        "descriptionRu": "Крем для тела для максимального увлажнения",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 270.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw618e440c/hires/026674474.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -374,10 +416,13 @@
 
       {
         "sku": " '7878787'",
-        "name": "Midnight Blue Citrus",
-        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Citrice Albastre de Miezul Nopții",
+        "nameRu": "Полуночный Синий Цитрус",
+        "descriptionRo": "Călătoriți pentru a vedea toată frumusețea vieții. Perfect pentru organizarea și ambalarea machiajului, pensulelor de machiaj, brumelor și esențialelor de călătorie",
+        "descriptionRu": "Путешествуйте, чтобы увидеть всю красоту жизни. Идеально подходит для организации и упаковки макияжа, кистей для макияжа, спреев и необходимых вещей в путешествии",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 330.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -401,10 +446,13 @@
 
       {
         "sku": " '7878787'",
-        "name": "Sensual Amber",
-        "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Chihlimbar Senzual",
+        "nameRu": "Чувственный Янтарь",
+        "descriptionRo": "Cum miroase: o strălucire caldă, dulce, luminată de soare.\n\nNote de parfum: chihlimbar auriu, fructe de pădure sălbatice, floare de portocal, petale de lotus și lemn de santal cremos.",
+        "descriptionRu": "Как это пахнет: теплый, сладкий, освещенный солнцем свет.\n\nНоты аромата: золотой янтарь, дикие ягоды, цветок апельсина, лепестки лотоса и кремовое сандаловое дерево.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 250.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -431,17 +479,23 @@
 
   {
     "brand": "BathAndBody",
-    "categoryName": "Body Care",
-    "description": "Center your best you with a little something new.",
+    "nameRo": " Îngrijirea corpului",
+    "nameRu": "Уход за телом",
+    "descriptionRo": "Concentrați-vă cel mai bun \"eu\" cu ceva nou.",
+    "descriptionRu": "Сосредоточьте свое лучшее \"я\" с помощью чего-то нового",
       "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5b7b79c7/images/Spring2023/xcat_wellness_sp3_hps.jpg?yocs=o_s_",
     "products": [
       {
 
         "sku": " '7878787'",
-        "name": "All Body Care",
-        "description": "Ultimate Hydration Body Cream",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Toate produsele pentru îngrijirea corpului",
+        "nameRu": "Все для ухода за телом",
+        "descriptionRo": "Crema corporală pentru hidratare ultimă",
+        "descriptionRu": "Крем для тела для максимального увлажнения",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
+
         "unitPrice": 270.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw618e440c/hires/026674474.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -465,10 +519,13 @@
 
       {
         "sku": " '7878787'",
-        "name": "Midnight Blue Citrus",
-        "description": "Travel to see all the beauty in life. Perfect for organizing and packing makeup, makeup brushes, mists and travel essentials",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Citrice Albastre de Miezul Nopții",
+        "nameRu": "Полуночный Синий Цитрус",
+        "descriptionRo": "Călătoriți pentru a vedea toată frumusețea vieții. Perfect pentru organizarea și ambalarea machiajului, pensulelor de machiaj, brumelor și esențialelor de călătorie",
+        "descriptionRu": "Путешествуйте, чтобы увидеть всю красоту жизни. Идеально подходит для организации и упаковки макияжа, кистей для макияжа, спреев и необходимых вещей в путешествии",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 330.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw51629781/hires/026674494.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -492,10 +549,14 @@
 
       {
         "sku": " '7878787'",
-        "name": "Sensual Amber",
-        "description": "What it smells like: a warm, sweet, sunlit glow.\n\nFragrance notes: golden amber, wild berries, orange flower, lotus petals and creamy sandalwood.",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Chihlimbar Senzual",
+        "nameRu": "Чувственный Янтарь",
+        "descriptionRo": "Cum miroase: o strălucire caldă, dulce, luminată de soare.\n\nNote de parfum: chihlimbar auriu, fructe de pădure sălbatice, floare de portocal, petale de lotus și lemn de santal cremos.",
+        "descriptionRu": "Как это пахнет: теплый, сладкий, освещенный солнцем свет.\n\nНоты аромата: золотой янтарь, дикие ягоды, цветок апельсина, лепестки лотоса и кремовое сандаловое дерево.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
+
         "unitPrice": 250.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw2727d49d/hires/026681537.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -522,16 +583,22 @@
 
   {
     "brand": "BathAndBody",
-    "categoryName": "Shop Men's'",
-    "description": "Now open: The Men’s Shop for all things head-to-toe you.",
+    "nameRo": "Magazinul pentru bărbați",
+    "nameRu": "Магазин для мужчин",
+    "descriptionRo": "Acum deschis: Magazinul pentru bărbați pentru toate lucrurile de la cap până la picioare.",
+    "descriptionRu": "Теперь открыт: Мужской магазин для всего, что связано с вами от головы до ног.",
+
     "imageUrl": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6157884b/images/Summer2023/xcat_mensshop_su1_hps.jpg?yocs=o_s_",
     "products": [
       {
         "sku": " '7878787'",
-        "name": "Coffee & Whiskey",
-        "description": "What it smells like: your favorite creamy brew made the Irish way.\n\nFragrance notes: lightly brewed coffee, hint of vanilla and bold Irish whiskey.",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Cafea & Whiskey",
+        "nameRu": "Кофе и Виски",
+        "descriptionRo": "Cum miroase: băutura cremoasă preferată făcută în stil irlandez.\n\nNote de parfum: cafea ușor preparată, indiciu de vanilie și whiskey irlandez curajos.",
+        "descriptionRu": "Как это пахнет: ваш любимый кремовый напиток, приготовленный по-ирландски.\n\nНоты аромата: легко заваренный кофе, намек на ваниль и смелый ирландский виски.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 280.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw7bf69228/hires/026651009.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -550,10 +617,13 @@
 
       {
         "sku": " '7878787'",
-        "name": "Ocean",
-        "description": "What it smells like: a cool, refreshing dip in the deep blue sea.\n\nFragrance notes: blue cypress, vetiver and coastal air.",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Ocean",
+        "nameRu": "Океан",
+        "descriptionRo": "Cum miroase: o baie răcoritoare în adâncul mării albastre.\n\nNote de parfum: chiparos albastru, vetiver și aer de coastă.",
+        "descriptionRu": "Как это пахнет: прохладное, освежающее погружение в глубокое синее море.\n\nНоты аромата: голубой кипарис, ветивер и прибрежный воздух.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 330.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw3d1deafa/hires/026636424.jpg?sh=471&yocs=o_s_",
         "active": true,
@@ -572,10 +642,13 @@
 
       {
         "sku": " '7878787'",
-        "name": "Bourbon",
-        "description": "What it smells like: a bold, smooth, barrel-aged pour.\n\nFragrance notes: white pepper, dark amber and Kentucky oak.",
         "brand": "BathAndBody",
-        "shortDescription": "Some description for product not less 50",
+        "nameRo": "Bourbon",
+        "nameRu": "Бурбон",
+        "descriptionRo": "Cum miroase: o turnare îndrăzneață, netedă, învechită în butoi.\n\nNote de parfum: piper alb, chihlimbar întunecat și stejar Kentucky.",
+        "descriptionRu": "Как это пахнет: смелый, гладкий, выдержанный в бочке налив.\n\nНоты аромата: белый перец, темный янтарь и дуб из Кентукки.",
+        "shortDescriptionRo": "O descriere pentru produs nu mai puțin de 50",
+        "shortDescriptionRu": "Какое-то описание товара не менее 50",
         "unitPrice": 250.0,
         "imageURL": "https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.21a/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dw77717f61/hires/026636425.jpg?sh=471&yocs=o_s_",
         "active": true,

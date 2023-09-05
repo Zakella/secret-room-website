@@ -83,9 +83,9 @@ export class AuthenticationService {
     return null;
   }
 
-  restorePassword(email: string): Observable<any> {
+  restorePassword(email: string, lang: string): Observable<any> {
     const url = 'http://localhost:8081/api/v1/users/restore-password'; // Replace with your restore password API endpoint from UserController
-    return this.http.get(url, { params: { email } });
+    return this.http.get(url, { params: { email, lang } });
   }
 
   resetPassword(token: string, newPassword: string): Observable<void> {

@@ -3,6 +3,7 @@ import {CartItem} from '../../../model/cart-item';
 import {CartService} from '../../../services/cart.service';
 import {Subject} from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import {LanguageService} from "../../../services/language.service";
 
 @Component({
   selector: 'app-my-cart',
@@ -14,11 +15,14 @@ export class MyCartComponent implements OnInit, OnDestroy {
   totalAmount: number = 0;
   totalQuantity: number = 0;
   private ngUnsubscribe = new Subject<void>();
+  currentLang: string;
 
   @Input()
   shippingCost: number = 0;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private languageService: LanguageService) {
+    this.currentLang = 'Ro';
   }
 
   ngOnInit(): void {
@@ -27,6 +31,7 @@ export class MyCartComponent implements OnInit, OnDestroy {
     this.subscribeToTotalQuantity();
     this.subscribeToCartModification();
     this.cartService.computeCartTotals();
+    this.subscribeOnLanguageChange();
   }
 
   ngOnDestroy(): void {
@@ -75,5 +80,11 @@ export class MyCartComponent implements OnInit, OnDestroy {
 
   recalculateCartItem(cartItem: CartItem, index: number) {
     this.cartService.recalculateCartItem(cartItem, index);
+  }
+
+  private subscribeOnLanguageChange() {
+    this.languageService.language$.subscribe(lang => {
+      this.currentLang = lang;
+    });
   }
 }

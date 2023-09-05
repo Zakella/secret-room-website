@@ -1,3 +1,4 @@
+
 <div class="flex justify-content-between align-items-center border-bottom-1 pb-3 surface-border">
     <span class="text-900 font-medium text-lg lg:text-xl"><i
       class="pi pi-shopping-cart text-xl mr-2"></i>{{ 'Your Order' | transloco }}  ({{totalQuantity}})</span>
@@ -14,7 +15,7 @@
 
         <div class="flex justify-content-between align-items-center mb-3">
           <span class="text-900 font-medium text-xl product-name link-no-underline vs-title">
-             {{cartItem.product.name}}
+             {{currentLang === 'Ro' ? cartItem.product.nameRo : cartItem.product.nameRu}}
           </span>
         </div>
 
@@ -27,10 +28,11 @@
              class="text-600 text-sm mb-3"> {{'Size' | transloco}}: {{cartItem.size.sizeType}}
         </div>
 
-        <span class="text-900 text-m font-medium vs-price">{{ cartItem.amount }} MDL</span>
+        <span class="text-600 text-sm mb-3 vs-disc"> {{'Summa' | transloco}}: {{cartItem.amount}} MDL </span>
       </a>
 
       <div class="flex flex-wrap justify-content-between align-items-center mt-3">
+
         <p-inputNumber [showButtons]="true"
                        buttonLayout="horizontal"
                        pinnerMode="horizontal"
@@ -83,5 +85,3 @@
   </div>
 
 </div>
-
-

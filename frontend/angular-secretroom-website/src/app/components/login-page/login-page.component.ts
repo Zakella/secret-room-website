@@ -69,9 +69,10 @@ export class LoginPageComponent {
   onSubmitRestore() {
     if (this.restoreForm.valid) {
       const email = this.restoreForm.value.email;
+      const lang = localStorage.getItem('lang') || "ro"; // Get lang from localStorage
       if (email) {
         this.loading = true;
-        this.auth.restorePassword(email).subscribe({
+        this.auth.restorePassword(email, lang).subscribe({
           next: () => {
             this.visible = false;
             this.loading = false;

@@ -23,10 +23,16 @@
           </div>
         </a>
         <div class="flex flex-column w-full p-4">
-          <span class="text-900 font-medium text-xl border-200 pb-2 vs-title" style="border-bottom: 1px solid;">{{category.categoryName}}</span>
-          <span class="text-600 pt-2"><i class="pi  pi-gift mr-2 vs-disc"></i>{{category.description}}</span>
+      <span class="text-900 font-medium text-xl border-200 pb-2" style="border-bottom: 1px solid;">
+        {{ currentLang === 'Ro' ? category.nameRo : category.nameRu }}
+      </span>
+          <span class="text-600 pt-2">
+        <i class="pi pi-fw pi-users mr-2"></i>
+            {{ currentLang === 'Ro' ? category.descriptionRo : category.descriptionRu }}
+      </span>
         </div>
       </div>
+
     </div>
   </div>
 </div>

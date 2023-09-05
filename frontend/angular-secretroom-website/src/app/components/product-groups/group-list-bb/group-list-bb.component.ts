@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ProductCategory} from "../../../model/product-category";
 import {ProductCategoryService} from "../../../services/product-category.service";
+import {LanguageService} from "../../../services/language.service";
 
 @Component({
   selector: 'app-group-list-bb',
@@ -9,8 +10,11 @@ import {ProductCategoryService} from "../../../services/product-category.service
 })
 export class GroupListBbComponent {
   categories: Array<ProductCategory> = [];
+  currentLang: string;
 
-  constructor(private categoryService: ProductCategoryService) {
+  constructor(private categoryService: ProductCategoryService,
+              private languageService: LanguageService) {
+    this.currentLang = 'Ro';
   }
 
   ngOnInit(): void {
@@ -19,7 +23,13 @@ export class GroupListBbComponent {
         next: (data) => {
           this.categories = data.filter(category => category.brand === 'BathAndBody');
         }
-      }
-    )
+      })
+
+    this.languageService.language$.subscribe(lang => {
+      this.currentLang = lang;
+    });
+
   }
+
+
 }

@@ -2,8 +2,10 @@ package com.secretroomwebsite.product.dao;
 
 import com.secretroomwebsite.enums.Brands;
 import com.secretroomwebsite.product.Product;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -21,9 +23,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findByBrand(Brands brand, Pageable pageable);
 
-    Page<Product> findByNameContainingIgnoreCaseAndBrand (String name, Brands brands , Pageable pageable);
+    @Query("SELECT p FROM Product p WHERE (LOWER(p.nameRu) LIKE LOWER(CONCAT('%',:name,'%')) OR LOWER(p.nameRo) LIKE LOWER(CONCAT('%',:name,'%'))) AND p.brand = :brand")
+    Page<Product> findByNameContainingIgnoreCaseAndBrand(String name, Brands brand, Pageable pageable);
 
-    Optional<Product> findById(Long id);
+    @NotNull Optional<Product> findById(@NotNull Long id);
 
 }
 

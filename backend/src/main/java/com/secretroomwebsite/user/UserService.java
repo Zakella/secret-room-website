@@ -29,10 +29,7 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import reactor.core.publisher.Mono;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -237,7 +234,7 @@ public class UserService {
         return users.get(0);
     }
 
-    public void restorePassword(String email) {
+    public void restorePassword(String email, String language) {
         UserRepresentation user = getUserByEmail(email);
         if (user == null) {
             logger.error("User with email {} not found", email); // Добавлено логирование
@@ -245,7 +242,7 @@ public class UserService {
         }
 
         PasswordResetToken passwordResetToken = createPasswordResetTokenForUser(user);
-        sendEmailWithTokenRestorePassword( passwordResetToken, email);
+        sendEmailWithTokenRestorePassword( passwordResetToken, email, language);
     }
 
     public void resetPassword(String token, String newPassword) {
@@ -264,15 +261,17 @@ public class UserService {
         passwordResetTokenRepository.delete(passwordResetToken);
     }
 
-    private void sendEmailWithTokenRestorePassword(PasswordResetToken passwordResetToken, String to) {
-        String htmlContent = generateHtmlContent(passwordResetToken);
+    private void sendEmailWithTokenRestorePassword(PasswordResetToken passwordResetToken, String to, String language) {
+        String htmlContent = generateHtmlContent(passwordResetToken, language);
         emailService.sendMessage(to, "Password Reset Request", htmlContent);
     }
 
-    private String generateHtmlContent(PasswordResetToken passwordResetToken) {
+    private String generateHtmlContent(PasswordResetToken passwordResetToken, String language) {
         Context context = new Context();
         context.setVariable("resetUrl", resetPasswordUrl + "?token=" + passwordResetToken.getToken());
 
+        Locale locale = new Locale(language.toLowerCase());
+        context.setLocale(locale);
         return templateEngine.process("restore-password", context);
     }
 

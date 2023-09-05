@@ -40,6 +40,14 @@ public class ProductService {
 
 
     public Page<ProductDTO> findByNameContaining( String name, Brands brand, Pageable pageable) {
+//        if (language.equals("ro")){
+//            Page<Product> products = productRepository.findByNameContainingIgnoreCaseAndBrand(name,  brand,  pageable);
+//            return products.map(ProductDTO::fromProduct);
+//        }
+//        else {
+//            Page<Product> products = productRepository.findByNameContainingIgnoreCaseAndBrand(name,  brand,  pageable);
+//            return products.map(ProductDTO::fromProduct);
+//        }
         Page<Product> products = productRepository.findByNameContainingIgnoreCaseAndBrand(name,  brand,  pageable);
         return products.map(ProductDTO::fromProduct);
     }

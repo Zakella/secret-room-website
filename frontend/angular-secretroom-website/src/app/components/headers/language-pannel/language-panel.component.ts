@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TranslocoService} from "@ngneat/transloco";
+import {Subject} from "rxjs";
+import {LanguageService} from "../../../services/language.service";
 
 interface Languages {
   name: string;
@@ -17,7 +19,11 @@ export class LanguagePanelComponent implements OnInit {
   languages: Languages[] | undefined;
   selectedLanguage: Languages | undefined;
 
-  constructor(private router: Router, private translocoService: TranslocoService) { }
+  constructor(private router: Router,
+              private translocoService: TranslocoService,
+              private languageService: LanguageService) {
+  }
+
   ngOnInit() {
     const lang = localStorage.getItem('lang') || 'Ro';
 
@@ -32,11 +38,10 @@ export class LanguagePanelComponent implements OnInit {
   }
 
 
-
-
   putSelectedInStorage() {
     const lang = <string>this.selectedLanguage?.code;
     localStorage.setItem("lang", lang);
     this.translocoService.setActiveLang(lang.toLowerCase());
+    this.languageService.changeLanguage(lang);
   }
 }

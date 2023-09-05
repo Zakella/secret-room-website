@@ -24,19 +24,29 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "category_name")
-    private String categoryName;
+    private String nameRo;
+
+
+    private String nameRu;
+
+
+    private String descriptionRo;
+
+
+    private String descriptionRu;
+
 
     @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Product> products;
 
-    private String description;
 
     private String imageUrl;
 
     @Enumerated(EnumType.STRING)
     private Brands brand;
+
+
 
 
 }

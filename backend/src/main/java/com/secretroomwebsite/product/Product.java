@@ -33,15 +33,9 @@ public class Product {
     @JsonIgnoreProperties("products")
     private ProductCategory productCategory;
 
-    private String name;
-
-    private String description;
 
     @Enumerated(EnumType.STRING)
     private Brands brand;
-
-
-    private String shortDescription;
 
     @Column(name = "unit_price")
     private Double unitPrice;
@@ -74,56 +68,29 @@ public class Product {
     @ToString.Exclude
     private List<Size> sizes;
 
+
+    private String nameRo;
+
+
+    private String nameRu;
+
+
+    private String descriptionRo;
+
+
+    private String descriptionRu;
+
+
+    private String shortDescriptionRo;
+
+
+    private String shortDescriptionRu;
+
     public Product() {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Product product = (Product) o;
-
-        if (!Objects.equals(id, product.id)) return false;
-        if (!Objects.equals(sku, product.sku)) return false;
-        if (!Objects.equals(productCategory, product.productCategory))
-            return false;
-        if (!Objects.equals(name, product.name)) return false;
-        if (!Objects.equals(description, product.description)) return false;
-        if (brand != product.brand) return false;
-        if (!Objects.equals(shortDescription, product.shortDescription))
-            return false;
-        if (!Objects.equals(unitPrice, product.unitPrice)) return false;
-        if (!Objects.equals(imageURL, product.imageURL)) return false;
-        if (!Objects.equals(active, product.active)) return false;
-        if (!Objects.equals(unitsInStock, product.unitsInStock))
-            return false;
-        if (!Objects.equals(dateCreated, product.dateCreated)) return false;
-        if (!Objects.equals(lastUpdated, product.lastUpdated)) return false;
-        if (!Objects.equals(images, product.images)) return false;
-        return Objects.equals(sizes, product.sizes);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (sku != null ? sku.hashCode() : 0);
-        result = 31 * result + (productCategory != null ? productCategory.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (brand != null ? brand.hashCode() : 0);
-        result = 31 * result + (shortDescription != null ? shortDescription.hashCode() : 0);
-        result = 31 * result + (unitPrice != null ? unitPrice.hashCode() : 0);
-        result = 31 * result + (imageURL != null ? imageURL.hashCode() : 0);
-        result = 31 * result + (active != null ? active.hashCode() : 0);
-        result = 31 * result + (unitsInStock != null ? unitsInStock.hashCode() : 0);
-        result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
-        result = 31 * result + (lastUpdated != null ? lastUpdated.hashCode() : 0);
-        result = 31 * result + (images != null ? images.hashCode() : 0);
-        result = 31 * result + (sizes != null ? sizes.hashCode() : 0);
-        return result;
-    }
 
 
 }

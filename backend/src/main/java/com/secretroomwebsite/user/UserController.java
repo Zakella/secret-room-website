@@ -50,8 +50,8 @@ public class UserController {
     }
 
     @GetMapping("/restore-password")
-    public ResponseEntity<Void> restorePassword(@RequestParam String email) {
-        userService.restorePassword(email);
+    public ResponseEntity<Void> restorePassword(@RequestParam String email, @RequestParam String lang) {
+        userService.restorePassword(email, lang);
         return ResponseEntity.ok().build();
     }
 
