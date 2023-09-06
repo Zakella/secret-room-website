@@ -1,23 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {Observable, BehaviorSubject, Subscriber} from 'rxjs';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Observable, BehaviorSubject, Subscriber, map} from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from "../model/user";
 import { UserDetails } from "../model/user-details";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   private jwtHelper = new JwtHelperService();
-  loggedIn = new BehaviorSubject<boolean>(this.hasValidTokenInLocalStorage());
+  loggedIn = new BehaviorSubject<boolean>(this.hasValidToken());
+  tokenIsValid = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
+
+  checkTokenValidity(): void {
+    this.http.get<boolean>('http://localhost:8081/api/v1/users/tokenIsValid', { withCredentials: true }).subscribe(
+      isValid => {
+        this.tokenIsValid.next(isValid);
+      },
+      error => {
+        console.error('Error checking token validity:', error);
+        this.tokenIsValid.next(false);
+      }
+    );
+  }
 
   isLoggedIn(): Observable<boolean> {
+    this.checkTokenValidity();
     return new Observable<boolean>(subscriber => {
-      if (this.hasValidTokenInLocalStorage()) {
+      if (this.hasValidToken()) {
         this.notifyLoggedInStatus(true, subscriber);
         console.log("Its ok!" + new Date());
       } else {
@@ -29,7 +45,9 @@ export class AuthenticationService {
     });
   }
 
-  private hasValidTokenInLocalStorage(): boolean {
+
+
+  private hasValidToken(): boolean {
     // const storedUser = localStorage.getItem("user");
     // if (storedUser && storedUser !== "null") {
     //   const userDetails: UserDetails = JSON.parse(storedUser);
@@ -39,17 +57,35 @@ export class AuthenticationService {
     return false;
   }
 
+
+  // checkTokenValidity(): Observable<boolean> {
+  //   return this.http.get<boolean>('/api/v1/checkTokenValidity').pipe(
+  //     map(response => response),
+  //     catchError(error => {
+  //       console.error('Error checking token validity:', error);
+  //       return of(false);
+  //     })
+  //   );
+  // }
+
   private notifyLoggedInStatus(isLoggedIn: boolean, subscriber: Subscriber<boolean>) {
     this.loggedIn.next(isLoggedIn);
     subscriber.next(isLoggedIn);
   }
 
-  registration(user: User): Observable<UserDetails> {
+  registration(user: User): Observable<UserDetails | null> {
     const url = 'http://localhost:8081/api/v1/users';
-    return this.http.post<UserDetails>(url, user).pipe(
-      tap((userDetails: UserDetails) => {
-        this.loggedIn.next(true);
-      })
+    return this.http.post<UserDetails>(url, user, { observe: 'response' }).pipe(
+      tap((response: HttpResponse<UserDetails>) => {
+        const cookies = response.headers.getAll('Set-Cookie');
+        if (cookies) {
+          cookies.forEach(cookie => {
+            const [name, value] = cookie.split(';')[0].split('=');
+            this.cookieService.set(name.trim(), value.trim());
+          });
+        }
+      }),
+      map((response: HttpResponse<UserDetails>) => response.body)
     );
   }
 

@@ -1,6 +1,7 @@
 package com.secretroomwebsite.user;
 
 import com.secretroomwebsite.order.OrderService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -78,6 +79,14 @@ public class UserController {
     }
 
     private String createCookieHeader(String name, String value) {
-        return name + "=" + value + "; Path=/; SameSite=" + "Lax" + "; Secure; HttpOnly";
+        return name + "=" + value + "; Path=/; SameSite=None; HttpOnly";
+//        return name + "=" + value + "; Path=/; SameSite=" + "Lax" + "; Secure; HttpOnly";
     }
+
+    @GetMapping("/tokenIsValid")
+    public ResponseEntity<Boolean> tokenIsValid(HttpServletRequest request) {
+        boolean isValid = userService.hasValidAccessToken(request);
+        return ResponseEntity.ok(isValid);
+    }
+
 }

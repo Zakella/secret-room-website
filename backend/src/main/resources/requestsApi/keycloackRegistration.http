@@ -20,7 +20,7 @@ POST http://localhost:8081/api/v1/users
 Content-Type: application/json
 
 {
-  "email": "test31667888@gmail.com",
+  "email": "test2361667888@gmail.com",
   "password": "password123",
   "firstname": "Slava",
   "lastName": "456"

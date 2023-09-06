@@ -320,7 +320,7 @@ public class UserService {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if ("accessToken".equals(cookie.getName())) {
+                    if ("accessToken".equals(cookie.getName())) {
                     return cookie.getValue();
                 }
             }
