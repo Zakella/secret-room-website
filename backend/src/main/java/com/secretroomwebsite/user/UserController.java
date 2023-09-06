@@ -1,7 +1,8 @@
 package com.secretroomwebsite.user;
 
-import com.secretroomwebsite.authentication.PasswordChangeRequest;
 import com.secretroomwebsite.order.OrderService;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,14 +20,16 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserDTO userDTO) {
-        UserResponseDTO userResponseDTO = userService.createUser(userDTO);
-        return ResponseEntity.ok(userResponseDTO);
+        UserCredentials userCredentials = userService.createUser(userDTO);
+        return getUserResponseDTOResponseEntity(userCredentials);
     }
+
+
 
     @PostMapping("/login")
     public ResponseEntity<UserResponseDTO> login(@RequestBody UserDTO userDTO) {
-        UserResponseDTO userResponseDTO = userService.login(userDTO);
-        return ResponseEntity.ok(userResponseDTO);
+        UserCredentials userCredentials = userService.login(userDTO);
+        return getUserResponseDTOResponseEntity(userCredentials);
     }
 
     @PostMapping("/logout")
@@ -66,4 +69,15 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @NotNull
+    private ResponseEntity<UserResponseDTO> getUserResponseDTOResponseEntity(UserCredentials userCredentials) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Set-Cookie", createCookieHeader("accessToken", userCredentials.accessToken()));
+        responseHeaders.add("Set-Cookie", createCookieHeader("refreshToken", userCredentials.refreshToken()));
+        return ResponseEntity.ok().headers(responseHeaders).body(userCredentials.userResponseDTO());
+    }
+
+    private String createCookieHeader(String name, String value) {
+        return name + "=" + value + "; Path=/; SameSite=" + "Lax" + "; Secure; HttpOnly";
+    }
 }

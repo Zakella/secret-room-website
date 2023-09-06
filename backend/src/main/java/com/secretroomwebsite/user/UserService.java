@@ -7,6 +7,7 @@ import com.secretroomwebsite.exception.TokenExpiredException;
 import com.secretroomwebsite.exception.UserAlreadyExistsException;
 import com.secretroomwebsite.exception.UserCreationException;
 import com.secretroomwebsite.order.OrderService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.admin.client.Keycloak;
@@ -28,6 +29,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import reactor.core.publisher.Mono;
+import jakarta.servlet.http.Cookie;
 
 import java.util.*;
 
@@ -76,7 +78,7 @@ public class UserService {
         this.emailService = emailService;
     }
 
-    public UserResponseDTO createUser(UserDTO userDTO) {
+    public UserCredentials createUser(UserDTO userDTO) {
         logger.info("Creating user with email: {}", userDTO.email()); // Добавлено логирование
 
         if (isPasswordPolicyValid(userDTO.password())) {
@@ -97,15 +99,20 @@ public class UserService {
             throw new RuntimeException("Failed to fetch access token for user: " + userDTO.email(), e);
         }
 
-        // Step 3: Extract access token
-        String accessToken = responseToken.access_token();
-        String refreshToken = responseToken.refresh_token();
-
         // Step 4: Send request and get user info
-        ResponseAuthKeycloak userResponse = getUserInfo(accessToken);
+        ResponseAuthKeycloak userResponse = getUserInfo(responseToken.access_token());
 
-        // Step 5: Return response DTO
-        return new UserResponseDTO(accessToken, refreshToken , userResponse.given_name(), userResponse.family_name(), userResponse.email());
+        return  new UserCredentials (
+                responseToken.access_token(),
+                responseToken.refresh_token(),
+                new UserResponseDTO(
+                        userResponse.given_name(),
+                        userResponse.family_name(),
+                        userResponse.email()
+                ));
+
+
+
     }
 
     private ResponseAuthKeycloak getUserInfo(String accessToken) {
@@ -180,20 +187,27 @@ public class UserService {
 
     }
 
-    public UserResponseDTO login(UserDTO userDTO) {
+    public UserCredentials login(UserDTO userDTO) {
         // Step 1: Get access token
         KeycloakTokenResponse responseToken = this.keycloakTokenService.fetchAccessToken(userDTO.email(), userDTO.password());
 
         // Step 2: Extract access token
         String accessToken = responseToken.access_token();
 
-        String refreshToken = responseToken.refresh_token();
 
         // Step 3: Send request and get user info
         ResponseAuthKeycloak userResponse = getUserInfo(accessToken);
 
-        // Step 4: Return response DTO
-        return new UserResponseDTO(accessToken, refreshToken, userResponse.given_name(), userResponse.family_name(), userResponse.email());
+
+        return  new UserCredentials (
+                responseToken.access_token(),
+                responseToken.refresh_token(),
+                new UserResponseDTO(
+                        userResponse.given_name(),
+                        userResponse.family_name(),
+                        userResponse.email()
+                ));
+
     }
 
     public void logout(String accessToken, String refreshToken) {
@@ -291,5 +305,27 @@ public class UserService {
         return !password.matches(passwordPolicyRegex);
     }
 
+
+    public boolean hasValidAccessToken(HttpServletRequest request) {
+        String accessToken = extractAccessTokenFromRequest(request);
+        if (accessToken != null) {
+            // Выполните проверку валидности токена на сервере
+            // Например, используя библиотеку Keycloak или другой механизм проверки токена
+            // Верните true, если токен действителен, и false в противном случае
+        }
+        return false;
+    }
+
+    private String extractAccessTokenFromRequest(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("accessToken".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
+    }
 
 }

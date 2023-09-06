@@ -88,7 +88,7 @@ export class SubHeaderComponent implements OnInit {
         },
 
         {
-          label: this.userDetails?.givenName,
+          label: this.userDetails?.firstName,
           styleClass: '.vs-title',
           icon: 'pi pi-check',
           command: () => {
@@ -141,7 +141,7 @@ export class SubHeaderComponent implements OnInit {
 
       this.mainMenu = [
         {
-          label: this.userDetails?.givenName,
+          label: this.userDetails?.firstName,
           styleClass: '.vs-title',
           icon: 'pi pi-check',
           command: () => {

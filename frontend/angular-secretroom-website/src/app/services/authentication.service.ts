@@ -30,12 +30,12 @@ export class AuthenticationService {
   }
 
   private hasValidTokenInLocalStorage(): boolean {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser && storedUser !== "null") {
-      const userDetails: UserDetails = JSON.parse(storedUser);
-      const token = userDetails.accessToken;
-      return Boolean(token) && !this.jwtHelper.isTokenExpired(token);
-    }
+    // const storedUser = localStorage.getItem("user");
+    // if (storedUser && storedUser !== "null") {
+    //   const userDetails: UserDetails = JSON.parse(storedUser);
+    //   const token = userDetails.accessToken;
+    //   return Boolean(token) && !this.jwtHelper.isTokenExpired(token);
+    // }
     return false;
   }
 
@@ -63,23 +63,23 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    const userDetails = this.getUserDetails();
-    if (userDetails) {
-      const token = userDetails.accessToken;
-      const refreshToken = userDetails.refreshToken;
-      if (token && refreshToken) {
-        this.http.post('http://localhost:8081/api/v1/users/logout', {
-          refresh_token: refreshToken
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }).subscribe(() => {
-          localStorage.removeItem('user');
-          this.loggedIn.next(false);
-        });
-      }
-    }
+    // const userDetails = this.getUserDetails();
+    // if (userDetails) {
+    //   const token = userDetails.accessToken;
+    //   const refreshToken = userDetails.refreshToken;
+    //   if (token && refreshToken) {
+    //     this.http.post('http://localhost:8081/api/v1/users/logout', {
+    //       refresh_token: refreshToken
+    //     }, {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`
+    //       }
+    //     }).subscribe(() => {
+    //       localStorage.removeItem('user');
+    //       this.loggedIn.next(false);
+    //     });
+    //   }
+    // }
   }
 
   getUserDetails(): UserDetails | null {

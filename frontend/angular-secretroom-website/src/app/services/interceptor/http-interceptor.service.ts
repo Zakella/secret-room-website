@@ -15,29 +15,8 @@ export class HttpInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("Request intercepted");
 
-    // Check if the request is for the API
-    if (req.url.includes('/api/')) {
-      const storedUser = localStorage.getItem("user");
-
-      if (storedUser && storedUser !== "null") {
-        const userDetails: UserDetails = JSON.parse(storedUser);
-        const token = userDetails.accessToken;
-
-        if (token && this.isProtectedEndpoint(req.url)) {
-          const autReq = req.clone({
-              headers: new HttpHeaders({Authorization: "Bearer " + token})
-            }
-          );
-
-          return next.handle(autReq);
-        }
-      }
-    }
-
     // If the request is not for the API, just forward it
     return next.handle(req);
   }
-  private isProtectedEndpoint(url: string): boolean {
-    return ProtectedEndpoints.ENDPOINTS.some(endpoint => url.includes(endpoint));
-  }
+
 }
