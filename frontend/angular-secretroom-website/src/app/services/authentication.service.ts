@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, tap } from 'rxjs';
+import {Observable, BehaviorSubject, Subscriber} from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { User } from "../model/user";
 import { UserDetails } from "../model/user-details";
 import { JwtHelperService } from "@auth0/angular-jwt";
@@ -9,43 +10,51 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  loggedIn = new BehaviorSubject<boolean>(false);
+  private jwtHelper = new JwtHelperService();
+  loggedIn = new BehaviorSubject<boolean>(this.hasValidTokenInLocalStorage());
 
-  constructor(private http: HttpClient) {
-    this.userIsLoggedIn();
+  constructor(private http: HttpClient) { }
+
+  isLoggedIn(): Observable<boolean> {
+    return new Observable<boolean>(subscriber => {
+      if (this.hasValidTokenInLocalStorage()) {
+        this.notifyLoggedInStatus(true, subscriber);
+        console.log("Its ok!" + new Date());
+      } else {
+        console.log("Auto logout" + new Date());
+        this.notifyLoggedInStatus(false, subscriber);
+        localStorage.removeItem('user');
+      }
+      subscriber.complete();
+    });
   }
 
-  userIsLoggedIn(): void {
+  private hasValidTokenInLocalStorage(): boolean {
     const storedUser = localStorage.getItem("user");
     if (storedUser && storedUser !== "null") {
       const userDetails: UserDetails = JSON.parse(storedUser);
       const token = userDetails.accessToken;
-      if (token) {
-        const jwtHelper: JwtHelperService = new JwtHelperService();
-        const isTokenNonExpired = !jwtHelper.isTokenExpired(token);
-        if (!isTokenNonExpired) {
-          this.logout();
-        }
-      }
+      return Boolean(token) && !this.jwtHelper.isTokenExpired(token);
     }
+    return false;
   }
 
-  isLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
+  private notifyLoggedInStatus(isLoggedIn: boolean, subscriber: Subscriber<boolean>) {
+    this.loggedIn.next(isLoggedIn);
+    subscriber.next(isLoggedIn);
   }
 
   registration(user: User): Observable<UserDetails> {
-    const url = 'http://localhost:8081/api/v1/users'; // Replace with your registration API endpoint from UserController
+    const url = 'http://localhost:8081/api/v1/users';
     return this.http.post<UserDetails>(url, user).pipe(
       tap((userDetails: UserDetails) => {
-        // Login the user after successful registration
         this.loggedIn.next(true);
       })
     );
   }
 
   login(user: User): Observable<UserDetails> {
-    const url = 'http://localhost:8081/api/v1/users/login'; // Replace with your login API endpoint from UserController
+    const url = 'http://localhost:8081/api/v1/users/login';
     return this.http.post<UserDetails>(url, user).pipe(
       tap(() => {
         this.loggedIn.next(true);
@@ -90,4 +99,5 @@ export class AuthenticationService {
     const url = 'http://localhost:8081/api/v1/users/reset-password'; // Replace with your reset password API endpoint from UserController
     return this.http.post<void>(url, { token, newPassword });
   }
+
 }

@@ -92,7 +92,12 @@
   "Sign In": "Autentificare",
   "seeAll": "Vezi toate",
   "discoverAll": "Descoperă toate",
-  "Summa": "Sumă"
+  "Summa": "Sumă",
+  "accountNotFound": {
+    "title": "Contul dvs. nu este disponibil",
+    "description": "Ne pare rău, nu am putut găsi pagina.",
+    "button": "Mergi la pagina principală"
+  }
 
 
 

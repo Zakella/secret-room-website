@@ -23,6 +23,7 @@ export class SubHeaderComponent implements OnInit {
   userDetails: UserDetails | null = null;
 
 
+
   userIsLoggedIn: boolean = false;
 
   @ViewChild('menuMain') menuMain!: Menu;
@@ -56,12 +57,10 @@ export class SubHeaderComponent implements OnInit {
 
   // Subscribe to user status
   private subscribeToUserStatus() {
-    this.authService.isLoggedIn().subscribe((isLoggedIn: boolean) => {
+    this.authService.loggedIn.subscribe((isLoggedIn: boolean) => {
       this.userIsLoggedIn = isLoggedIn;
-      // this.commonItems = isLoggedIn ? this.loggedInItems : this.loggedOutItems;
-      // this.loadItemsMenu();
     });
-    this.updateUserDetails();
+
   }
 
   // Subscribe to cart quantity
