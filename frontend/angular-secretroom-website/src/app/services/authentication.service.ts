@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { User } from "../model/user";
 import { UserDetails } from "../model/user-details";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,7 @@ export class AuthenticationService {
   }
 
   registration(user: User): Observable<UserDetails> {
-    const url = 'http://localhost:8081/api/v1/users';
+    const url = '/v1/users';
     return this.http.post<UserDetails>(url, user).pipe(
       tap((userDetails: UserDetails) => {
         this.loggedIn.next(true);
@@ -54,7 +55,7 @@ export class AuthenticationService {
   }
 
   login(user: User): Observable<UserDetails> {
-    const url = 'http://localhost:8081/api/v1/users/login';
+    const url = environment.apiUrl + 'v1/users/login';
     return this.http.post<UserDetails>(url, user).pipe(
       tap(() => {
         this.loggedIn.next(true);
@@ -68,7 +69,7 @@ export class AuthenticationService {
       const token = userDetails.accessToken;
       const refreshToken = userDetails.refreshToken;
       if (token && refreshToken) {
-        this.http.post('http://localhost:8081/api/v1/users/logout', {
+        this.http.post(environment.apiUrl + 'v1/users/logout', {
           refresh_token: refreshToken
         }, {
           headers: {
@@ -91,12 +92,12 @@ export class AuthenticationService {
   }
 
   restorePassword(email: string, lang: string): Observable<any> {
-    const url = 'http://localhost:8081/api/v1/users/restore-password'; // Replace with your restore password API endpoint from UserController
+    const url = environment.apiUrl +'v1/users/restore-password'; // Replace with your restore password API endpoint from UserController
     return this.http.get(url, { params: { email, lang } });
   }
 
   resetPassword(token: string, newPassword: string): Observable<void> {
-    const url = 'http://localhost:8081/api/v1/users/reset-password'; // Replace with your reset password API endpoint from UserController
+    const url = environment.apiUrl +'v1/users/reset-password'; // Replace with your reset password API endpoint from UserController
     return this.http.post<void>(url, { token, newPassword });
   }
 

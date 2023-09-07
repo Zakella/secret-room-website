@@ -22,10 +22,10 @@ public class ProductDTOTest {
         Product product = new Product();
         product.setId(1L);
         product.setSku("SKU123");
-        product.setName("Test Product");
-        product.setDescription("This is a test product");
+        product.setNameRu("Test Product");
+        product.setDescriptionRu("This is a test product");
         product.setBrand(VictoriasSecret);
-        product.setShortDescription("Test");
+        product.setShortDescriptionRu("Test");
         product.setUnitPrice(9.99);
         product.setImageURL("https://example.com/image.jpg");
         product.setActive(true);
@@ -34,7 +34,7 @@ public class ProductDTOTest {
         product.setLastUpdated(LocalDate.of(2022, 2, 1));
 
         ProductCategory category = new ProductCategory();
-        category.setCategoryName("Test Category");
+        category.setNameRu("Test Category");
         product.setProductCategory(category);
 
         List<ProductImage> images = new ArrayList<>();
@@ -61,11 +61,11 @@ public class ProductDTOTest {
 
         Assertions.assertEquals(1L, productDTO.getId());
         Assertions.assertEquals("SKU123", productDTO.getSku());
-        Assertions.assertEquals("Test Category", productDTO.getCategoryName());
-        Assertions.assertEquals("Test Product", productDTO.getName());
-        Assertions.assertEquals("This is a test product", productDTO.getDescription());
+        Assertions.assertEquals("Test Category", productDTO.getCategory().getNameRu());
+        Assertions.assertEquals("Test Product", productDTO.getNameRu());
+        Assertions.assertEquals("This is a test product", productDTO.getDescriptionRu());
         Assertions.assertEquals(VictoriasSecret, productDTO.getBrand());
-        Assertions.assertEquals("Test", productDTO.getShortDescription());
+        Assertions.assertEquals("Test", productDTO.getShortDescriptionRu());
         Assertions.assertEquals(9.99, productDTO.getUnitPrice());
         Assertions.assertEquals("https://example.com/image.jpg", productDTO.getImageURL());
         Assertions.assertTrue(productDTO.getActive());

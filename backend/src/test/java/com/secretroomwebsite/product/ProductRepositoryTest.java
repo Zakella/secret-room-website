@@ -39,19 +39,19 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
     void itShouldFindAllByProductCategory_Id() {
 
         ProductCategory category = new ProductCategory();
-        category.setDescription("Category A");
+        category.setDescriptionRu("Category A");
         category.setBrand(VictoriasSecret);
-        category.setCategoryName("Category A");
+        category.setNameRu("Category A");
         category.setImageUrl("assets/tests");
         productCategoryRepository.save(category);
 
         Product product1 = Product.builder()
                 .sku("SKU001")
                 .productCategory(category)
-                .name("Product 1")
-                .description("Description 1")
+                .nameRu("Product 1")
+                .descriptionRu("Description 1")
                 .brand(VictoriasSecret)
-                .shortDescription("Short Description 1")
+                .shortDescriptionRu("Short Description 1")
                 .unitPrice(10.0)
                 .imageURL("image1.jpg")
                 .active(true)
@@ -63,10 +63,10 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
         Product product2 = Product.builder()
                 .sku("SKU002")
                 .productCategory(category)
-                .name("Product 2")
-                .description("Description 2")
+                .nameRu("Product 2")
+                .descriptionRu("Description 2")
                 .brand(VictoriasSecret)
-                .shortDescription("Short Description 2")
+                .shortDescriptionRu("Short Description 2")
                 .unitPrice(15.0)
                 .imageURL("image2.jpg")
                 .active(true)
@@ -87,19 +87,19 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
     void itShouldFindByBrand() {
 
         ProductCategory category = new ProductCategory();
-        category.setDescription("Category A");
+        category.setDescriptionRu("Category A");
         category.setBrand(VictoriasSecret);
-        category.setCategoryName("Category A");
+        category.setNameRu("Category A");
         category.setImageUrl("assets/tests");
         productCategoryRepository.save(category);
 
         Product product = Product.builder()
                 .sku("SKU001")
                 .productCategory(category)
-                .name("Product 1")
-                .description("Description 1")
+                .nameRu("Product 1")
+                .descriptionRu("Description 1")
                 .brand(VictoriasSecret)
-                .shortDescription("Short Description 1")
+                .shortDescriptionRu("Short Description 1")
                 .unitPrice(10.0)
                 .imageURL("image1.jpg")
                 .active(true)
@@ -123,19 +123,19 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
     void itShouldFindByNameContainingAndBrand() {
 
         ProductCategory category = new ProductCategory();
-        category.setDescription("Category A");
+        category.setDescriptionRu("Category A");
         category.setBrand(VictoriasSecret);
-        category.setCategoryName("Category A");
+        category.setNameRu("Category A");
         category.setImageUrl("assets/tests");
         productCategoryRepository.save(category);
 
         Product product = Product.builder()
                 .sku("SKU001")
                 .productCategory(category)
-                .name("Product 1")
-                .description("Description 1")
+                .nameRu("Product 1")
+                .descriptionRu("Description 1")
                 .brand(VictoriasSecret)
-                .shortDescription("Short Description 1")
+                .shortDescriptionRu("Short Description 1")
                 .unitPrice(10.0)
                 .imageURL("image1.jpg")
                 .active(true)
@@ -154,6 +154,6 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
         // Проверка результата
         assertNotNull(result);
         assertFalse(result.isEmpty());
-        assertThat(result.getContent().get(0).getName()).isEqualTo("Product 1");
+        assertThat(result.getContent().get(0).getNameRu()).isEqualTo("Product 1");
     }
 }

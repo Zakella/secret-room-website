@@ -4,13 +4,14 @@ import {Observable, throwError} from "rxjs";
 import {Product} from "../model/product";
 import {HttpParams } from "@angular/common/http";
 import { catchError } from 'rxjs/operators';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private baseUrL = "http://localhost:8081/api/v1/products";
+  private baseUrL = environment.apiUrl + "v1/products";
 
   constructor(private httpClient: HttpClient) {}
 

@@ -1,9 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {Order} from '../model/order';
-import {catchError} from "rxjs/operators";
-import {ResponseOrder} from "../model/response-order";
+import {HttpClient} from '@angular/common/http';
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
@@ -11,7 +8,7 @@ import {ResponseOrder} from "../model/response-order";
 })
 export class OrderService {
 
-  private orderUrl = 'http://localhost:8081/api/v1/purchase';
+  private orderUrl = environment.apiUrl +'v1/purchase';
 
   constructor(private http: HttpClient) {
   }

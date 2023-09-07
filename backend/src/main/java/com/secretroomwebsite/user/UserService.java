@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -57,23 +56,23 @@ public class UserService {
 
     private final EmailService emailService;
 
-    @Autowired
-    private SpringTemplateEngine templateEngine;
 
-    @Autowired
-    private JavaMailSender emailSender;
+    private final SpringTemplateEngine templateEngine;
 
 
     @Autowired
     public UserService(KeycloakAdminService keycloakAdminService,
                        KeycloakTokenService keycloakTokenService,
-                       OrderService orderService, PasswordResetTokenRepository passwordResetTokenRepository, EmailService emailService) {
+                       OrderService orderService,
+                       PasswordResetTokenRepository passwordResetTokenRepository,
+                       EmailService emailService, SpringTemplateEngine templateEngine) {
 
         this.keycloakAdminService = keycloakAdminService;
         this.keycloakTokenService = keycloakTokenService;
         this.orderService = orderService;
         this.passwordResetTokenRepository = passwordResetTokenRepository;
         this.emailService = emailService;
+        this.templateEngine = templateEngine;
     }
 
     public UserResponseDTO createUser(UserDTO userDTO) {
@@ -86,7 +85,7 @@ public class UserService {
         UserRepresentation user = createUserRepresentation(userDTO);
         UsersResource usersResource = keycloakAdminService.getInstance().realm(userRealm).users();
         Response response = usersResource.create(user);
-        handleCreateUserResponse(response, userDTO.email(), userDTO.password());
+        handleCreateUserResponse(response, userDTO.email());
 
         // Step 2: Get access token
         KeycloakTokenResponse responseToken;
@@ -161,7 +160,7 @@ public class UserService {
         return user;
     }
 
-    private void handleCreateUserResponse(Response response, String email, String password) {
+    private void handleCreateUserResponse(Response response, String email) {
         switch (response.getStatus()) {
             case 201 -> logger.info("Successfully created user with email: {}", email);
             case 409 -> throw new UserAlreadyExistsException("User already exists with email: " + email);

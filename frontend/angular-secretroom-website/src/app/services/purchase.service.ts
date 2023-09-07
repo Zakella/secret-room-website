@@ -4,13 +4,14 @@ import {Observable} from "rxjs";
 import {ResponsePurchase} from "../model/response-purchase";
 import {Purchase} from "../model/purchase";
 import {OrderReview} from "../model/order-review";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchaseService {
 
-  private url = 'http://localhost:8081/api/v1/order';
+  private url = environment.apiUrl +'v1/order';
 
   constructor(private http: HttpClient) {}
 

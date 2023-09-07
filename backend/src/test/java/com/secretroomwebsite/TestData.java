@@ -32,27 +32,24 @@ public class TestData {
 
     public static ProductCategory getTestProductCategory() {
         ProductCategory category = new ProductCategory();
-        category.setDescription("Category A");
+        category.setDescriptionRo("Category A");
         category.setBrand(VictoriasSecret);
-        category.setCategoryName("Category A");
+        category.setDescriptionRo("Category A");
         category.setImageUrl("assets/tests");
         return category;
     }
 
-    public static List<Product> getTestProducts() {
 
-        return List.of(getProduct1(), getProduct2());
-    }
 
     public static Product getProduct1() {
 
         return Product.builder()
                 .sku("SKU001")
                 .productCategory(getTestProductCategory())
-                .name("Product 1")
-                .description("Description 1")
+                .nameRu("Product 1")
+                .descriptionRu("Description 1")
                 .brand(VictoriasSecret)
-                .shortDescription("Short Description 1")
+                .shortDescriptionRu("Short Description 1")
                 .unitPrice(10.0)
                 .imageURL("image1.jpg")
                 .active(true)
@@ -68,10 +65,10 @@ public class TestData {
         return Product.builder()
                 .sku("SKU001")
                 .productCategory(getTestProductCategory())
-                .name("Product 2")
-                .description("Description 2")
+                .nameRu("Product 2")
+                .descriptionRu("Description 2")
                 .brand(VictoriasSecret)
-                .shortDescription("Short Description 2")
+                .shortDescriptionRu("Short Description 2")
                 .unitPrice(20.0)
                 .imageURL("image2.jpg")
                 .active(true)
@@ -87,11 +84,11 @@ public class TestData {
         purchase.setCustomer(getTestCustomer());
         purchase.setShippingAddress(getTestAddress());
         purchase.setOrder(getTestOrder());
-        purchase.setOrderItems(getTestOrderItems(getTestOrder()));
+        purchase.setOrderItems(getTestOrderItems());
         return purchase;
     }
 
-    public static List<OrderItem> getTestOrderItems(Order order) {
+    public static List<OrderItem> getTestOrderItems() {
         return List.of(
                 new OrderItem(getProduct1(), SizeType.S, 5, 50.00, null),
                 new OrderItem(getProduct2(), null, 5, 100.00, null)
