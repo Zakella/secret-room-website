@@ -47,24 +47,24 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 //         Delete tables
-        deleteTable("shipping_options");
-        resetSequence("shipping_options");
-
-        deleteTable("size");
-        resetSequence("size");
-
-        deleteTable("product_image");
-        resetSequence("product_image");
-
-        deleteTable("product");
-        resetSequence("product");
-
-        deleteTable("product_category");
-        resetSequence("product_category");
-
-        // Write new data
-        writeProductsInDatabase();
-        writeShippingOptionsInDatabase();
+//        deleteTable("shipping_options");
+//        resetSequence("shipping_options");
+//
+//        deleteTable("size");
+//        resetSequence("size");
+//
+//        deleteTable("product_image");
+//        resetSequence("product_image");
+//
+//        deleteTable("product");
+//        resetSequence("product");
+//
+//        deleteTable("product_category");
+//        resetSequence("product_category");
+//
+//        // Write new data
+//        writeProductsInDatabase();
+//        writeShippingOptionsInDatabase();
 
     }
 
