@@ -109,8 +109,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     const userDetails = this.authService.getUserDetails();
     if (userDetails) {
       this.form.patchValue({
-        name: userDetails.givenName,
-        lastname: userDetails.familyName,
+        name: userDetails.firstName,
+        lastname: userDetails.lastName,
         email: userDetails.email
       });
     }
