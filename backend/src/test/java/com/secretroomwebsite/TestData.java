@@ -39,6 +39,7 @@ public class TestData {
         category.setDescriptionRo("Category A");
         category.setBrand(VictoriasSecret);
         category.setDescriptionRo("Category A");
+        category.setDescriptionRu("Category Ro");
         category.setImageUrl("assets/tests");
         return category;
     }
@@ -109,20 +110,12 @@ public class TestData {
         );
     }
 
-    public static OrderItem getTestOrderItem(Product product, SizeType sizeType, Integer quantity, Double amount) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setProduct(product);
-        orderItem.setSizeType(sizeType);
-        orderItem.setQuantity(quantity);
-        orderItem.setAmount(amount);
-        return orderItem;
-    }
-
     public static Order getTestOrder() {
         Order order = new Order();
         order.setStatus(OrderStatus.PENDING);
         order.setPlacementDate(new Date());
         order.setCustomer(getTestCustomer());
+
         // Set properties for order
         order.setShippingAddress(getTestAddress());
         order.setShippingOption(getTestShipping());

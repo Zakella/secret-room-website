@@ -4,6 +4,7 @@ import com.secretroomwebsite.AbstractTestcontainers;
 import com.secretroomwebsite.product.category.ProductCategory;
 import com.secretroomwebsite.product.category.ProductCategoryRepository;
 import com.secretroomwebsite.product.dao.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,16 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.annotation.DirtiesContext;
+
+import static com.secretroomwebsite.TestData.*;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import java.time.LocalDate;
-
 import static com.secretroomwebsite.enums.Brands.VictoriasSecret;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@DirtiesContext
 class ProductRepositoryTest  extends AbstractTestcontainers {
 
     @Autowired
@@ -38,41 +40,16 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
     @Test
     void itShouldFindAllByProductCategory_Id() {
 
-        ProductCategory category = new ProductCategory();
-        category.setDescriptionRu("Category A");
-        category.setBrand(VictoriasSecret);
-        category.setNameRu("Category A");
-        category.setImageUrl("assets/tests");
-        productCategoryRepository.save(category);
+        ProductCategory category =  getTestProductCategory();
+        ProductCategory savedCategory = productCategoryRepository.save(category);
 
-        Product product1 = Product.builder()
-                .sku("SKU001")
-                .productCategory(category)
-                .nameRu("Product 1")
-                .descriptionRu("Description 1")
-                .brand(VictoriasSecret)
-                .shortDescriptionRu("Short Description 1")
-                .unitPrice(10.0)
-                .imageURL("image1.jpg")
-                .active(true)
-                .unitsInStock(100)
-                .dateCreated(LocalDate.now())
-                .build();
+        Product product1 = getProduct1();
+        product1.setProductCategory(savedCategory);
         underTest.save(product1);
 
-        Product product2 = Product.builder()
-                .sku("SKU002")
-                .productCategory(category)
-                .nameRu("Product 2")
-                .descriptionRu("Description 2")
-                .brand(VictoriasSecret)
-                .shortDescriptionRu("Short Description 2")
-                .unitPrice(15.0)
-                .imageURL("image2.jpg")
-                .active(true)
-                .unitsInStock(50)
-                .dateCreated(LocalDate.now())
-                .build();
+        Product product2 = getProduct2();
+        product2.setProductCategory(savedCategory);
+
         underTest.save(product2);
 
         Pageable pageable = PageRequest.of(0, 10); // Example: First page with 10 items per page
@@ -86,26 +63,11 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
     @Test
     void itShouldFindByBrand() {
 
-        ProductCategory category = new ProductCategory();
-        category.setDescriptionRu("Category A");
-        category.setBrand(VictoriasSecret);
-        category.setNameRu("Category A");
-        category.setImageUrl("assets/tests");
-        productCategoryRepository.save(category);
+        ProductCategory category =  getTestProductCategory();
+        ProductCategory savedCategory = productCategoryRepository.save(category);
 
-        Product product = Product.builder()
-                .sku("SKU001")
-                .productCategory(category)
-                .nameRu("Product 1")
-                .descriptionRu("Description 1")
-                .brand(VictoriasSecret)
-                .shortDescriptionRu("Short Description 1")
-                .unitPrice(10.0)
-                .imageURL("image1.jpg")
-                .active(true)
-                .unitsInStock(100)
-                .dateCreated(LocalDate.now())
-                .build();
+        Product product = getProduct1();
+        product.setProductCategory(savedCategory);
 
         underTest.save(product);
 
@@ -122,26 +84,11 @@ class ProductRepositoryTest  extends AbstractTestcontainers {
     @Test
     void itShouldFindByNameContainingAndBrand() {
 
-        ProductCategory category = new ProductCategory();
-        category.setDescriptionRu("Category A");
-        category.setBrand(VictoriasSecret);
-        category.setNameRu("Category A");
-        category.setImageUrl("assets/tests");
-        productCategoryRepository.save(category);
+        ProductCategory category =  getTestProductCategory();
+        ProductCategory savedCategory = productCategoryRepository.save(category);
 
-        Product product = Product.builder()
-                .sku("SKU001")
-                .productCategory(category)
-                .nameRu("Product 1")
-                .descriptionRu("Description 1")
-                .brand(VictoriasSecret)
-                .shortDescriptionRu("Short Description 1")
-                .unitPrice(10.0)
-                .imageURL("image1.jpg")
-                .active(true)
-                .unitsInStock(100)
-                .dateCreated(LocalDate.now())
-                .build();
+        Product product = getProduct1();
+        product.setProductCategory(savedCategory);
 
         underTest.save(product);
 

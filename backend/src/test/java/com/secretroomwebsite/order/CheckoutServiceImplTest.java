@@ -1,11 +1,9 @@
-package com.secretroomwebsite.checkout;
+package com.secretroomwebsite.order;
 
+import com.secretroomwebsite.checkout.CheckoutServiceImpl;
 import com.secretroomwebsite.customer.Customer;
 import com.secretroomwebsite.customer.CustomerRepository;
 import com.secretroomwebsite.emailClient.EmailService;
-import com.secretroomwebsite.order.Order;
-import com.secretroomwebsite.order.OrderRepository;
-import com.secretroomwebsite.order.OrderService;
 import com.secretroomwebsite.purchase.Purchase;
 import com.secretroomwebsite.purchase.PurchaseResponse;
 import org.junit.jupiter.api.BeforeEach;

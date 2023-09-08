@@ -1,12 +1,14 @@
 package com.secretroomwebsite.emailClient;
+
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailParseException;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EmailService {
@@ -15,7 +17,7 @@ public class EmailService {
     private String from;
 
     @Value("${spring.mail.copyTo}")
-    private String copyTo;
+    private List<String> copyTo;
 
     private final JavaMailSender emailSender;
 
@@ -30,7 +32,14 @@ public class EmailService {
 
             helper.setFrom(from);
             helper.setTo(to);
-            helper.addCc(copyTo);
+
+            copyTo.forEach(cc -> {
+                try {
+                    helper.addCc(cc);
+                } catch (MessagingException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             helper.setSubject(subject);
             helper.setText(text, true);
 
@@ -39,7 +48,6 @@ public class EmailService {
             throw new MailParseException(e);
         }
     }
-
 
 
 }

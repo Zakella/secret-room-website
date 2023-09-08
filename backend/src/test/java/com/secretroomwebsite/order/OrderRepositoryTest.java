@@ -10,11 +10,13 @@ import com.secretroomwebsite.shipping.Shipping;
 import com.secretroomwebsite.shipping.ShippingRepository;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.DirtiesContext;
 
 import static com.secretroomwebsite.TestData.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +29,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@DirtiesContext
+
 class OrderRepositoryTest extends AbstractTestcontainers {
 
     @Autowired
@@ -47,9 +51,10 @@ class OrderRepositoryTest extends AbstractTestcontainers {
     @BeforeEach
         void setUp() {
             Shipping shipping = getTestShipping();
-            shippingRepository.save(shipping);
+            Shipping savedShipping = shippingRepository.save(shipping);
 
             order = getTestOrder();
+            order.setShippingOption(savedShipping);
 
             ProductCategory category = getTestProductCategory();
             productCategoryRepository.save(category);
@@ -70,6 +75,11 @@ class OrderRepositoryTest extends AbstractTestcontainers {
 
         }
 
+    @AfterAll
+    static void tearDown() {
+        // Остановка контейнера
+        postgreSQLContainer.stop();
+    }
     @Test
     void    itShouldSaveOrder() {
         // When

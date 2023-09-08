@@ -1,15 +1,13 @@
 package com.secretroomwebsite;
 
-import com.github.javafaker.Faker;
+
 import liquibase.Liquibase;
 import liquibase.database.Database;
 import liquibase.database.DatabaseFactory;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.resource.ClassLoaderResourceAccessor;
-import liquibase.resource.FileSystemResourceAccessor;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -36,6 +34,8 @@ public abstract class AbstractTestcontainers  {
         }
     }
 
+
+
     @Container
     protected static final PostgreSQLContainer<?> postgreSQLContainer =
             new PostgreSQLContainer<>("postgres:latest")
@@ -44,11 +44,10 @@ public abstract class AbstractTestcontainers  {
                     .withPassword("123");
 
     @DynamicPropertySource
-    private static void registerDataSourceProperties(
-            DynamicPropertyRegistry registry) {
+    private static void registerDataSourceProperties(DynamicPropertyRegistry registry) {
         registry.add(
                 "spring.datasource.url",
-                postgreSQLContainer::getJdbcUrl
+                () -> "jdbc:postgresql://localhost:" + postgreSQLContainer.getFirstMappedPort() + "/amigoscode-dao-unit-test"
         );
         registry.add(
                 "spring.datasource.username",
@@ -60,19 +59,7 @@ public abstract class AbstractTestcontainers  {
         );
     }
 
-    private static DataSource getDataSource() {
-        return DataSourceBuilder.create()
-                .driverClassName(postgreSQLContainer.getDriverClassName())
-                .url(postgreSQLContainer.getJdbcUrl())
-                .username(postgreSQLContainer.getUsername())
-                .password(postgreSQLContainer.getPassword())
-                .build();
-    }
 
-    protected static JdbcTemplate getJdbcTemplate() {
-        return new JdbcTemplate(getDataSource());
-    }
 
-    protected static final Faker FAKER = new Faker();
 
 }

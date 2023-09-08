@@ -45,7 +45,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
 
   form = this.fb.group({
-    email: ["", [Validators.required, Validators.pattern(/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+    email: ["", [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
     country: {value: "Moldova, Republic of", disabled: true},
     name: ["", this.nameValidator],
     checked: this.fb.control(true),

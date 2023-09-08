@@ -35,7 +35,9 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     public CheckoutServiceImpl(CustomerRepository customerRepository,
                                OrderService orderService,
-                               OrderRepository orderRepository, TemplateEngine templateEngine, EmailService emailService) {
+                               OrderRepository orderRepository,
+                               TemplateEngine templateEngine,
+                               EmailService emailService) {
         this.customerRepository = customerRepository;
         this.orderService = orderService;
         this.orderRepository = orderRepository;
