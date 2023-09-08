@@ -16,13 +16,13 @@ import reactor.core.publisher.Mono;
 public class KeycloakTokenService {
 
     @Value("${keycloak.server-url}")
-    private String serverUrl;
+    public String serverUrl;
 
     @Value("${keycloak.user-realm}")
-    private String userRealm;
+    public String userRealm;
 
     @Value("${keycloak.webclient-id}")
-    private String webclientId;
+    public String webclientId;
 
 
     public KeycloakTokenService() {}

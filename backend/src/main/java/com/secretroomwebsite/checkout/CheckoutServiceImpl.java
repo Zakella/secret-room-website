@@ -79,14 +79,15 @@ public class CheckoutServiceImpl implements CheckoutService {
         }
     }
 
-    private Customer updateCustomer(Customer customer) {
+    public Customer updateCustomer(Customer customer) {
         Optional<Customer> customerFromDB = customerRepository.findByPhone(customer.getPhone());
 
         if (customerFromDB.isPresent()) {
             // we found them ... let's assign them accordingly
-            customer = customerFromDB.get();
-            customer.setFirstName(customer.getFirstName());
-            customer.setLastName(customer.getLastName());
+            Customer existingCustomer = customerFromDB.get();
+            existingCustomer.setFirstName(customer.getFirstName());
+            existingCustomer.setLastName(customer.getLastName());
+            customer = existingCustomer;
         }
 
         return customerRepository.save(customer);
@@ -100,7 +101,10 @@ public class CheckoutServiceImpl implements CheckoutService {
         order.setOrderTrackingNumber(orderTrackingNumber);
         order.setStatus(PENDING);
         order.setShippingAddress(purchase.getShippingAddress());
+
+        // Get shipping cost
         order.setShippingCost(order.getShippingOption().getCost());
+
         order.setComment(purchase.getComment());
 
         // populate order with orderItems

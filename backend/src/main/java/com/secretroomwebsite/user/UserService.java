@@ -150,7 +150,7 @@ public class UserService {
         }
     }
 
-    private UserRepresentation createUserRepresentation(UserDTO userDTO) {
+    UserRepresentation createUserRepresentation(UserDTO userDTO) {
         UserRepresentation user = new UserRepresentation();
         user.setUsername(userDTO.firstname() + " " + userDTO.lastName());
         user.setFirstName(userDTO.firstname());
@@ -161,7 +161,7 @@ public class UserService {
         return user;
     }
 
-    private void handleCreateUserResponse(Response response, String email) {
+    void handleCreateUserResponse(Response response, String email) {
         switch (response.getStatus()) {
             case 201 -> logger.info("Successfully created user with email: {}", email);
             case 409 -> throw new UserAlreadyExistsException("User already exists with email: " + email);
@@ -286,7 +286,7 @@ public class UserService {
         return passwordResetTokenRepository.save(passwordResetToken);
     }
 
-    private boolean isPasswordPolicyValid(String password) {
+    public boolean isPasswordPolicyValid(String password) {
         String passwordPolicyRegex = "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$";
         return !password.matches(passwordPolicyRegex);
     }
