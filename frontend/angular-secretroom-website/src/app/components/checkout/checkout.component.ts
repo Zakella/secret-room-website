@@ -45,7 +45,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
 
   form = this.fb.group({
-    email: ["", [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+    email: ["", [Validators.required, Validators.pattern(/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/)]],
     country: {value: "Moldova, Republic of", disabled: true},
     name: ["", this.nameValidator],
     checked: this.fb.control(true),
@@ -109,8 +109,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     const userDetails = this.authService.getUserDetails();
     if (userDetails) {
       this.form.patchValue({
-        name: userDetails.firstName,
-        lastname: userDetails.lastName,
+        name: userDetails.givenName,
+        lastname: userDetails.familyName,
         email: userDetails.email
       });
     }
@@ -264,7 +264,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  onSubmit($event: any) {
+  onSubmit() {
     console.log(this.form.value);
     if (this.form.valid) {
       this.placeOrder();

@@ -17,7 +17,5 @@ export class ProductCategoryService {
   getProductList(): Observable<ProductCategory[]> {
     return this.httpClient.get<ProductCategory[]>(this.baseUrL);
   }
-  // getProductList(): Observable<any[]> {
-  //   return this.httpClient.get<any[]>(this.baseUrL);
-  // }
+
 }

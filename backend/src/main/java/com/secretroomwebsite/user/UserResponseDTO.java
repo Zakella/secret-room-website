@@ -1,11 +1,10 @@
 package com.secretroomwebsite.user;
 
 public record UserResponseDTO(
+        String accessToken,
 
-        String firstName,
-        String lastName,
+        String refreshToken,
+        String givenName,
+        String familyName,
         String email
-
-
-) {
-}
+) {}

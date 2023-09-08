@@ -1,14 +1,15 @@
 export class UserDetails {
-
-  firstName: string;
-  lastName: string;
+  accessToken: string;
+  refreshToken: string;
+  givenName: string;
+  familyName: string;
   email: string;
 
-  constructor(givenName: string, familyName: string, email: string) {
-
-    this.firstName = givenName;
-    this.lastName = familyName;
+  constructor(accessToken: string, refreshToken: string,givenName: string, familyName: string, email: string) {
+    this.accessToken = accessToken;
+    this.givenName = givenName;
+    this.familyName = familyName;
     this.email = email;
-
+    this.refreshToken = refreshToken;
   }
 }

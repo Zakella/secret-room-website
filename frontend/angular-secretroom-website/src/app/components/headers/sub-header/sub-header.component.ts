@@ -3,7 +3,7 @@ import {Router} from "@angular/router";
 import {CartService} from "../../../services/cart.service";
 
 import {takeUntil} from "rxjs/operators";
-import {Observable, Subject} from "rxjs";
+import {Subject} from "rxjs";
 import {Menu} from 'primeng/menu';
 import {AuthenticationService} from "../../../services/authentication.service";
 import {UserDetails} from "../../../model/user-details";
@@ -88,7 +88,7 @@ export class SubHeaderComponent implements OnInit {
         },
 
         {
-          label: this.userDetails?.firstName,
+          label: this.userDetails?.givenName,
           styleClass: '.vs-title',
           icon: 'pi pi-check',
           command: () => {
@@ -126,7 +126,7 @@ export class SubHeaderComponent implements OnInit {
             this.router.navigate(['/login']);
           }
         }
-        ]
+      ]
 
     }
 
@@ -141,7 +141,7 @@ export class SubHeaderComponent implements OnInit {
 
       this.mainMenu = [
         {
-          label: this.userDetails?.firstName,
+          label: this.userDetails?.givenName,
           styleClass: '.vs-title',
           icon: 'pi pi-check',
           command: () => {
