@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, ValidatorFn, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router, ActivatedRoute} from "@angular/router";
+import {TranslocoService} from "@ngneat/transloco";
 
 
 @Component({
@@ -32,7 +33,10 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private authenticationService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private translocoService: TranslocoService
+
+  ) {
   }
 
   ngOnInit() {
@@ -50,7 +54,7 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     if (password !== passwordConfirmation) {
-      this.errorMessage = 'Passwords do not match';
+      this.errorMessage = this.translocoService.translate('resetPassword.passwordsDoNotMatch');
       return;
     }
 
@@ -64,16 +68,15 @@ export class ResetPasswordComponent implements OnInit {
         },
         error: error => {
           if (error.status === 404) {
-            this.errorMessage = 'Invalid or expired token';
+            this.errorMessage = this.translocoService.translate('resetPassword.invalidOrExpiredToken');
           } else {
-            // If the error response has a message, use it. Otherwise, use a generic error message.
-            this.errorMessage = error.error.message || 'An error occurred while resetting password';
+            this.errorMessage = this.translocoService.translate('resetPassword.errorOccurred');
             console.log(error);
           }
         }
       });
     } else {
-      this.errorMessage = 'Token is missing';
+      this.errorMessage = this.translocoService.translate('resetPassword.tokenMissing');
     }
   }
 

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 
 
 @RestController
@@ -24,7 +25,7 @@ public class OrderController {
 
 
     @PostMapping
-    public ResponseEntity<PurchaseResponse> placeOrder(@RequestBody Purchase purchase) {
+    public ResponseEntity<PurchaseResponse> placeOrder(@RequestBody Purchase purchase) throws IOException {
         PurchaseResponse response   = checkoutService.placeOrder(purchase);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

@@ -107,7 +107,17 @@
             <p th:text="${currentDate}"></p>
         </div>
         <a href="https://victoriasecret.md/">
-            <img src="/images/vs_logo.png" alt="Logo" height="120" width="200">
+<!--            <img src="/static/images/vs_logo.png" alt="Logo" height="120" width="200">-->
+<!--            <img src="@{/static/images/vs_logo.png}" alt="Logo">-->
+
+<!--            <img th:src = "@{/images/vs_logo.png}"  alt="Logo" height="120" width="200" src=""/>-->
+
+
+<!--            <img th:src="@{/images/vs_logo.png}" alt="Logo" height=вв"120" width="200" />-->
+
+<!--            <img src="/images/vs_logo.png" height="120" width="200" th:src="@{/images/vs_logo.png}" alt="Logo"/>-->
+
+            <img th:src="@{../static/images/vs_logo.png}" alt="Logo" height="120" width="200" />
 
         </a>
 

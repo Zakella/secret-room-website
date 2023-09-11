@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
 import {MessageService} from "primeng/api";
+import {TranslocoService} from "@ngneat/transloco";
 
 @Component({
   selector: 'app-login-page',
@@ -33,7 +34,8 @@ export class LoginPageComponent {
   constructor(private fb: FormBuilder,
               private auth: AuthenticationService,
               private rotuer: Router,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private translocoService: TranslocoService) {
 
   }
 
@@ -83,10 +85,11 @@ export class LoginPageComponent {
           error: (err) => {
             this.loading = false;
             if (err.status === 404) {
-              this.errorMessage = err.error.message;
+              this.errorMessage =  this.translocoService.translate(`errors.${'userWithEmail'}`, { email: email });
             } else {
+              const errorKey = 'serverError';
               console.log(err);
-              this.errorMessage = err.error.message;
+              this.errorMessage = this.translocoService.translate(`errors.${errorKey}` );
             }
           }
         });

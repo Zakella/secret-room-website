@@ -8,6 +8,7 @@ import com.secretroomwebsite.order.*;
 import com.secretroomwebsite.purchase.Purchase;
 import com.secretroomwebsite.purchase.PurchaseResponse;
 import jakarta.transaction.Transactional;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -33,16 +34,19 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     private final EmailService emailService;
 
+    private final MessageSource messageSource;
+
     public CheckoutServiceImpl(CustomerRepository customerRepository,
                                OrderService orderService,
                                OrderRepository orderRepository,
                                TemplateEngine templateEngine,
-                               EmailService emailService) {
+                               EmailService emailService, MessageSource messageSource) {
         this.customerRepository = customerRepository;
         this.orderService = orderService;
         this.orderRepository = orderRepository;
         this.templateEngine = templateEngine;
         this.emailService = emailService;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -57,7 +61,8 @@ public class CheckoutServiceImpl implements CheckoutService {
         OrderReview orderReview = orderService.findOrderByTrackingNumber(order.getOrderTrackingNumber());
         String orderSummaryHtml = fillOrderSummaryTemplate(orderReview, purchase.getLanguage());
 
-        emailService.sendMessage(purchase.getCustomer().getEmail(), "Order Summary", orderSummaryHtml);
+        String message = messageSource.getMessage("order.summary", null, new Locale (purchase.getLanguage().toLowerCase()));
+        emailService.sendMessage(purchase.getCustomer().getEmail(), message , orderSummaryHtml);
 
         return new PurchaseResponse(order.getOrderTrackingNumber(), orderSummaryHtml);
     }

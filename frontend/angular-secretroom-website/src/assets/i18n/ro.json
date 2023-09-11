@@ -97,9 +97,19 @@
     "title": "Contul dvs. nu este disponibil",
     "description": "Ne pare rău, nu am putut găsi pagina.",
     "button": "Mergi la pagina principală"
+  },
+
+  "errors": {
+    "userWithEmail": "Utilizatorul cu emailul {{email}} nu a fost găsit",
+    "serverError": "A apărut o eroare pe server. Vă rugăm să încercați mai târziu."
+  },
+
+  "resetPassword": {
+    "passwordsDoNotMatch": "Parolele nu se potrivesc",
+    "invalidOrExpiredToken": "Token invalid sau expirat",
+    "errorOccurred": "A apărut o eroare la resetarea parolei",
+    "tokenMissing": "Lipsește tokenul"
   }
-
-
 
 }
 
