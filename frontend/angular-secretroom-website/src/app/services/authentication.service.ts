@@ -46,7 +46,7 @@ export class AuthenticationService {
   }
 
   registration(user: User): Observable<UserDetails> {
-    const url = '/v1/users';
+    const url = environment.apiUrl  + 'v1/users';
     return this.http.post<UserDetails>(url, user).pipe(
       tap((userDetails: UserDetails) => {
         this.loggedIn.next(true);

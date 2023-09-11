@@ -38,7 +38,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/accountInfo")
+    @PostMapping("/`accountInfo")
     public ResponseEntity<UserAccountInfo> getAccountInformation(@RequestBody Map<String, String> body) {
         String userEmail = body.get("email");
         if (userEmail == null || userEmail.isEmpty()) {

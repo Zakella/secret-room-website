@@ -86,8 +86,12 @@ public class Product {
 
     private String shortDescriptionRu;
 
+
+
+
     public Product() {
     }
+
 
 
 

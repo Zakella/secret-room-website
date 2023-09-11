@@ -107,6 +107,7 @@ export class ProductListComponent implements OnInit {
       .subscribe((data) => {
         this.products = data.content;
         this.totalRecords = data.totalElements;
+        // console.log(data.content);
 
       });
   }

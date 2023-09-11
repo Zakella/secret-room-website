@@ -175,7 +175,7 @@ public class UserService {
 
     public UserAccountInfo getAccountData(String email) {
 
-        return new UserAccountInfo(
+            return new UserAccountInfo(
                 this.orderService.getOrdersByUserEmail(email)
         );
 

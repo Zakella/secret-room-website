@@ -40,8 +40,9 @@
       <div class="p-2">
         <div class="shadow-2 p-4 surface-card border-round">
 
-          <a [routerLink]="'/'+ item.product.brand+'/product-view/' + item.product.id" class="link-no-underline">
-            <div class="relative mb-3">
+          <a [routerLink]="item.product.brand === 'VictoriasSecret' ? '/vs/product-view/' + item.product.id : '/bb/product-view/' + item.product.id" class="link-no-underline">
+
+          <div class="relative mb-3">
 
 
               <img src="{{item.product.imageURL}}" class="w-full product-image"/>
